@@ -26,8 +26,8 @@ public class SkyblockEvents {
                 data.setWorldGenerated(true);
             }
             if (data.isFirstSpawn(player.getUUID())) {
-                player.teleportTo(0, 64, 0);
-                player.setSleepingPos(new BlockPos(0, 64, 0));
+                player.teleportTo(0.5, 64, 0.5);
+                player.setSleepingPos(new BlockPos(0.5, 64, 0.5));
                 data.playerJoin(player);
             }
             ((ServerWorld) world).getDataStorage().set(data);
@@ -37,9 +37,12 @@ public class SkyblockEvents {
     @SubscribeEvent
     public static void playerRespawn(final PlayerEvent.PlayerRespawnEvent event) {
         PlayerEntity player = event.getPlayer();
-        if (player.getSleepingPos().isPresent()) return;
-        player.teleportTo(0, 64, 0);
-        player.setSleepingPos(new BlockPos(0, 64, 0));
+        World world = player.getCommandSenderWorld();
+        if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
+            if (player.getSleepingPos().isPresent()) return;
+            player.teleportTo(0.5, 64, 0.5);
+            player.setSleepingPos(new BlockPos(0.5, 64, 0.5));
+        }
     }
 
     private static void generateIsland(World world) {
@@ -55,5 +58,10 @@ public class SkyblockEvents {
                 world.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
             }
         }
+        world.setBlockAndUpdate(new BlockPos(0, 63, 0), Blocks.WATER.defaultBlockState());
+        world.setBlockAndUpdate(new BlockPos(1, 63, 0), Blocks.FARMLAND.defaultBlockState());
+        world.setBlockAndUpdate(new BlockPos(1, 63, 1), Blocks.FARMLAND.defaultBlockState());
+        world.setBlockAndUpdate(new BlockPos(0, 63, 1), Blocks.FARMLAND.defaultBlockState());
+        world.setBlockAndUpdate(new BlockPos(-1, 64, -1), Blocks.OAK_SAPLING.defaultBlockState());
     }
 }
