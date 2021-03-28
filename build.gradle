@@ -87,7 +87,11 @@ jar {
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"skyfarm",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'MixinConfigs': 'skyfarm.mixin.json',
+            'FMLCorePluginContainsFMLMod': 'true'
         ])
     }
 }
@@ -109,6 +113,8 @@ publishing {
 
 apply plugin: 'org.spongepowered.mixin'
 
-mixin {
-    add sourceSets.main, "skyfarm.refmap.json"
+sourceSets {
+    main {
+        ext.refMap = "skyfarm.refmap.json"
+    }
 }

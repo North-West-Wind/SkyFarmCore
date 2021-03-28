@@ -2,16 +2,12 @@ package ml.northwestwind.skyfarm.packet;
 
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.packet.message.CPlayerGrowPacket;
-import ml.northwestwind.skyfarm.packet.message.SPlayerGrowPacket;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;
-import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
 
 public class SkyFarmPacketHandler {
     private static final String PROTOCOL_VERSION = "1";
@@ -25,7 +21,6 @@ public class SkyFarmPacketHandler {
 
     public static void registerPackets() {
         registerMessage(CPlayerGrowPacket.class, NetworkDirection.PLAY_TO_SERVER);
-        registerMessage(SPlayerGrowPacket.class, NetworkDirection.PLAY_TO_CLIENT);
     }
 
     private static <MSG extends IPacket> void registerMessage(Class<MSG> clazz) {

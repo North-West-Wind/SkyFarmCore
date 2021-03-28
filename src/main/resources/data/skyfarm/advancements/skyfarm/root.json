@@ -1,0 +1,29 @@
+{
+  "display": {
+    "title": {
+      "text": "All in One SkyFarm Guide",
+      "color": "gold"
+    },
+    "description": {
+      "text": "Enjoy this modpack! Also spam crouch to grow stuff."
+    },
+    "icon": {
+      "item": "minecraft:oak_sapling"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "JoinGame": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "JoinGame"
+    ]
+  ]
+}

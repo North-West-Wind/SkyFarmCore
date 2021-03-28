@@ -1,0 +1,1 @@
+{"type":"botanypots:soil","conditions":[{"type":"forge:mod_loaded","modid":"forbidden_arcanus"}],"input":{"item":"forbidden_arcanus:magical_farmland"},"display":{"block":"forbidden_arcanus:magical_farmland","properties":{"moisture":7}},"categories":["dirt","farmland"],"growthModifier":-0.07}

@@ -4,12 +4,18 @@ package ml.northwestwind.skyfarm.events;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.world.SkyblockChunkGenerator;
 import ml.northwestwind.skyfarm.world.SkyblockData;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -28,8 +34,17 @@ public class SkyblockEvents {
             if (data.isFirstSpawn(player.getUUID())) {
                 player.teleportTo(0.5, 64, 0.5);
                 player.setSleepingPos(new BlockPos(0.5, 64, 0.5));
+                if (!world.isClientSide()) {
+                    MinecraftServer server = ((ServerWorld) world).getServer();
+                    Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation(SkyFarm.MOD_ID, "skyfarm/root"));
+                    if (advancement != null) {
+                        ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+                        serverPlayer.getAdvancements().award(advancement, "JoinGame");
+                    }
+                }
                 data.playerJoin(player);
             }
+            data.setDirty();
             ((ServerWorld) world).getDataStorage().set(data);
         }
     }
@@ -63,5 +78,13 @@ public class SkyblockEvents {
         world.setBlockAndUpdate(new BlockPos(1, 63, 1), Blocks.FARMLAND.defaultBlockState());
         world.setBlockAndUpdate(new BlockPos(0, 63, 1), Blocks.FARMLAND.defaultBlockState());
         world.setBlockAndUpdate(new BlockPos(-1, 64, -1), Blocks.OAK_SAPLING.defaultBlockState());
+    }
+
+    @SubscribeEvent
+    public static void worldLoad(final WorldEvent.Load event) {
+        IWorld world = event.getWorld();
+        if (world.isClientSide()) {
+
+        }
     }
 }

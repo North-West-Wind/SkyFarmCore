@@ -7,6 +7,7 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.MapData;
 import net.minecraft.world.storage.WorldSavedData;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 import java.util.UUID;

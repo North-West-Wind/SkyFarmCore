@@ -8,8 +8,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 
@@ -30,11 +28,5 @@ public class RenderEvents {
         event.setRed(color.getRed() / 256f);
         event.setBlue(color.getBlue() / 256f);
         event.setGreen(color.getGreen() / 256f);
-    }
-
-    @SubscribeEvent
-    public static void renderGameOverlay(final RenderGameOverlayEvent event) {
-        if (!event.getType().equals(RenderGameOverlayEvent.ElementType.AIR)) return;
-        event.setCanceled(true);
     }
 }
