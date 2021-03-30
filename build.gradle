@@ -5,15 +5,9 @@ buildscript {
             name "Forge"
             url = "https://files.minecraftforge.net/maven"
         }
-        maven {
-            name "Sponge"
-            url "https://repo.spongepowered.org/repository/maven-public/"
-            content { includeGroup "org.spongepowered" }
-        }
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -74,10 +68,6 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
-}
-
 jar {
     manifest {
         attributes([
@@ -87,11 +77,7 @@ jar {
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"skyfarm",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-
-            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
-            'MixinConfigs': 'skyfarm.mixin.json',
-            'FMLCorePluginContainsFMLMod': 'true'
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
@@ -111,10 +97,29 @@ publishing {
     }
 }
 
-apply plugin: 'org.spongepowered.mixin'
-
-sourceSets {
-    main {
-        ext.refMap = "skyfarm.refmap.json"
+repositories {
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
     }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    /* minecraft dependency is here */
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
+
+    // compile against the JEI API but do not include it at runtime
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+    // at runtime, use the full JEI jar
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
+    implementation 'com.github.Vatuu:discord-rpc:1.6.2'
+    implementation 'com.github.Vatuu:discord-rpc-binaries:3.4.0'
 }

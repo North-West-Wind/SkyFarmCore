@@ -1,0 +1,16 @@
+{
+  "type": "skyfarm:evaporating",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "input": {
+    "item": "mysticalagriculture:dirt_essence"
+  },
+  "output": {
+    "item": "mysticalagriculture:stone_essence"
+  },
+  "evaporateTime": 600
+}

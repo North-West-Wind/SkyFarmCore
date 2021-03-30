@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/root",
+  "display": {
+    "title": {
+      "text": "Don't Worry. This is NOT a Sieve"
+    },
+    "description": {
+      "text": "Obtain stone essence by evaporating dirt essence."
+    },
+    "icon": {
+      "item": "skyfarm:natural_evaporator"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "getEvaporator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "skyfarm:natural_evaporator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "getEvaporator"
+    ]
+  ]
+}

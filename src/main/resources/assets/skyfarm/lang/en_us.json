@@ -1,4 +1,10 @@
 {
   "generator.skyfarm": "Sky Farm",
-  "generator.skyfarm.info": "Awesome Skyblock!"
+  "generator.skyfarm.info": "Awesome Skyblock!",
+
+  "block.skyfarm.natural_evaporator": "Natural Evaporator",
+
+  "itemGroup.skyfarm": "Sky Farm",
+
+  "recipe.skyfarm.evaporating": "Evaporating"
 }

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "text": "Woah. This is Worthless"
+    },
+    "description": {
+      "text": "Why do you need wood seeds when you have saplings???"
+    },
+    "icon": {
+      "item": "mysticalagriculture:wood_seeds"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "woodSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:wood_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "woodSeeds"
+    ]
+  ]
+}

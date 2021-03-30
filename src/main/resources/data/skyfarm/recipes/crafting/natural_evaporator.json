@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PSP",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "skyfarm:natural_evaporator",
+    "count": 1
+  }
+}

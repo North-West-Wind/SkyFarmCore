@@ -29,9 +29,9 @@ public class CPlayerGrowPacket implements IPacket {
             if ((block instanceof SaplingBlock || block instanceof CropsBlock) && state.isRandomlyTicking()) {
                 if (state.hasProperty(CropsBlock.AGE)) {
                     int growth = state.getValue(CropsBlock.AGE);
-                    if (player.getRandom().nextInt(5) == 0) world.setBlockAndUpdate(blockPos1, state.setValue(CropsBlock.AGE, growth < 7 ? growth + 1 : 7));
+                    if (player.getRandom().nextInt(20) == 0) world.setBlockAndUpdate(blockPos1, state.setValue(CropsBlock.AGE, growth < 7 ? growth + 1 : 7));
                 } else {
-                    if (player.getRandom().nextInt(2) == 0) BoneMealItem.applyBonemeal(new ItemStack(Items.BONE_MEAL), world, blockPos1, player);
+                    if (player.getRandom().nextInt(3) == 0) BoneMealItem.applyBonemeal(new ItemStack(Items.BONE_MEAL), world, blockPos1, player);
                 }
                 ((ServerWorld)world).sendParticles(player, ParticleTypes.HAPPY_VILLAGER, false, blockPos1.getX() + player.getRandom().nextDouble(), blockPos1.getY() + player.getRandom().nextDouble(), blockPos1.getZ() + player.getRandom().nextDouble(), 10, 0, 0, 0, 3);
             }

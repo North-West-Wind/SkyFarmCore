@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/evaporator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "text": "This is Hard"
+    },
+    "description": {
+      "text": "Craft a stone seed by surrounding a dirt seed with stone essence."
+    },
+    "icon": {
+      "item": "mysticalagriculture:stone_seeds"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "stoneSeed": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:stone_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "stoneSeed"
+    ]
+  ]
+}
