@@ -1,12 +1,9 @@
 package ml.northwestwind.skyfarm.jei.category;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.systems.RenderSystem;
 import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IGuiIngredientGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
@@ -34,7 +31,7 @@ public class EvaporatingCategory implements IRecipeCategory<IEvaporatingRecipe> 
         localizedName = I18n.get("recipe.skyfarm.evaporating");
         background = guiHelper.createDrawable(new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/background/natural_evaporator_background.png"),
                 0, 0, 108, 64);
-        icon = guiHelper.createDrawableIngredient(new ItemStack(RegistryEvents.SkyFarmBlocks.NATURAL_EVAPORATOR));
+        icon = guiHelper.createDrawableIngredient(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR));
     }
 
     @Override

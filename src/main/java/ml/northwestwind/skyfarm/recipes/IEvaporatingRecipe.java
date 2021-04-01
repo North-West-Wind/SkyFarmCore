@@ -1,11 +1,11 @@
 package ml.northwestwind.skyfarm.recipes;
 
 import ml.northwestwind.skyfarm.SkyFarm;
+import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nonnull;
@@ -16,7 +16,7 @@ public interface IEvaporatingRecipe extends IRecipe<RecipeWrapper> {
     @Nonnull
     @Override
     default IRecipeType<?> getType() {
-        return Registry.RECIPE_TYPE.getOptional(RECIPE_TYPE_ID).get();
+        return RegistryEvents.RecipeType.EVAPORATING.getType();
     }
 
     @Override
@@ -25,4 +25,6 @@ public interface IEvaporatingRecipe extends IRecipe<RecipeWrapper> {
     }
 
     Ingredient getInput();
+
+    int getTick();
 }

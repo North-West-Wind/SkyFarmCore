@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/stone_seeds",
+  "display": {
+    "title": {
+      "text": "Stay Hydrated"
+    },
+    "description": {
+      "text": "Right-click water block with a bow. It will fill up and not consume the source block. Basically duping."
+    },
+    "icon": {
+      "item": "minecraft:water_bucket"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "waterBowl": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:air"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "waterBowl"
+    ]
+  ]
+}

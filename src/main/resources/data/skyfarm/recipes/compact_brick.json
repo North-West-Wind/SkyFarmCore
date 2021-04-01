@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:brick"
+    }
+  },
+  "result": {
+    "item": "skyfarm:compact_brick",
+    "count": 1
+  }
+}

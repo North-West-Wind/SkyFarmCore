@@ -79,12 +79,4 @@ public class SkyblockEvents {
         world.setBlockAndUpdate(new BlockPos(0, 63, 1), Blocks.FARMLAND.defaultBlockState());
         world.setBlockAndUpdate(new BlockPos(-1, 64, -1), Blocks.OAK_SAPLING.defaultBlockState());
     }
-
-    @SubscribeEvent
-    public static void worldLoad(final WorldEvent.Load event) {
-        IWorld world = event.getWorld();
-        if (world.isClientSide()) {
-
-        }
-    }
 }

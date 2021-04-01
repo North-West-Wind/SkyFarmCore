@@ -44,7 +44,7 @@ public class EvaporatingRecipe implements IEvaporatingRecipe {
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return RegistryEvents.SkyFarmRecipeSerializers.EVAPORATING_SERIALIZER;
+        return RegistryEvents.RecipeType.EVAPORATING.getSerializer();
     }
 
     @Override
@@ -57,6 +57,7 @@ public class EvaporatingRecipe implements IEvaporatingRecipe {
         return NonNullList.of(null, this.input);
     }
 
+    @Override
     public int getTick() {
         return tick;
     }

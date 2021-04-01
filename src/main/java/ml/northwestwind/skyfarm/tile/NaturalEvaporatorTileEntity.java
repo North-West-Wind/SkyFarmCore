@@ -4,15 +4,12 @@ import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.tile.handler.SkyFarmItemHandler;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IClearable;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
@@ -22,20 +19,15 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
-import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -49,7 +41,7 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
     }
 
     public NaturalEvaporatorTileEntity() {
-        this(RegistryEvents.SkyFarmTileEntityTypes.NATURAL_EVAPORATOR);
+        this(RegistryEvents.TileEntityTypes.NATURAL_EVAPORATOR);
     }
 
     @Override
@@ -186,7 +178,7 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
 
     @Override
     public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        this.load(RegistryEvents.SkyFarmBlocks.NATURAL_EVAPORATOR.defaultBlockState(), pkt.getTag());
+        this.load(RegistryEvents.Blocks.NATURAL_EVAPORATOR.defaultBlockState(), pkt.getTag());
     }
 
     @Override
@@ -209,7 +201,7 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
             return null;
         }
 
-        Set<IRecipe<?>> recipes = findRecipesByType(RegistryEvents.SkyFarmRecipeSerializers.EVAPORATING_TYPE, this.level);
+        Set<IRecipe<?>> recipes = findRecipesByType(RegistryEvents.RecipeType.EVAPORATING.getType(), this.level);
         for (IRecipe<?> iRecipe : recipes) {
             EvaporatingRecipe recipe = (EvaporatingRecipe) iRecipe;
             SkyFarmItemHandler fakeInv = new SkyFarmItemHandler(1, stack);

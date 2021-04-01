@@ -29,6 +29,6 @@ public class SkyFarmJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
-        registry.addRecipeCatalyst(new ItemStack(RegistryEvents.SkyFarmBlocks.NATURAL_EVAPORATOR), EvaporatingCategory.UID);
+        registry.addRecipeCatalyst(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR), EvaporatingCategory.UID);
     }
 }

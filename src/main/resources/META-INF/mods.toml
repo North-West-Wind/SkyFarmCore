@@ -26,3 +26,10 @@ An essential mod for NorthWestWind's Sky Farm modpack.
     versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.skyfarm]]
+    modId="mysticalagriculture"
+    mandatory=false
+    versionRange="[4.1.7,)"
+    ordering="AFTER"
+    side="BOTH"

@@ -4,6 +4,9 @@
 
   "block.skyfarm.natural_evaporator": "Natural Evaporator",
 
+  "item.skyfarm.water_bowl": "Water Bowl",
+  "item.skyfarm.compact_brick": "Compact Brick",
+
   "itemGroup.skyfarm": "Sky Farm",
 
   "recipe.skyfarm.evaporating": "Evaporating"

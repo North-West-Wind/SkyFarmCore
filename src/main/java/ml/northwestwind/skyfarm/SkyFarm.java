@@ -3,12 +3,8 @@ package ml.northwestwind.skyfarm;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.commons.io.filefilter.RegexFileFilter;
-
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
 
 @Mod(SkyFarm.MOD_ID)
 public class SkyFarm {
@@ -23,7 +19,7 @@ public class SkyFarm {
 
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(RegistryEvents.SkyFarmBlocks.NATURAL_EVAPORATOR);
+            return new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR);
         }
     }
 }

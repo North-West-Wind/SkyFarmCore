@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
         maven {
             name "Forge"
             url = "https://files.minecraftforge.net/maven"
@@ -8,10 +9,13 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath "com.github.jengelman.gradle.plugins:shadow:4.0.4"
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+// Discord stuff from DiscordRichPresence Mod. Thank you!
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
@@ -23,6 +27,17 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
+configurations {
+    shade
+    compile.extendsFrom(shade)
+}
+shadowJar {
+    classifier = '1.16.5'
+    configurations = [project.configurations.shade]
+    exclude 'com/sun/jna/**'
+    relocate 'com.google', 'drpcshadow.com.google'
+    relocate 'org.apache.http.entity.mime', 'somesubpackage.org.apache.http.entity.mime'
+}
 minecraft {
     mappings channel: 'official', version: '1.16.5'
     runs {
@@ -69,6 +84,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 jar {
+    classifier = "1.16.5"
     manifest {
         attributes([
             "Specification-Title": "skyfarm",
@@ -99,12 +115,10 @@ publishing {
 
 repositories {
     maven {
-        // location of the maven that hosts JEI files
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        // location of a maven mirror for JEI files, as a fallback
         name = "ModMaven"
         url = "https://modmaven.k-4u.nl"
     }
@@ -120,6 +134,17 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-    implementation 'com.github.Vatuu:discord-rpc:1.6.2'
-    implementation 'com.github.Vatuu:discord-rpc-binaries:3.4.0'
+    shade "com.google.guava:guava:30.1-jre"
+    shade "com.google.code.gson:gson:2.8.0"
+    shade 'com.github.Vatuu:discord-rpc:1.6.2'
+    shade 'com.github.Vatuu:discord-rpc-binaries:3.4.0'
+}
+reobf {
+    shadowJar  {
+        dependsOn tasks.createMcpToSrg
+        mappings = tasks.createMcpToSrg.outputs.files.singleFile
+    }
+}
+artifacts {
+    archives tasks.shadowJar
 }

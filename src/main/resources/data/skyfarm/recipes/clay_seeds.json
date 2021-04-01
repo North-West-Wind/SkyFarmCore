@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalcustomization"
+    }
+  ],
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalcustomization:clay_essence"
+    },
+    "S": {
+      "item": "mysticalagriculture:dirt_seeds"
+    }
+  },
+  "result": {
+    "item": "mysticalcustomization:clay_seeds",
+    "count": 1
+  }
+}

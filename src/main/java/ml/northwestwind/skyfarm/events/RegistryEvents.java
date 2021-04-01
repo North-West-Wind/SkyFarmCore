@@ -2,6 +2,9 @@ package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.block.NaturalEvaporatorBlock;
+import ml.northwestwind.skyfarm.entity.CompactBrickEntity;
+import ml.northwestwind.skyfarm.item.CompactBrickItem;
+import ml.northwestwind.skyfarm.item.WaterBowlItem;
 import ml.northwestwind.skyfarm.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.recipes.IEvaporatingRecipe;
 import ml.northwestwind.skyfarm.recipes.serializer.EvaporatingRecipeSerializer;
@@ -12,12 +15,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -25,7 +29,9 @@ import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.function.Supplier;
 
@@ -40,45 +46,85 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void registerBlock(final RegistryEvent.Register<Block> event) {
-        event.getRegistry().register(SkyFarmBlocks.NATURAL_EVAPORATOR);
+        event.getRegistry().register(Blocks.NATURAL_EVAPORATOR);
     }
 
     @SubscribeEvent
     public static void registerItem(final RegistryEvent.Register<Item> event) {
-        event.getRegistry().register(new BlockItem(SkyFarmBlocks.NATURAL_EVAPORATOR, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64)).setRegistryName("natural_evaporator"));
+        event.getRegistry().registerAll(
+                new BlockItem(Blocks.NATURAL_EVAPORATOR, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64)).setRegistryName("natural_evaporator"),
+                Items.COMPACT_BRICK,
+                Items.WATER_BOWL,
+                Items.BOWL
+        );
     }
 
     @SubscribeEvent
     public static void registerTileEntityType(final RegistryEvent.Register<TileEntityType<?>> event) {
-        event.getRegistry().register(SkyFarmTileEntityTypes.NATURAL_EVAPORATOR);
+        event.getRegistry().register(TileEntityTypes.NATURAL_EVAPORATOR);
     }
 
     @SubscribeEvent
     public static void registerRecipeSerializer(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
-        event.getRegistry().register(SkyFarmRecipeSerializers.EVAPORATING_SERIALIZER);
+        RecipeType.register(event.getRegistry());
     }
 
-    public static class SkyFarmBlocks {
+    @SubscribeEvent
+    public static void registerEntityType(final RegistryEvent.Register<EntityType<?>> event) {
+        event.getRegistry().register(EntityTypes.COMPACT_BRICK);
+    }
+
+    public static class Blocks {
         public static final Block NATURAL_EVAPORATOR = new NaturalEvaporatorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion()).setRegistryName("natural_evaporator");
     }
 
-    public static class SkyFarmTileEntityTypes {
-        public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(NaturalEvaporatorTileEntity::new, SkyFarmBlocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
+    public static class TileEntityTypes {
+        public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(NaturalEvaporatorTileEntity::new, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
     }
 
-    public static class SkyFarmRecipeSerializers {
-        public static final IRecipeSerializer<EvaporatingRecipe> EVAPORATING_SERIALIZER = (IRecipeSerializer<EvaporatingRecipe>) new EvaporatingRecipeSerializer().setRegistryName("evaporating");
-        public static final IRecipeType<IEvaporatingRecipe> EVAPORATING_TYPE = registerType(IEvaporatingRecipe.RECIPE_TYPE_ID);
+    public enum RecipeType {
+        EVAPORATING(EvaporatingRecipeSerializer::new, IEvaporatingRecipe.RECIPE_TYPE_ID);
 
-        private static <T extends IRecipeType<?>> T registerType(ResourceLocation recipeTypeId) {
-            return (T)  Registry.register(Registry.RECIPE_TYPE, recipeTypeId, new RecipeType<>());
-        }
+        public static void register(IForgeRegistry<IRecipeSerializer<?>> registry) {
+            for (RecipeType r : RecipeType.values()) {
+                if (r.type == null) r.type = customType(r.rl);
 
-        private static class RecipeType<T extends IRecipe<?>> implements IRecipeType<T> {
-            @Override
-            public String toString() {
-                return Registry.RECIPE_TYPE.getKey(this).toString();
+                r.serializer = r.supplier.get();
+                registry.register(r.serializer.setRegistryName(r.rl));
             }
         }
+
+        private static <T extends IRecipe<?>> IRecipeType<T> customType(ResourceLocation rl) {
+            return Registry.register(Registry.RECIPE_TYPE, rl, new IRecipeType<T>() {
+                public String toString() {
+                    return rl.toString();
+                }
+            });
+        }
+
+        final Supplier<IRecipeSerializer<?>> supplier;
+        final ResourceLocation rl;
+        IRecipeType<?> type = null;
+        IRecipeSerializer<?> serializer;
+        RecipeType(Supplier<IRecipeSerializer<?>> supplier, ResourceLocation rl) {
+            this.supplier = supplier;
+            this.rl = rl;
+        }
+        public IRecipeSerializer<?> getSerializer() {
+            return serializer;
+        }
+        public IRecipeType<?> getType() {
+            return type;
+        }
+    }
+
+    public static class EntityTypes {
+        public static final EntityType<CompactBrickEntity> COMPACT_BRICK = (EntityType<CompactBrickEntity>) EntityType.Builder.<CompactBrickEntity>of(CompactBrickEntity::new, EntityClassification.MISC).sized(0.25f, 0.25f).build("compact_brick_entity").setRegistryName("compact_brick_entity");
+    }
+
+    public static class Items {
+        public static final Item COMPACT_BRICK = new CompactBrickItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16)).setRegistryName("compact_brick");
+        public static final Item WATER_BOWL = new Item(new Item.Properties().stacksTo(1).tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("water_bowl");
+        public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE), true).setRegistryName("minecraft", "bowl");
     }
 }
