@@ -70,7 +70,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'skyfarm', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 skyfarm {
@@ -79,6 +79,7 @@ minecraft {
             }
         }
     }
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }

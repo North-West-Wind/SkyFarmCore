@@ -1,4 +1,4 @@
-package ml.northwestwind.skyfarm.world;
+package ml.northwestwind.skyfarm.world.generators;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -22,14 +22,24 @@ import java.util.function.Supplier;
 // Thank you Botania
 public class SkyblockChunkGenerator extends ChunkGenerator {
     public static final Codec<SkyblockChunkGenerator> CODEC = RecordCodecBuilder.create(
-            (instance) -> instance.group(
-                    BiomeProvider.CODEC.fieldOf("biome_source").forGetter((gen) -> gen.biomeSource),
-                    Codec.LONG.fieldOf("seed").stable().forGetter((gen) -> gen.seed),
-                    DimensionSettings.CODEC.fieldOf("settings").forGetter((gen) -> gen.settings)
-            ).apply(instance, instance.stable(SkyblockChunkGenerator::new)));
+            (instance) -> {
+                return instance.group(
+                        BiomeProvider.CODEC.fieldOf("biome_source").forGetter((gen) -> {
+                            return gen.biomeSource;
+                        }),
+                        Codec.LONG.fieldOf("seed").stable().forGetter((gen) -> {
+                            return gen.seed;
+                        }),
+                        DimensionSettings.CODEC.fieldOf("settings").forGetter((gen) -> {
+                            return gen.settings;
+                        })
+                ).apply(instance, instance.stable((provider, seed, settings) -> {
+                    return new SkyblockChunkGenerator(provider, seed, settings);
+                }));
+            });
 
     public static void init() {
-        Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(SkyFarm.MOD_ID, "skyfarm"), SkyblockChunkGenerator.CODEC);
+        Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(SkyFarm.MOD_ID, "skyfarm"), CODEC);
     }
 
     private final long seed;

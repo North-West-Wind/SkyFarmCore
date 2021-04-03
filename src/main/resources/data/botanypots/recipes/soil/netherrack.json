@@ -1,1 +1,1 @@
-{"type":"botanypots:soil","input":{"item":"minecraft:netherrack"},"display":{"block":"minecraft:netherrack"},"categories":["nether"],"growthModifier":-0.3}
+{"type":"botanypots:soil","input":{"item":"minecraft:netherrack"},"display":{"block":"minecraft:netherrack"},"categories":["nether"],"growthModifier":-0.3,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}

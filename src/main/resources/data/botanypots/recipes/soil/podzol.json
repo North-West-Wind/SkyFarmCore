@@ -1,1 +1,1 @@
-{"type":"botanypots:soil","input":{"item":"minecraft:podzol"},"display":{"block":"minecraft:podzol"},"categories":["dirt","grass","podzol","mushroom"],"growthModifier":-0.22}
+{"type":"botanypots:soil","input":{"item":"minecraft:podzol"},"display":{"block":"minecraft:podzol"},"categories":["dirt","grass","podzol","mushroom"],"growthModifier":-0.22,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}

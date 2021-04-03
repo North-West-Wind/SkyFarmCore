@@ -11,7 +11,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.jei.builder.JEIIngredientStackListBuilder;
-import ml.northwestwind.skyfarm.recipes.IEvaporatingRecipe;
+import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class EvaporatingCategory implements IRecipeCategory<IEvaporatingRecipe> {
+public class EvaporatingCategory implements IRecipeCategory<AbstractEvaporatingRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(SkyFarm.MOD_ID, "evaporating");
     private final IDrawable background;
     private final String localizedName;
@@ -40,8 +40,8 @@ public class EvaporatingCategory implements IRecipeCategory<IEvaporatingRecipe> 
     }
 
     @Override
-    public Class<? extends IEvaporatingRecipe> getRecipeClass() {
-        return IEvaporatingRecipe.class;
+    public Class<? extends AbstractEvaporatingRecipe> getRecipeClass() {
+        return AbstractEvaporatingRecipe.class;
     }
 
     @Override
@@ -60,13 +60,13 @@ public class EvaporatingCategory implements IRecipeCategory<IEvaporatingRecipe> 
     }
 
     @Override
-    public void setIngredients(IEvaporatingRecipe recipe, IIngredients iIngredients) {
+    public void setIngredients(AbstractEvaporatingRecipe recipe, IIngredients iIngredients) {
         iIngredients.setInputLists(VanillaTypes.ITEM, JEIIngredientStackListBuilder.make(recipe.getInput()).build());
         iIngredients.setOutput(VanillaTypes.ITEM, recipe.getResultItem());
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, IEvaporatingRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, AbstractEvaporatingRecipe recipe, IIngredients ingredients) {
         IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
         group.init(0, true, 14, 16);

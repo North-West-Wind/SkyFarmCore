@@ -1,0 +1,10 @@
+{
+  "type": "skyfarm:evaporating",
+  "input": {
+    "item": "minecraft:dirt"
+  },
+  "output": {
+    "item": "minecraft:stone"
+  },
+  "evaporateTime": 20
+}

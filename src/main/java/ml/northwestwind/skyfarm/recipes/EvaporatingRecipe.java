@@ -1,64 +1,30 @@
 package ml.northwestwind.skyfarm.recipes;
 
+import mcp.MethodsReturnNonnullByDefault;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
 
-public class EvaporatingRecipe implements IEvaporatingRecipe {
-    private final ResourceLocation id;
-    private final Ingredient input;
-    private final ItemStack output;
-    private final int tick;
+@MethodsReturnNonnullByDefault
+public class EvaporatingRecipe extends AbstractEvaporatingRecipe {
 
     public EvaporatingRecipe(ResourceLocation id, Ingredient input, ItemStack output, int tick) {
-        this.id = id;
-        this.output = output;
-        this.input = input;
-        this.tick = tick;
-    }
-
-    @Override
-    public boolean matches(RecipeWrapper inv, World worldIn) {
-        return this.input.test(inv.getItem(0));
-    }
-
-    @Override
-    public ItemStack assemble(RecipeWrapper inv) {
-        return this.output.copy();
-    }
-
-    @Override
-    public ItemStack getResultItem() {
-        return this.output.copy();
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return this.id;
+        super(RegistryEvents.Recipes.EVAPORATING.getType(), id, input, output, tick);
     }
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return RegistryEvents.RecipeType.EVAPORATING.getSerializer();
+        return RegistryEvents.Recipes.EVAPORATING.getSerializer();
     }
 
-    @Override
-    public Ingredient getInput() {
-        return this.input;
-    }
-
-    @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.of(null, this.input);
-    }
-
-    @Override
     public int getTick() {
         return tick;
+    }
+
+    @Override
+    public ItemStack getToastSymbol() {
+        return new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR);
     }
 }

@@ -5,8 +5,7 @@ import ml.northwestwind.skyfarm.block.NaturalEvaporatorBlock;
 import ml.northwestwind.skyfarm.entity.CompactBrickEntity;
 import ml.northwestwind.skyfarm.item.CompactBrickItem;
 import ml.northwestwind.skyfarm.item.WaterBowlItem;
-import ml.northwestwind.skyfarm.recipes.EvaporatingRecipe;
-import ml.northwestwind.skyfarm.recipes.IEvaporatingRecipe;
+import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.recipes.serializer.EvaporatingRecipeSerializer;
 import ml.northwestwind.skyfarm.tile.NaturalEvaporatorTileEntity;
 import ml.northwestwind.skyfarm.world.SkyblockWorldType;
@@ -31,9 +30,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
-import org.apache.logging.log4j.LogManager;
-
-import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 @ObjectHolder(SkyFarm.MOD_ID)
@@ -66,7 +62,7 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void registerRecipeSerializer(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
-        RecipeType.register(event.getRegistry());
+        Recipes.EVAPORATING.register(event.getRegistry());
     }
 
     @SubscribeEvent
@@ -79,20 +75,13 @@ public class RegistryEvents {
     }
 
     public static class TileEntityTypes {
-        public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(NaturalEvaporatorTileEntity::new, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
+        public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(() -> {
+            return new NaturalEvaporatorTileEntity();
+        }, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
     }
 
-    public enum RecipeType {
-        EVAPORATING(EvaporatingRecipeSerializer::new, IEvaporatingRecipe.RECIPE_TYPE_ID);
-
-        public static void register(IForgeRegistry<IRecipeSerializer<?>> registry) {
-            for (RecipeType r : RecipeType.values()) {
-                if (r.type == null) r.type = customType(r.rl);
-
-                r.serializer = r.supplier.get();
-                registry.register(r.serializer.setRegistryName(r.rl));
-            }
-        }
+    public static class Recipes<S extends IRecipeSerializer<? extends IRecipe<?>>> {
+        public static final Recipes<EvaporatingRecipeSerializer> EVAPORATING = new Recipes<>(new EvaporatingRecipeSerializer(), AbstractEvaporatingRecipe.RECIPE_TYPE_ID);
 
         private static <T extends IRecipe<?>> IRecipeType<T> customType(ResourceLocation rl) {
             return Registry.register(Registry.RECIPE_TYPE, rl, new IRecipeType<T>() {
@@ -102,24 +91,35 @@ public class RegistryEvents {
             });
         }
 
-        final Supplier<IRecipeSerializer<?>> supplier;
         final ResourceLocation rl;
-        IRecipeType<?> type = null;
-        IRecipeSerializer<?> serializer;
-        RecipeType(Supplier<IRecipeSerializer<?>> supplier, ResourceLocation rl) {
-            this.supplier = supplier;
+        IRecipeType<? extends IRecipe<?>> type = null;
+        S serializer;
+
+        private Recipes(S serializer, ResourceLocation rl) {
+            this.serializer = serializer;
             this.rl = rl;
         }
-        public IRecipeSerializer<?> getSerializer() {
+
+        public S getSerializer() {
             return serializer;
         }
-        public IRecipeType<?> getType() {
-            return type;
+
+        @SuppressWarnings("unchecked")
+        public <T extends IRecipeType<?>> T getType() {
+            return (T) type;
+        }
+
+        public void register(IForgeRegistry<IRecipeSerializer<?>> registry) {
+            if (type == null) type = customType(rl);
+
+            registry.register(serializer.setRegistryName(rl));
         }
     }
 
     public static class EntityTypes {
-        public static final EntityType<CompactBrickEntity> COMPACT_BRICK = (EntityType<CompactBrickEntity>) EntityType.Builder.<CompactBrickEntity>of(CompactBrickEntity::new, EntityClassification.MISC).sized(0.25f, 0.25f).build("compact_brick_entity").setRegistryName("compact_brick_entity");
+        public static final EntityType<CompactBrickEntity> COMPACT_BRICK = (EntityType<CompactBrickEntity>) EntityType.Builder.<CompactBrickEntity>of((type, world) -> {
+            return new CompactBrickEntity(type, world);
+        }, EntityClassification.MISC).sized(0.25f, 0.25f).build("compact_brick_entity").setRegistryName("compact_brick_entity");
     }
 
     public static class Items {

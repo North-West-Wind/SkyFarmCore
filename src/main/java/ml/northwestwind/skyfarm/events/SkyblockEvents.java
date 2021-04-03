@@ -2,8 +2,8 @@ package ml.northwestwind.skyfarm.events;
 
 
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.world.SkyblockChunkGenerator;
-import ml.northwestwind.skyfarm.world.SkyblockData;
+import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
+import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,11 +11,9 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 

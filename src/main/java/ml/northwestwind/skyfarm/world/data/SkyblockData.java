@@ -1,13 +1,11 @@
-package ml.northwestwind.skyfarm.world;
+package ml.northwestwind.skyfarm.world.data;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.storage.MapData;
 import net.minecraft.world.storage.WorldSavedData;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +20,9 @@ public class SkyblockData extends WorldSavedData {
     }
 
     public static SkyblockData get(ServerWorld world) {
-        return world.getDataStorage().computeIfAbsent(SkyblockData::new, NAME);
+        return world.getDataStorage().computeIfAbsent(() -> {
+            return new SkyblockData();
+        }, NAME);
     }
 
     @Override

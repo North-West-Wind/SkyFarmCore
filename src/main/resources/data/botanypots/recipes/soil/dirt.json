@@ -1,1 +1,1 @@
-{"type":"botanypots:soil","input":{"item":"minecraft:dirt"},"display":{"block":"minecraft:dirt"},"categories":["dirt"],"growthModifier":-0.3}
+{"type":"botanypots:soil","input":{"item":"minecraft:dirt"},"display":{"block":"minecraft:dirt"},"categories":["dirt"],"growthModifier":-0.3,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}

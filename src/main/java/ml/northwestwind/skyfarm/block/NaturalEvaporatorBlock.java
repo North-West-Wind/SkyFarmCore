@@ -31,6 +31,7 @@ import net.minecraftforge.items.IItemHandler;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
+import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 @ParametersAreNonnullByDefault
@@ -51,7 +52,9 @@ public class NaturalEvaporatorBlock extends Block {
             Block.box(0, 11, 1, 1, 16, 16),
             Block.box(1, 11, 15, 16, 16, 16),
             Block.box(0, 11, 0, 15, 16, 1)
-    ).reduce((v1, v2) -> VoxelShapes.join(v1, v2, IBooleanFunction.OR)).get();
+    ).reduce((v1, v2) -> {
+        return VoxelShapes.join(v1, v2, IBooleanFunction.OR);
+    }).get();
 
     public NaturalEvaporatorBlock(Properties properties) {
         super(properties);

@@ -1,1 +1,1 @@
-{"type":"botanypots:soil","input":{"item":"minecraft:mycelium"},"display":{"block":"minecraft:mycelium"},"categories":["dirt","mushroom"],"growthModifier":-0.22}
+{"type":"botanypots:soil","input":{"item":"minecraft:mycelium"},"display":{"block":"minecraft:mycelium"},"categories":["dirt","mushroom"],"growthModifier":-0.22,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}
