@@ -75,9 +75,7 @@ public class RegistryEvents {
     }
 
     public static class TileEntityTypes {
-        public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(() -> {
-            return new NaturalEvaporatorTileEntity();
-        }, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
+        public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(NaturalEvaporatorTileEntity::new, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
     }
 
     public static class Recipes<S extends IRecipeSerializer<? extends IRecipe<?>>> {
@@ -117,9 +115,7 @@ public class RegistryEvents {
     }
 
     public static class EntityTypes {
-        public static final EntityType<CompactBrickEntity> COMPACT_BRICK = (EntityType<CompactBrickEntity>) EntityType.Builder.<CompactBrickEntity>of((type, world) -> {
-            return new CompactBrickEntity(type, world);
-        }, EntityClassification.MISC).sized(0.25f, 0.25f).build("compact_brick_entity").setRegistryName("compact_brick_entity");
+        public static final EntityType<CompactBrickEntity> COMPACT_BRICK = (EntityType<CompactBrickEntity>) EntityType.Builder.<CompactBrickEntity>of(CompactBrickEntity::new, EntityClassification.MISC).sized(0.25f, 0.25f).build("compact_brick_entity").setRegistryName("compact_brick_entity");
     }
 
     public static class Items {

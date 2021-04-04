@@ -215,17 +215,13 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
 
     public static Set<IRecipe<?>> findRecipesByType(IRecipeType<?> typeIn, World world) {
         return world != null ? world.getRecipeManager().getRecipes().stream()
-                .filter(recipe -> {
-                    return recipe.getType() == typeIn;
-                }).collect(Collectors.toSet()) : Collections.emptySet();
+                .filter(recipe -> recipe.getType() == typeIn).collect(Collectors.toSet()) : Collections.emptySet();
     }
 
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)) return LazyOptional.of(() -> {
-            return (T) inventory;
-        });
+        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)) return LazyOptional.of(() -> (T) inventory);
         return super.getCapability(cap, side);
     }
 }

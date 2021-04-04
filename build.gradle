@@ -15,7 +15,6 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 // Discord stuff from DiscordRichPresence Mod. Thank you!
-apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
@@ -27,17 +26,6 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
-configurations {
-    shade
-    compile.extendsFrom(shade)
-}
-shadowJar {
-    classifier = '1.16.5'
-    configurations = [project.configurations.shade]
-    exclude 'com/sun/jna/**'
-    relocate 'com.google', 'drpcshadow.com.google'
-    relocate 'org.apache.http.entity.mime', 'somesubpackage.org.apache.http.entity.mime'
-}
 minecraft {
     mappings channel: 'official', version: '1.16.5'
     runs {
@@ -134,18 +122,4 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-
-    shade "com.google.guava:guava:30.1-jre"
-    shade "com.google.code.gson:gson:2.8.0"
-    shade 'com.github.Vatuu:discord-rpc:1.6.2'
-    shade 'com.github.Vatuu:discord-rpc-binaries:3.4.0'
-}
-reobf {
-    shadowJar  {
-        dependsOn tasks.createMcpToSrg
-        mappings = tasks.createMcpToSrg.outputs.files.singleFile
-    }
-}
-artifacts {
-    archives tasks.shadowJar
 }
