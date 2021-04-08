@@ -17,13 +17,15 @@ public abstract class AbstractEvaporatingRecipe implements IRecipe<IInventory> {
     protected final Ingredient input;
     protected final ItemStack output;
     protected final int tick;
+    protected final double chance;
 
-    public AbstractEvaporatingRecipe(IRecipeType<?> type, ResourceLocation id, Ingredient input, ItemStack output, int tick) {
+    public AbstractEvaporatingRecipe(IRecipeType<?> type, ResourceLocation id, Ingredient input, ItemStack output, int tick, double chance) {
         this.type = type;
         this.id = id;
         this.output = output;
         this.input = input;
         this.tick = tick;
+        this.chance = chance;
     }
 
     @Override
@@ -62,7 +64,13 @@ public abstract class AbstractEvaporatingRecipe implements IRecipe<IInventory> {
         return nonnulllist;
     }
 
-    public abstract int getTick();
+    public int getTick() {
+        return tick;
+    }
+
+    public double getChance() {
+        return chance;
+    }
 
     public Ingredient getInput() {
         return input;

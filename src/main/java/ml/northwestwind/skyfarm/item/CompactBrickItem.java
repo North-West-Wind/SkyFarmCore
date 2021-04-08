@@ -10,9 +10,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public class CompactBrickItem extends Item {
-    public CompactBrickItem(Properties properties) {
-        super(properties);
+public class CompactBrickItem extends TooltipItem {
+    public CompactBrickItem(Properties properties, String registryName) {
+        super(properties, registryName);
     }
 
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {

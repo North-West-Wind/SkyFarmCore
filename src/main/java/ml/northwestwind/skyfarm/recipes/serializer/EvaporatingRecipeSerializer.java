@@ -18,8 +18,9 @@ public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSeria
         ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
         Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
         int tick = JSONUtils.getAsInt(json, "evaporateTime");
+        double chance = JSONUtils.getAsFloat(json, "chance", 1);
 
-        EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick);
+        EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick, chance);
         EvaporatingRecipes.addRecipes(recipe);
         return recipe;
     }
@@ -29,14 +30,16 @@ public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSeria
         ItemStack output = buffer.readItem();
         Ingredient input = Ingredient.fromNetwork(buffer);
         int tick = buffer.readInt();
+        double chance = buffer.readDouble();
 
-        EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick);
+        EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick, chance);
         EvaporatingRecipes.addRecipes(recipe);
         return recipe;
     }
 
     @Override
     public void toNetwork(PacketBuffer buffer, EvaporatingRecipe recipe) {
+        buffer.writeDouble(recipe.getChance());
         buffer.writeInt(recipe.getTick());
         Ingredient input = recipe.getIngredients().get(0);
         input.toNetwork(buffer);

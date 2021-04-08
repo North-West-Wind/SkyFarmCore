@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/grout",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.smeltery.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.smeltery.description"
+    },
+    "icon": {
+      "item": "tconstruct:smeltery_controller"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "smelteryController": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:smeltery_controller"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "smelteryController"
+    ]
+  ]
+}

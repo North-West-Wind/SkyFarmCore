@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/mixer",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.iron_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.iron_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:iron_essence"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ironSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:iron_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ironSeeds"
+    ]
+  ]
+}

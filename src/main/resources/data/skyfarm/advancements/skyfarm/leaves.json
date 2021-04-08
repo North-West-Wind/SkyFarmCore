@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/clay_seeds",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.leaves.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.leaves.description"
+    },
+    "icon": {
+      "item": "minecraft:oak_leaves"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "oakLeaves": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:leaves"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "oakLeaves"
+    ]
+  ]
+}

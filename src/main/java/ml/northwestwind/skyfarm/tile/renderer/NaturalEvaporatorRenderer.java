@@ -31,7 +31,7 @@ public class NaturalEvaporatorRenderer extends TileEntityRenderer<NaturalEvapora
                 if (stack.getItem() instanceof BlockItem) matrix.translate(0.5D, 1.055D, 0.5D);
                 else matrix.translate(0.5D, 0.95D, 0.5D);
                 matrix.scale(0.75f, 0.75f, 0.75f);
-                matrix.mulPose(Vector3f.XP.rotationDegrees(90));
+                if (!(stack.getItem() instanceof BlockItem)) matrix.mulPose(Vector3f.XP.rotationDegrees(90));
                 renderItem(stack, matrix, buffer, light);
                 matrix.popPose();
             }

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "pattern": [
+    " # ",
+    "#S#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:white_wool"
+    },
+    "S": {
+      "item": "mysticalagriculture:wood_seeds"
+    }
+  },
+  "result": {
+    "item": "mysticalagiculture:cotton_seeds",
+    "count": 1
+  }
+}

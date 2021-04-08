@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/leaves",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.cotton_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.cotton_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:cotton_essence"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cottonSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:cotton_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cottonSeeds"
+    ]
+  ]
+}

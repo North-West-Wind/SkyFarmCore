@@ -2,10 +2,10 @@
   "parent": "skyfarm:skyfarm/stone_seeds",
   "display": {
     "title": {
-      "text": "No More Natural Evaporation"
+      "translate": "advancement.skyfarm.furnace.title"
     },
     "description": {
-      "text": "Now that you have stones, make a furnace. Natural Evaporator's recipes actually work in furnace."
+      "translate": "advancement.skyfarm.furnace.description"
     },
     "icon": {
       "item": "minecraft:furnace"

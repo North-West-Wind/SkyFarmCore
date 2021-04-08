@@ -8,13 +8,13 @@
   ],
   "display": {
     "title": {
-      "text": "This is Hard"
+      "translate": "advancement.skyfarm.stone_seeds.title"
     },
     "description": {
-      "text": "Craft a stone seed by surrounding a dirt seed with stone essence."
+      "translate": "advancement.skyfarm.stone_seeds.description"
     },
     "icon": {
-      "item": "mysticalagriculture:stone_seeds"
+      "item": "mysticalagriculture:stone_essence"
     },
     "frame": "task",
     "show_toast": true,

@@ -10,17 +10,13 @@ import net.minecraft.util.ResourceLocation;
 @MethodsReturnNonnullByDefault
 public class EvaporatingRecipe extends AbstractEvaporatingRecipe {
 
-    public EvaporatingRecipe(ResourceLocation id, Ingredient input, ItemStack output, int tick) {
-        super(RegistryEvents.Recipes.EVAPORATING.getType(), id, input, output, tick);
+    public EvaporatingRecipe(ResourceLocation id, Ingredient input, ItemStack output, int tick, double chance) {
+        super(RegistryEvents.Recipes.EVAPORATING.getType(), id, input, output, tick, chance);
     }
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
         return RegistryEvents.Recipes.EVAPORATING.getSerializer();
-    }
-
-    public int getTick() {
-        return tick;
     }
 
     @Override

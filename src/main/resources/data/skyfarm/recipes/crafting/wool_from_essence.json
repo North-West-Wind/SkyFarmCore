@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalagriculture:cotton_essence"
+    }
+  },
+  "result": {
+    "item": "minecraft:white_wool",
+    "count": 1
+  }
+}

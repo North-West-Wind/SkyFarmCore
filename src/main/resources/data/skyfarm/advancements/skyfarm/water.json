@@ -2,10 +2,10 @@
   "parent": "skyfarm:skyfarm/stone_seeds",
   "display": {
     "title": {
-      "text": "Stay Hydrated"
+      "translate": "advancement.skyfarm.water.title"
     },
     "description": {
-      "text": "Right-click water block with a bow. It will fill up and not consume the source block. Basically duping."
+      "translate": "advancement.skyfarm.water.description"
     },
     "icon": {
       "item": "minecraft:water_bucket"
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:air"
+            "item": "skyfarm:water_bowl"
           }
         ]
       }

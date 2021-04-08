@@ -8,13 +8,13 @@
   ],
   "display": {
     "title": {
-      "text": "Fossil Fuel Production"
+      "translate": "advancement.skyfarm.coal_seeds.title"
     },
     "description": {
-      "text": "Burning wood makes (char)coal. Apply the same logic to these seeds."
+      "translate": "advancement.skyfarm.coal_seeds.description"
     },
     "icon": {
-      "item": "mysticalagriculture:coal_seeds"
+      "item": "mysticalagriculture:coal_essence"
     },
     "frame": "task",
     "show_toast": true,

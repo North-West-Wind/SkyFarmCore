@@ -1,6 +1,7 @@
 package ml.northwestwind.skyfarm.tile;
 
 import ml.northwestwind.skyfarm.events.RegistryEvents;
+import ml.northwestwind.skyfarm.misc.Utils;
 import ml.northwestwind.skyfarm.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.tile.handler.SkyFarmItemHandler;
 import net.minecraft.block.BlockState;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IClearable;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.nbt.CompoundNBT;
@@ -60,7 +62,8 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
                 tick += 1;
             } else {
                 ItemStack output = recipe.getResultItem();
-                inventory.setStackInSlot(0, output);
+                if (this.level.random.nextDouble() < recipe.getChance()) inventory.setStackInSlot(0, output);
+                else inventory.setStackInSlot(0, ItemStack.EMPTY);
                 tick = 0;
             }
             dirty = true;
@@ -201,7 +204,7 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
             return null;
         }
 
-        Set<IRecipe<?>> recipes = findRecipesByType(RegistryEvents.Recipes.EVAPORATING.getType(), this.level);
+        Set<IRecipe<?>> recipes = Utils.findRecipesByType(RegistryEvents.Recipes.EVAPORATING.getType(), this.level);
         for (IRecipe<?> iRecipe : recipes) {
             EvaporatingRecipe recipe = (EvaporatingRecipe) iRecipe;
             SkyFarmItemHandler fakeInv = new SkyFarmItemHandler(1, stack);
@@ -211,11 +214,6 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
         }
 
         return null;
-    }
-
-    public static Set<IRecipe<?>> findRecipesByType(IRecipeType<?> typeIn, World world) {
-        return world != null ? world.getRecipeManager().getRecipes().stream()
-                .filter(recipe -> recipe.getType() == typeIn).collect(Collectors.toSet()) : Collections.emptySet();
     }
 
     @Nonnull

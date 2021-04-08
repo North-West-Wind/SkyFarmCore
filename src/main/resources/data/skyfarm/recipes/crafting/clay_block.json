@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagiculture"
+    }
+  ],
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalagiculture:clay_essence"
+    }
+  },
+  "result": {
+    "item": "minecraft:clay",
+    "count": 3
+  }
+}

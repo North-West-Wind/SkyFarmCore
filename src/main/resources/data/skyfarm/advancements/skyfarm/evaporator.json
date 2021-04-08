@@ -2,10 +2,10 @@
   "parent": "skyfarm:skyfarm/root",
   "display": {
     "title": {
-      "text": "Don't Worry. This is NOT a Sieve"
+      "translate": "advancement.skyfarm.evaporator.title"
     },
     "description": {
-      "text": "Obtain stone essence by evaporating dirt essence."
+      "translate": "advancement.skyfarm.evaporator.description"
     },
     "icon": {
       "item": "skyfarm:natural_evaporator"

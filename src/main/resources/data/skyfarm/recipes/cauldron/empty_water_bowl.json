@@ -1,0 +1,42 @@
+{
+  "type": "inspirations:cauldron",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "inspirations"
+    },
+    {
+      "prop": "recipes_module",
+      "type": "inspirations:config"
+    },
+    {
+      "prop": "cauldron_fluids",
+      "type": "inspirations:config"
+    }
+  ],
+  "input": {
+    "item": {
+      "item": "skyfarm:water_bowl"
+    },
+    "contents": {
+      "type": "inspirations:fluid",
+      "tag": "minecraft:water"
+    },
+    "level": {
+      "max": 11
+    }
+  },
+  "output": {
+    "item": {
+      "item": "minecraft:bowl"
+    },
+    "contents": {
+      "type": "inspirations:fluid",
+      "name": "minecraft:water"
+    },
+    "level": {
+      "add": 4
+    }
+  },
+  "sound": "minecraft:item.bucket.empty"
+}

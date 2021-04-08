@@ -1,11 +1,11 @@
 {
   "display": {
     "title": {
-      "text": "All in One SkyFarm Guide",
+      "translate": "advancement.skyfarm.root.title",
       "color": "gold"
     },
     "description": {
-      "text": "This advancement tab should help you progress. Also spam crouch to grow stuff."
+      "translate": "advancement.skyfarm.root.description"
     },
     "icon": {
       "item": "minecraft:oak_sapling"

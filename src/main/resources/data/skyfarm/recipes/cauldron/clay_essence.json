@@ -1,0 +1,42 @@
+{
+  "type": "inspirations:cauldron",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "inspirations"
+    },
+    {
+      "prop": "recipes_module",
+      "type": "inspirations:config"
+    },
+    {
+      "prop": "cauldron_fluids",
+      "type": "inspirations:config"
+    }
+  ],
+  "input": {
+    "item": {
+      "item": "mysticalagriculture:dirt_essence"
+    },
+    "contents": {
+      "type": "inspirations:fluid",
+      "name": "minecraft:water"
+    },
+    "level": {
+      "min": 3
+    }
+  },
+  "output": {
+    "item": {
+      "item": "mysticalagiculture:clay_essence"
+    },
+    "level": {
+      "add": -3
+    }
+  },
+  "sound": "minecraft:item.bucket.fill"
+}

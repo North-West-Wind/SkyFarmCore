@@ -1,0 +1,36 @@
+{
+  "parent": "skyfarm:skyfarm/stone_seeds",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.stone_variator.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.stone_variator.description"
+    },
+    "icon": {
+      "item": "skyfarm:stone_variator",
+      "nbt": "{Damage:0}"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "stoneVariator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:air"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "stoneVariator"
+    ]
+  ]
+}

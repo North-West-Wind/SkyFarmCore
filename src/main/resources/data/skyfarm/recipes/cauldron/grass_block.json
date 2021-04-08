@@ -1,0 +1,38 @@
+{
+  "type": "inspirations:cauldron",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "inspirations"
+    },
+    {
+      "prop": "recipes_module",
+      "type": "inspirations:config"
+    },
+    {
+      "prop": "cauldron_fluids",
+      "type": "inspirations:config"
+    }
+  ],
+  "input": {
+    "item": {
+      "item": "minecraft:dirt"
+    },
+    "contents": {
+      "type": "inspirations:fluid",
+      "name": "minecraft:water"
+    },
+    "level": {
+      "min": 3
+    }
+  },
+  "output": {
+    "item": {
+      "item": "minecraft:grass_block"
+    },
+    "level": {
+      "add": -3
+    }
+  },
+  "sound": "minecraft:item.bucket.fill"
+}

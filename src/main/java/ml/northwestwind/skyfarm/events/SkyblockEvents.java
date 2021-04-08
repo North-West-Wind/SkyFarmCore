@@ -6,6 +6,7 @@ import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
@@ -13,6 +14,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -76,5 +79,16 @@ public class SkyblockEvents {
         world.setBlockAndUpdate(new BlockPos(1, 63, 1), Blocks.FARMLAND.defaultBlockState());
         world.setBlockAndUpdate(new BlockPos(0, 63, 1), Blocks.FARMLAND.defaultBlockState());
         world.setBlockAndUpdate(new BlockPos(-1, 64, -1), Blocks.OAK_SAPLING.defaultBlockState());
+    }
+
+    @SubscribeEvent
+    public static void playerTick(final TickEvent.PlayerTickEvent event) {
+        PlayerEntity player = event.player;
+        if (player != null && player.getY() <= -60 && !player.level.isClientSide) player.teleportTo(player.getX(), 320, player.getZ());
+    }
+
+    @SubscribeEvent
+    public static void playerFall(final LivingFallEvent event) {
+        if (event.getDistance() <= 4) event.setDamageMultiplier(0);
     }
 }

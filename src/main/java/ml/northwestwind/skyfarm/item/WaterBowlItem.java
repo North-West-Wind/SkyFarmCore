@@ -27,6 +27,7 @@ public class WaterBowlItem extends Item {
 
     @Override
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        if (world.isClientSide) return super.use(world, player, hand);
         if (isEmpty) return fillBowl(world, player, hand);
         ItemStack stack = player.getItemInHand(hand);
         BlockRayTraceResult result = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.ANY);

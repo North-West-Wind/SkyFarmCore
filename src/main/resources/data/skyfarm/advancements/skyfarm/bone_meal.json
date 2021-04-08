@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/water",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.bone_meal.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.bone_meal.description"
+    },
+    "icon": {
+      "item": "minecraft:bone_meal"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "boneMeal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:bone_meal"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "boneMeal"
+    ]
+  ]
+}

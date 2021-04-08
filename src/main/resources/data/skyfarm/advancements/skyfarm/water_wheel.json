@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/create",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.water_wheel.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.water_wheel.description"
+    },
+    "icon": {
+      "item": "create:water_wheel"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "waterWheel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "create:water_wheel"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "waterWheel"
+    ]
+  ]
+}

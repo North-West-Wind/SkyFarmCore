@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/compact_brick",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.create.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.create.description"
+    },
+    "icon": {
+      "item": "create:andesite_alloy"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "andesiteAlloy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "create:andesite_alloy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "andesiteAlloy"
+    ]
+  ]
+}

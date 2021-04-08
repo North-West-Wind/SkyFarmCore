@@ -8,13 +8,13 @@
   ],
   "display": {
     "title": {
-      "text": "Woah. This is Worthless"
+      "translate": "advancement.skyfarm.wood_seeds.title"
     },
     "description": {
-      "text": "Why do you need wood seeds when you have saplings???"
+      "translate": "advancement.skyfarm.wood_seeds.description"
     },
     "icon": {
-      "item": "mysticalagriculture:wood_seeds"
+      "item": "mysticalagriculture:wood_essence"
     },
     "frame": "task",
     "show_toast": true,

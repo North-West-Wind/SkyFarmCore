@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bone_meal"
+    },
+    "S": {
+      "item": "mysticalagriculture:dirt_seeds"
+    }
+  },
+  "result": {
+    "item": "mysticalagiculture:bone_meal_seeds",
+    "count": 1
+  }
+}
