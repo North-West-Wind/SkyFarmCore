@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/obsidian",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.obsidian_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.obsidian_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:obsidian_seeds"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obsidianSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:obsidian_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obsidianSeeds"
+    ]
+  ]
+}

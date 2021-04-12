@@ -2,6 +2,7 @@ package ml.northwestwind.skyfarm.packet;
 
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.packet.message.CPlayerGrowPacket;
+import ml.northwestwind.skyfarm.packet.message.SLaunchPlayerExplosionPacket;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -21,9 +22,10 @@ public class SkyFarmPacketHandler {
 
     public static void registerPackets() {
         registerMessage(CPlayerGrowPacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(SLaunchPlayerExplosionPacket.class, NetworkDirection.PLAY_TO_CLIENT);
     }
 
-    private static <MSG extends IPacket> void registerMessage(Class<MSG> clazz) {
+    private static <MSG extends IDoubleSidedPacket> void registerMessage(Class<MSG> clazz) {
         INSTANCE.registerMessage(i++, clazz, (msg, buffer) -> buffer.writeByteArray(PacketCodec.encode(msg)), buffer -> (MSG) PacketCodec.decode(buffer.readByteArray()), (msg, ctx) -> {
             ctx.get().enqueueWork(() -> msg.handle(ctx.get()));
             ctx.get().setPacketHandled(true);

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/iron_seeds",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.lapis_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.lapis_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:lapis_lazuli_essence"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "lapisSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:lapis_lazuli_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lapisSeeds"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:nether/root",
+  "display": {
+    "title": {
+      "translate": "advancement.nether.quartz.title"
+    },
+    "description": {
+      "translate": "advancement.nether.quartz.description"
+    },
+    "icon": {
+      "item": "minecraft:quartz"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "quartz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:quartz"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "quartz"
+    ]
+  ]
+}

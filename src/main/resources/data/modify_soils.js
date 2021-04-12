@@ -22,7 +22,7 @@ function deepReaddir(dir) {
     };
     return next();
 }
-const files = deepReaddir(".");
+const files = deepReaddir(".").filter(file => file.endsWith(".json"));
 var i = 0;
 for (const file of files) {
     const json = require(file);
@@ -40,7 +40,15 @@ for (const file of files) {
             "modid": "botanypots"
         }
     ];
-    fs.writeFileSync(file, JSON.stringify(json));
+    if (json.growthModifier !== undefined) {
+        json.growthModifier += 0.2;
+        if (json.growthModifier > 0) json.growthModifier *= 1.5;
+        else json.growthModifier *= 0.6;
+        json.growthModifier = Math.round((json.growthModifier + Number.EPSILON) * 100) / 100;
+        fs.writeFileSync(file, JSON.stringify(json));
+        console.log(`${file.split("\\")[file.split("\\").length - 1]}'s new growth modifier: ${json.growthModifier}`);
+    }
+    fs.writeFileSync(file, JSON.stringify(json, null, 4));
     i++;
 }
 console.log("Modified " + i + " files");

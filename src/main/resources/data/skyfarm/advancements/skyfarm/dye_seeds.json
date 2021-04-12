@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/water_seeds",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.dye_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.dye_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:dye_essence"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "dyeSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:dye_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dyeSeeds"
+    ]
+  ]
+}

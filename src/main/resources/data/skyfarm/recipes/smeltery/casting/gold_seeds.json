@@ -16,7 +16,7 @@
   "cast_consumed": true,
   "fluid": {
     "name": "tconstruct:molten_gold",
-    "amount": 288
+    "amount": 144
   },
   "result": "mysticalagriculture:gold_seeds",
   "cooling_time": 200

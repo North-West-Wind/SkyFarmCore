@@ -1,0 +1,38 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "mysticalagriculture:clay_essence"
+    },
+    {
+      "item": "mysticalagriculture:clay_essence"
+    },
+    {
+      "item": "mysticalagriculture:bone_meal_essence"
+    },
+    {
+      "item": "mysticalagriculture:stone_seeds"
+    },
+    {
+      "fluidTag": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "item": "mysticalagriculture:lapis_lazuli_seeds",
+      "count": 1
+    }
+  ],
+  "heatRequirement": "heated"
+}

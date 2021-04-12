@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/diamond_seeds",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.emerald_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.emerald_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:emerald_essence"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "emeraldSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:emerald_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "emeraldSeeds"
+    ]
+  ]
+}

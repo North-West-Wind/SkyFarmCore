@@ -1,0 +1,42 @@
+{
+  "type": "inspirations:cauldron",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "inspirations"
+    },
+    {
+      "prop": "recipes_module",
+      "type": "inspirations:config"
+    },
+    {
+      "prop": "cauldron_fluids",
+      "type": "inspirations:config"
+    }
+  ],
+  "input": {
+    "item": {
+      "tag": "minecraft:saplings"
+    },
+    "contents": {
+      "type": "inspirations:fluid",
+      "tag": "tconstruct:ender_slime"
+    },
+    "level": {
+      "min": 12
+    }
+  },
+  "output": {
+    "item": {
+      "item": "tconstruct:ender_slime_sapling"
+    },
+    "level": {
+      "set": 0
+    }
+  },
+  "sound": "minecraft:item.bucket.fill"
+}

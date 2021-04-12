@@ -1,7 +1,7 @@
 package ml.northwestwind.skyfarm.entity;
 
 import ml.northwestwind.skyfarm.events.RegistryEvents;
-import ml.northwestwind.skyfarm.misc.CompactBrickExplosion;
+import ml.northwestwind.skyfarm.misc.NoDamageExplosion;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -19,7 +19,6 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Explosion;
-import net.minecraft.world.ExplosionContext;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
@@ -79,7 +78,7 @@ public class CompactBrickEntity extends ProjectileItemEntity {
     }
 
     public Explosion explode(BlockPos pos) {
-        CompactBrickExplosion explosion = new CompactBrickExplosion(level, null, null, null, pos, 1, Explosion.Mode.NONE);
+        NoDamageExplosion explosion = new NoDamageExplosion(level, pos, 1, Explosion.Mode.NONE);
         if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(level, explosion)) return explosion;
         explosion.explode();
         explosion.finalizeExplosion(true);

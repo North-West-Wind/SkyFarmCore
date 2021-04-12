@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:nether/netherrack",
+  "display": {
+    "title": {
+      "translate": "advancement.nether.glowstone.title"
+    },
+    "description": {
+      "translate": "advancement.nether.glowstone.description"
+    },
+    "icon": {
+      "item": "minecraft:glowstone"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "glowstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:glowstone"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glowstone"
+    ]
+  ]
+}

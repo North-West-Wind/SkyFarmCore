@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/water_seeds",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.obsidian.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.obsidian.description"
+    },
+    "icon": {
+      "item": "minecraft:obsidian"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:obsidian"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obsidian"
+    ]
+  ]
+}

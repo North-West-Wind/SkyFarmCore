@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mysticalagriculture"
+      "modid": "pamhc2crops"
     }
   ],
   "display": {
@@ -14,7 +14,7 @@
       "translate": "advancement.skyfarm.cotton_seeds.description"
     },
     "icon": {
-      "item": "mysticalagriculture:cotton_essence"
+      "item": "pamhc2crops:cottonitem"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mysticalagriculture:cotton_seeds"
+            "item": "pamhc2crops:cottonseeditem"
           }
         ]
       }

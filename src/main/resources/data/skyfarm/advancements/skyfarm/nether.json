@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/obsidian_seeds",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.nether.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.nether.description"
+    },
+    "icon": {
+      "item": "skyfarm:overworld_void_shifter_nether"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "netherBoots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "skyfarm:overworld_void_shifter_nether"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "netherBoots"
+    ]
+  ]
+}

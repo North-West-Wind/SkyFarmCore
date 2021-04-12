@@ -20,7 +20,7 @@ public class CPlayerGrowPacket implements IPacket {
         ServerPlayerEntity player = ctx.getSender();
         if (player == null) return;
         World world = player.getCommandSenderWorld();
-        if (!SkyblockChunkGenerator.isWorldSkyblock(world)) return;
+        if (!SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) world)) return;
         BlockPos blockPos = player.blockPosition();
         for (BlockPos blockPos1 : BlockPos.betweenClosed(blockPos.offset(-5, -5, -5), blockPos.offset(5, 5, 5))) {
             BlockState state = world.getBlockState(blockPos1);

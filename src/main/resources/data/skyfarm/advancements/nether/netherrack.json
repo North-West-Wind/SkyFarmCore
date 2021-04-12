@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:nether/root",
+  "display": {
+    "title": {
+      "translate": "advancement.nether.netherrack.title"
+    },
+    "description": {
+      "translate": "advancement.nether.netherrack.description"
+    },
+    "icon": {
+      "item": "minecraft:netherrack"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "netherrack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherrack"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "netherrack"
+    ]
+  ]
+}

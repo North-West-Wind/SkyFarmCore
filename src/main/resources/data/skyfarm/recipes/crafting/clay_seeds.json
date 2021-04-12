@@ -13,14 +13,14 @@
   ],
   "key": {
     "#": {
-      "item": "mysticalagiculture:clay_essence"
+      "item": "mysticalagriculture:clay_essence"
     },
     "S": {
       "item": "mysticalagriculture:dirt_seeds"
     }
   },
   "result": {
-    "item": "mysticalagiculture:clay_seeds",
+    "item": "mysticalagriculture:clay_seeds",
     "count": 1
   }
 }

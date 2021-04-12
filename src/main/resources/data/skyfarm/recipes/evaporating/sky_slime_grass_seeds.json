@@ -1,0 +1,16 @@
+{
+  "type": "skyfarm:evaporating",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "input": {
+    "item": "tconstruct:sky_slime_ball"
+  },
+  "output": {
+    "item": "tconstruct:sky_slime_grass_seeds"
+  },
+  "evaporateTime": 600
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:nether/quartz",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.nether.quartz_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.nether.quartz_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:nether_quartz_essence"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "quartzSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:nether_quartz_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "quartzSeeds"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:skyfarm/iron_seeds",
+  "parent": "skyfarm:skyfarm/redstone_seeds",
   "display": {
     "title": {
       "translate": "advancement.skyfarm.mob_farm.title"
@@ -16,21 +16,42 @@
     "hidden": false
   },
   "criteria": {
-    "mobDrops": {
+    "rottenFlesh": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "item": "minecraft:rotten_flesh"
-          },
+          }
+        ]
+      }
+    },
+    "bone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
             "item": "minecraft:bone"
-          },
-          {
-            "item": "minecraft:spider_eye"
-          },
+          }
+        ]
+      }
+    },
+    "gunpowder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
             "item": "minecraft:gunpowder"
+          }
+        ]
+      }
+    },
+    "spiderEye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:spider_eye"
           }
         ]
       }
@@ -38,7 +59,16 @@
   },
   "requirements": [
     [
-      "mobDrops"
+      "rottenFlesh"
+    ],
+    [
+      "bone"
+    ],
+    [
+      "gunpowder"
+    ],
+    [
+      "spiderEye"
     ]
   ]
 }

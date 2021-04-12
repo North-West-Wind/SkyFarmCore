@@ -1,0 +1,43 @@
+{
+  "type": "inspirations:cauldron",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "inspirations"
+    },
+    {
+      "prop": "recipes_module",
+      "type": "inspirations:config"
+    },
+    {
+      "prop": "cauldron_fluids",
+      "type": "inspirations:config"
+    }
+  ],
+  "input": {
+    "item": {
+      "item": "tconstruct:ender_slime_ball"
+    },
+    "contents": {
+      "type": "inspirations:fluid",
+      "name": "tconstruct:sky_slime"
+    },
+    "level": {
+      "min": 12
+    }
+  },
+  "output": {
+    "contents": {
+      "type": "inspirations:fluid",
+      "name": "tconstruct:ender_slime"
+    },
+    "level": {
+      "set": 12
+    }
+  },
+  "sound": "minecraft:item.bucket.empty"
+}

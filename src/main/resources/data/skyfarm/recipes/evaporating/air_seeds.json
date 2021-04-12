@@ -1,0 +1,16 @@
+{
+  "type": "skyfarm:evaporating",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "input": {
+    "item": "minecraft:wheat_seeds"
+  },
+  "output": {
+    "item": "mysticalagriculture:air_seeds"
+  },
+  "evaporateTime": 600
+}

@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "cast": {
+    "item": "tconstruct:ender_slime_sapling"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "tconstruct:blood",
+    "amount": 100
+  },
+  "result": "tconstruct:blood_slime_sapling",
+  "cooling_time": 160
+}

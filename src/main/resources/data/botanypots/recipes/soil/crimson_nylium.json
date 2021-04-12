@@ -1,1 +1,22 @@
-{"type":"botanypots:soil","input":{"item":"minecraft:crimson_nylium"},"display":{"block":"minecraft:crimson_nylium"},"categories":["dirt","crimson_nylium","nylium","mushroom"],"growthModifier":-0.22,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:crimson_nylium"
+    },
+    "display": {
+        "block": "minecraft:crimson_nylium"
+    },
+    "categories": [
+        "dirt",
+        "crimson_nylium",
+        "nylium",
+        "mushroom"
+    ],
+    "growthModifier": 0.38,
+    "condition": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botanypots"
+        }
+    ]
+}

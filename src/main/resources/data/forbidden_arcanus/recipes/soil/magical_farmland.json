@@ -1,1 +1,29 @@
-{"type":"botanypots:soil","conditions":[{"type":"forge:mod_loaded","modid":"forbidden_arcanus"}],"input":{"item":"forbidden_arcanus:magical_farmland"},"display":{"block":"forbidden_arcanus:magical_farmland","properties":{"moisture":7}},"categories":["dirt","farmland"],"growthModifier":-0.07,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "forbidden_arcanus"
+        }
+    ],
+    "input": {
+        "item": "forbidden_arcanus:magical_farmland"
+    },
+    "display": {
+        "block": "forbidden_arcanus:magical_farmland",
+        "properties": {
+            "moisture": 7
+        }
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthModifier": 0.53,
+    "condition": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botanypots"
+        }
+    ]
+}

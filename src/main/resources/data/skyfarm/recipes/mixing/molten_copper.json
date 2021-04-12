@@ -4,14 +4,15 @@
     {
       "type": "forge:mod_loaded",
       "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
     }
   ],
   "ingredients": [
     {
-      "tag": "forge:dyes/yellow"
-    },
-    {
-      "tag": "forge:ingots/iron"
+      "tag": "forge:dyes/orange"
     },
     {
       "tag": "forge:ingots/iron"
@@ -19,7 +20,9 @@
   ],
   "results": [
     {
-      "item": "minecraft:gold_nugget"
+      "fluid": "tconstruct:molten_copper",
+      "amount": 144
     }
-  ]
+  ],
+  "heatRequirement": "heated"
 }

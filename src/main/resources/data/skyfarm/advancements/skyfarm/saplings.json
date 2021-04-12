@@ -1,0 +1,100 @@
+{
+  "parent": "skyfarm:skyfarm/mixer",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.saplings.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.saplings.description"
+    },
+    "icon": {
+      "item": "minecraft:oak_sapling"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "oak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:oak_sapling"
+          }
+        ]
+      }
+    },
+    "darkOak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:dark_oak_sapling"
+          }
+        ]
+      }
+    },
+    "birch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:birch_sapling"
+          }
+        ]
+      }
+    },
+    "spruce": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:spruce_sapling"
+          }
+        ]
+      }
+    },
+    "acacia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:acacia_sapling"
+          }
+        ]
+      }
+    },
+    "jungle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:jungle_sapling"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "oak"
+    ],
+    [
+      "darkOak"
+    ],
+    [
+      "birch"
+    ],
+    [
+      "spruce"
+    ],
+    [
+      "acacia"
+    ],
+    [
+      "jungle"
+    ]
+  ]
+}

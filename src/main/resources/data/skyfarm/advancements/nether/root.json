@@ -1,0 +1,32 @@
+{
+  "display": {
+    "title": {
+      "translate": "advancement.nether.root.title",
+      "color": "gold"
+    },
+    "description": {
+      "translate": "advancement.nether.root.description"
+    },
+    "icon": {
+      "item": "minecraft:crimson_nylium"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "enterNether": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:the_nether"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enterNether"
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:skyfarm/osmium_seeds",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.fluid_tank.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.fluid_tank.description"
+    },
+    "icon": {
+      "item": "mekanism:basic_fluid_tank"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fluidTank": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:basic_fluid_tank"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fluidTank"
+    ]
+  ]
+}

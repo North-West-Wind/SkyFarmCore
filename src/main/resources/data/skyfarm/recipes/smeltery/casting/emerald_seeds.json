@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "cast": {
+    "item": "mysticalagriculture:diamond_seeds"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "tconstruct:molten_emerald",
+    "amount": 250
+  },
+  "result": "mysticalagriculture:emerald_seeds",
+  "cooling_time": 200
+}

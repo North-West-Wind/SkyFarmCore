@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:nether/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.nether.cobalt.title"
+    },
+    "description": {
+      "translate": "advancement.nether.cobalt.description"
+    },
+    "icon": {
+      "item": "tconstruct:cobalt_ingot"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cobalt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:cobalt_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cobalt"
+    ]
+  ]
+}

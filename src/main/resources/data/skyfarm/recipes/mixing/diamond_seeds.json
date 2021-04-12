@@ -1,0 +1,73 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "item": "mysticalagriculture:obsidian_seeds"
+    }
+  ],
+  "results": [
+    {
+      "item": "mysticalagriculture:diamond_seeds",
+      "count": 1
+    }
+  ],
+  "heatRequirement": "heated"
+}

@@ -1,1 +1,19 @@
-{"type":"botanypots:soil","input":{"item":"minecraft:end_stone"},"display":{"block":"minecraft:end_stone"},"categories":["end_stone"],"growthModifier":-0.9,"condition":[{"type":"forge:mod_loaded","modid":"botanypots"}]}
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:end_stone"
+    },
+    "display": {
+        "block": "minecraft:end_stone"
+    },
+    "categories": [
+        "end_stone"
+    ],
+    "growthModifier": -0.18,
+    "condition": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botanypots"
+        }
+    ]
+}

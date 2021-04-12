@@ -16,6 +16,7 @@ import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.*;
 import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.server.ServerChunkProvider;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.function.Supplier;
 
@@ -51,9 +52,8 @@ public class SkyblockChunkGenerator extends ChunkGenerator {
         this.settings = settings;
     }
 
-    public static boolean isWorldSkyblock(World world) {
-        return world.getChunkSource() instanceof ServerChunkProvider
-                && ((ServerChunkProvider) world.getChunkSource()).getGenerator() instanceof SkyblockChunkGenerator;
+    public static boolean isWorldSkyblock(ServerWorld world) {
+        return world.getServer().overworld().getChunkSource().getGenerator() instanceof SkyblockChunkGenerator;
     }
 
     @Override

@@ -1,0 +1,37 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:dyes/red"
+    },
+    {
+      "item": "mysticalagriculture:iron_essence"
+    },
+    {
+      "item": "mysticalagriculture:iron_essence"
+    },
+    {
+      "item": "mysticalagriculture:stone_essence"
+    },
+    {
+      "item": "mysticalagriculture:coal_seeds"
+    }
+  ],
+  "results": [
+    {
+      "item": "mysticalagriculture:redstone_seeds",
+      "count": 1
+    }
+  ],
+  "heatRequirement": "heated"
+}

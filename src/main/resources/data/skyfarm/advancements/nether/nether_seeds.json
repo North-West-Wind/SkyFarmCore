@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:nether/netherrack",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.nether.nether_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.nether.nether_seeds.description"
+    },
+    "icon": {
+      "item": "mysticalagriculture:nether_essence"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "netherSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:nether_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "netherSeeds"
+    ]
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "cast": {
+    "item": "mysticalagriculture:iron_seeds"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "tconstruct:molten_nickel",
+    "amount": 144
+  },
+  "result": "mysticalagriculture:nickel_seeds",
+  "cooling_time": 200
+}

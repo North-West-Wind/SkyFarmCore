@@ -4,23 +4,30 @@
     {
       "type": "forge:mod_loaded",
       "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2crops"
     }
   ],
   "pattern": [
-    " # ",
-    "#S#",
-    " # "
+    "S#S",
+    "#W#",
+    "S#S"
   ],
   "key": {
     "#": {
       "item": "minecraft:white_wool"
     },
     "S": {
+      "item": "forge:string"
+    },
+    "W": {
       "item": "mysticalagriculture:wood_seeds"
     }
   },
   "result": {
-    "item": "mysticalagiculture:cotton_seeds",
+    "item": "pamhc2crops:cottonseeditem",
     "count": 1
   }
 }

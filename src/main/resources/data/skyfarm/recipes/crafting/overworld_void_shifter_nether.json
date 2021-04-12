@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:obsidian"
+    },
+    "S": {
+      "item": "minecraft:diamond_boots"
+    }
+  },
+  "result": {
+    "item": "skyfarm:overworld_void_shifter_nether",
+    "count": 1
+  }
+}

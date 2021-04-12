@@ -22,7 +22,7 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:air"
+            "item": "skyfarm:stone_variator"
           }
         ]
       }

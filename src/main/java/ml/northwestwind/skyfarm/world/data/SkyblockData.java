@@ -20,9 +20,7 @@ public class SkyblockData extends WorldSavedData {
     }
 
     public static SkyblockData get(ServerWorld world) {
-        return world.getDataStorage().computeIfAbsent(() -> {
-            return new SkyblockData();
-        }, NAME);
+        return world.getDataStorage().computeIfAbsent(SkyblockData::new, NAME);
     }
 
     @Override

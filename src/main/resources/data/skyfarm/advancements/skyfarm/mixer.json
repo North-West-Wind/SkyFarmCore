@@ -28,7 +28,14 @@
         "items": [
           {
             "item": "create:mechanical_mixer"
-          },
+          }
+        ]
+      }
+    },
+    "basin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
             "item": "create:basin"
           }
@@ -39,6 +46,9 @@
   "requirements": [
     [
       "mixer"
+    ],
+    [
+      "basin"
     ]
   ]
 }

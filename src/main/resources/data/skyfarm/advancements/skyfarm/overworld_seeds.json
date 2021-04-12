@@ -1,0 +1,408 @@
+{
+  "parent": "skyfarm:skyfarm/smeltery",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.overworld_seeds.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.overworld_seeds.description"
+    },
+    "icon": {
+      "item": "minecraft:beetroot_seeds"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "dirtSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:dirt_seeds"
+          }
+        ]
+      }
+    },
+    "stoneSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:stone_seeds"
+          }
+        ]
+      }
+    },
+    "airSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:air_seeds"
+          }
+        ]
+      }
+    },
+    "boneMealSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:bone_meal_seeds"
+          }
+        ]
+      }
+    },
+    "claySeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:clay_seeds"
+          }
+        ]
+      }
+    },
+    "coalSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:coal_seeds"
+          }
+        ]
+      }
+    },
+    "copperSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:copper_seeds"
+          }
+        ]
+      }
+    },
+    "diamondSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:diamond_seeds"
+          }
+        ]
+      }
+    },
+    "dyeSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:dye_seeds"
+          }
+        ]
+      }
+    },
+    "emeraldSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:emerald_seeds"
+          }
+        ]
+      }
+    },
+    "fireSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:fire_seeds"
+          }
+        ]
+      }
+    },
+    "goldSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:gold_seeds"
+          }
+        ]
+      }
+    },
+    "inferiumSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:inferium_seeds"
+          }
+        ]
+      }
+    },
+    "lapisSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:lapis_lazuli_seeds"
+          }
+        ]
+      }
+    },
+    "leadSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:lead_seeds"
+          }
+        ]
+      }
+    },
+    "natureSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:nature_seeds"
+          }
+        ]
+      }
+    },
+    "nickelSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:nickel_seeds"
+          }
+        ]
+      }
+    },
+    "obsidianSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:obsidian_seeds"
+          }
+        ]
+      }
+    },
+    "osmiumSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:osmium_seeds"
+          }
+        ]
+      }
+    },
+    "redstoneSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:redstone_seeds"
+          }
+        ]
+      }
+    },
+    "silverSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:silver_seeds"
+          }
+        ]
+      }
+    },
+    "tinSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:tin_seeds"
+          }
+        ]
+      }
+    },
+    "waterSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:water_seeds"
+          }
+        ]
+      }
+    },
+    "wheatSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wheat_seeds"
+          }
+        ]
+      }
+    },
+    "woodSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:wood_seeds"
+          }
+        ]
+      }
+    },
+    "zincSeeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mysticalagriculture:zinc_seeds"
+          }
+        ]
+      }
+    },
+    "carrot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:carrot"
+          }
+        ]
+      }
+    },
+    "potato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:potato"
+          }
+        ]
+      }
+    },
+    "beetroot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:beetroot_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dirtSeeds"
+    ],
+    [
+      "stoneSeeds"
+    ],
+    [
+      "airSeeds"
+    ],
+    [
+      "boneMealSeeds"
+    ],
+    [
+      "claySeeds"
+    ],
+    [
+      "coalSeeds"
+    ],
+    [
+      "copperSeeds"
+    ],
+    [
+      "cottonSeeds"
+    ],
+    [
+      "diamondSeeds"
+    ],
+    [
+      "dyeSeeds"
+    ],
+    [
+      "emeraldSeeds"
+    ],
+    [
+      "fireSeeds"
+    ],
+    [
+      "goldSeeds"
+    ],
+    [
+      "inferiumSeeds"
+    ],
+    [
+      "lapisSeeds"
+    ],
+    [
+      "leadSeeds"
+    ],
+    [
+      "natureSeeds"
+    ],
+    [
+      "nickelSeeds"
+    ],
+    [
+      "obsidianSeeds"
+    ],
+    [
+      "osmiumSeeds"
+    ],
+    [
+      "redstoneSeeds"
+    ],
+    [
+      "silverSeeds"
+    ],
+    [
+      "tinSeeds"
+    ],
+    [
+      "waterSeeds"
+    ],
+    [
+      "wheatSeeds"
+    ],
+    [
+      "woodSeeds"
+    ],
+    [
+      "zincSeeds"
+    ],
+    [
+      "carrot"
+    ],
+    [
+      "potato"
+    ],
+    [
+      "beetroot"
+    ]
+  ]
+}
