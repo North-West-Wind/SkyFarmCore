@@ -15,11 +15,22 @@
   "recipe.skyfarm.evaporating": "Evaporating",
 
   "tooltip.skyfarm.natural_evaporator": "Evaporates stuff under pure sunlight",
+  "tooltip.skyfarm.parabox": "The time loop machine",
   "tooltip.skyfarm.stone_variator": "Magically creates stone variance",
   "tooltip.skyfarm.compact_brick": "Super high impact might expose iron from stones",
 
   "usage.skyfarm.stone_variator": "Lava is required under the block.",
   "usage.skyfarm.nether_void_shifter": "Release crouch to launch yourself.",
+
+  "points.gain": "+%d Prestige",
+
+  "button.parabox.activate": "Activate",
+  "button.parabox.deactivate": "Deactivate",
+  "button.parabox.loop.on": "Loop: On",
+  "button.parabox.loop.off": "Loop: Off",
+
+  "tooltip.parabox.activate": "Puts the world into a time loop and generate prestige points.",
+  "tooltip.parabox.loop": "Exits the time loop. You will keep your generated points, but the world will go back in time.",
 
   "advancement.skyfarm.root.title": "All in One SkyFarm Guide",
   "advancement.skyfarm.root.description": "This advancement tab should help you progress. Also spam crouch to grow stuff.",

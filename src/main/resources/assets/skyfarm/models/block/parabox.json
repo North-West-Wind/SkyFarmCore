@@ -4,7 +4,7 @@
     "particle": "skyfarm:block/parabox",
     "overlay": "minecraft:block/iron_block",
     "overlay-side": "skyfarm:block/parabox",
-    "texture": "minecraft:block/portal"
+    "texture": "minecraft:block/nether_portal"
   },
   "elements": [{
     "from": [

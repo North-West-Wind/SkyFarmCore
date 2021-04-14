@@ -3,6 +3,7 @@ package ml.northwestwind.skyfarm.events;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.block.NaturalEvaporatorBlock;
 import ml.northwestwind.skyfarm.block.ParaboxBlock;
+import ml.northwestwind.skyfarm.container.ParaboxContainer;
 import ml.northwestwind.skyfarm.entity.CompactBrickEntity;
 import ml.northwestwind.skyfarm.item.CompactBrickItem;
 import ml.northwestwind.skyfarm.item.StoneVariatorItem;
@@ -11,6 +12,7 @@ import ml.northwestwind.skyfarm.item.WaterBowlItem;
 import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.recipes.serializer.EvaporatingRecipeSerializer;
 import ml.northwestwind.skyfarm.tile.NaturalEvaporatorTileEntity;
+import ml.northwestwind.skyfarm.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.world.SkyblockWorldType;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -19,7 +21,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
@@ -57,7 +61,7 @@ public class RegistryEvents {
     public static void registerItem(final RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
                 new TooltipBlockItem(Blocks.NATURAL_EVAPORATOR, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "natural_evaporator"),
-                //new BlockItem(Blocks.PARABOX, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1)).setRegistryName("parabox"),
+                new TooltipBlockItem(Blocks.PARABOX, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1), "parabox"),
                 Items.COMPACT_BRICK,
                 Items.WATER_BOWL,
                 Items.BOWL,
@@ -68,7 +72,10 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void registerTileEntityType(final RegistryEvent.Register<TileEntityType<?>> event) {
-        event.getRegistry().register(TileEntityTypes.NATURAL_EVAPORATOR);
+        event.getRegistry().registerAll(
+                TileEntityTypes.NATURAL_EVAPORATOR,
+                TileEntityTypes.PARABOX
+        );
     }
 
     @SubscribeEvent
@@ -81,6 +88,13 @@ public class RegistryEvents {
         event.getRegistry().register(EntityTypes.COMPACT_BRICK);
     }
 
+    @SubscribeEvent
+    public static void registerContainerType(final RegistryEvent.Register<ContainerType<?>> event) {
+        event.getRegistry().registerAll(
+                ContainerTypes.PARABOX
+        );
+    }
+
     public static class Blocks {
         public static final Block NATURAL_EVAPORATOR = new NaturalEvaporatorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion()).setRegistryName("natural_evaporator");
         public static final Block PARABOX = new ParaboxBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)).setRegistryName("parabox");
@@ -88,6 +102,7 @@ public class RegistryEvents {
 
     public static class TileEntityTypes {
         public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(NaturalEvaporatorTileEntity::new, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
+        public static final TileEntityType<ParaboxTileEntity> PARABOX = (TileEntityType<ParaboxTileEntity>) TileEntityType.Builder.of(ParaboxTileEntity::new, Blocks.PARABOX).build(null).setRegistryName("parabox");
     }
 
     public static class Recipes<S extends IRecipeSerializer<? extends IRecipe<?>>> {
@@ -136,5 +151,9 @@ public class RegistryEvents {
         public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE), true).setRegistryName("minecraft", "bowl");
         public static final Item STONE_VARIATOR = new StoneVariatorItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).defaultDurability(128), "stone_variator");
         public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_nether");
+    }
+
+    public static class ContainerTypes {
+        public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>(ParaboxContainer::new).setRegistryName("parabox");
     }
 }
