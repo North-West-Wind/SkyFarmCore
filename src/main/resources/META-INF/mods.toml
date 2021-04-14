@@ -33,3 +33,10 @@ An essential mod for NorthWestWind's Sky Farm modpack.
     versionRange="[4.1.7,)"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.skyfarm]]
+    modId="gamestages"
+    mandatory=false
+    versionRange="[7.1.2,)"
+    ordering="AFTER"
+    side="BOTH"

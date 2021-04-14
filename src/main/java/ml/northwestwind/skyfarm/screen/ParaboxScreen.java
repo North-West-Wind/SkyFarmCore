@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.fml.ModList;
 
 public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
     private static final ResourceLocation DEMO_BG = new ResourceLocation("minecraft", "textures/gui/demo_background.png");
@@ -24,18 +25,27 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
     protected void init() {
         this.imageWidth = 248;
         this.imageHeight = 166;
+        super.init();
 
         activate = new Button(width / 2 - 55, this.topPos + this.imageHeight - 30, 50, 20, new TranslationTextComponent("button.parabox.activate"), button -> {
+            if (minecraft != null && minecraft.player != null) {
+                minecraft.player.displayClientMessage(new TranslationTextComponent("mods.skyfarm.missing", "GameStages"), true);
+                onClose();
+                return;
+            }
 
         }, (button, matrixStack, mouseX, mouseY) -> renderWrappedToolTip(matrixStack, Lists.newArrayList(new TranslationTextComponent("tooltip.parabox.activate")), mouseX, mouseY, Minecraft.getInstance().font));
         loop = new Button(width / 2 + 5, this.topPos + this.imageHeight - 30, 50, 20, new TranslationTextComponent("button.parabox.loop.on"), button -> {
 
         }, (button, matrixStack, mouseX, mouseY) -> renderWrappedToolTip(matrixStack, Lists.newArrayList(new TranslationTextComponent("tooltip.parabox.loop")), mouseX, mouseY, Minecraft.getInstance().font));
         loop.active = false;
+        if (!ModList.get().isLoaded("gamestages")) {
+            if (minecraft != null && minecraft.player != null) minecraft.player.displayClientMessage(new TranslationTextComponent("mods.skyfarm.missing", "GameStages"), true);
+            activate.active = false;
+        }
 
         addButton(activate);
         addButton(loop);
-        super.init();
     }
 
     @Override

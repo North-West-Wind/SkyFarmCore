@@ -32,6 +32,8 @@
   "tooltip.parabox.activate": "Puts the world into a time loop and generate prestige points.",
   "tooltip.parabox.loop": "Exits the time loop. You will keep your generated points, but the world will go back in time.",
 
+  "mods.skyfarm.missing": "%s is not installed!",
+
   "advancement.skyfarm.root.title": "All in One SkyFarm Guide",
   "advancement.skyfarm.root.description": "This advancement tab should help you progress. Also spam crouch to grow stuff.",
   "advancement.skyfarm.wood_seeds.title": "Woah. This is Worthless",

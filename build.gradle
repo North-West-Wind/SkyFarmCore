@@ -116,6 +116,9 @@ repositories {
         url = "https://modmaven.k-4u.nl"
     }
     maven { url 'https://jitpack.io' }
+    maven {
+        url 'https://maven.blamejared.com'
+    }
 }
 
 dependencies {
@@ -126,6 +129,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    compile fg.deobf("net.darkhax.gamestages:GameStages-${mc_version}:${gamestage_version}")
 }
 
 mixin {

@@ -21,7 +21,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ArmorItem;
@@ -154,6 +153,6 @@ public class RegistryEvents {
     }
 
     public static class ContainerTypes {
-        public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>(ParaboxContainer::new).setRegistryName("parabox");
+        public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>((id, inventory) -> new ParaboxContainer(id)).setRegistryName("parabox");
     }
 }

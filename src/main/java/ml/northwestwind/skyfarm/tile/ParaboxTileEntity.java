@@ -121,6 +121,6 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
     @Nullable
     @Override
     public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-        return new ParaboxContainer(id, inventory);
+        return new ParaboxContainer(id);
     }
 }
