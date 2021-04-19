@@ -1,25 +1,21 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "tconstruct"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botanypots"
+        }
+    ],
+    "input": {
+        "item": "tconstruct:ender_slime_dirt"
     },
-    {
-      "type": "forge:mod_loaded",
-      "modid": "botanypots"
-    }
-  ],
-  "input": {
-    "item": "tconstruct:ender_slime_dirt"
-  },
-  "display": {
-    "block": "tconstruct:ender_slime_dirt"
-  },
-  "categories": [
-    "slime_dirt",
-    "ender_slime_dirt",
-    "slime"
-  ],
-  "growthModifier": 0.325
+    "display": {
+        "block": "tconstruct:ender_slime_dirt"
+    },
+    "categories": [
+        "slime_dirt",
+        "ender_slime_dirt",
+        "slime"
+    ],
+    "growthModifier": 0.325
 }

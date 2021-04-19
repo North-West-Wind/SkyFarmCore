@@ -1,0 +1,37 @@
+{
+  "parent": "skyfarm:exploration/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.exploration.skylight_forest.title"
+    },
+    "description": {
+      "translate": "advancement.exploration.skylight_forest.description"
+    },
+    "icon": {
+      "item": "skyfarm:overworld_void_shifter_tf"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enterSF": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "twilightforest:skylight_forest"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enterSF"
+    ]
+  ]
+}

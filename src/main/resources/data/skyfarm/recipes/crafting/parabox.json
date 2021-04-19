@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#C#",
+    "#E#"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:storage_blocks/iron"
+    },
+    "C": {
+      "item": "minecraft:clock"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "result": {
+    "item": "skyfarm:parabox",
+    "count": 1
+  }
+}

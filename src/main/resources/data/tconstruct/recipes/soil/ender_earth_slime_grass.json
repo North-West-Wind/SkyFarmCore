@@ -1,26 +1,22 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "tconstruct"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botanypots"
+        }
+    ],
+    "input": {
+        "item": "tconstruct:ender_earth_slime_grass"
     },
-    {
-      "type": "forge:mod_loaded",
-      "modid": "botanypots"
-    }
-  ],
-  "input": {
-    "item": "tconstruct:ender_earth_slime_grass"
-  },
-  "display": {
-    "block": "tconstruct:ender_earth_slime_grass"
-  },
-  "categories": [
-    "ender_earth_slime_grass",
-    "ender_slime_grass",
-    "slime_grass",
-    "slime"
-  ],
-  "growthModifier": 0.25
+    "display": {
+        "block": "tconstruct:ender_earth_slime_grass"
+    },
+    "categories": [
+        "ender_earth_slime_grass",
+        "ender_slime_grass",
+        "slime_grass",
+        "slime"
+    ],
+    "growthModifier": 0.25
 }

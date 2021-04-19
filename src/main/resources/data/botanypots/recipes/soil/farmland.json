@@ -14,7 +14,7 @@
         "farmland"
     ],
     "growthModifier": 0.53,
-    "condition": [
+    "conditions": [
         {
             "type": "forge:mod_loaded",
             "modid": "botanypots"

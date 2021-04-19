@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "pattern": [
+    " # ",
+    "FDF",
+    "GWG"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:gems/diamond"
+    },
+    "G": {
+      "item": "minecraft:grass_block"
+    },
+    "D": {
+      "item": "minecraft:diamond_boots"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    },
+    "F": {
+      "tag": "minecraft:small_flowers"
+    }
+  },
+  "result": {
+    "item": "skyfarm:overworld_sky_shifter_tf",
+    "count": 1
+  }
+}

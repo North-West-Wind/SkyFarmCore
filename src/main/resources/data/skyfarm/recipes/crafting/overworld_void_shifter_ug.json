@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "pattern": [
+    " # ",
+    "#D#",
+    " C "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:obsidian"
+    },
+    "D": {
+      "item": "minecraft:diamond_boots"
+    },
+    "C": {
+      "item": "undergarden:catalyst"
+    }
+  },
+  "result": {
+    "item": "skyfarm:overworld_void_shifter_ug",
+    "count": 1
+  }
+}

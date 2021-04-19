@@ -86,7 +86,8 @@ jar {
             "Implementation-Vendor" :"skyfarm",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
 
-            "MixinConfigs": "skyfarm.mixins.json"
+            "MixinConfigs": "skyfarm.mixins.json",
+            'FMLCorePluginContainsFMLMod': 'true'
         ])
     }
 }
@@ -130,6 +131,8 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     compile fg.deobf("net.darkhax.gamestages:GameStages-${mc_version}:${gamestage_version}")
+    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-${mc_version}:${bookshelf_version}")
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
 }
 
 mixin {

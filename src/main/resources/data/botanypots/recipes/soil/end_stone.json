@@ -10,7 +10,7 @@
         "end_stone"
     ],
     "growthModifier": -0.18,
-    "condition": [
+    "conditions": [
         {
             "type": "forge:mod_loaded",
             "modid": "botanypots"

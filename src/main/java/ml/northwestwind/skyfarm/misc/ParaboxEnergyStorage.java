@@ -13,6 +13,10 @@ public class ParaboxEnergyStorage extends EnergyStorage {
         this.maxReceive = capacity;
     }
 
+    public void setEnergyStored(int energy) {
+        this.energy = energy;
+    }
+
     public double drainAll() {
         double percentage = energy / (capacity / 2D);
         if (percentage > 1) percentage = ((energy - (capacity / 2D)) / (capacity / 2D)) / 5D + 1;

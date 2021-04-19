@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "#R#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:ender_eye"
+    },
+    "B": {
+      "item": "minecraft:diamond_boots"
+    },
+    "R": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "skyfarm:overworld_sky_shifter_end",
+    "count": 1
+  }
+}

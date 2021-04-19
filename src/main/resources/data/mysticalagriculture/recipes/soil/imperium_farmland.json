@@ -3,7 +3,7 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "mysticalagriculture"
+            "modid": "botanypots"
         }
     ],
     "input": {
@@ -23,11 +23,5 @@
         "tertium",
         "imperium"
     ],
-    "growthModifier": 0.83,
-    "condition": [
-        {
-            "type": "forge:mod_loaded",
-            "modid": "botanypots"
-        }
-    ]
+    "growthModifier": 0.83
 }

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lostcities"
+    }
+  ],
+  "pattern": [
+    "BDB",
+    "RRR"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bricks"
+    },
+    "D": {
+      "item": "minecraft:diamond_boots"
+    },
+    "R": {
+      "tag": "forge:dyes/red"
+    }
+  },
+  "result": {
+    "item": "skyfarm:overworld_sky_shifter_lc",
+    "count": 1
+  }
+}

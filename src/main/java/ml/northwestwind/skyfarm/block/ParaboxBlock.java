@@ -1,21 +1,34 @@
 package ml.northwestwind.skyfarm.block;
 
+import ml.northwestwind.skyfarm.misc.backup.Backups;
 import ml.northwestwind.skyfarm.tile.ParaboxTileEntity;
+import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
+import java.util.OptionalInt;
+import java.util.function.Consumer;
 
 public class ParaboxBlock extends Block {
     public ParaboxBlock(Properties properties) {
@@ -50,7 +63,32 @@ public class ParaboxBlock extends Block {
     protected void openContainer(World world, BlockPos pos, PlayerEntity player) {
         TileEntity tileentity = world.getBlockEntity(pos);
         if (tileentity instanceof ParaboxTileEntity) {
-            player.openMenu((INamedContainerProvider)tileentity);
+            SkyblockData data = SkyblockData.get((ServerWorld) world);
+            if (data.isUsingParabox()) player.displayClientMessage(new TranslationTextComponent("usage.skyfarm.parabox"), true);
+            else {
+                ParaboxTileEntity parabox = (ParaboxTileEntity) tileentity;
+                NetworkHooks.openGui((ServerPlayerEntity) player, parabox, packetBuffer -> {
+                    packetBuffer.writeBlockPos(pos);
+                    CompoundNBT nbt = new CompoundNBT();
+                    nbt.putBoolean("looping", parabox.isWorldInLoop());
+                    nbt.putBoolean("backingup", Backups.INSTANCE.doingBackup.isRunning());
+                    packetBuffer.writeNbt(nbt);
+                });
+                data.setUsingParabox(true);
+                data.setDirty();
+            }
+        }
+    }
+
+    @Override
+    public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean idk) {
+        super.onRemove(state, world, pos, newState, idk);
+        if (!world.isClientSide) {
+            SkyblockData data = SkyblockData.get((ServerWorld) world);
+            if (!data.isInLoop() || !data.isUsing(pos)) return;
+            data.setInLoop(false);
+            data.setDirty();
+            ((ServerWorld) world).getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.broken", pos.getX(), pos.getY(), pos.getZ()).setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), ChatType.CHAT, null);
         }
     }
 }

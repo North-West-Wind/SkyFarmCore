@@ -1,8 +1,7 @@
 package ml.northwestwind.skyfarm.packet;
 
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.packet.message.CPlayerGrowPacket;
-import ml.northwestwind.skyfarm.packet.message.SLaunchPlayerExplosionPacket;
+import ml.northwestwind.skyfarm.packet.message.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -23,6 +22,14 @@ public class SkyFarmPacketHandler {
     public static void registerPackets() {
         registerMessage(CPlayerGrowPacket.class, NetworkDirection.PLAY_TO_SERVER);
         registerMessage(SLaunchPlayerExplosionPacket.class, NetworkDirection.PLAY_TO_CLIENT);
+        registerMessage(CVoteActivateParaboxPacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(CVoteDeactivateParaboxPacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(CCloseParaboxPacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(SBackupDonePacket.class, NetworkDirection.PLAY_TO_CLIENT);
+        registerMessage(SActivateParaboxPacket.class, NetworkDirection.PLAY_TO_CLIENT);
+        registerMessage(SDeactivateParaboxPacket.class, NetworkDirection.PLAY_TO_CLIENT);
+        registerMessage(CAddStagePacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(DSyncPointsPacket.class);
     }
 
     private static <MSG extends IDoubleSidedPacket> void registerMessage(Class<MSG> clazz) {

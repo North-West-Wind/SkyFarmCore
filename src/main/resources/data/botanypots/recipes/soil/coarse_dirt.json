@@ -11,7 +11,7 @@
         "coarse_dirt"
     ],
     "growthModifier": -0.27,
-    "condition": [
+    "conditions": [
         {
             "type": "forge:mod_loaded",
             "modid": "botanypots"

@@ -3,7 +3,7 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "mysticalagradditions"
+            "modid": "botanypots"
         }
     ],
     "input": {
@@ -25,11 +25,5 @@
         "supremium",
         "insanium"
     ],
-    "growthModifier": 0.98,
-    "condition": [
-        {
-            "type": "forge:mod_loaded",
-            "modid": "botanypots"
-        }
-    ]
+    "growthModifier": 0.98
 }

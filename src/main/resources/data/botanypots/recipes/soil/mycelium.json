@@ -11,7 +11,7 @@
         "mushroom"
     ],
     "growthModifier": 0.38,
-    "condition": [
+    "conditions": [
         {
             "type": "forge:mod_loaded",
             "modid": "botanypots"

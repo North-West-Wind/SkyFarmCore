@@ -10,7 +10,7 @@
         "nether"
     ],
     "growthModifier": 0.3,
-    "condition": [
+    "conditions": [
         {
             "type": "forge:mod_loaded",
             "modid": "botanypots"

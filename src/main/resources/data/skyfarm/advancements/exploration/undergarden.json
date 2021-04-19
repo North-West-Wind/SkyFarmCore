@@ -1,0 +1,37 @@
+{
+  "parent": "skyfarm:exploration/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.exploration.undergarden.title"
+    },
+    "description": {
+      "translate": "advancement.exploration.undergarden.description"
+    },
+    "icon": {
+      "item": "skyfarm:overworld_void_shifter_ug"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enterUG": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "undergarden:undergarden"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enterUG"
+    ]
+  ]
+}

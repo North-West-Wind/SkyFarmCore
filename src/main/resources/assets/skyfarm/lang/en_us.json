@@ -9,8 +9,14 @@
   "item.skyfarm.compact_brick": "Compact Brick",
   "item.skyfarm.stone_variator": "Stone Variator",
   "item.skyfarm.overworld_void_shifter_nether": "Overworld Void Shifter - Nether",
+  "item.skyfarm.overworld_sky_shifter_end": "Overworld Sky Shifter - End",
+  "item.skyfarm.overworld_void_shifter_ug": "Overworld Void Shifter - Undergarden",
+  "item.skyfarm.overworld_sky_shifter_lc": "Overworld Sky Shifter - Lost Cities",
+  "item.skyfarm.overworld_sky_shifter_tf": "Overworld Sky Shifter - Twilight Forest",
 
   "itemGroup.skyfarm": "Sky Farm",
+
+  "key.skyfarm.stageMenu": "Open Stage Menu",
 
   "recipe.skyfarm.evaporating": "Evaporating",
 
@@ -20,9 +26,10 @@
   "tooltip.skyfarm.compact_brick": "Super high impact might expose iron from stones",
 
   "usage.skyfarm.stone_variator": "Lava is required under the block.",
-  "usage.skyfarm.nether_void_shifter": "Release crouch to launch yourself.",
+  "usage.skyfarm.void_shifter": "Release crouch to launch yourself.",
+  "usage.skyfarm.parabox": "Someone else is using a parabox.",
 
-  "points.gain": "+%d Prestige",
+  "points.gain": "+%d Point, %d in Total",
 
   "button.parabox.activate": "Activate",
   "button.parabox.deactivate": "Deactivate",
@@ -30,9 +37,41 @@
   "button.parabox.loop.off": "Loop: Off",
 
   "tooltip.parabox.activate": "Puts the world into a time loop and generate prestige points.",
-  "tooltip.parabox.loop": "Exits the time loop. You will keep your generated points, but the world will go back in time.",
+  "tooltip.parabox.deactivate": "Turns off the parabox and keep the current world. You will not keep your generated points.",
+  "tooltip.parabox.loop.on": "Exits the time loop. You will keep your generated points, but the world will go back in time.",
+  "tooltip.parabox.loop.off": "The parabox is not turned on.",
 
   "mods.skyfarm.missing": "%s is not installed!",
+
+  "screen.parabox.off": "The world is not in loop.",
+  "screen.parabox.backup": "Making backup...",
+  "screen.parabox.receiving": "Receiving: %d FE",
+  "screen.parabox.max": "Max. Energy: %d FE",
+  "screen.parabox.duration": "Time Left: %s",
+  "screen.parabox.efficiency": "Efficiency: %s",
+  "screen.parabox.item": "Needed Item: %s",
+
+  "parabox.broken": "The Parabox is broken at (%d, %d, %d)! Exited the time loop.",
+
+  "parabox.vote.activate": "%s has voted to activate the Parabox. Please vote in 1 minute.",
+  "parabox.vote.activate.yes": "[Turn It On]",
+  "parabox.vote.activate.no": "[Don't Start It]",
+
+  "parabox.vote.deactivate": "%s has voted to deactivate the Parabox. Please vote in 1 minute.",
+  "parabox.vote.deactivate.yes": "[Turn It Off]",
+  "parabox.vote.deactivate.no": "[Keep It Running]",
+
+  "parabox.vote.timeout": "60 seconds have passed. Vote cancelled.",
+  "parabox.vote.deny": "Someone did not vote for that. Vote cancelled.",
+
+  "parabox.activate": "The Parabox has been activated at (%d, %d, %d)!",
+  "parabox.deactivate": "The Parabox has been deactivate at (%d, %d, %d)!",
+
+  "parabox.item": "Item matched. Reduced loop time by 1 minute.",
+
+  "parabox.disconnect": "It's Rewind Time",
+
+  "screen.gamestage": "Stages",
 
   "advancement.skyfarm.root.title": "All in One SkyFarm Guide",
   "advancement.skyfarm.root.description": "This advancement tab should help you progress. Also spam crouch to grow stuff.",
@@ -163,5 +202,34 @@
   "advancement.nether.ancient_debris.title": "Ardite Replacement",
   "advancement.nether.ancient_debris.description": "Did you know? Tinker's Construct's ardite is replaced by netherite.",
   "advancement.nether.netherite_seeds.title": "Goodbye Nether",
-  "advancement.nether.netherite_seeds.description": "You've got netherite seeds. The Nether is now worthless for you."
+  "advancement.nether.netherite_seeds.description": "You've got netherite seeds. The Nether is now worthless for you.",
+  "advancement.nether.nether_fortress.title": "Terrible Fortress 2",
+  "advancement.nether.nether_fortress.description": "Fortresses spawns more frequently in this pack. Finding one should not be hard.",
+  "advancement.nether.blaze_rod.title": "A Better Fuel",
+  "advancement.nether.blaze_rod.description": "If you find a fortress, you will find blazes. Kill 'em.",
+  "advancement.nether.end_boots.title": "The Key to The End",
+  "advancement.nether.end_boots.description": "To get to The End, you must get one of those Overworld Sky Shifter - End.",
+
+  "advancement.end.root.title": "You Made It",
+  "advancement.end.root.description": "The End is the same as the vanilla one. Congratulations on reaching the end of the game.",
+  "advancement.end.jump_back.title": "I Don't Feel Like Doing That",
+  "advancement.end.jump_back.description": "Not ready for fighting? Jump back into the void.",
+
+  "advancement.parabox.root.title": "Space-Time Manipulator",
+  "advancement.parabox.root.description": "Parabox can generate points for unlocking recipes. It uses a huge amount of energy though.",
+
+  "advancement.exploration.root.title": "Go Somewhere Else",
+  "advancement.exploration.root.description": "This is not yet the end! There are more dimensions to explore!",
+  "advancement.exploration.undergarden.title": "Not the Betweenlands",
+  "advancement.exploration.undergarden.description": "The Undergarden is somewhere between the Overworld and the Nether. Use a void shifter.",
+  "advancement.exploration.skylight_forest.title": "Skylight Forest",
+  "advancement.exploration.skylight_forest.description": "Twilight Forest Skyblock version.",
+  "advancement.exploration.lost_cities.title": "A man has fallen into the Void in Lost Cities",
+  "advancement.exploration.lost_cities.description": "You will find cities in Lost Cities, but no one is there.",
+
+  "stages.skyfarm.points": "Points Required: %d",
+  "stages.skyfarm.known": "This stage is already known.",
+
+  "stages.skyfarm..title": "",
+  "stages.skyfarm..description": ""
 }

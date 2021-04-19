@@ -3,11 +3,7 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "forbidden_arcanus"
-        },
-        {
-            "type": "forge:item_exists",
-            "item": "forbidden_arcanus:edelwood_lava_bucket"
+            "modid": "botanypots"
         }
     ],
     "input": {
@@ -21,11 +17,5 @@
         "fluid",
         "liquid"
     ],
-    "growthModifier": 0.3,
-    "condition": [
-        {
-            "type": "forge:mod_loaded",
-            "modid": "botanypots"
-        }
-    ]
+    "growthModifier": 0.3
 }

@@ -12,13 +12,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(FogRenderer.class)
 public class MixinFogRenderer {
-    @Shadow private static float fogRed;
-    @Shadow private static float fogGreen;
-    @Shadow private static float fogBlue;
-    @Shadow private static int previousBiomeFog = -1;
-    @Shadow private static int targetBiomeFog = -1;
-    @Shadow private static long biomeChangedTime = -1L;
-
     @ModifyVariable(at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/util/CubicSampler;gaussianSampleVec3(Lnet/minecraft/util/math/vector/Vector3d;Lnet/minecraft/util/CubicSampler$Vec3Fetcher;)Lnet/minecraft/util/math/vector/Vector3d;"), method = "setupColor", ordinal = 2, require = 1, allow = 1)
     private static Vector3d onSampleColor(Vector3d val) {
         final Minecraft mc = Minecraft.getInstance();

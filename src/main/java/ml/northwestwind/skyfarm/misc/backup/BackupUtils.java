@@ -184,6 +184,7 @@ public class BackupUtils
     {
         if (file.isDirectory())
         {
+            if (file.getName().equals("playerdata") || file.getName().equals("advancements") || file.getName().equals("stats") || file.getName().equals("serverconfig")) return;
             File[] fl = file.listFiles();
 
             if (fl != null && fl.length > 0)
@@ -196,6 +197,7 @@ public class BackupUtils
         }
         else if (file.isFile())
         {
+            if (file.getName().equals("skyfarm.dat")) return;
             list.add(file);
         }
     }

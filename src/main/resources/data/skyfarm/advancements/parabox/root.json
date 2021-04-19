@@ -1,0 +1,29 @@
+{
+  "display": {
+    "title": {
+      "translate": "advancement.parabox.root.title",
+      "color": "gold"
+    },
+    "description": {
+      "translate": "advancement.parabox.root.description"
+    },
+    "icon": {
+      "item": "skyfarm:parabox"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "tick"
+    ]
+  ]
+}

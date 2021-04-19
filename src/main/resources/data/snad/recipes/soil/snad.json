@@ -3,7 +3,7 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "snad"
+            "modid": "botanypots"
         }
     ],
     "input": {
@@ -15,11 +15,5 @@
     "categories": [
         "sand"
     ],
-    "growthModifier": 1.05,
-    "condition": [
-        {
-            "type": "forge:mod_loaded",
-            "modid": "botanypots"
-        }
-    ]
+    "growthModifier": 1.05
 }

@@ -19,9 +19,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -29,15 +33,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.network.IContainerFactory;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
+
+import java.util.function.Predicate;
 
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 @ObjectHolder(SkyFarm.MOD_ID)
@@ -54,6 +63,7 @@ public class RegistryEvents {
                 Blocks.NATURAL_EVAPORATOR,
                 Blocks.PARABOX
         );
+        RenderTypeLookup.setRenderLayer(Blocks.PARABOX, RenderType.cutoutMipped());
     }
 
     @SubscribeEvent
@@ -65,8 +75,12 @@ public class RegistryEvents {
                 Items.WATER_BOWL,
                 Items.BOWL,
                 Items.STONE_VARIATOR,
-                Items.OVERWORLD_VOID_SHIFTER_NETHER
+                Items.OVERWORLD_VOID_SHIFTER_NETHER,
+                Items.OVERWORLD_SKY_SHIFTER_END
         );
+        if (ModList.get().isLoaded("undergarden")) event.getRegistry().register(Items.OVERWORLD_VOID_SHIFTER_UG);
+        if (ModList.get().isLoaded("twilightforest")) event.getRegistry().register(Items.OVERWORLD_SKY_SHIFTER_TF);
+        if (ModList.get().isLoaded("lostcities")) event.getRegistry().register(Items.OVERWORLD_SKY_SHIFTER_LC);
     }
 
     @SubscribeEvent
@@ -150,9 +164,13 @@ public class RegistryEvents {
         public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE), true).setRegistryName("minecraft", "bowl");
         public static final Item STONE_VARIATOR = new StoneVariatorItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).defaultDurability(128), "stone_variator");
         public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_nether");
+        public static final Item OVERWORLD_SKY_SHIFTER_END = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_sky_shifter_end");
+        public static final Item OVERWORLD_VOID_SHIFTER_UG = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_ug");
+        public static final Item OVERWORLD_SKY_SHIFTER_TF = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_tf");
+        public static final Item OVERWORLD_SKY_SHIFTER_LC = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_lc");
     }
 
     public static class ContainerTypes {
-        public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>((id, inventory) -> new ParaboxContainer(id)).setRegistryName("parabox");
+        public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>((IContainerFactory<Container>) ParaboxContainer::new).setRegistryName("parabox");
     }
 }

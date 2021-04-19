@@ -3,11 +3,7 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "decorative_blocks"
-        },
-        {
-            "type": "forge:item_exists",
-            "item": "decorative_blocks:rocky_dirt"
+            "modid": "botanypots"
         }
     ],
     "input": {
@@ -19,11 +15,5 @@
     "categories": [
         "dirt"
     ],
-    "growthModifier": 0.3,
-    "condition": [
-        {
-            "type": "forge:mod_loaded",
-            "modid": "botanypots"
-        }
-    ]
+    "growthModifier": 0.3
 }

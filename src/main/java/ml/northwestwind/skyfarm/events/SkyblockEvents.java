@@ -1,6 +1,7 @@
 package ml.northwestwind.skyfarm.events;
 
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.misc.NoDamageExplosion;
@@ -10,6 +11,7 @@ import ml.northwestwind.skyfarm.packet.message.SLaunchPlayerExplosionPacket;
 import ml.northwestwind.skyfarm.world.data.SkyblockNetherData;
 import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
+import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -22,6 +24,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IWorld;
@@ -43,6 +46,9 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
 public class SkyblockEvents {
     public static final Map<UUID, Integer> buildingSpeed = Maps.newHashMap();
+    public static final RegistryKey<World> UNDERGARDEN = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("undergarden", "undergarden"));
+    public static final RegistryKey<World> LOST_CITIES = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("lostcities", "lostcity"));
+    public static final RegistryKey<World> SKYLIGHT_FOREST = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("twilightforest", "skylight_forest"));
 
     @SubscribeEvent
     public static void playerJoin(final PlayerEvent.PlayerLoggedInEvent event) {
@@ -52,13 +58,20 @@ public class SkyblockEvents {
         if (!world.dimension().equals(World.OVERWORLD)) return;
         if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
             SkyblockData data = SkyblockData.get(world);
+            if (data.hasPlayerData(player.getUUID())) data.setupPlayerData(player);
+            ImmutableList<String> stages = data.getStages();
+            for (ServerPlayerEntity p : world.getServer().getPlayerList().getPlayers())
+                for (String stage : stages) {
+                    if (!GameStageHelper.isStageKnown(stage)) continue;
+                    GameStageHelper.addStage(p, stage);
+                }
             if (!data.isWorldGenerated()) {
                 generateIsland(world);
+                world.setDefaultSpawnPos(BlockPos.ZERO.offset(0, 64, 0), 0);
                 data.setWorldGenerated(true);
             }
             if (data.isFirstSpawn(player.getUUID())) {
                 player.teleportTo(0.5, 64, 0.5);
-                player.setSleepingPos(new BlockPos(0.5, 64, 0.5));
                 if (!world.isClientSide()) {
                     MinecraftServer server = world.getServer();
                     Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation(SkyFarm.MOD_ID, "skyfarm/root"));
@@ -71,18 +84,6 @@ public class SkyblockEvents {
             }
             data.setDirty();
             world.getDataStorage().set(data);
-        }
-    }
-
-    @SubscribeEvent
-    public static void playerRespawn(final PlayerEvent.PlayerRespawnEvent event) {
-        PlayerEntity player = event.getPlayer();
-        if (player.level.isClientSide) return;
-        ServerWorld world = (ServerWorld) player.getCommandSenderWorld();
-        if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
-            if (player.getSleepingPos().isPresent()) return;
-            player.teleportTo(0.5, 64, 0.5);
-            player.setSleepingPos(new BlockPos(0.5, 64, 0.5));
         }
     }
 
@@ -109,41 +110,67 @@ public class SkyblockEvents {
     @SubscribeEvent
     public static void playerTick(final TickEvent.PlayerTickEvent event) {
         PlayerEntity player = event.player;
-        if (player == null || player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level)) return;
+        if (player == null || player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level))
+            return;
         ItemStack boots = player.getItemBySlot(EquipmentSlotType.FEET);
-        if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_NETHER)) {
-            if (player.level.dimension().equals(World.NETHER)) {
-                if (player.isCrouching() && player.isOnGround()) {
-                    int tick = 0;
-                    if (buildingSpeed.containsKey(player.getUUID())) tick = buildingSpeed.get(player.getUUID());
-                    tick = Math.min(120, tick + 1);
-                    if (tick >= 120) player.displayClientMessage(new TranslationTextComponent("usage.skyfarm.nether_void_shifter"), true);
-                    float f = (float)Math.pow(2.0D, (tick - 120D) / 120D);
-                    player.level.playSound(null, player.blockPosition(), SoundEvents.NOTE_BLOCK_HARP, SoundCategory.PLAYERS, 3f, f);
-                    buildingSpeed.put(player.getUUID(), tick);
-                } else if (buildingSpeed.containsKey(player.getUUID())) {
-                    int tick = buildingSpeed.get(player.getUUID());
-                    if (tick >= 120) {
-                        player.addEffect(new EffectInstance(Effects.LEVITATION, 20 * 60 * 30, 32, false, false, false));
-                        NoDamageExplosion explosion = new NoDamageExplosion(player.level, player.blockPosition(), 3, Explosion.Mode.NONE);
-                        explosion.explode();
-                        explosion.finalizeExplosion(true);
-                        SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SLaunchPlayerExplosionPacket(player.blockPosition(), player.level.dimension()));
-                    }
-                    buildingSpeed.remove(player.getUUID());
-                } else if (player.getY() <= -60) player.teleportTo(player.getX(), 316, player.getZ());
-                else if (player.getY() >= 320) {
-                    ServerWorld world = ((ServerWorld) player.level).getServer().overworld();
-                    player.changeDimension(world, new VoidTeleporter(false));
+        if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_NETHER))
+            handleWorldWarp(World.OVERWORLD, World.NETHER, 8, player);
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_END))
+            handleWorldWarp(World.END, World.OVERWORLD, 1, player);
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_UG))
+            handleWorldWarp(World.OVERWORLD, UNDERGARDEN, 1, player);
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_LC))
+            handleWorldWarp(LOST_CITIES, World.OVERWORLD, 1, player);
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_TF))
+            handleWorldWarp(SKYLIGHT_FOREST, World.OVERWORLD, 1, player);
+        else if (player.getY() <= -64) player.teleportTo(player.getX(), 316, player.getZ());
+        else if (player.getY() >= 320) player.teleportTo(player.getX(), -60, player.getZ());
+    }
+
+    private static void handleWorldWarp(RegistryKey<World> top, RegistryKey<World> bottom, double factor, PlayerEntity player) {
+        if (player.level.dimension().equals(bottom)) {
+            if (player.isCrouching() && player.isOnGround()) {
+                int tick = 0;
+                if (buildingSpeed.containsKey(player.getUUID())) tick = buildingSpeed.get(player.getUUID());
+                tick = Math.min(120, tick + 1);
+                if (tick >= 120)
+                    player.displayClientMessage(new TranslationTextComponent("usage.skyfarm.void_shifter"), true);
+                float f = (float) Math.pow(2.0D, (tick - 120D) / 120D);
+                player.level.playSound(null, player.blockPosition(), SoundEvents.NOTE_BLOCK_HARP, SoundCategory.PLAYERS, 3f, f);
+                buildingSpeed.put(player.getUUID(), tick);
+            } else if (buildingSpeed.containsKey(player.getUUID())) {
+                int tick = buildingSpeed.get(player.getUUID());
+                if (tick >= 120) {
+                    player.addEffect(new EffectInstance(Effects.LEVITATION, 20 * 60 * 30, 32, false, false, false));
+                    NoDamageExplosion explosion = new NoDamageExplosion(player.level, player.blockPosition(), 3, Explosion.Mode.NONE);
+                    explosion.explode();
+                    explosion.finalizeExplosion(true);
+                    SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SLaunchPlayerExplosionPacket(player.blockPosition(), player.level.dimension()));
                 }
-            } else if (player.level.dimension().equals(World.OVERWORLD)) {
-                if (player.getY() <= -60) {
-                    ServerWorld world = ((ServerWorld) player.level).getServer().getLevel(World.NETHER);
-                    if (world == null) return;
-                    player.changeDimension(world, new VoidTeleporter(true));
-                } else if (player.isCrouching() && player.hasEffect(Effects.LEVITATION)) player.removeEffect(Effects.LEVITATION);
+                buildingSpeed.remove(player.getUUID());
+            } else if (player.getY() <= -64) player.teleportTo(player.getX(), 316, player.getZ());
+            else if (player.getY() >= 320) {
+                ServerWorld world = ((ServerWorld) player.level).getServer().getLevel(top);
+                if (world != null) player.changeDimension(world, new VoidTeleporter(false, factor));
+                else player.teleportTo(player.getX(), -60, player.getZ());
             }
-        } else if (player.getY() <= -60) player.teleportTo(player.getX(), 316, player.getZ());
+        } else if (player.level.dimension().equals(top)) {
+            if (player.getY() <= -64) {
+                ServerWorld world = ((ServerWorld) player.level).getServer().getLevel(bottom);
+                if (world != null) {
+                    player.changeDimension(world, new VoidTeleporter(true, 1d / factor));
+                    if (top.equals(World.END) && bottom.equals(World.OVERWORLD)) {
+                        MinecraftServer server = world.getServer();
+                        Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation(SkyFarm.MOD_ID, "end/jump_back"));
+                        if (advancement != null) {
+                            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+                            serverPlayer.getAdvancements().award(advancement, "toOverworld");
+                        }
+                    }
+                } else player.teleportTo(player.getX(), 316, player.getZ());
+            } else if (player.isCrouching() && player.hasEffect(Effects.LEVITATION))
+                player.removeEffect(Effects.LEVITATION);
+        }
     }
 
     @SubscribeEvent
@@ -192,5 +219,6 @@ public class SkyblockEvents {
         if (player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level)) return;
         if (event.getSource().equals(DamageSource.FALL) && event.getAmount() >= player.getMaxHealth() && player.getHealth() == player.getMaxHealth())
             event.setAmount(player.getMaxHealth() - 0.5f);
+        else if (event.getSource().equals(DamageSource.OUT_OF_WORLD)) event.setCanceled(true);
     }
 }

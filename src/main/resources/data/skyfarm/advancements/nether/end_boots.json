@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:nether/blaze_rod",
+  "display": {
+    "title": {
+      "translate": "advancement.nether.end_boots.title"
+    },
+    "description": {
+      "translate": "advancement.nether.end_boots.description"
+    },
+    "icon": {
+      "item": "skyfarm:overworld_sky_shifter_end"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "skyShifter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "skyfarm:overworld_sky_shifter_end"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "skyShifter"
+    ]
+  ]
+}

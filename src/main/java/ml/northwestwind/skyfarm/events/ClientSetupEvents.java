@@ -2,8 +2,10 @@ package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.container.ParaboxContainer;
+import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.screen.ParaboxScreen;
 import ml.northwestwind.skyfarm.tile.renderer.NaturalEvaporatorRenderer;
+import ml.northwestwind.skyfarm.tile.renderer.ParaboxRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.screen.Screen;
@@ -21,7 +23,11 @@ public class ClientSetupEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.NATURAL_EVAPORATOR, NaturalEvaporatorRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.PARABOX, ParaboxRenderer::new);
+
         RenderingRegistry.registerEntityRenderingHandler(RegistryEvents.EntityTypes.COMPACT_BRICK, manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
         ScreenManager.register(RegistryEvents.ContainerTypes.PARABOX, ParaboxScreen::new);
+
+        KeyBindings.register();
     }
 }

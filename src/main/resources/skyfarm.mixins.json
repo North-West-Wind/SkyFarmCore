@@ -2,9 +2,8 @@
   "required": true,
   "package": "ml.northwestwind.skyfarm.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "moreboots.refmap.json",
+  "refmap": "skyfarm.refmap.json",
   "mixins": [
-    "MixinFogRenderer"
   ],
   "minVersion": "0.8"
 }
