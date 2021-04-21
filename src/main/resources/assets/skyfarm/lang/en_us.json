@@ -4,6 +4,7 @@
 
   "block.skyfarm.natural_evaporator": "Natural Evaporator",
   "block.skyfarm.parabox": "Parabox",
+  "block.skyfarm.void_generator": "Void Energy Generator",
 
   "item.skyfarm.water_bowl": "Water Bowl",
   "item.skyfarm.compact_brick": "Compact Brick",
@@ -22,6 +23,7 @@
 
   "tooltip.skyfarm.natural_evaporator": "Evaporates stuff under pure sunlight",
   "tooltip.skyfarm.parabox": "The time loop machine",
+  "tooltip.skyfarm.void_generator": "Empty space has energy",
   "tooltip.skyfarm.stone_variator": "Magically creates stone variance",
   "tooltip.skyfarm.compact_brick": "Super high impact might expose iron from stones",
 
@@ -180,6 +182,20 @@
 
   "advancement.storage.root.title": "Storage Extension",
   "advancement.storage.root.description": "This advancement tab should tell you stuff about storage. Chests aren't the only thing here!",
+  "advancement.storage.compact_storage.title": "Compact Storage",
+  "advancement.storage.compact_storage.description": "Compact Storage provides really compact storage.",
+  "advancement.storage.compact_chest.title": "There's No Iron Chest",
+  "advancement.storage.compact_chest.description": "Iron Chest is not in this pack. Use Compact Storage's chests. They store more than you think.",
+  "advancement.storage.max_compact_chest.title": "Heaviest Chest Ever",
+  "advancement.storage.max_compact_chest.description": "Upgrade a compact chest to its maximum capacity.",
+  "advancement.storage.compact_barrel.title": "Now with Barrels!",
+  "advancement.storage.compact_barrel.description": "Compact Storage also provides compact barrels.",
+  "advancement.storage.max_compact_barrel.title": "Too Heavy to Roll",
+  "advancement.storage.max_compact_barrel.description": "Upgrade a compact barrel to its maximum capacity.",
+  "advancement.storage.backpack.title": "Pack your Stuff",
+  "advancement.storage.backpack.description": "Everything is available in your hands!",
+  "advancement.storage.max_backpack.title": "Bigger than any other Backpack, Ever",
+  "advancement.storage.max_backpack.description": "Upgrade a backpack to its maximum capacity.",
 
   "advancement.nether.root.title": "Sky Farm Nether Guide",
   "advancement.nether.root.description": "The Nether generates very similar to the End, with a huge island in the middle and more at far away.",
@@ -217,6 +233,8 @@
 
   "advancement.parabox.root.title": "Space-Time Manipulator",
   "advancement.parabox.root.description": "Parabox can generate points for unlocking recipes. It uses a huge amount of energy though.",
+  "advancement.parabox.parabox.title": "Time Loop",
+  "advancement.parabox.parabox.description": "Turn on the Parabox and start generating points.",
 
   "advancement.exploration.root.title": "Go Somewhere Else",
   "advancement.exploration.root.description": "This is not yet the end! There are more dimensions to explore!",

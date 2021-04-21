@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactstorage"
+    }
+  ],
+  "values": [
+    "compactstorage:compact_barrel_black",
+    "compactstorage:compact_barrel_blue",
+    "compactstorage:compact_barrel_brown",
+    "compactstorage:compact_barrel_cyan",
+    "compactstorage:compact_barrel_gray",
+    "compactstorage:compact_barrel_green",
+    "compactstorage:compact_barrel_light_blue",
+    "compactstorage:compact_barrel_light_gray",
+    "compactstorage:compact_barrel_lime",
+    "compactstorage:compact_barrel_magenta",
+    "compactstorage:compact_barrel_orange",
+    "compactstorage:compact_barrel_pink",
+    "compactstorage:compact_barrel_purple",
+    "compactstorage:compact_barrel_red",
+    "compactstorage:compact_barrel_white",
+    "compactstorage:compact_barrel_yellow"
+  ]
+}

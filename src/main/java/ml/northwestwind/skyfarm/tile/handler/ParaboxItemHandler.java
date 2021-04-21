@@ -1,4 +1,4 @@
-package ml.northwestwind.skyfarm.misc;
+package ml.northwestwind.skyfarm.tile.handler;
 
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.item.ItemStack;

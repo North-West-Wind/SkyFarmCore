@@ -58,7 +58,6 @@ public class SkyblockEvents {
         if (!world.dimension().equals(World.OVERWORLD)) return;
         if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
             SkyblockData data = SkyblockData.get(world);
-            if (data.hasPlayerData(player.getUUID())) data.setupPlayerData(player);
             ImmutableList<String> stages = data.getStages();
             for (ServerPlayerEntity p : world.getServer().getPlayerList().getPlayers())
                 for (String stage : stages) {
@@ -72,14 +71,6 @@ public class SkyblockEvents {
             }
             if (data.isFirstSpawn(player.getUUID())) {
                 player.teleportTo(0.5, 64, 0.5);
-                if (!world.isClientSide()) {
-                    MinecraftServer server = world.getServer();
-                    Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation(SkyFarm.MOD_ID, "skyfarm/root"));
-                    if (advancement != null) {
-                        ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
-                        serverPlayer.getAdvancements().award(advancement, "JoinGame");
-                    }
-                }
                 data.playerJoin(player);
             }
             data.setDirty();

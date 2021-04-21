@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:storage/compact_storage",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactstorage"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.compact_chest.title"
+    },
+    "description": {
+      "translate": "advancement.storage.compact_chest.description"
+    },
+    "icon": {
+      "item": "compactstorage:compact_chest_white"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "compactstorage:compact_chest"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chest"
+    ]
+  ]
+}

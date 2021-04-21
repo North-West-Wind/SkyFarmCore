@@ -197,7 +197,7 @@ public class BackupUtils
         }
         else if (file.isFile())
         {
-            if (file.getName().equals("skyfarm.dat")) return;
+            if (file.getName().equals("skyfarm.dat") || file.getName().equals("level.dat") || file.getName().equals("level.dat_old")) return;
             list.add(file);
         }
     }

@@ -115,7 +115,7 @@ public class Backups {
                 }
                 else if (f.getName().equals("playerdata") || f.getName().equals("advancements") || f.getName().equals("stats") || f.getName().equals("serverconfig") || f.getName().equals("session.lock")) continue;
                 else if (f.isDirectory()) FileUtils.deleteDirectory(f);
-                else f.delete();
+                else if (!f.getName().equals("level.dat") && !f.getName().equals("level.dat_old")) f.delete();
             }
             src = new File(src.getAbsolutePath() + File.separator + dst.getName());
             src = src.getCanonicalFile();

@@ -1,4 +1,4 @@
-package ml.northwestwind.skyfarm.misc;
+package ml.northwestwind.skyfarm.tile.handler;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.energy.EnergyStorage;

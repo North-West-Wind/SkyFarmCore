@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactstorage"
+    }
+  ],
+  "values": [
+    "compactstorage:backpack_black",
+    "compactstorage:backpack_blue",
+    "compactstorage:backpack_brown",
+    "compactstorage:backpack_cyan",
+    "compactstorage:backpack_gray",
+    "compactstorage:backpack_green",
+    "compactstorage:backpack_light_blue",
+    "compactstorage:backpack_light_gray",
+    "compactstorage:backpack_lime",
+    "compactstorage:backpack_magenta",
+    "compactstorage:backpack_orange",
+    "compactstorage:backpack_pink",
+    "compactstorage:backpack_purple",
+    "compactstorage:backpack_red",
+    "compactstorage:backpack_white",
+    "compactstorage:backpack_yellow"
+  ]
+}

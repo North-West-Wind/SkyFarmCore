@@ -39,6 +39,7 @@ public class NaturalEvaporatorRenderer extends TileEntityRenderer<NaturalEvapora
     }
 
     private void renderItem(ItemStack stack, MatrixStack matrix, IRenderTypeBuffer bufferIn, int combinedLightIn) {
-        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemCameraTransforms.TransformType.FIXED, combinedLightIn, OverlayTexture.NO_OVERLAY, matrix, bufferIn);
+        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemCameraTransforms.TransformType.FIXED, combinedLightIn,
+                OverlayTexture.NO_OVERLAY, matrix, bufferIn);
     }
 }

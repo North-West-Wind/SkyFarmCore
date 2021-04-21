@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:parabox/root",
+  "display": {
+    "title": {
+      "translate": "advancement.parabox.parabox.title"
+    },
+    "description": {
+      "translate": "advancement.parabox.parabox.description"
+    },
+    "icon": {
+      "item": "skyfarm:parabox"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+  },
+  "criteria": {
+    "parabox": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "skyfarm:parabox"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "parabox"
+    ]
+  ]
+}

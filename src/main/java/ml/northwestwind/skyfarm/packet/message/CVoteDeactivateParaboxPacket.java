@@ -62,6 +62,7 @@ public class CVoteDeactivateParaboxPacket implements IPacket {
             SkyblockData data = SkyblockData.get(player.getLevel());
             BlockPos pos = data.getParaboxPos();
             player.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.deactivate", pos.getX(), pos.getY(), pos.getZ()).setStyle(Style.EMPTY.applyFormat(TextFormatting.GREEN)), ChatType.SYSTEM, Util.NIL_UUID);
+
             if (SkyblockData.forced) exitLoopForced(player);
             else exitLoop(player);
             SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SDeactivateParaboxPacket());
@@ -95,8 +96,9 @@ public class CVoteDeactivateParaboxPacket implements IPacket {
         SkyblockData data = SkyblockData.get(player.getLevel());
         SkyblockData.shouldRestore = true;
         data.setInLoop(false);
+        data.setParaboxLevel(0);
         ImmutableList<ServerPlayerEntity> players = ImmutableList.copyOf(player.getServer().getPlayerList().getPlayers());
-        for (ServerPlayerEntity p : players) data.addPlayerData(p);
+        //for (ServerPlayerEntity p : players) data.addPlayerData(p);
         data.setDirty();
         player.getServer().saveAllChunks(true, true, true);
         for (ServerPlayerEntity p : players) try {
@@ -109,7 +111,7 @@ public class CVoteDeactivateParaboxPacket implements IPacket {
         if (player.getServer() == null) return;
         SkyblockData data = SkyblockData.get(player.getLevel());
         data.setInLoop(false);
-        data.setParaboxLevel(data.getOriginalParaboxLevel());
+        data.setParaboxLevel(0);
         data.setDirty();
     }
 }

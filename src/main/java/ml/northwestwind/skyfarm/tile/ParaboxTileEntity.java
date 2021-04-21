@@ -2,8 +2,8 @@ package ml.northwestwind.skyfarm.tile;
 
 import ml.northwestwind.skyfarm.container.ParaboxContainer;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
-import ml.northwestwind.skyfarm.misc.ParaboxEnergyStorage;
-import ml.northwestwind.skyfarm.misc.ParaboxItemHandler;
+import ml.northwestwind.skyfarm.tile.handler.ParaboxEnergyStorage;
+import ml.northwestwind.skyfarm.tile.handler.ParaboxItemHandler;
 import ml.northwestwind.skyfarm.misc.backup.Backups;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.block.BlockState;
@@ -32,7 +32,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -103,7 +102,11 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
             addParaboxLevel();
             dirty = true;
         } else if (isWorldInLoop()) {
-            if (wantingItem == null) wantingItem = SkyblockData.getWantingItem();
+            if (wantingItem == null && level instanceof ServerWorld) {
+                ServerWorld world = (ServerWorld) level;
+                wantingItem = SkyblockData.getWantingItem();
+                if (wantingItem.equals(Items.AIR)) wantingItem = SkyblockData.generateItem(world);
+            }
             energy = energyStorage.getEnergyStored();
             double percentage = energyStorage.drainAll();
             efficiency = percentage;
@@ -114,10 +117,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
                 if (level instanceof ServerWorld) {
                     ServerWorld world = (ServerWorld) level;
                     world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.item").setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)), ChatType.SYSTEM, Util.NIL_UUID);
-                    SkyblockData data = SkyblockData.get(world);
-                    SkyblockData.generateItem();
-                    data.setDirty();
-                    wantingItem = SkyblockData.getWantingItem();
+                    wantingItem = SkyblockData.generateItem(world);
                 }
             }
             dirty = true;
@@ -128,7 +128,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         }
         if (!level.isClientSide) {
             int lvl = getParaboxLevel();
-            if (lvl > paraboxLevel) paraboxLevel = lvl;
+            if (lvl != paraboxLevel) paraboxLevel = lvl;
         }
         if (dirty) {
             setChanged();
@@ -142,7 +142,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         SkyblockData data = SkyblockData.get(world);
         data.addPoint(1);
         data.setDirty();
-        world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", 1, data.getPoint()), ChatType.CHAT, null);
+        world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", 1, data.getPoint()), ChatType.SYSTEM, Util.NIL_UUID);
     }
 
     private int getParaboxLevel() {

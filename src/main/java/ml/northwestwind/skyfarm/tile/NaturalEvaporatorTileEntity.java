@@ -84,7 +84,7 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
     private boolean canWork() {
         if (!this.hasLevel()) return false;
         World world = getLevel();
-        return !world.isNight();
+        return !world.isNight() || world.dimension().equals(World.NETHER);
     }
 
     @Override

@@ -1,0 +1,42 @@
+{
+  "parent": "skyfarm:storage/compact_barrel",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactstorage"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.max_compact_barrel.title"
+    },
+    "description": {
+      "translate": "advancement.storage.max_compact_barrel.description"
+    },
+    "icon": {
+      "item": "compactstorage:compact_barrel_red"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "skyfarm:compact_barrels",
+            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chest"
+    ]
+  ]
+}

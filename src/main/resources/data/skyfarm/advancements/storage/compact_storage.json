@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:storage/root",
+  "display": {
+    "title": {
+      "translate": "advancement.storage.compact_storage.title"
+    },
+    "description": {
+      "translate": "advancement.storage.compact_storage.description"
+    },
+    "icon": {
+      "item": "minecraft:chest"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:chest"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chest"
+    ]
+  ]
+}

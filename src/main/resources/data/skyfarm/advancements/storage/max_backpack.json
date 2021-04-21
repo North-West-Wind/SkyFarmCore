@@ -1,0 +1,42 @@
+{
+  "parent": "skyfarm:storage/backpack",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactstorage"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.max_backpack.title"
+    },
+    "description": {
+      "translate": "advancement.storage.max_backpack.description"
+    },
+    "icon": {
+      "item": "compactstorage:backpack_red"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "skyfarm:backpack",
+            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chest"
+    ]
+  ]
+}
