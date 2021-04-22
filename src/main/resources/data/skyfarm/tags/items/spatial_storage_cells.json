@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "appliedenergistics2"
+    }
+  ],
+  "values": [
+    "appliedenergistics2:2_cubed_spatial_storage_cell",
+    "appliedenergistics2:16_cubed_spatial_storage_cell",
+    "appliedenergistics2:128_cubed_spatial_storage_cell"
+  ]
+}

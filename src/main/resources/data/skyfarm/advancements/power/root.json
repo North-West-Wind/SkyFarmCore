@@ -1,0 +1,36 @@
+{
+  "display": {
+    "title": {
+      "translate": "advancement.power.root.title",
+      "color": "gold"
+    },
+    "description": {
+      "translate": "advancement.power.root.description"
+    },
+    "icon": {
+      "item": "skyfarm:void_generator"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "redstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/redstone"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "redstone"
+    ]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "values": [
+    "mekanism:qio_drive_base",
+    "mekanism:qio_drive_hyper_dense",
+    "mekanism:qio_drive_time_dilating",
+    "mekanism:qio_drive_supermassive"
+  ]
+}

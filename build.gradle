@@ -120,11 +120,13 @@ repositories {
     maven {
         url 'https://maven.blamejared.com'
     }
+    maven { url = "https://repo.spongepowered.org/maven" }
 }
 
 dependencies {
     /* minecraft dependency is here */
     minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
+    annotationProcessor "org.spongepowered:mixin:0.8.2:processor"
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")

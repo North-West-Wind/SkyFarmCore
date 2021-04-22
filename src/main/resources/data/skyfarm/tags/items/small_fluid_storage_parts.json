@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "refinedstorage"
+    }
+  ],
+  "values": [
+    "refinedstorage:64k_fluid_storage_part",
+    "refinedstorage:256k_fluid_storage_part",
+    "refinedstorage:1024k_fluid_storage_part",
+    "refinedstorage:4096k_fluid_storage_part"
+  ]
+}

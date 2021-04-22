@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:storage/backpack",
+  "parent": "skyfarm:storage/big_storage_disk",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "compactstorage"
+      "modid": "extradisks"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.max_backpack.title"
+      "translate": "advancement.storage.1048m_storage_disk.title"
     },
     "description": {
-      "translate": "advancement.storage.max_backpack.description"
+      "translate": "advancement.storage.1048m_storage_disk.description"
     },
     "icon": {
-      "item": "compactstorage:backpack_red"
+      "item": "extradisks:1048576k_storage_part"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,8 +27,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "skyfarm:backpacks",
-            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+            "item": "extradisks:1048576k_storage_part"
           }
         ]
       }

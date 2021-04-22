@@ -1,20 +1,14 @@
 {
-  "parent": "skyfarm:storage/compact_storage",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "compactstorage"
-    }
-  ],
+  "parent": "skyfarm:power/root",
   "display": {
     "title": {
-      "translate": "advancement.storage.backpack.title"
+      "translate": "advancement.power.redstone.title"
     },
     "description": {
-      "translate": "advancement.storage.backpack.description"
+      "translate": "advancement.power.redstone.description"
     },
     "icon": {
-      "item": "compactstorage:backpack_white"
+      "item": "minecraft:redstone"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +16,12 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "redstone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "skyfarm:backpacks"
+            "tag": "forge:dusts/redstone"
           }
         ]
       }
@@ -35,7 +29,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "redstone"
     ]
   ]
 }

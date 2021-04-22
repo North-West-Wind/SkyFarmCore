@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:storage/backpack",
+  "parent": "skyfarm:storage/simple_storage_network",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "compactstorage"
+      "modid": "storagenetwork"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.max_backpack.title"
+      "translate": "advancement.storage.storage_remote.title"
     },
     "description": {
-      "translate": "advancement.storage.max_backpack.description"
+      "translate": "advancement.storage.storage_remote.description"
     },
     "icon": {
-      "item": "compactstorage:backpack_red"
+      "item": "storagenetwork:inventory_remote"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,8 +27,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "skyfarm:backpacks",
-            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+            "item": "storagenetwork:inventory_remote"
           }
         ]
       }

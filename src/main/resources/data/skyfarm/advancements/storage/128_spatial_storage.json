@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:storage/backpack",
+  "parent": "skyfarm:storage/spatial_storage",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "compactstorage"
+      "modid": "appliedenergistics2"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.max_backpack.title"
+      "translate": "advancement.storage.128_spatial_storage.title"
     },
     "description": {
-      "translate": "advancement.storage.max_backpack.description"
+      "translate": "advancement.storage.128_spatial_storage.description"
     },
     "icon": {
-      "item": "compactstorage:backpack_red"
+      "item": "appliedenergistics2:128_cubed_spatial_storage_cell"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,8 +27,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "skyfarm:backpacks",
-            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+            "item": "appliedenergistics2:128_cubed_spatial_storage_cell"
           }
         ]
       }

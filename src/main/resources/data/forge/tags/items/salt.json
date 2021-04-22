@@ -1,0 +1,11 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "xlfoodmod"
+    }
+  ],
+  "values": [
+    "xlfoodmod:salt"
+  ]
+}

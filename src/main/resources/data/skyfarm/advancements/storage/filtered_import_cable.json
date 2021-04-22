@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:storage/backpack",
+  "parent": "skyfarm:storage/import_export_cable",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "compactstorage"
+      "modid": "storagenetwork"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.max_backpack.title"
+      "translate": "advancement.storage.filtered_import_cable.title"
     },
     "description": {
-      "translate": "advancement.storage.max_backpack.description"
+      "translate": "advancement.storage.filtered_import_cable.description"
     },
     "icon": {
-      "item": "compactstorage:backpack_red"
+      "item": "storagenetwork:import_filter_kabel"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,13 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "import": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "skyfarm:backpacks",
-            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+            "item": "storagenetwork:import_filter_kabel"
           }
         ]
       }
@@ -36,7 +35,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "import"
     ]
   ]
 }

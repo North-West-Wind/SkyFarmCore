@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:storage/backpack",
+  "parent": "skyfarm:power/root",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "compactstorage"
+      "modid": "rftoolspower"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.max_backpack.title"
+      "translate": "advancement.power.coal_generator.title"
     },
     "description": {
-      "translate": "advancement.storage.max_backpack.description"
+      "translate": "advancement.power.coal_generator.description"
     },
     "icon": {
-      "item": "compactstorage:backpack_red"
+      "item": "rftoolspower:coalgenerator"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,13 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "coalGen": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "skyfarm:backpacks",
-            "nbt": "{BlockEntityTag:{height:12,width:24}}"
+            "item": "rftoolspower:coalgenerator"
           }
         ]
       }
@@ -36,7 +35,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "coalGen"
     ]
   ]
 }

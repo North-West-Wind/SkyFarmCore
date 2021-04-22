@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "skyfarm.refmap.json",
   "mixins": [
+    "MixinFogRenderer"
   ],
   "minVersion": "0.8"
 }

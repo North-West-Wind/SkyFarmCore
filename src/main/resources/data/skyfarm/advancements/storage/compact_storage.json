@@ -1,5 +1,11 @@
 {
   "parent": "skyfarm:storage/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactstorage"
+    }
+  ],
   "display": {
     "title": {
       "translate": "advancement.storage.compact_storage.title"
@@ -8,7 +14,7 @@
       "translate": "advancement.storage.compact_storage.description"
     },
     "icon": {
-      "item": "minecraft:chest"
+      "item": "compactstorage:upgrade_column"
     },
     "frame": "task",
     "show_toast": false,
