@@ -1,0 +1,43 @@
+{
+  "parent": "skyfarm:storage/industrial_foregoing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.infinity_backpack.title"
+    },
+    "description": {
+      "translate": "advancement.storage.infinity_backpack.description"
+    },
+    "icon": {
+      "item": "industrialforegoing:infinity_backpack",
+      "nbt": "{CanCharge:1,Energy:9223372036854775807,Selected:\"ARTIFACT\",Special:1}"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "infinity_backpack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:infinity_backpack",
+            "nbt": "{Selected:ARTIFACT}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "infinity_backpack"
+    ]
+  ]
+}

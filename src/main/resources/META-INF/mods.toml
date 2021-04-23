@@ -7,6 +7,7 @@ modId="skyfarm"
 version="1.0.0"
 displayName="Sky Farm"
 logoFile="skyfarm.png"
+itemIcon="skyfarm:natural_evaporator"
 credits="Thank you to Sky Factory 4 for being amazing"
 authors="NorthWestWind"
 description='''

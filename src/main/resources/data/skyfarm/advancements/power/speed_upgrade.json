@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/metallurgic_infuser",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.speed_upgrade.title"
+    },
+    "description": {
+      "translate": "advancement.power.speed_upgrade.description"
+    },
+    "icon": {
+      "item": "mekanism:upgrade_speed"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "upgrade_speed": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:upgrade_speed"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "upgrade_speed"
+    ]
+  ]
+}

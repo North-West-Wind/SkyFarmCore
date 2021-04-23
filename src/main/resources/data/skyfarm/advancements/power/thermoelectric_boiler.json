@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/fission_reactor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.thermoelectric_boiler.title"
+    },
+    "description": {
+      "translate": "advancement.power.thermoelectric_boiler.description"
+    },
+    "icon": {
+      "item": "mekanism:boiler_casing"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "boiler_casing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:boiler_casing"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "boiler_casing"
+    ]
+  ]
+}

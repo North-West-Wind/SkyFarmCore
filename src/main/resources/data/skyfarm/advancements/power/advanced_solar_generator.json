@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/solar_generator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.advanced_solar_generator.title"
+    },
+    "description": {
+      "translate": "advancement.power.advanced_solar_generator.description"
+    },
+    "icon": {
+      "item": "mekanism:advanced_solar_generator"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "advanced_solar_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:advanced_solar_generator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "advanced_solar_generator"
+    ]
+  ]
+}

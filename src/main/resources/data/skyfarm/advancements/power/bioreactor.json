@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.bioreactor.title"
+    },
+    "description": {
+      "translate": "advancement.power.bioreactor.description"
+    },
+    "icon": {
+      "item": "industrialforegoing:bioreactor"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bioreactor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:bioreactor"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bioreactor"
+    ]
+  ]
+}

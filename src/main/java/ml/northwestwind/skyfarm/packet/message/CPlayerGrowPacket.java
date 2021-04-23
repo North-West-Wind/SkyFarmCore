@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkEvent;
+import org.apache.logging.log4j.LogManager;
 
 // Thank you TwerkItMeal
 public class CPlayerGrowPacket implements IPacket {
@@ -19,8 +20,8 @@ public class CPlayerGrowPacket implements IPacket {
     public void handle(NetworkEvent.Context ctx) {
         ServerPlayerEntity player = ctx.getSender();
         if (player == null) return;
-        World world = player.getCommandSenderWorld();
-        if (!SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) world)) return;
+        ServerWorld world = player.getLevel();
+        if (!SkyblockChunkGenerator.isWorldSkyblock(world)) return;
         BlockPos blockPos = player.blockPosition();
         for (BlockPos blockPos1 : BlockPos.betweenClosed(blockPos.offset(-5, -5, -5), blockPos.offset(5, 5, 5))) {
             BlockState state = world.getBlockState(blockPos1);
@@ -32,7 +33,7 @@ public class CPlayerGrowPacket implements IPacket {
                 } else {
                     if (player.getRandom().nextInt(3) == 0) BoneMealItem.applyBonemeal(new ItemStack(Items.BONE_MEAL), world, blockPos1, player);
                 }
-                ((ServerWorld)world).sendParticles(player, ParticleTypes.HAPPY_VILLAGER, false, blockPos1.getX() + player.getRandom().nextDouble(), blockPos1.getY() + player.getRandom().nextDouble(), blockPos1.getZ() + player.getRandom().nextDouble(), 10, 0, 0, 0, 3);
+                world.sendParticles(player, ParticleTypes.HAPPY_VILLAGER, false, blockPos1.getX() + player.getRandom().nextDouble(), blockPos1.getY() + player.getRandom().nextDouble(), blockPos1.getZ() + player.getRandom().nextDouble(), 10, 0, 0, 0, 3);
             }
         }
     }

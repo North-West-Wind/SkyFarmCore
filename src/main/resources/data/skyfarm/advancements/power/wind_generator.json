@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/metallurgic_infuser",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.wind_generator.title"
+    },
+    "description": {
+      "translate": "advancement.power.wind_generator.description"
+    },
+    "icon": {
+      "item": "mekanism:wind_generator"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "wind_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:wind_generator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wind_generator"
+    ]
+  ]
+}

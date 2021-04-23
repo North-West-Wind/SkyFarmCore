@@ -1,0 +1,154 @@
+{
+  "parent": "skyfarm:power/energy_upgrade",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.ultimate_machines.title"
+    },
+    "description": {
+      "translate": "advancement.power.ultimate_machines.description"
+    },
+    "icon": {
+      "item": "mekanism:ultimate_injecting_factory"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ultimate_injecting_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_injecting_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_smelting_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_smelting_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_enriching_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_enriching_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_crushing_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_crushing_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_compressing_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_compressing_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_combining_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_combining_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_purifying_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_purifying_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_infusing_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_infusing_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    },
+    "ultimate_sawing_factory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:ultimate_sawing_factory",
+            "nbt": "{BlockEntityTag:{componentUpgrade:{upgrades:[{amount:8,type:0},{amount:8,type:1}]}}}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ultimate_injecting_factory"
+    ],
+    [
+      "ultimate_smelting_factory"
+    ],
+    [
+      "ultimate_enriching_factory"
+    ],
+    [
+      "ultimate_crushing_factory"
+    ],
+    [
+      "ultimate_compressing_factory"
+    ],
+    [
+      "ultimate_combining_factory"
+    ],
+    [
+      "ultimate_purifying_factory"
+    ],
+    [
+      "ultimate_infusing_factory"
+    ],
+    [
+      "ultimate_sawing_factory"
+    ]
+  ]
+}

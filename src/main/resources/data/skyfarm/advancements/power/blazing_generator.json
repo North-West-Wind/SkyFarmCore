@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/coal_generator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "rftoolspower"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.blazing_generator.title"
+    },
+    "description": {
+      "translate": "advancement.power.blazing_generator.description"
+    },
+    "icon": {
+      "item": "rftoolspower:blazing_generator"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "blazeGen": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "rftoolspower:blazing_generator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blazeGen"
+    ]
+  ]
+}

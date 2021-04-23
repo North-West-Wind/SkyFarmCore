@@ -1,14 +1,20 @@
 {
-  "parent": "skyfarm:parabox/root",
+  "parent": "skyfarm:power/polonium",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
   "display": {
     "title": {
-      "translate": "advancement.parabox.parabox.title"
+      "translate": "advancement.power.meka_tool.title"
     },
     "description": {
-      "translate": "advancement.parabox.parabox.description"
+      "translate": "advancement.power.meka_tool.description"
     },
     "icon": {
-      "item": "skyfarm:parabox"
+      "item": "mekanism:meka_tool"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "parabox": {
+    "meka_tool": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "skyfarm:parabox"
+            "item": "mekanism:meka_tool"
           }
         ]
       }
@@ -29,7 +35,7 @@
   },
   "requirements": [
     [
-      "parabox"
+      "meka_tool"
     ]
   ]
 }

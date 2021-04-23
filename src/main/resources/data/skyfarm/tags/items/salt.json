@@ -6,6 +6,7 @@
     }
   ],
   "values": [
+    "#forge:salt",
     "xlfoodmod:salt"
   ]
 }

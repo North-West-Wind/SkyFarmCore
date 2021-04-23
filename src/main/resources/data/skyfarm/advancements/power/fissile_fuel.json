@@ -1,0 +1,43 @@
+{
+  "parent": "skyfarm:power/fission_reactor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.fissile_fuel.title"
+    },
+    "description": {
+      "translate": "advancement.power.fissile_fuel.description"
+    },
+    "icon": {
+      "item": "mekanism:ultimate_chemical_tank",
+      "nbt": "{BlockEntityTag:{GasTanks:[{stored:{gasName:\"mekanism:fissile_fuel\",amount:512000}}]}}"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fissile_fuel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "skyfarm:chemical_tanks",
+            "nbt": "{BlockEntityTag:{GasTanks:[{stored:{gasName:\"mekanism:fissile_fuel\"}}]}}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fissile_fuel"
+    ]
+  ]
+}

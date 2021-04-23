@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/bioreactor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.biofuel_reactor.title"
+    },
+    "description": {
+      "translate": "advancement.power.biofuel_reactor.description"
+    },
+    "icon": {
+      "item": "industrialforegoing:biofuel_reactor"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "biofuel_reactor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:biofuel_reactor"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "biofuel_reactor"
+    ]
+  ]
+}

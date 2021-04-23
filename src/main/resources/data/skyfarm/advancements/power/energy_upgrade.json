@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/speed_upgrade",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.energy_upgrade.title"
+    },
+    "description": {
+      "translate": "advancement.power.energy_upgrade.description"
+    },
+    "icon": {
+      "item": "mekanism:upgrade_energy"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "upgrade_energy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:upgrade_energy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "upgrade_energy"
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/plutonium",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.reprocessed_fissile_fragment.title"
+    },
+    "description": {
+      "translate": "advancement.power.reprocessed_fissile_fragment.description"
+    },
+    "icon": {
+      "item": "mekanism:reprocessed_fissile_fragment"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "reprocessed_fissile_fragment": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:reprocessed_fissile_fragment"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reprocessed_fissile_fragment"
+    ]
+  ]
+}

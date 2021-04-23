@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/fission_reactor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.plutonium.title"
+    },
+    "description": {
+      "translate": "advancement.power.plutonium.description"
+    },
+    "icon": {
+      "item": "mekanism:pellet_plutonium"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pellet_plutonium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:pellet_plutonium"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pellet_plutonium"
+    ]
+  ]
+}

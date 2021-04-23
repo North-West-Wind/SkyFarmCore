@@ -19,22 +19,15 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Objects;
 
 public class ParaboxContainer extends Container {
-    private final boolean looping, backingUp;
     public ParaboxTileEntity tile;
 
     public ParaboxContainer(int id, PlayerInventory inv, PacketBuffer data) {
-        this(id, getTileEntity(inv, data), Objects.requireNonNull(data.readNbt()));
+        this(id, getTileEntity(inv, data));
     }
 
-    public ParaboxContainer(int id, ParaboxTileEntity tile, CompoundNBT nbt) {
-        this(id, tile, nbt.getBoolean("looping"), nbt.getBoolean("backingup"));
-    }
-
-    public ParaboxContainer(int id, ParaboxTileEntity tile, boolean looping, boolean backingUp) {
+    public ParaboxContainer(int id, ParaboxTileEntity tile) {
         super(RegistryEvents.ContainerTypes.PARABOX, id);
-        this.looping = looping;
         this.tile = tile;
-        this.backingUp = backingUp;
     }
 
     private static ParaboxTileEntity getTileEntity(PlayerInventory inv, PacketBuffer data) {
@@ -62,10 +55,10 @@ public class ParaboxContainer extends Container {
     }
 
     public boolean isLooping() {
-        return looping;
+        return tile.isWorldInLoop();
     }
 
     public boolean isBackingUp() {
-        return backingUp;
+        return tile.isBackingUp();
     }
 }

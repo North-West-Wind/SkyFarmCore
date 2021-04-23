@@ -1,0 +1,80 @@
+{
+  "parent": "skyfarm:power/polonium",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.meka_suit.title"
+    },
+    "description": {
+      "translate": "advancement.power.meka_suit.description"
+    },
+    "icon": {
+      "item": "mekanism:mekasuit_bodyarmor"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:mekasuit_helmet"
+          }
+        ]
+      }
+    },
+    "body": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:mekasuit_bodyarmor"
+          }
+        ]
+      }
+    },
+    "legs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:mekasuit_pants"
+          }
+        ]
+      }
+    },
+    "feet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:mekasuit_boots"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "head"
+    ],
+    [
+      "body"
+    ],
+    [
+      "legs"
+    ],
+    [
+      "feet"
+    ]
+  ]
+}

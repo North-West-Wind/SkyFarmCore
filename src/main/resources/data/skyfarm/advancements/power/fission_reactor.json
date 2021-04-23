@@ -1,0 +1,54 @@
+{
+  "parent": "skyfarm:power/metallurgic_infuser",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.fission_reactor.title"
+    },
+    "description": {
+      "translate": "advancement.power.fission_reactor.description"
+    },
+    "icon": {
+      "item": "mekanism:fission_reactor_casing"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fission_reactor_casing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fission_reactor_casing"
+          }
+        ]
+      }
+    },
+    "fission_reactor_port": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fission_reactor_port"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fission_reactor_casing"
+    ],
+    [
+      "fission_reactor_port"
+    ]
+  ]
+}

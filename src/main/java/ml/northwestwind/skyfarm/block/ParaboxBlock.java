@@ -67,13 +67,7 @@ public class ParaboxBlock extends Block {
             if (data.isUsingParabox()) player.displayClientMessage(new TranslationTextComponent("usage.skyfarm.parabox"), true);
             else {
                 ParaboxTileEntity parabox = (ParaboxTileEntity) tileentity;
-                NetworkHooks.openGui((ServerPlayerEntity) player, parabox, packetBuffer -> {
-                    packetBuffer.writeBlockPos(pos);
-                    CompoundNBT nbt = new CompoundNBT();
-                    nbt.putBoolean("looping", parabox.isWorldInLoop());
-                    nbt.putBoolean("backingup", Backups.INSTANCE.doingBackup.isRunning());
-                    packetBuffer.writeNbt(nbt);
-                });
+                NetworkHooks.openGui((ServerPlayerEntity) player, parabox, packetBuffer -> packetBuffer.writeBlockPos(pos));
                 data.setUsingParabox(true);
                 data.setDirty();
             }

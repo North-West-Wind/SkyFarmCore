@@ -1,0 +1,67 @@
+{
+  "parent": "skyfarm:power/polonium",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.fusion_reactor.title"
+    },
+    "description": {
+      "translate": "advancement.power.fusion_reactor.description"
+    },
+    "icon": {
+      "item": "mekanism:fusion_reactor_controller"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fusion_reactor_controller": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fusion_reactor_controller"
+          }
+        ]
+      }
+    },
+    "fusion_reactor_port": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fusion_reactor_port"
+          }
+        ]
+      }
+    },
+    "fusion_reactor_frame": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fusion_reactor_frame"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fusion_reactor_controller"
+    ],
+    [
+      "fusion_reactor_port"
+    ],
+    [
+      "fusion_reactor_frame"
+    ]
+  ]
+}

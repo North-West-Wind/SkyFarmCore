@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:storage/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "indsutrialforegoing"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.indsutrialforegoing.title"
+    },
+    "description": {
+      "translate": "advancement.storage.indsutrialforegoing.description"
+    },
+    "icon": {
+      "item": "indsutrialforegoing:resourceful_furnace"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:chest"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chest"
+    ]
+  ]
+}

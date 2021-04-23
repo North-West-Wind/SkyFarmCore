@@ -1,0 +1,84 @@
+{
+  "parent": "skyfarm:power/fissile_fuel",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.max_fission_reactor.title"
+    },
+    "description": {
+      "translate": "advancement.power.max_fission_reactor.description"
+    },
+    "icon": {
+      "item": "mekanism:fission_fuel_assembly"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fission_reactor_casing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fission_reactor_casing",
+            "count": 712
+          }
+        ]
+      }
+    },
+    "fission_fuel_assembly": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:fission_fuel_assembly",
+            "count": 960
+          }
+        ]
+      }
+    },
+    "control_rod_assembly": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:control_rod_assembly",
+            "count": 64
+          }
+        ]
+      }
+    },
+    "reactor_glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:reactor_glass",
+            "count": 784
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fission_reactor_casing"
+    ],
+    [
+      "fission_fuel_assembly"
+    ],
+    [
+      "control_rod_assembly"
+    ],
+    [
+      "reactor_glass"
+    ]
+  ]
+}

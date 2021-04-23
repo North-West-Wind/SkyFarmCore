@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:power/metallurgic_infuser",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.electrolytic_separator.title"
+    },
+    "description": {
+      "translate": "advancement.power.electrolytic_separator.description"
+    },
+    "icon": {
+      "item": "mekanism:electrolytic_separator"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "electrolytic_separator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:electrolytic_separator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "electrolytic_separator"
+    ]
+  ]
+}

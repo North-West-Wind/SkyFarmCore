@@ -41,7 +41,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
     private final ParaboxItemHandler inventory = new ParaboxItemHandler(1);
     private double ticksLeft = 12000, efficiency;
     private int paraboxLevel, energy;
-    private boolean isInLoop;
+    private boolean isInLoop, isBackingUp;
     private Item wantingItem;
 
     public ParaboxTileEntity(TileEntityType<?> type) {
@@ -56,7 +56,13 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         if (!(level instanceof ServerWorld)) return isInLoop;
         SkyblockData data = SkyblockData.get((ServerWorld) level);
         isInLoop = data.isInLoop();
-        return data.isInLoop();
+        return isInLoop;
+    }
+
+    public boolean isBackingUp() {
+        if (!(level instanceof ServerWorld)) return isInLoop;
+        isBackingUp = Backups.INSTANCE.doingBackup.isRunning();
+        return isBackingUp;
     }
 
     public boolean isUsingThis() {
@@ -169,7 +175,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
     @Nullable
     @Override
     public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-        return new ParaboxContainer(id, this, isWorldInLoop(), Backups.INSTANCE.doingBackup.isRunning());
+        return new ParaboxContainer(id, this);
     }
 
     public CompoundNBT saveAdditional(CompoundNBT nbt) {
@@ -177,6 +183,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         nbt.putDouble("efficiency", efficiency);
         nbt.putInt("level", paraboxLevel);
         nbt.putBoolean("looping", isWorldInLoop());
+        nbt.putBoolean("backingUp", Backups.INSTANCE.doingBackup.isRunning());
         if (wantingItem != null) nbt.putString("wantingItem", wantingItem.getRegistryName().toString());
         return nbt;
     }
@@ -186,6 +193,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         efficiency = nbt.getDouble("efficiency");
         paraboxLevel = nbt.getInt("level");
         isInLoop = nbt.getBoolean("looping");
+        isBackingUp = nbt.getBoolean("backingUp");
         String id = nbt.getString("wantingItem");
         if (!id.equals("")) wantingItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
     }
