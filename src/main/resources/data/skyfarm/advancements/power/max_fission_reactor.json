@@ -80,5 +80,8 @@
     [
       "reactor_glass"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

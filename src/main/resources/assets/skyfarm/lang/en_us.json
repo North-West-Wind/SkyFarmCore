@@ -32,6 +32,7 @@
   "usage.skyfarm.parabox": "Someone else is using a parabox.",
 
   "points.gain": "+%d Point, %d in Total",
+  "points.set": "Set Point to %d",
 
   "button.parabox.activate": "Activate",
   "button.parabox.deactivate": "Deactivate",

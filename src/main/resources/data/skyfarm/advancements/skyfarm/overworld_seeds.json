@@ -401,5 +401,8 @@
     [
       "beetroot"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

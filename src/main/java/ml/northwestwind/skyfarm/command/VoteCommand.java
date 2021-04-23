@@ -6,6 +6,7 @@ import com.mojang.brigadier.context.CommandContext;
 import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.packet.message.CVoteActivateParaboxPacket;
 import ml.northwestwind.skyfarm.packet.message.CVoteDeactivateParaboxPacket;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 
@@ -23,12 +24,14 @@ public class VoteCommand {
     }
 
     private static int voteParaboxActivate(CommandContext<CommandSource> context) {
+        if (!(context.getSource().getEntity() instanceof ClientPlayerEntity)) return 0;
         boolean voteFor = BoolArgumentType.getBool(context, "yesNo");
         SkyFarmPacketHandler.INSTANCE.sendToServer(new CVoteActivateParaboxPacket(voteFor));
         return 1;
     }
 
     private static int voteParaboxDeactivate(CommandContext<CommandSource> context) {
+        if (!(context.getSource().getEntity() instanceof ClientPlayerEntity)) return 0;
         boolean voteFor = BoolArgumentType.getBool(context, "yesNo");
         SkyFarmPacketHandler.INSTANCE.sendToServer(new CVoteDeactivateParaboxPacket(voteFor));
         return 1;

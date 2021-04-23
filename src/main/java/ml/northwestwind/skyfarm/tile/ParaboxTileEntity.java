@@ -148,7 +148,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         SkyblockData data = SkyblockData.get(world);
         data.addPoint(1);
         data.setDirty();
-        world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", 1, data.getPoint()), ChatType.SYSTEM, Util.NIL_UUID);
+        world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", 1, data.getPoint()).setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)), ChatType.SYSTEM, Util.NIL_UUID);
     }
 
     private int getParaboxLevel() {

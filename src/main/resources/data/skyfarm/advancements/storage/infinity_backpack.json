@@ -39,5 +39,8 @@
     [
       "infinity_backpack"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }
