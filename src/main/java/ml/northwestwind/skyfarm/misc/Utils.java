@@ -1,11 +1,16 @@
 package ml.northwestwind.skyfarm.misc;
 
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Set;
@@ -34,5 +39,11 @@ public class Utils {
 
     public static Vector3d blockPosToVector3d(BlockPos pos) {
         return new Vector3d(pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    @Nonnull
+    public static Item getByModAndName(String modid, String name) {
+        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(modid, name));
+        return item == null ? Items.AIR : item;
     }
 }

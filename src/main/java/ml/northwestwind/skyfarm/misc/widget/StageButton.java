@@ -8,39 +8,63 @@ import net.darkhax.gamestages.GameStageHelper;
 import net.darkhax.gamestages.data.GameStageSaveHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraftforge.fml.client.gui.GuiUtils;
 import org.apache.commons.lang3.tuple.Triple;
+
+import java.util.List;
 
 public class StageButton extends ItemButton {
     private final String stage;
     private final int point;
+    private final List<String> required;
 
-    public StageButton(int x, int y, int width, int height, int parentWidth, int parentHeight, Triple<String, Item, Integer> triple) {
+    public StageButton(int x, int y, int width, int height, int parentWidth, int parentHeight, String stage, Triple<Item, Integer, List<String>> triple) {
         super(x, y, width, height, button -> {
-            if (GameStageScreen.points < triple.getRight()) return;
-            SkyFarmPacketHandler.INSTANCE.sendToServer(new CAddStagePacket(triple.getLeft()));
+            if (GameStageScreen.points < triple.getMiddle()) return;
+            SkyFarmPacketHandler.INSTANCE.sendToServer(new CAddStagePacket(stage));
             button.active = false;
         }, (button, matrixStack, mouseX, mouseY) -> {
             Minecraft minecraft = Minecraft.getInstance();
-            GuiUtils.drawHoveringText(matrixStack, Lists.newArrayList(
+            List<ITextComponent> tooltip = Lists.newArrayList(
                     new TranslationTextComponent("stages.skyfarm." + triple.getLeft() + ".title").setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
                     new StringTextComponent("\n\n"),
                     new TranslationTextComponent("stages.skyfarm." + triple.getLeft() + ".description").setStyle(Style.EMPTY.applyFormat(TextFormatting.GRAY)),
-                    new StringTextComponent("\n\n"),
-                    minecraft.player != null && GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), triple.getLeft()) ?
-                            new TranslationTextComponent("stages.skyfarm.known").setStyle(Style.EMPTY.applyFormat(TextFormatting.AQUA)) :
-                            new TranslationTextComponent("stages.skyfarm.points", triple.getRight()).setStyle(Style.EMPTY.applyFormat(GameStageScreen.points < triple.getRight() ? TextFormatting.RED : TextFormatting.GREEN))
-            ), mouseX, mouseY, parentWidth, parentHeight, -1, minecraft.font);
-        }, triple.getMiddle());
-        this.stage = triple.getLeft();
-        this.point = triple.getRight();
+                    new StringTextComponent("\n\n"));
+            addTooltip(tooltip, stage, triple.getRight(), triple.getMiddle());
+            GuiUtils.drawHoveringText(matrixStack, tooltip, mouseX, mouseY, parentWidth, parentHeight, -1, minecraft.font);
+        }, triple.getLeft());
+        this.stage = stage;
+        this.point = triple.getMiddle();
+        this.required = triple.getRight();
+    }
+    
+    private static void addTooltip(List<ITextComponent> tooltip, String stage, List<String> required, int point) {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), stage)) tooltip.add(new TranslationTextComponent("stages.skyfarm.known").setStyle(Style.EMPTY.applyFormat(TextFormatting.AQUA)));
+        else {
+            for (String s : required) {
+                boolean hasStage = GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), s);
+                tooltip.add(new TranslationTextComponent("stages.skyfarm.require", new TranslationTextComponent("stages.skyfarm."+s+".title").getString()).setStyle(Style.EMPTY.applyFormat(hasStage ? TextFormatting.GREEN : TextFormatting.RED)));
+                tooltip.add(new StringTextComponent("\n"));
+            }
+            boolean hasPoints = GameStageScreen.points >= point;
+            tooltip.add(new TranslationTextComponent("stages.skyfarm.points", point).setStyle(Style.EMPTY.applyFormat(hasPoints ? TextFormatting.GREEN : TextFormatting.RED)));
+        }
+    }
+    
+    private boolean isClickable() {
+        boolean noStage = !GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), stage);
+        boolean hasPoints = GameStageScreen.points >= point;
+        boolean hasRequired = true;
+        for (String s : required) if (!GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), s)) {
+            hasRequired = false;
+            break;
+        }
+        return noStage && hasPoints && hasRequired;
     }
 
     public void tick() {
-        this.active = GameStageScreen.points >= point && !GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), stage);
+        this.active = isClickable();
     }
 }

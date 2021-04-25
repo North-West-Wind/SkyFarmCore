@@ -396,8 +396,9 @@
   "advancement.farming.insanium_farmland.title": "Still Need Fertilizer",
   "advancement.farming.insanium_farmland.description": "Craft some Insanium Farmland.",
 
-  "stages.skyfarm.points": "Points Required: %d",
+  "stages.skyfarm.points": "Points: %d",
   "stages.skyfarm.known": "This stage is already known.",
+  "stages.skyfarm.require": "Requires: %s",
 
   "stages.skyfarm..title": "",
   "stages.skyfarm..description": ""

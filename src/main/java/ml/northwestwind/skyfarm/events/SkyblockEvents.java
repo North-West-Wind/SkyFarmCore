@@ -24,6 +24,7 @@ import net.minecraft.network.play.server.SEntityVelocityPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
@@ -48,7 +49,8 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
 public class SkyblockEvents {
     public static final Map<UUID, Integer> buildingSpeed = Maps.newHashMap();
-    public static final List<UUID> running = Lists.newArrayList(), rising = Lists.newArrayList();
+    public static final Map<UUID, Vector3d> running = Maps.newHashMap();
+    public static final List<UUID> rising = Lists.newArrayList();
     public static final RegistryKey<World> UNDERGARDEN = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("undergarden", "undergarden"));
     public static final RegistryKey<World> LOST_CITIES = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("lostcities", "lostcity"));
     public static final RegistryKey<World> TWILIGHT_FOREST = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("twilightforest", "twilightforest"));
@@ -168,7 +170,7 @@ public class SkyblockEvents {
 
     private static void speedyWorldWarp(RegistryKey<World> dim1, RegistryKey<World> dim2, PlayerEntity player) {
         if (!player.level.dimension().equals(dim1) && !player.level.dimension().equals(dim2)) return;
-        if ((player.isCrouching() || !player.isOnGround()) && running.contains(player.getUUID())) {
+        if ((player.isCrouching() || !player.isOnGround()) && running.containsKey(player.getUUID())) {
             player.displayClientMessage(new TranslationTextComponent("cancelled.skyfarm.void_shifter").setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), true);
             running.remove(player.getUUID());
             return;
@@ -186,13 +188,13 @@ public class SkyblockEvents {
             int tick = buildingSpeed.get(player.getUUID());
             if (tick >= 120) {
                 SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SLaunchPlayerExplosionPacket(player.blockPosition(), player.level.dimension()));
-                running.add(player.getUUID());
+                running.put(player.getUUID(), player.position());
             }
             buildingSpeed.remove(player.getUUID());
-        } else if (running.contains(player.getUUID())) {
+        } else if (running.containsKey(player.getUUID())) {
             player.setDeltaMovement(player.getDeltaMovement().add(player.getLookAngle()));
             ((ServerPlayerEntity) player).connection.send(new SEntityVelocityPacket(player));
-            if (player.getDeltaMovement().length() > 6.9) {
+            if (player.position().distanceTo(running.get(player.getUUID())) >= 100) {
                 if (player.level.dimension().equals(dim1)) {
                     ServerWorld world = ((ServerWorld) player.level).getServer().getLevel(dim2);
                     if (world != null) player.changeDimension(world, new HorizontalTeleporter());
