@@ -27,38 +27,3 @@ An essential mod for NorthWestWind's Sky Farm modpack.
     versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
-
-[[dependencies.skyfarm]]
-    modId="mysticalagriculture"
-    mandatory=false
-    versionRange="[4.1.7,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.skyfarm]]
-    modId="gamestages"
-    mandatory=false
-    versionRange="[7.1.2,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.skyfarm]]
-    modId="undergarden"
-    mandatory=false
-    versionRange="[0.5.0,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.skyfarm]]
-    modId="twilightforest"
-    mandatory=false
-    versionRange="[4.0.426,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.skyfarm]]
-    modId="lostcities"
-    mandatory=false
-    versionRange="[4.0.7,)"
-    ordering="AFTER"
-    side="BOTH"
