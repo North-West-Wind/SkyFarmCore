@@ -22,7 +22,7 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "personal_chest": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "personal_chest"
     ]
   ]
 }

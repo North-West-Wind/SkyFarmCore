@@ -1,0 +1,172 @@
+{
+  "parent": "skyfarm:farming/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "animalcrops"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.farming.mattock.title"
+    },
+    "description": {
+      "translate": "advancement.farming.root.description"
+    },
+    "icon": {
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:cow\"}"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bee": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:bee\"}"
+    }]}},
+    "cat": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:cat\"}"
+    }]}},
+    "chicken": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:chicken\"}"
+    }]}},
+    "cow": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:cow\"}"
+    }]}},
+    "donkey": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:donkey\"}"
+    }]}},
+    "fox": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:fox\"}"
+    }]}},
+    "horse": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:horse\"}"
+    }]}},
+    "llama": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:llama\"}"
+    }]}},
+    "mooshroom": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:mooshroom\"}"
+    }]}},
+    "ocelot": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:ocelot\"}"
+    }]}},
+    "panda": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:panda\"}"
+    }]}},
+    "parrot": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:parrot\"}"
+    }]}},
+    "pig": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:pig\"}"
+    }]}},
+    "polar_bear": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:polar_bear\"}"
+    }]}},
+    "rabbit": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:rabbit\"}"
+    }]}},
+    "sheep": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:sheep\"}"
+    }]}},
+    "villager": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:villager\"}"
+    }]}},
+    "wolf": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:seeds",
+      "nbt": "{entity:\"minecraft:wolf\"}"
+    }]}},
+    "cod": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:cod\"}"
+    }]}},
+    "dolphin": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:dolphin\"}"
+    }]}},
+    "pufferfish": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:pufferfish\"}"
+    }]}},
+    "salmon": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:salmon\"}"
+    }]}},
+    "squid": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:squid\"}"
+    }]}},
+    "tropical_fish": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:tropical_fish\"}"
+    }]}},
+    "turtle": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:anemonemal",
+      "nbt": "{entity:\"minecraft:turtle\"}"
+    }]}},
+    "hoglin": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:spores",
+      "nbt": "{entity:\"minecraft:hoglin\"}"
+    }]}},
+    "piglin": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:spores",
+      "nbt": "{entity:\"minecraft:piglin\"}"
+    }]}},
+    "strider": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{
+      "item": "animalcrops:spores",
+      "nbt": "{entity:\"minecraft:strider\"}"
+    }]}}
+  },
+  "requirements": [
+    [ "bee" ],
+    [ "cat" ],
+    [ "chicken" ],
+    [ "cow" ],
+    [ "donkey" ],
+    [ "fox" ],
+    [ "horse" ],
+    [ "llama" ],
+    [ "mooshroom" ],
+    [ "ocelot" ],
+    [ "panda" ],
+    [ "parrot" ],
+    [ "pig" ],
+    [ "polar_bear" ],
+    [ "rabbit" ],
+    [ "sheep" ],
+    [ "villager" ],
+    [ "wolf" ],
+    [ "cod" ],
+    [ "dolphin" ],
+    [ "pufferfish" ],
+    [ "salmon" ],
+    [ "squid" ],
+    [ "tropical_fish" ],
+    [ "turtle" ],
+    [ "hoglin" ],
+    [ "piglin" ],
+    [ "strider" ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

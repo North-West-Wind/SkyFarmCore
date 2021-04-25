@@ -1,20 +1,21 @@
 {
-  "parent": "skyfarm:storage/link_cable",
+  "parent": "skyfarm:farming/root",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "storagenetwork"
+      "modid": "tconstruct"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.filtered_link_cable.title"
+      "translate": "advancement.farming.mattock.title"
     },
     "description": {
-      "translate": "advancement.storage.filtered_link_cable.description"
+      "translate": "advancement.farming.root.description"
     },
     "icon": {
-      "item": "storagenetwork:filter_kabel"
+      "item": "tconstruct:mattock",
+      "nbt": "{tic_materials:[\"tconstruct:iron\",\"tconstruct:wood\",\"tconstruct:cobalt\"]}"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +23,12 @@
     "hidden": false
   },
   "criteria": {
-    "filter_kabel": {
+    "mattock": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "storagenetwork:filter_kabel"
+            "item": "tconstruct:mattock"
           }
         ]
       }
@@ -35,7 +36,7 @@
   },
   "requirements": [
     [
-      "filter_kabel"
+      "mattock"
     ]
   ]
 }

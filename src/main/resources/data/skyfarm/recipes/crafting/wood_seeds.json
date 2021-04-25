@@ -13,7 +13,7 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:saplings"
+      "tag": "minecraft:saplings"
     },
     "S": {
       "item": "mysticalagriculture:dirt_seeds"

@@ -22,7 +22,7 @@
     "hidden": false
   },
   "criteria": {
-    "import": {
+    "import_kabel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -32,7 +32,7 @@
         ]
       }
     },
-    "export": {
+    "export_kabel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -45,10 +45,10 @@
   },
   "requirements": [
     [
-      "import"
+      "import_kabel"
     ],
     [
-      "export"
+      "export_kabel"
     ]
   ]
 }

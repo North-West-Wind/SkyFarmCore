@@ -1,0 +1,102 @@
+{
+  "parent": "skyfarm:power/bioreactor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.infinitys.title"
+    },
+    "description": {
+      "translate": "advancement.storage.infinitys.description"
+    },
+    "icon": {
+      "item": "industrialforegoing:infinity_drill",
+      "nbt": "{CanCharge:1,Energy:9223372036854775807,Selected:\"ARTIFACT\",Special:1}"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "backpack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:infinity_backpack",
+            "nbt": "{Selected:ARTIFACT}"
+          }
+        ]
+      }
+    },
+    "trident": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:infinity_trident",
+            "nbt": "{Selected:ARTIFACT}"
+          }
+        ]
+      }
+    },
+    "drill": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:infinity_drill",
+            "nbt": "{Selected:ARTIFACT}"
+          }
+        ]
+      }
+    },
+    "saw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:infinity_saw",
+            "nbt": "{Selected:ARTIFACT}"
+          }
+        ]
+      }
+    },
+    "hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "industrialforegoing:infinity_hammer",
+            "nbt": "{Selected:ARTIFACT}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "backpack"
+    ],
+    [
+      "trident"
+    ],
+    [
+      "drill"
+    ],
+    [
+      "saw"
+    ],
+    [
+      "hammer"
+    ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

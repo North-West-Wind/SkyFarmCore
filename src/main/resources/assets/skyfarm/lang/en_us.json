@@ -11,9 +11,9 @@
   "item.skyfarm.stone_variator": "Stone Variator",
   "item.skyfarm.overworld_void_shifter_nether": "Overworld Void Shifter - Nether",
   "item.skyfarm.overworld_sky_shifter_end": "Overworld Sky Shifter - End",
-  "item.skyfarm.overworld_void_shifter_ug": "Overworld Void Shifter - Undergarden",
-  "item.skyfarm.overworld_sky_shifter_lc": "Overworld Sky Shifter - Lost Cities",
-  "item.skyfarm.overworld_sky_shifter_tf": "Overworld Sky Shifter - Twilight Forest",
+  "item.skyfarm.overworld_void_shifter_ug": "Overworld Spatial Shifter - Undergarden",
+  "item.skyfarm.overworld_sky_shifter_lc": "Overworld Spatial Shifter - Lost Cities",
+  "item.skyfarm.overworld_sky_shifter_tf": "Overworld Spatial Shifter - Twilight Forest",
 
   "itemGroup.skyfarm": "Sky Farm",
 
@@ -30,6 +30,8 @@
   "usage.skyfarm.stone_variator": "Lava is required under the block.",
   "usage.skyfarm.void_shifter": "Release crouch to launch yourself.",
   "usage.skyfarm.parabox": "Someone else is using a parabox.",
+
+  "cancelled.skyfarm.void_shifter": "Launch cancelled.",
 
   "points.gain": "+%d Point, %d in Total",
   "points.set": "Set Point to %d",
@@ -136,8 +138,6 @@
   "advancement.skyfarm.diamond_seeds.description": "After some obsidian madness, you can mix them into diamond seeds!",
   "advancement.skyfarm.emerald_seeds.title": "Crashing Economy",
   "advancement.skyfarm.emerald_seeds.description": "You are literally growing emeralds. The market will crash very soon.",
-  "advancement.skyfarm.market.title": "Trading with Non-Villager",
-  "advancement.skyfarm.market.description": "Craft the market from Farming For Blockheads. You can get different kind of seeds their.",
   "advancement.skyfarm.nether.title": "Next Stop: Nether",
   "advancement.skyfarm.nether.description": "Portals don't work here. Instead, you jump into the void! Get yourself a pair of Overworld Void Shifter - Nether and that should work.",
   "advancement.skyfarm.dye_seeds.title": "Rainbow",
@@ -265,7 +265,7 @@
   "advancement.storage.infinity_backpack.description": "Upgrade your IF Inifinity Backpack to highest level, so you can store 2^31 items.",
 
   "advancement.nether.root.title": "Sky Farm Nether Guide",
-  "advancement.nether.root.description": "The Nether generates very similar to the End, with a huge island in the middle and more at far away.",
+  "advancement.nether.root.description": "The Nether isn't what you know. It is pretty flat, and has no glowstone.",
   "advancement.nether.netherrack.title": "Hot Rock",
   "advancement.nether.netherrack.description": "How can you not get netherrack while in the Nether?",
   "advancement.nether.glowstone.title": "Where's My Glowstone?",
@@ -307,8 +307,8 @@
   "advancement.exploration.root.description": "This is not yet the end! There are more dimensions to explore!",
   "advancement.exploration.undergarden.title": "Not the Betweenlands",
   "advancement.exploration.undergarden.description": "The Undergarden is somewhere between the Overworld and the Nether. Use a void shifter.",
-  "advancement.exploration.skylight_forest.title": "Skylight Forest",
-  "advancement.exploration.skylight_forest.description": "Twilight Forest Skyblock version.",
+  "advancement.exploration.skylight_forest.title": "Skylight Forest Broke",
+  "advancement.exploration.skylight_forest.description": "Skylight Forest is originally planned for this pack. Unfortunately, it does not generate correctly.",
   "advancement.exploration.lost_cities.title": "A man has fallen into the Void in Lost Cities",
   "advancement.exploration.lost_cities.description": "You will find cities in Lost Cities, but no one is there.",
 
@@ -380,6 +380,21 @@
   "advancement.power.bioreactor.description": "More biofule can be generated with different types of organic substances.",
   "advancement.power.biofuel_generator.title": "Organic Power Generation",
   "advancement.power.biofuel_generator.description": "If you use the Bioreactor at its maximum efficiency, you can actually generate more than the one from Mekanism.",
+  "advancement.power.infinitys.title": "The Infinity Series",
+  "advancement.power.infinitys.description": "Get yourself all of the Infinity tools upgraded to maximum level.",
+
+  "advancement.farming.root.title": "Irrigation Dedication",
+  "advancement.farming.root.description": "This advancement tab talks about farming.",
+  "advancement.farming.market.title": "Trading with Non-Villager",
+  "advancement.farming.market.description": "Craft the market from Farming For Blockheads. You can get different kind of seeds their.",
+  "advancement.farming.crops.title": "Pam's Salad 2",
+  "advancement.farming.crops.description": "Gather all vanilla crops, as well as the ones from Pam's HarvestCraft 2. Hint: Type $crops in JEI.",
+  "advancement.farming.mattock.title": "Farming Mattocks",
+  "advancement.farming.mattock.description": "Make a Mattock from Tinker's Construct.",
+  "advancement.farming.animals.title": "Lives come from Ground",
+  "advancement.farming.animals.description": "Obtain all of the animals' seeds.",
+  "advancement.farming.insanium_farmland.title": "Still Need Fertilizer",
+  "advancement.farming.insanium_farmland.description": "Craft some Insanium Farmland.",
 
   "stages.skyfarm.points": "Points Required: %d",
   "stages.skyfarm.known": "This stage is already known.",

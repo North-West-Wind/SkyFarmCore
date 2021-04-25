@@ -14,7 +14,7 @@
       "translate": "advancement.storage.fluid_storage_disk.description"
     },
     "icon": {
-      "item": "refinedstorage:64k_storage_disk"
+      "item": "refinedstorage:64k_storage_part"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,7 +22,7 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "small_fluid_storage_parts": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "small_fluid_storage_parts"
     ]
   ]
 }

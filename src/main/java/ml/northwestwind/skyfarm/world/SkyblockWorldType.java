@@ -52,7 +52,7 @@ public class SkyblockWorldType extends ForgeWorldType {
                         new ScalingSettings(3, 2, 80, 10),
                         new SlideSettings(-3000, 64, -46),
                         new SlideSettings(-30, 7, 1),
-                        1, 1, 0, 0, true, false, true, false),
+                        1, 1, 0, 0, true, false, false, false),
                 Blocks.NETHERRACK.defaultBlockState(),
                 Blocks.LAVA.defaultBlockState(),
                 -10, -10, 10, false
@@ -73,9 +73,7 @@ public class SkyblockWorldType extends ForgeWorldType {
         @Override
         public ChunkGenerator createChunkGenerator(Registry<Biome> biomeRegistry, Registry<DimensionSettings> settings, long seed, String generatorSettings) {
             return new SkyblockChunkGenerator(new OverworldBiomeProvider(seed, false, false, biomeRegistry), seed,
-                    () -> {
-                        return settings.getOrThrow(DimensionSettings.OVERWORLD);
-                    });
+                    () -> settings.getOrThrow(DimensionSettings.OVERWORLD));
         }
 
         @Override

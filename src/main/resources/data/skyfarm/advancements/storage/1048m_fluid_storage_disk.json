@@ -22,7 +22,7 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "1048576k_fluid_storage_part": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "1048576k_fluid_storage_part"
     ]
   ]
 }

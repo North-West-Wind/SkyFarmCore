@@ -2,6 +2,8 @@ package ml.northwestwind.skyfarm.misc;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 import java.time.Duration;
@@ -28,5 +30,9 @@ public class Utils {
             seconds %= 60;
             return String.format("%02d:%02d", minutes, seconds);
         }
+    }
+
+    public static Vector3d blockPosToVector3d(BlockPos pos) {
+        return new Vector3d(pos.getX(), pos.getY(), pos.getZ());
     }
 }

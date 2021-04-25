@@ -22,7 +22,7 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "crafting_remote": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "crafting_remote"
     ]
   ]
 }

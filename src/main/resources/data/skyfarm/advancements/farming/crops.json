@@ -1,0 +1,1791 @@
+{
+  "parent": "skyfarm:farming/market",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2crops"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2trees"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.farming.crops.title"
+    },
+    "description": {
+      "translate": "advancement.farming.crops.description"
+    },
+    "icon": {
+      "item": "pamhc2trees:starfruititem"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "pumpkin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:pumpkin"
+          }
+        ]
+      }
+    },
+    "apple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:apple"
+          }
+        ]
+      }
+    },
+    "wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    },
+    "cocoa": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:cocoa_beans"
+          }
+        ]
+      }
+    },
+    "melon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ]
+      }
+    },
+    "wart": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:nether_wart"
+          }
+        ]
+      }
+    },
+    "carrot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:carrot"
+          }
+        ]
+      }
+    },
+    "potato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:potato"
+          }
+        ]
+      }
+    },
+    "chorus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:chorus_fruit"
+          }
+        ]
+      }
+    },
+    "beetroot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:beetroot"
+          }
+        ]
+      }
+    },
+    "berries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:sweet_berries"
+          }
+        ]
+      }
+    },
+    "amaranth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:amaranthitem"
+          }
+        ]
+      }
+    },
+    "barley": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:barleyitem"
+          }
+        ]
+      }
+    },
+    "bean": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:beanitem"
+          }
+        ]
+      }
+    },
+    "chickpea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:chickpeaitem"
+          }
+        ]
+      }
+    },
+    "corn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cornitem"
+          }
+        ]
+      }
+    },
+    "lentil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:lentilitem"
+          }
+        ]
+      }
+    },
+    "millet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:milletitem"
+          }
+        ]
+      }
+    },
+    "oats": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:oatsitem"
+          }
+        ]
+      }
+    },
+    "quinoa": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:quinoaitem"
+          }
+        ]
+      }
+    },
+    "rice": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:riceitem"
+          }
+        ]
+      }
+    },
+    "rye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:ryeitem"
+          }
+        ]
+      }
+    },
+    "soybean": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:soybeanitem"
+          }
+        ]
+      }
+    },
+    "cotton": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cottonitem"
+          }
+        ]
+      }
+    },
+    "flax": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:flaxitem"
+          }
+        ]
+      }
+    },
+    "kenaf": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:kenafitem"
+          }
+        ]
+      }
+    },
+    "jute": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:juteitem"
+          }
+        ]
+      }
+    },
+    "sisal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:sisalitem"
+          }
+        ]
+      }
+    },
+    "artichoke": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:artichokeitem"
+          }
+        ]
+      }
+    },
+    "asparagus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:asparagusitem"
+          }
+        ]
+      }
+    },
+    "bellpepper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:bellpepperitem"
+          }
+        ]
+      }
+    },
+    "broccoli": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:broccoliitem"
+          }
+        ]
+      }
+    },
+    "brusselsprout": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:brusselsproutitem"
+          }
+        ]
+      }
+    },
+    "cabbage": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cabbageitem"
+          }
+        ]
+      }
+    },
+    "cauliflower": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:caulifloweritem"
+          }
+        ]
+      }
+    },
+    "celery": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:celeryitem"
+          }
+        ]
+      }
+    },
+    "chilipepper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:chilipepperitem"
+          }
+        ]
+      }
+    },
+    "cucumber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cucumberitem"
+          }
+        ]
+      }
+    },
+    "eggplant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:eggplantitem"
+          }
+        ]
+      }
+    },
+    "kale": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:kaleitem"
+          }
+        ]
+      }
+    },
+    "lettuce": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:lettuceitem"
+          }
+        ]
+      }
+    },
+    "okra": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:okraitem"
+          }
+        ]
+      }
+    },
+    "peas": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:peasitem"
+          }
+        ]
+      }
+    },
+    "spinach": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:spinachitem"
+          }
+        ]
+      }
+    },
+    "tomatillo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:tomatilloitem"
+          }
+        ]
+      }
+    },
+    "tomato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:tomatoitem"
+          }
+        ]
+      }
+    },
+    "wintersquash": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:wintersquashitem"
+          }
+        ]
+      }
+    },
+    "zucchini": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:zucchiniitem"
+          }
+        ]
+      }
+    },
+    "arrowroot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:arrowrootitem"
+          }
+        ]
+      }
+    },
+    "cassava": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cassavaitem"
+          }
+        ]
+      }
+    },
+    "garlic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:garlicitem"
+          }
+        ]
+      }
+    },
+    "jicama": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:jicamaitem"
+          }
+        ]
+      }
+    },
+    "leek": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:leekitem"
+          }
+        ]
+      }
+    },
+    "kohlrabi": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:kohlrabiitem"
+          }
+        ]
+      }
+    },
+    "onion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:onionitem"
+          }
+        ]
+      }
+    },
+    "parsnip": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:parsnipitem"
+          }
+        ]
+      }
+    },
+    "peanut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:peanutitem"
+          }
+        ]
+      }
+    },
+    "radish": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:radishitem"
+          }
+        ]
+      }
+    },
+    "rhubarb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:rhubarbitem"
+          }
+        ]
+      }
+    },
+    "rutabaga": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:rutabagaitem"
+          }
+        ]
+      }
+    },
+    "scallion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:scallionitem"
+          }
+        ]
+      }
+    },
+    "sweetpotato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:sweetpotatoitem"
+          }
+        ]
+      }
+    },
+    "taro": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:taroitem"
+          }
+        ]
+      }
+    },
+    "turnip": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:turnipitem"
+          }
+        ]
+      }
+    },
+    "waterchestnut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:waterchestnutitem"
+          }
+        ]
+      }
+    },
+    "blackberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:blackberryitem"
+          }
+        ]
+      }
+    },
+    "blueberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:blueberryitem"
+          }
+        ]
+      }
+    },
+    "cactusfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cactusfruititem"
+          }
+        ]
+      }
+    },
+    "candleberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:candleberryitem"
+          }
+        ]
+      }
+    },
+    "cantaloupe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cantaloupeitem"
+          }
+        ]
+      }
+    },
+    "cranberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:cranberryitem"
+          }
+        ]
+      }
+    },
+    "elderberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:elderberryitem"
+          }
+        ]
+      }
+    },
+    "grape": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:grapeitem"
+          }
+        ]
+      }
+    },
+    "greengrape": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:greengrapeitem"
+          }
+        ]
+      }
+    },
+    "huckleberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:huckleberryitem"
+          }
+        ]
+      }
+    },
+    "juniperberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:juniperberryitem"
+          }
+        ]
+      }
+    },
+    "kiwi": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:kiwiitem"
+          }
+        ]
+      }
+    },
+    "mulberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:mulberryitem"
+          }
+        ]
+      }
+    },
+    "pineapple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:pineappleitem"
+          }
+        ]
+      }
+    },
+    "raspberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:raspberryitem"
+          }
+        ]
+      }
+    },
+    "strawberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:strawberryitem"
+          }
+        ]
+      }
+    },
+    "coffeebean": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:coffeebeanitem"
+          }
+        ]
+      }
+    },
+    "tealeaf": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:tealeafitem"
+          }
+        ]
+      }
+    },
+    "agave": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:agaveitem"
+          }
+        ]
+      }
+    },
+    "whitemushroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:whitemushroomitem"
+          }
+        ]
+      }
+    },
+    "ginger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:gingeritem"
+          }
+        ]
+      }
+    },
+    "sesameseeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:sesameseedsitem"
+          }
+        ]
+      }
+    },
+    "spiceleaf": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:spiceleafitem"
+          }
+        ]
+      }
+    },
+    "mustardseeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2crops:mustardseedsitem"
+          }
+        ]
+      }
+    },
+    "avocado": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:avocadoitem"
+          }
+        ]
+      }
+    },
+    "candlenut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:candlenutitem"
+          }
+        ]
+      }
+    },
+    "cherry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:cherryitem"
+          }
+        ]
+      }
+    },
+    "chestnut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:chestnutitem"
+          }
+        ]
+      }
+    },
+    "gooseberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:gooseberryitem"
+          }
+        ]
+      }
+    },
+    "lemon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:lemonitem"
+          }
+        ]
+      }
+    },
+    "nutmeg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:nutmegitem"
+          }
+        ]
+      }
+    },
+    "orange": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:orangeitem"
+          }
+        ]
+      }
+    },
+    "peach": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:peachitem"
+          }
+        ]
+      }
+    },
+    "pear": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:pearitem"
+          }
+        ]
+      }
+    },
+    "plum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:plumitem"
+          }
+        ]
+      }
+    },
+    "walnut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:walnutitem"
+          }
+        ]
+      }
+    },
+    "hazelnut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:hazelnutitem"
+          }
+        ]
+      }
+    },
+    "pawpaw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:pawpawitem"
+          }
+        ]
+      }
+    },
+    "soursop": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:soursopitem"
+          }
+        ]
+      }
+    },
+    "almond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:almonditem"
+          }
+        ]
+      }
+    },
+    "apricot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:apricotitem"
+          }
+        ]
+      }
+    },
+    "banana": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:bananaitem"
+          }
+        ]
+      }
+    },
+    "cashew": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:cashewitem"
+          }
+        ]
+      }
+    },
+    "cinnamon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:cinnamonitem"
+          }
+        ]
+      }
+    },
+    "coconut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:coconutitem"
+          }
+        ]
+      }
+    },
+    "date": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:dateitem"
+          }
+        ]
+      }
+    },
+    "dragonfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:dragonfruititem"
+          }
+        ]
+      }
+    },
+    "durian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:durianitem"
+          }
+        ]
+      }
+    },
+    "fig": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:figitem"
+          }
+        ]
+      }
+    },
+    "grapefruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:grapefruititem"
+          }
+        ]
+      }
+    },
+    "lime": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:limeitem"
+          }
+        ]
+      }
+    },
+    "mango": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:mangoitem"
+          }
+        ]
+      }
+    },
+    "olive": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:oliveitem"
+          }
+        ]
+      }
+    },
+    "papaya": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:papayaitem"
+          }
+        ]
+      }
+    },
+    "pecan": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:pecanitem"
+          }
+        ]
+      }
+    },
+    "peppercorn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:peppercornitem"
+          }
+        ]
+      }
+    },
+    "persimmon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:persimmonitem"
+          }
+        ]
+      }
+    },
+    "pistachio": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:pistachioitem"
+          }
+        ]
+      }
+    },
+    "pomegranate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:pomegranateitem"
+          }
+        ]
+      }
+    },
+    "starfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:starfruititem"
+          }
+        ]
+      }
+    },
+    "vanillabean": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:vanillabeanitem"
+          }
+        ]
+      }
+    },
+    "breadfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:breadfruititem"
+          }
+        ]
+      }
+    },
+    "guava": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:guavaitem"
+          }
+        ]
+      }
+    },
+    "jackfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:jackfruititem"
+          }
+        ]
+      }
+    },
+    "lychee": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:lycheeitem"
+          }
+        ]
+      }
+    },
+    "passionfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:passionfruititem"
+          }
+        ]
+      }
+    },
+    "rambutan": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:rambutanitem"
+          }
+        ]
+      }
+    },
+    "tamarind": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:tamarinditem"
+          }
+        ]
+      }
+    },
+    "maplesyrup": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:maplesyrupitem"
+          }
+        ]
+      }
+    },
+    "pinenut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pamhc2trees:pinenutitem"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pumpkin"
+    ],
+    [
+      "apple"
+    ],
+    [
+      "wheat"
+    ],
+    [
+      "cocoa"
+    ],
+    [
+      "melon"
+    ],
+    [
+      "wart"
+    ],
+    [
+      "carrot"
+    ],
+    [
+      "potato"
+    ],
+    [
+      "chorus"
+    ],
+    [
+      "beetroot"
+    ],
+    [
+      "berries"
+    ],
+    [
+      "amaranth"
+    ],
+    [
+      "barley"
+    ],
+    [
+      "bean"
+    ],
+    [
+      "chickpea"
+    ],
+    [
+      "corn"
+    ],
+    [
+      "lentil"
+    ],
+    [
+      "millet"
+    ],
+    [
+      "oats"
+    ],
+    [
+      "quinoa"
+    ],
+    [
+      "rice"
+    ],
+    [
+      "rye"
+    ],
+    [
+      "soybean"
+    ],
+    [
+      "cotton"
+    ],
+    [
+      "flax"
+    ],
+    [
+      "kenaf"
+    ],
+    [
+      "jute"
+    ],
+    [
+      "sisal"
+    ],
+    [
+      "artichoke"
+    ],
+    [
+      "asparagus"
+    ],
+    [
+      "bellpepper"
+    ],
+    [
+      "broccoli"
+    ],
+    [
+      "brusselsprout"
+    ],
+    [
+      "cabbage"
+    ],
+    [
+      "cauliflower"
+    ],
+    [
+      "celery"
+    ],
+    [
+      "chilipepper"
+    ],
+    [
+      "cucumber"
+    ],
+    [
+      "eggplant"
+    ],
+    [
+      "kale"
+    ],
+    [
+      "lettuce"
+    ],
+    [
+      "okra"
+    ],
+    [
+      "peas"
+    ],
+    [
+      "spinach"
+    ],
+    [
+      "tomatillo"
+    ],
+    [
+      "tomato"
+    ],
+    [
+      "wintersquash"
+    ],
+    [
+      "zucchini"
+    ],
+    [
+      "arrowroot"
+    ],
+    [
+      "cassava"
+    ],
+    [
+      "garlic"
+    ],
+    [
+      "jicama"
+    ],
+    [
+      "leek"
+    ],
+    [
+      "kohlrabi"
+    ],
+    [
+      "onion"
+    ],
+    [
+      "parsnip"
+    ],
+    [
+      "peanut"
+    ],
+    [
+      "radish"
+    ],
+    [
+      "rhubarb"
+    ],
+    [
+      "rutabaga"
+    ],
+    [
+      "scallion"
+    ],
+    [
+      "sweetpotato"
+    ],
+    [
+      "taro"
+    ],
+    [
+      "turnip"
+    ],
+    [
+      "waterchestnut"
+    ],
+    [
+      "blackberry"
+    ],
+    [
+      "blueberry"
+    ],
+    [
+      "cactusfruit"
+    ],
+    [
+      "candleberry"
+    ],
+    [
+      "cantaloupe"
+    ],
+    [
+      "cranberry"
+    ],
+    [
+      "elderberry"
+    ],
+    [
+      "grape"
+    ],
+    [
+      "greengrape"
+    ],
+    [
+      "huckleberry"
+    ],
+    [
+      "juniperberry"
+    ],
+    [
+      "kiwi"
+    ],
+    [
+      "mulberry"
+    ],
+    [
+      "pineapple"
+    ],
+    [
+      "raspberry"
+    ],
+    [
+      "strawberry"
+    ],
+    [
+      "coffeebean"
+    ],
+    [
+      "tealeaf"
+    ],
+    [
+      "agave"
+    ],
+    [
+      "whitemushroom"
+    ],
+    [
+      "ginger"
+    ],
+    [
+      "sesameseeds"
+    ],
+    [
+      "spiceleaf"
+    ],
+    [
+      "mustardseeds"
+    ],
+    [
+      "avocado"
+    ],
+    [
+      "candlenut"
+    ],
+    [
+      "cherry"
+    ],
+    [
+      "chestnut"
+    ],
+    [
+      "gooseberry"
+    ],
+    [
+      "lemon"
+    ],
+    [
+      "nutmeg"
+    ],
+    [
+      "orange"
+    ],
+    [
+      "peach"
+    ],
+    [
+      "pear"
+    ],
+    [
+      "plum"
+    ],
+    [
+      "walnut"
+    ],
+    [
+      "hazelnut"
+    ],
+    [
+      "pawpaw"
+    ],
+    [
+      "soursop"
+    ],
+    [
+      "almond"
+    ],
+    [
+      "apricot"
+    ],
+    [
+      "banana"
+    ],
+    [
+      "cashew"
+    ],
+    [
+      "cinnamon"
+    ],
+    [
+      "coconut"
+    ],
+    [
+      "date"
+    ],
+    [
+      "dragonfruit"
+    ],
+    [
+      "durian"
+    ],
+    [
+      "fig"
+    ],
+    [
+      "grapefruit"
+    ],
+    [
+      "lime"
+    ],
+    [
+      "mango"
+    ],
+    [
+      "olive"
+    ],
+    [
+      "papaya"
+    ],
+    [
+      "pecan"
+    ],
+    [
+      "peppercorn"
+    ],
+    [
+      "persimmon"
+    ],
+    [
+      "pistachio"
+    ],
+    [
+      "pomegranate"
+    ],
+    [
+      "starfruit"
+    ],
+    [
+      "vanillabean"
+    ],
+    [
+      "breadfruit"
+    ],
+    [
+      "guava"
+    ],
+    [
+      "jackfruit"
+    ],
+    [
+      "lychee"
+    ],
+    [
+      "passionfruit"
+    ],
+    [
+      "rambutan"
+    ],
+    [
+      "tamarind"
+    ],
+    [
+      "maplesyrup"
+    ],
+    [
+      "pinenut"
+    ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

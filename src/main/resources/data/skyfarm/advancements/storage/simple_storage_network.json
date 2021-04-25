@@ -8,10 +8,10 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.storagenetwork.title"
+      "translate": "advancement.storage.simple_storage_network.title"
     },
     "description": {
-      "translate": "advancement.storage.storagenetwork.description"
+      "translate": "advancement.storage.simple_storage_network.description"
     },
     "icon": {
       "item": "storagenetwork:master"

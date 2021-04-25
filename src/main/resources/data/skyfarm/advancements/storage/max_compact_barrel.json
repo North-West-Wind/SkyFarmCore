@@ -22,7 +22,7 @@
     "hidden": false
   },
   "criteria": {
-    "chest": {
+    "compact_barrels": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -36,7 +36,7 @@
   },
   "requirements": [
     [
-      "chest"
+      "compact_barrels"
     ]
   ]
 }

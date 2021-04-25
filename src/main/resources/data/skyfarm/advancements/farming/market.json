@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:skyfarm/emerald_seeds",
+  "parent": "skyfarm:farming/root",
   "conditions": [
     {
       "type": "forge:mod_loaded",
@@ -8,10 +8,10 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.skyfarm.market.title"
+      "translate": "advancement.farming.market.title"
     },
     "description": {
-      "translate": "advancement.skyfarm.market.description"
+      "translate": "advancement.farming.market.description"
     },
     "icon": {
       "item": "farmingforblockheads:market"

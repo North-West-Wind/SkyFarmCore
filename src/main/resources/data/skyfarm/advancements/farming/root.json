@@ -1,0 +1,36 @@
+{
+  "display": {
+    "title": {
+      "translate": "advancement.farming.root.title",
+      "color": "gold"
+    },
+    "description": {
+      "translate": "advancement.farming.root.description"
+    },
+    "icon": {
+      "item": "minecraft:wheat_seeds"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "wheat_seeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wheat_seeds"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wheat_seeds"
+    ]
+  ]
+}

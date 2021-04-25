@@ -8,10 +8,10 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.dimstorage.title"
+      "translate": "advancement.storage.dim_storage.title"
     },
     "description": {
-      "translate": "advancement.storage.dimstorage.description"
+      "translate": "advancement.storage.dim_storage.description"
     },
     "icon": {
       "item": "dimstorage:dim_core"

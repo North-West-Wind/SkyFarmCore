@@ -3,18 +3,18 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "indsutrialforegoing"
+      "modid": "industrialforegoing"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.indsutrialforegoing.title"
+      "translate": "advancement.storage.industrial_foregoing.title"
     },
     "description": {
-      "translate": "advancement.storage.indsutrialforegoing.description"
+      "translate": "advancement.storage.industrial_foregoing.description"
     },
     "icon": {
-      "item": "indsutrialforegoing:resourceful_furnace"
+      "item": "industrialforegoing:resourceful_furnace"
     },
     "frame": "task",
     "show_toast": false,
