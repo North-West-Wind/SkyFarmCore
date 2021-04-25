@@ -11,9 +11,9 @@
   "item.skyfarm.stone_variator": "Stone Variator",
   "item.skyfarm.overworld_void_shifter_nether": "Overworld Void Shifter - Nether",
   "item.skyfarm.overworld_sky_shifter_end": "Overworld Sky Shifter - End",
-  "item.skyfarm.overworld_void_shifter_ug": "Overworld Spatial Shifter - Undergarden",
-  "item.skyfarm.overworld_sky_shifter_lc": "Overworld Spatial Shifter - Lost Cities",
-  "item.skyfarm.overworld_sky_shifter_tf": "Overworld Spatial Shifter - Twilight Forest",
+  "item.skyfarm.overworld_void_shifter_ug": "Overworld Axis Shifter - Undergarden",
+  "item.skyfarm.overworld_sky_shifter_lc": "Overworld Axis Shifter - Lost Cities",
+  "item.skyfarm.overworld_sky_shifter_tf": "Overworld Axis Shifter - Twilight Forest",
 
   "itemGroup.skyfarm": "Sky Farm",
 

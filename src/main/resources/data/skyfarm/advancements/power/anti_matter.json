@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:anti_matter"
+            "item": "mekanism:pellet_antimatter"
           }
         ]
       }
