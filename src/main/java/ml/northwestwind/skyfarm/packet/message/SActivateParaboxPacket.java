@@ -4,7 +4,6 @@ import ml.northwestwind.skyfarm.packet.IPacket;
 import ml.northwestwind.skyfarm.screen.ParaboxScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.network.NetworkEvent;
-import org.apache.logging.log4j.LogManager;
 
 public class SActivateParaboxPacket implements IPacket {
     @Override
@@ -13,6 +12,6 @@ public class SActivateParaboxPacket implements IPacket {
         if (!(minecraft.screen instanceof ParaboxScreen)) return;
         ParaboxScreen screen = (ParaboxScreen) minecraft.screen;
         screen.setInLoop(true);
-        screen.setBackup(false);
+        screen.setBackedUp(false);
     }
 }

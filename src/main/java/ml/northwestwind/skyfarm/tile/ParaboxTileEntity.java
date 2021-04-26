@@ -60,7 +60,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
     }
 
     public boolean isBackingUp() {
-        if (!(level instanceof ServerWorld)) return isInLoop;
+        if (!(level instanceof ServerWorld)) return isBackingUp;
         isBackingUp = Backups.INSTANCE.doingBackup.isRunning();
         return isBackingUp;
     }
@@ -183,7 +183,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         nbt.putDouble("efficiency", efficiency);
         nbt.putInt("level", paraboxLevel);
         nbt.putBoolean("looping", isWorldInLoop());
-        nbt.putBoolean("backingUp", Backups.INSTANCE.doingBackup.isRunning());
+        nbt.putBoolean("backingUp", isBackingUp());
         if (wantingItem != null) nbt.putString("wantingItem", wantingItem.getRegistryName().toString());
         return nbt;
     }

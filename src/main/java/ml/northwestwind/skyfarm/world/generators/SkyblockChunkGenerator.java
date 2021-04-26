@@ -23,21 +23,11 @@ import java.util.function.Supplier;
 // Thank you Botania
 public class SkyblockChunkGenerator extends ChunkGenerator {
     public static final Codec<SkyblockChunkGenerator> CODEC = RecordCodecBuilder.create(
-            (instance) -> {
-                return instance.group(
-                        BiomeProvider.CODEC.fieldOf("biome_source").forGetter((gen) -> {
-                            return gen.biomeSource;
-                        }),
-                        Codec.LONG.fieldOf("seed").stable().forGetter((gen) -> {
-                            return gen.seed;
-                        }),
-                        DimensionSettings.CODEC.fieldOf("settings").forGetter((gen) -> {
-                            return gen.settings;
-                        })
-                ).apply(instance, instance.stable((provider, seed, settings) -> {
-                    return new SkyblockChunkGenerator(provider, seed, settings);
-                }));
-            });
+            (instance) -> instance.group(
+                    BiomeProvider.CODEC.fieldOf("biome_source").forGetter((gen) -> gen.biomeSource),
+                    Codec.LONG.fieldOf("seed").stable().forGetter((gen) -> gen.seed),
+                    DimensionSettings.CODEC.fieldOf("settings").forGetter((gen) -> gen.settings)
+            ).apply(instance, instance.stable(SkyblockChunkGenerator::new)));
 
     public static void init() {
         Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(SkyFarm.MOD_ID, "skyfarm"), CODEC);
@@ -45,15 +35,25 @@ public class SkyblockChunkGenerator extends ChunkGenerator {
 
     private final long seed;
     private final Supplier<DimensionSettings> settings;
+    private final boolean noStage;
 
-    public SkyblockChunkGenerator(BiomeProvider provider, long seed, Supplier<DimensionSettings> settings) {
+    public SkyblockChunkGenerator(BiomeProvider provider, long seed, Supplier<DimensionSettings> settings, boolean noStage) {
         super(provider, provider, settings.get().structureSettings(), seed);
         this.seed = seed;
         this.settings = settings;
+        this.noStage = noStage;
+    }
+
+    public SkyblockChunkGenerator(BiomeProvider provider, long seed, Supplier<DimensionSettings> settings) {
+        this(provider, seed, settings, false);
     }
 
     public static boolean isWorldSkyblock(ServerWorld world) {
         return world.getServer().overworld().getChunkSource().getGenerator() instanceof SkyblockChunkGenerator;
+    }
+
+    public static boolean hasNoStage(ServerWorld world) {
+        return isWorldSkyblock(world) && ((SkyblockChunkGenerator) world.getServer().overworld().getChunkSource().getGenerator()).noStage;
     }
 
     @Override

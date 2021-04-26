@@ -63,7 +63,7 @@ public class SkyblockEvents {
         if (!world.dimension().equals(World.OVERWORLD)) return;
         if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
             SkyblockData data = SkyblockData.get(world);
-            ImmutableList<String> stages = data.getStages();
+            Iterable<String> stages = data.getStages();
             for (ServerPlayerEntity p : world.getServer().getPlayerList().getPlayers())
                 for (String stage : stages) {
                     if (!GameStageHelper.isStageKnown(stage)) continue;
@@ -253,6 +253,6 @@ public class SkyblockEvents {
         if (player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level)) return;
         if (event.getSource().equals(DamageSource.FALL) && event.getAmount() >= player.getMaxHealth() && player.getHealth() == player.getMaxHealth())
             event.setAmount(player.getMaxHealth() - 0.5f);
-        else if (event.getSource().equals(DamageSource.OUT_OF_WORLD)) event.setCanceled(true);
+        else if (event.getSource().equals(DamageSource.OUT_OF_WORLD) || event.getSource().equals(DamageSource.IN_WALL)) event.setCanceled(true);
     }
 }

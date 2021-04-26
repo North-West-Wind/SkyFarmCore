@@ -38,9 +38,10 @@ public class SkyblockWorldType extends ForgeWorldType {
     public static final RegistryKey<DimensionSettings> NETHER_SETTINGS = RegistryKey.create(Registry.NOISE_GENERATOR_SETTINGS_REGISTRY, new ResourceLocation(SkyFarm.MOD_ID, "nether"));
     public static final DimensionType SKYFARM_NETHER = new DimensionType(OptionalLong.of(18000L), false, true, false, false, 8.0D, false, true, false, true, false, 128, FuzzedBiomeMagnifier.INSTANCE, BlockTags.INFINIBURN_NETHER.getName(), DimensionType.NETHER_EFFECTS, 0.1F);
 
-    private SkyblockWorldType() {
-        super(new SkyblockChunkGeneratorFactory());
+    public SkyblockWorldType() {
+        this(new SkyblockChunkGeneratorFactory());
     }
+    public SkyblockWorldType(IChunkGeneratorFactory factory) { super(factory); }
 
     static {
         register(NETHER_SETTINGS, new DimensionSettings(

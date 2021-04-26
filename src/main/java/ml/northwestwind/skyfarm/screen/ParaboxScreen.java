@@ -13,7 +13,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -23,12 +22,12 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
     private static final ResourceLocation DEMO_BG = new ResourceLocation("minecraft", "textures/gui/demo_background.png");
     private static final ResourceLocation BLACK_DOT = new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/black_dot.png");
     private Button activate, loop;
-    private boolean inLoop, oldLoop, backup;
+    private boolean inLoop, oldLoop, backedUp;
 
     public ParaboxScreen(ParaboxContainer container, PlayerInventory inv, ITextComponent titleIn) {
         super(container, inv, titleIn);
         this.inLoop = container.isLooping();
-        this.backup = !container.isBackingUp();
+        this.backedUp = !container.isBackingUp();
     }
 
     @Override
@@ -62,7 +61,8 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
             loop.setMessage(new TranslationTextComponent("button.parabox.loop." + (inLoop ? "on" : "off")));
             oldLoop = inLoop;
         }
-        activate.active = backup;
+        backedUp = !this.menu.isBackingUp();
+        activate.active = backedUp;
         loop.active = this.menu.tile.paraboxLevel() > 0 && inLoop;
     }
 
@@ -74,7 +74,7 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
         if (!inLoop) {
             this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.off"), x, y, 0xFFFFFF);
             return;
-        } else if (!backup) {
+        } else if (!backedUp) {
             this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.backup"), x, y, 0xFFFFFF);
             return;
         }
@@ -86,7 +86,7 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
         y += 2 + this.font.lineHeight;
         this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.efficiency", ((int) (this.menu.tile.getEfficiency() * 100)) + "%"), x, y, 0xFFFFFF);
         y += 2 + this.font.lineHeight;
-        if (this.menu.tile.getWantingItem() != null) this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.item", this.menu.tile.getWantingItem().getDefaultInstance().getDisplayName()), x, y, 0xFFFFFF);
+        this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.item", this.menu.tile.getWantingItem().getDefaultInstance().getDisplayName()), x, y, 0xFFFFFF);
     }
 
     @Override
@@ -125,8 +125,8 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
         SkyFarmPacketHandler.INSTANCE.sendToServer(new CCloseParaboxPacket());
     }
 
-    public void setBackup(boolean backup) {
-        this.backup = backup;
+    public void setBackedUp(boolean backedUp) {
+        this.backedUp = backedUp;
     }
 
     public void setInLoop(boolean inLoop) {

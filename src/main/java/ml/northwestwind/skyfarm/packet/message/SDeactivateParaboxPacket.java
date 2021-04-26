@@ -12,6 +12,6 @@ public class SDeactivateParaboxPacket implements IPacket {
         if (!(minecraft.screen instanceof ParaboxScreen)) return;
         ParaboxScreen screen = (ParaboxScreen) minecraft.screen;
         screen.setInLoop(false);
-        screen.setBackup(true);
+        screen.setBackedUp(true);
     }
 }

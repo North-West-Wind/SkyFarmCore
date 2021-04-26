@@ -2,6 +2,7 @@ package ml.northwestwind.skyfarm.world.data;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,7 +35,7 @@ import java.util.stream.Collectors;
 public class SkyblockData extends WorldSavedData {
     public static boolean isVoting, forced, shouldRestore;
     public static int votedFor;
-    private boolean worldGenerated, isInLoop, usingParabox;
+    private boolean worldGenerated, isInLoop, usingParabox, noStage;
     private BlockPos paraboxPos = BlockPos.ZERO;
     private final List<UUID> joined = Lists.newArrayList();
     private List<String> stages = Lists.newArrayList();
@@ -49,7 +50,10 @@ public class SkyblockData extends WorldSavedData {
     }
 
     public static SkyblockData get(ServerWorld world) {
-        return world.getServer().overworld().getDataStorage().computeIfAbsent(SkyblockData::new, NAME);
+        SkyblockData data = world.getServer().overworld().getDataStorage().computeIfAbsent(SkyblockData::new, NAME);
+        data.noStage = SkyblockChunkGenerator.hasNoStage(world);
+        data.setDirty();
+        return data;
     }
 
     public static Item generateItem(ServerWorld world) {
@@ -80,6 +84,7 @@ public class SkyblockData extends WorldSavedData {
         if (!id.equals("")) wantingItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
         CompoundNBT pos = nbt.getCompound("paraboxPos");
         paraboxPos = new BlockPos(pos.getInt("x"), pos.getInt("y"), pos.getInt("z"));
+        noStage = nbt.getBoolean("noStage");
         ListNBT listNBT = (ListNBT) nbt.get("joined");
         if (listNBT != null) {
             int i = 0;
@@ -112,6 +117,7 @@ public class SkyblockData extends WorldSavedData {
         pos.putInt("y", paraboxPos.getY());
         pos.putInt("z", paraboxPos.getZ());
         nbt.put("paraboxPos", pos);
+        nbt.putBoolean("noStage", noStage);
         ListNBT listNBT = new ListNBT();
         for (int i = 0; i < joined.size(); i++) {
             CompoundNBT compound = new CompoundNBT();
@@ -198,7 +204,7 @@ public class SkyblockData extends WorldSavedData {
         if (GameStageHelper.isStageKnown(stage)) stages.add(stage);
     }
 
-    public ImmutableList<String> getStages() {
-        return ImmutableList.copyOf(stages);
+    public Iterable<String> getStages() {
+        return noStage ? GameStageHelper.getKnownStages() : ImmutableList.copyOf(stages);
     }
 }

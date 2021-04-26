@@ -15,6 +15,7 @@ import ml.northwestwind.skyfarm.recipes.serializer.EvaporatingRecipeSerializer;
 import ml.northwestwind.skyfarm.tile.NaturalEvaporatorTileEntity;
 import ml.northwestwind.skyfarm.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.tile.VoidGeneratorTileEntity;
+import ml.northwestwind.skyfarm.world.NoStageSkyblockWorldType;
 import ml.northwestwind.skyfarm.world.SkyblockWorldType;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -60,7 +61,10 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void registerWorldType(final RegistryEvent.Register<ForgeWorldType> event) {
-        event.getRegistry().register(SkyblockWorldType.INSTANCE.setRegistryName("skyfarm"));
+        event.getRegistry().registerAll(
+                SkyblockWorldType.INSTANCE.setRegistryName("skyfarm"),
+                NoStageSkyblockWorldType.INSTANCE.setRegistryName("skyfarm_nostage")
+        );
     }
 
     @SubscribeEvent

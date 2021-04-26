@@ -5,6 +5,7 @@ import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.screen.GameStageScreen;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.PacketDistributor;
 
@@ -29,5 +30,10 @@ public class DSyncPointsPacket implements IDoubleSidedPacket {
         if (player == null) return;
         SkyblockData data = SkyblockData.get(player.getLevel());
         SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(ctx::getSender), new DSyncPointsPacket(data.getPoint()));
+    }
+
+    public static void serverSyncAll(MinecraftServer server) {
+        SkyblockData data = SkyblockData.get(server.overworld());
+        SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new DSyncPointsPacket(data.getPoint()));
     }
 }

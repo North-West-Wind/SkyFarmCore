@@ -82,7 +82,7 @@ public class ParaboxBlock extends Block {
             if (!data.isInLoop() || !data.isUsing(pos)) return;
             data.setInLoop(false);
             data.setDirty();
-            ((ServerWorld) world).getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.broken", pos.getX(), pos.getY(), pos.getZ()).setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), ChatType.CHAT, null);
+            ((ServerWorld) world).getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.broken", pos.getX(), pos.getY(), pos.getZ()).setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), ChatType.SYSTEM, null);
         }
     }
 }

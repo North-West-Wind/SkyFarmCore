@@ -21,5 +21,7 @@ public class CAddStagePacket implements IPacket {
         SkyblockData data = SkyblockData.get(player.getLevel());
         data.addStage(stage);
         data.setPoint(data.getPoint() - 1);
+        data.setDirty();
+        DSyncPointsPacket.serverSyncAll(player.getServer());
     }
 }

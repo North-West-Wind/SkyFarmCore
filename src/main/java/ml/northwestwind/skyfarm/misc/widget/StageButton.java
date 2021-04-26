@@ -27,16 +27,17 @@ public class StageButton extends ItemButton {
         }, (button, matrixStack, mouseX, mouseY) -> {
             Minecraft minecraft = Minecraft.getInstance();
             List<ITextComponent> tooltip = Lists.newArrayList(
-                    new TranslationTextComponent("stages.skyfarm." + triple.getLeft() + ".title").setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
-                    new StringTextComponent("\n\n"),
-                    new TranslationTextComponent("stages.skyfarm." + triple.getLeft() + ".description").setStyle(Style.EMPTY.applyFormat(TextFormatting.GRAY)),
-                    new StringTextComponent("\n\n"));
+                    new TranslationTextComponent("stages.skyfarm." + stage + ".title").setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
+                    new StringTextComponent(""),
+                    new TranslationTextComponent("stages.skyfarm." + stage + ".description").setStyle(Style.EMPTY.applyFormat(TextFormatting.GRAY)),
+                    new StringTextComponent(""));
             addTooltip(tooltip, stage, triple.getRight(), triple.getMiddle());
             GuiUtils.drawHoveringText(matrixStack, tooltip, mouseX, mouseY, parentWidth, parentHeight, -1, minecraft.font);
         }, triple.getLeft());
         this.stage = stage;
         this.point = triple.getMiddle();
         this.required = triple.getRight();
+        this.active = false;
     }
     
     private static void addTooltip(List<ITextComponent> tooltip, String stage, List<String> required, int point) {
@@ -46,7 +47,6 @@ public class StageButton extends ItemButton {
             for (String s : required) {
                 boolean hasStage = GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), s);
                 tooltip.add(new TranslationTextComponent("stages.skyfarm.require", new TranslationTextComponent("stages.skyfarm."+s+".title").getString()).setStyle(Style.EMPTY.applyFormat(hasStage ? TextFormatting.GREEN : TextFormatting.RED)));
-                tooltip.add(new StringTextComponent("\n"));
             }
             boolean hasPoints = GameStageScreen.points >= point;
             tooltip.add(new TranslationTextComponent("stages.skyfarm.points", point).setStyle(Style.EMPTY.applyFormat(hasPoints ? TextFormatting.GREEN : TextFormatting.RED)));

@@ -29,8 +29,7 @@ public class EvaporatingCategory implements IRecipeCategory<AbstractEvaporatingR
 
     public EvaporatingCategory(IGuiHelper guiHelper) {
         localizedName = I18n.get("recipe.skyfarm.evaporating");
-        background = guiHelper.createDrawable(new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/background/natural_evaporator_background.png"),
-                0, 0, 108, 64);
+        background = guiHelper.createDrawable(new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/background/natural_evaporator_background.png"), 0, 0, 108, 64);
         icon = guiHelper.createDrawableIngredient(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR));
     }
 
@@ -69,10 +68,13 @@ public class EvaporatingCategory implements IRecipeCategory<AbstractEvaporatingR
     public void setRecipe(IRecipeLayout recipeLayout, AbstractEvaporatingRecipe recipe, IIngredients ingredients) {
         IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
-        group.init(0, true, 14, 16);
+        group.init(0, true, 16, 15);
         group.set(0, Arrays.asList(recipe.getInput().getItems()));
 
-        group.init(1, false, 72, 16);
+        group.init(1, false, 70, 15);
         group.set(1, recipe.getResultItem());
+
+        group.init(2, true, 16, 31);
+        group.set(2, new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR));
     }
 }

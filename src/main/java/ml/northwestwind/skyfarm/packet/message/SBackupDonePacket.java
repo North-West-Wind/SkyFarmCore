@@ -11,7 +11,7 @@ public class SBackupDonePacket implements IPacket {
         Minecraft minecraft = Minecraft.getInstance();
         if (!(minecraft.screen instanceof ParaboxScreen)) return;
         ParaboxScreen screen = (ParaboxScreen) minecraft.screen;
-        screen.setBackup(true);
+        screen.setBackedUp(true);
         screen.setInLoop(true);
     }
 }
