@@ -14,7 +14,7 @@
       "translate": "advancement.power.biofuel_reactor.description"
     },
     "icon": {
-      "item": "industrialforegoing:biofuel_reactor"
+      "item": "industrialforegoing:biofuel_generator"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "industrialforegoing:biofuel_reactor"
+            "item": "industrialforegoing:biofuel_generator"
           }
         ]
       }

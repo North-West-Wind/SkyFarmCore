@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:power/electrolytic_separator",
+  "parent": "skyfarm:power/laser_drill",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanismgenerators"
+      "modid": "industrialforegoing"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.power.gas_burning_generator.title"
+      "translate": "advancement.power.ore_laser_base.title"
     },
     "description": {
-      "translate": "advancement.power.gas_burning_generator.description"
+      "translate": "advancement.power.ore_laser_base.description"
     },
     "icon": {
-      "item": "mekanismgenerators:gas_burning_generator"
+      "item": "industrialforegoing:ore_laser_base"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "gas_burning_generator": {
+    "ore_laser_base": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:gas_burning_generator"
+            "item": "industrialforegoing:ore_laser_base"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "gas_burning_generator"
+      "ore_laser_base"
     ]
   ]
 }

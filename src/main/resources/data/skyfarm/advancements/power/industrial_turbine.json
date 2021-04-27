@@ -14,7 +14,7 @@
       "translate": "advancement.power.industrial_turbine.description"
     },
     "icon": {
-      "item": "mekanism:turbine_casing"
+      "item": "mekanismgenerators:turbine_casing"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:turbine_casing"
+            "item": "mekanismgenerators:turbine_casing"
           }
         ]
       }

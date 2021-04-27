@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:power/electrolytic_separator",
+  "parent": "skyfarm:farming/root",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanismgenerators"
+      "modid": "pneumaticcraft"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.power.gas_burning_generator.title"
+      "translate": "advancement.farming.harvesting_drone.title"
     },
     "description": {
-      "translate": "advancement.power.gas_burning_generator.description"
+      "translate": "advancement.farming.harvesting_drone.description"
     },
     "icon": {
-      "item": "mekanismgenerators:gas_burning_generator"
+      "item": "pneumaticcraft:harvesting_drone"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "gas_burning_generator": {
+    "harvesting_drone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:gas_burning_generator"
+            "item": "pneumaticcraft:harvesting_drone"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "gas_burning_generator"
+      "harvesting_drone"
     ]
   ]
 }

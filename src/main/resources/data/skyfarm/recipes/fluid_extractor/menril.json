@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "integrateddynamics"
+    }
+  ],
+  "input": {
+    "item": "integrateddynamics:menril_log"
+  },
+  "result": "integrateddynamics:menril_log_stripped",
+  "breakChance": 0.005,
+  "output": "{FluidName:\"industrialforegoing:latex\",Amount:8}",
+  "defaultRecipe": false,
+  "type": "industrialforegoing:fluid_extractor"
+}

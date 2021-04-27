@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:power/root",
+  "parent": "skyfarm:power/fluid_extractor",
   "conditions": [
     {
       "type": "forge:mod_loaded",

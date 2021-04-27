@@ -1,0 +1,63 @@
+{
+  "parent": "skyfarm:power/fluid_extractor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.mycelial_generators.title"
+    },
+    "description": {
+      "translate": "advancement.power.mycelial_generators.description"
+    },
+    "icon": {
+      "item": "industrialforegoing:mycelial_furnace"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "mycelial_furnace": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_furnace" }]}},
+    "mycelial_slimey": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_slimey" }]}},
+    "mycelial_culinary": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_culinary" }]}},
+    "mycelial_potion": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_potion" }]}},
+    "mycelial_disenchantment": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_disenchantment" }]}},
+    "mycelial_ender": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_ender" }]}},
+    "mycelial_explosive": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_explosive" }]}},
+    "mycelial_frosty": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_frosty" }]}},
+    "mycelial_halitosis": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_halitosis" }]}},
+    "mycelial_magma": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_magma" }]}},
+    "mycelial_pink": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_pink" }]}},
+    "mycelial_netherstar": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_netherstar" }]}},
+    "mycelial_death": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_death" }]}},
+    "mycelial_rocket": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_rocket" }]}},
+    "mycelial_crimed": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_crimed" }]}},
+    "mycelial_meatallurgic": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "industrialforegoing:mycelial_meatallurgic" }]}}
+  },
+  "requirements": [
+    [ "mycelial_furnace" ],
+    [ "mycelial_slimey" ],
+    [ "mycelial_culinary" ],
+    [ "mycelial_potion" ],
+    [ "mycelial_disenchantment" ],
+    [ "mycelial_ender" ],
+    [ "mycelial_explosive" ],
+    [ "mycelial_frosty" ],
+    [ "mycelial_halitosis" ],
+    [ "mycelial_magma" ],
+    [ "mycelial_pink" ],
+    [ "mycelial_netherstar" ],
+    [ "mycelial_death" ],
+    [ "mycelial_rocket" ],
+    [ "mycelial_crimed" ],
+    [ "mycelial_meatallurgic" ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

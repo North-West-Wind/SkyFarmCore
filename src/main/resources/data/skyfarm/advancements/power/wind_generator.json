@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanism"
+      "modid": "mekanismgenerators"
     }
   ],
   "display": {
@@ -14,7 +14,7 @@
       "translate": "advancement.power.wind_generator.description"
     },
     "icon": {
-      "item": "mekanism:wind_generator"
+      "item": "mekanismgenerators:wind_generator"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:wind_generator"
+            "item": "mekanismgenerators:wind_generator"
           }
         ]
       }

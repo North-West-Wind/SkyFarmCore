@@ -1,43 +1,43 @@
 {
-  "parent": "skyfarm:power/metallurgic_infuser",
+  "parent": "skyfarm:power/fluid_laser_base",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanismgenerators"
+      "modid": "industrialforegoing"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.power.fission_reactor.title"
+      "translate": "advancement.power.supreme_black_holes.title"
     },
     "description": {
-      "translate": "advancement.power.fission_reactor.description"
+      "translate": "advancement.power.supreme_black_holes.description"
     },
     "icon": {
-      "item": "mekanismgenerators:fission_reactor_casing"
+      "item": "industrialforegoing:supreme_black_hole_unit"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "fission_reactor_casing": {
+    "unit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:fission_reactor_casing"
+            "item": "industrialforegoing:supreme_black_hole_unit"
           }
         ]
       }
     },
-    "fission_reactor_port": {
+    "tank": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:fission_reactor_port"
+            "item": "industrialforegoing:supreme_black_hole_tank"
           }
         ]
       }
@@ -45,10 +45,13 @@
   },
   "requirements": [
     [
-      "fission_reactor_casing"
+      "unit"
     ],
     [
-      "fission_reactor_port"
+      "tank"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

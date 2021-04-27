@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:power/electrolytic_separator",
+  "parent": "skyfarm:power/dissolution_chamber",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanismgenerators"
+      "modid": "industrialforegoing"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.power.gas_burning_generator.title"
+      "translate": "advancement.power.pink_slime.title"
     },
     "description": {
-      "translate": "advancement.power.gas_burning_generator.description"
+      "translate": "advancement.power.pink_slime.description"
     },
     "icon": {
-      "item": "mekanismgenerators:gas_burning_generator"
+      "item": "industrialforegoing:pink_slime"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "gas_burning_generator": {
+    "pink_slime": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:gas_burning_generator"
+            "item": "industrialforegoing:pink_slime"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "gas_burning_generator"
+      "pink_slime"
     ]
   ]
 }

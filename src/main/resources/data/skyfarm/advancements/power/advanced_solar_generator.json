@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanism"
+      "modid": "mekanismgenerators"
     }
   ],
   "display": {
@@ -14,7 +14,7 @@
       "translate": "advancement.power.advanced_solar_generator.description"
     },
     "icon": {
-      "item": "mekanism:advanced_solar_generator"
+      "item": "mekanismgenerators:advanced_solar_generator"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:advanced_solar_generator"
+            "item": "mekanismgenerators:advanced_solar_generator"
           }
         ]
       }

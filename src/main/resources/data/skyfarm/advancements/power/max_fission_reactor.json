@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanism"
+      "modid": "mekanismgenerators"
     }
   ],
   "display": {
@@ -14,7 +14,7 @@
       "translate": "advancement.power.max_fission_reactor.description"
     },
     "icon": {
-      "item": "mekanism:fission_fuel_assembly"
+      "item": "mekanismgenerators:fission_fuel_assembly"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:fission_reactor_casing",
+            "item": "mekanismgenerators:fission_reactor_casing",
             "count": 712
           }
         ]
@@ -38,7 +38,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:fission_fuel_assembly",
+            "item": "mekanismgenerators:fission_fuel_assembly",
             "count": 960
           }
         ]
@@ -49,7 +49,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:control_rod_assembly",
+            "item": "mekanismgenerators:control_rod_assembly",
             "count": 64
           }
         ]
@@ -60,7 +60,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:reactor_glass",
+            "item": "mekanismgenerators:reactor_glass",
             "count": 784
           }
         ]

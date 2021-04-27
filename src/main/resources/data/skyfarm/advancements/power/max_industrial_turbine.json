@@ -1,0 +1,137 @@
+{
+  "parent": "skyfarm:power/industrial_turbine",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanismgenerators"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.max_industrial_turbine.title"
+    },
+    "description": {
+      "translate": "advancement.power.max_fission_reactor.description"
+    },
+    "icon": {
+      "item": "mekanismgenerators:turbine_blade"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "turbine_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:turbine_blade",
+            "count": 20
+          }
+        ]
+      }
+    },
+    "turbine_rotor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:turbine_rotor",
+            "count": 10
+          }
+        ]
+      }
+    },
+    "electromagnetic_coil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:electromagnetic_coil",
+            "count": 5
+          }
+        ]
+      }
+    },
+    "rotational_complex": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:rotational_complex"
+          }
+        ]
+      }
+    },
+    "turbine_casing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:turbine_casing",
+            "count": 417
+          }
+        ]
+      }
+    },
+    "structural_glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanism:structural_glass",
+            "count": 600
+          }
+        ]
+      }
+    },
+    "turbine_vent": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:turbine_vent",
+            "count": 585
+          }
+        ]
+      }
+    },
+    "pressure_disperser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:pressure_disperser",
+            "count": 224
+          }
+        ]
+      }
+    },
+    "turbine_valve": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mekanismgenerators:turbine_valve"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [ "turbine_blade" ],
+    [ "turbine_rotor" ],
+    [ "electromagnetic_coil" ],
+    [ "rotational_complex" ],
+    [ "turbine_casing" ],
+    [ "structural_glass" ],
+    [ "turbine_vent" ],
+    [ "pressure_disperser" ],
+    [ "turbine_valve" ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

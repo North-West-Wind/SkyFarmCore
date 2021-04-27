@@ -8,10 +8,10 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.infinitys.title"
+      "translate": "advancement.power.infinitys.title"
     },
     "description": {
-      "translate": "advancement.storage.infinitys.description"
+      "translate": "advancement.power.infinitys.description"
     },
     "icon": {
       "item": "industrialforegoing:infinity_drill",

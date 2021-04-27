@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanism"
+      "modid": "mekanismgenerators"
     }
   ],
   "display": {
@@ -14,7 +14,7 @@
       "translate": "advancement.power.bio_generator.description"
     },
     "icon": {
-      "item": "mekanism:bio_generator"
+      "item": "mekanismgenerators:bio_generator"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanism:bio_generator"
+            "item": "mekanismgenerators:bio_generator"
           }
         ]
       }

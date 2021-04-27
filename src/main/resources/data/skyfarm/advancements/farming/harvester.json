@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:power/electrolytic_separator",
+  "parent": "skyfarm:farming/root",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mekanismgenerators"
+      "modid": "cyclic"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.power.gas_burning_generator.title"
+      "translate": "advancement.farming.harvester.title"
     },
     "description": {
-      "translate": "advancement.power.gas_burning_generator.description"
+      "translate": "advancement.farming.harvester.description"
     },
     "icon": {
-      "item": "mekanismgenerators:gas_burning_generator"
+      "item": "cyclic:harvester"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "gas_burning_generator": {
+    "harvester": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:gas_burning_generator"
+            "item": "cyclic:harvester"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "gas_burning_generator"
+      "harvester"
     ]
   ]
 }
