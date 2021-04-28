@@ -11,7 +11,7 @@
       "translate": "advancement.farming.mattock.title"
     },
     "description": {
-      "translate": "advancement.farming.root.description"
+      "translate": "advancement.farming.mattock.description"
     },
     "icon": {
       "item": "tconstruct:mattock",

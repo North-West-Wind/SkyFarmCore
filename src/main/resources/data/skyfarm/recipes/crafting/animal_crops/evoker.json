@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "tag": "forge:gems/emerald"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:seeds",
+    "nbt": "{entity:\"minecraft:evoker\"}",
+    "count": 1
+  }
+}

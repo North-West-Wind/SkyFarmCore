@@ -16,6 +16,7 @@
   "item.skyfarm.overworld_void_shifter_ug": "Overworld Axis Shifter - Undergarden",
   "item.skyfarm.overworld_sky_shifter_lc": "Overworld Axis Shifter - Lost Cities",
   "item.skyfarm.overworld_sky_shifter_tf": "Overworld Axis Shifter - Twilight Forest",
+  "item.skyfarm.dragon_summoner": "Dragon Summoner Stick",
 
   "itemGroup.skyfarm": "Sky Farm",
 
@@ -28,6 +29,7 @@
   "tooltip.skyfarm.void_generator": "Empty space has energy",
   "tooltip.skyfarm.stone_variator": "Magically creates stone variance",
   "tooltip.skyfarm.compact_brick": "Super high impact might expose iron from stones",
+  "tooltip.skyfarm.dragon_summoner": "Summons Ice and Fire dragons",
 
   "usage.skyfarm.stone_variator": "Lava is required under the block.",
   "usage.skyfarm.void_shifter": "Release crouch to launch yourself.",
@@ -400,8 +402,8 @@
   "advancement.power.fluid_laser_base.description": "You can also get some fluid from laser drilling with a Fluid Laser Base.",
   "advancement.power.supreme_black_holes.title": "2 Supreme Black Holes",
   "advancement.power.supreme_black_holes.description": "Get yourself both the Supreme Black Hole Unit and Supreme Black Hole Tank.",
-  "advancement.power.mycelia_generators.title": "Is This Simple Generators?",
-  "advancement.power.mycelia_generators.description": "Industrial Foregoing added a lot of Mycelial Generators. They generate energy with different source.",
+  "advancement.power.mycelial_generators.title": "Is This Simple Generators?",
+  "advancement.power.mycelial_generators.description": "Industrial Foregoing added a lot of Mycelial Generators. They generate energy with different source.",
 
   "advancement.farming.root.title": "Irrigation Dedication",
   "advancement.farming.root.description": "This advancement tab talks about farming.",
@@ -412,13 +414,20 @@
   "advancement.farming.mattock.title": "Farming Mattocks",
   "advancement.farming.mattock.description": "Make a Mattock from Tinker's Construct.",
   "advancement.farming.animals.title": "Lives come from Ground",
-  "advancement.farming.animals.description": "Obtain all of the animals' seeds.",
+  "advancement.farming.animals.description": "Obtain all of the mobs' seeds.",
   "advancement.farming.insanium_farmland.title": "Still Need Fertilizer",
   "advancement.farming.insanium_farmland.description": "Craft some Insanium Farmland.",
   "advancement.farming.harvester.title": "Seeding Automation",
   "advancement.farming.harvester.description": "Cyclic's Harvester harvests crops relatively quickly.",
   "advancement.farming.harvesting_drone.title": "The Cooler Harvester",
   "advancement.farming.harvesting_drone.description": "The Harvesting Drone from PneumaticCraft harvests crops cooler than you think.",
+
+  "advancement.other.root.title": "All the Other Stuff",
+  "advancement.other.root.description": "Something miscellaneous.",
+  "advancement.other.insanium_armor.title": "That's Insane!",
+  "advancement.other.insanium_armor.description": "Craft yourself a full set of insanium armor.",
+  "advancement.other.flight_augment.title": "Goodbye Elytra",
+  "advancement.other.flight_augment.description": "Put a flight augment on your Mystical Agriculture armor. It provides creative flight.",
 
   "advancement.minecolonies.root.title": "Sky Colonies",
   "advancement.minecolonies.root.description": "Craft a Supply Camp or Ship and place it by right-clicking it on the ground",
@@ -464,5 +473,8 @@
   "stages.skyfarm.illuminati_pet.title": "Illuminati Confirmed",
   "stages.skyfarm.illuminati_pet.description": "Can you believe that? Inventory Pets is in the pack! Unfortunately I considered Illuminati Pet to be too overpowered so I might just as well put it behind this stage.",
   "stages.skyfarm.void_miner.title": "Mining From Void",
-  "stages.skyfarm.void_miner.description": "Void Miners are great way to gather resources."
+  "stages.skyfarm.void_miner.description": "Void Miners are great way to gather resources.",
+
+  "dragon.summoning": "Summoning %s...",
+  "dragon.summoned": "Summoned %s!"
 }

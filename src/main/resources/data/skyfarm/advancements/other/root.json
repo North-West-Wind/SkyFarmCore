@@ -1,0 +1,59 @@
+{
+  "display": {
+    "title": {
+      "translate": "advancement.other.root.title",
+      "color": "gold"
+    },
+    "description": {
+      "translate": "advancement.other.root.description"
+    },
+    "icon": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
+  },
+  "criteria": {
+    "enterNether": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:the_nether"
+      }
+    },
+    "leaveEnd": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "from": "minecraft:the_end",
+        "to": "minecraft:overworld"
+      }
+    },
+    "killedDragon": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "minecraft:ender_dragon"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enterNether"
+    ],
+    [
+      "leaveEnd"
+    ],
+    [
+      "killedDragon"
+    ]
+  ]
+}

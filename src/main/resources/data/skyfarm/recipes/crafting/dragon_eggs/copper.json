@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "iceandfire"
+        }
+    ],
+    "pattern": [
+        " # ",
+        "#E#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "iceandfire:dragonscale_copper"
+        },
+        "E": {
+            "item": "minecraft:egg"
+        }
+    },
+    "result": {
+        "item": "iceandfire:dragonegg_copper",
+        "count": 1
+    }
+}

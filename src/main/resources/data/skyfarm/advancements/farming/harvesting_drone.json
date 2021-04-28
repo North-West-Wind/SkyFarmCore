@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:farming/root",
+  "parent": "skyfarm:farming/harvester",
   "conditions": [
     {
       "type": "forge:mod_loaded",

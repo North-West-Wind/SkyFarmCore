@@ -8,10 +8,10 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.power.biofuel_reactor.title"
+      "translate": "advancement.power.biofuel_generator.title"
     },
     "description": {
-      "translate": "advancement.power.biofuel_reactor.description"
+      "translate": "advancement.power.biofuel_generator.description"
     },
     "icon": {
       "item": "industrialforegoing:biofuel_generator"

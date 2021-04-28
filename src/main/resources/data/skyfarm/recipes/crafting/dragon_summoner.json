@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "pattern": [
+    " ##",
+    " /#",
+    "/  "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "skyfarm:dragon_summoner",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "skyfarm:mushrooms"
+    },
+    {
+      "tag": "forge:rods/blaze"
+    },
+    {
+      "tag": "forge:rods/blaze"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:spores",
+    "nbt": "{entity:\"minecraft:blaze\"}",
+    "count": 1
+  }
+}

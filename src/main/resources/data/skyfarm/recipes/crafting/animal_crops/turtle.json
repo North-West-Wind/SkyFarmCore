@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "item": "minecraft:scute"
+    },
+    {
+      "item": "minecraft:scute"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:anemonemal",
+    "nbt": "{entity:\"minecraft:turtle\"}",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:anemonemal",
+    "nbt": "{entity:\"minecraft:pufferfish\"}",
+    "count": 1
+  }
+}

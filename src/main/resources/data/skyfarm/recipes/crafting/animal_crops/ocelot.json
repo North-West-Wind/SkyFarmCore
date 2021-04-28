@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "tag": "minecraft:fishes"
+    },
+    {
+      "tag": "forge:crops/cocoabeans"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:seeds",
+    "nbt": "{entity:\"minecraft:ocelot\"}",
+    "count": 1
+  }
+}

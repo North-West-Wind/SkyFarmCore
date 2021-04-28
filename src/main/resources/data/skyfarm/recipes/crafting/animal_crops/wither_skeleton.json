@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "skyfarm:mushrooms"
+    },
+    {
+      "tag": "forge:obsidian"
+    },
+    {
+      "tag": "forge:bones"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:spores",
+    "nbt": "{entity:\"minecraft:wither_skeleton\"}",
+    "count": 1
+  }
+}

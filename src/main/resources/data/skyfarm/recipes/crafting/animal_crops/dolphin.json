@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "tag": "minecraft:fishes"
+    },
+    {
+      "item": "minecraft:map"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:anemonemal",
+    "nbt": "{entity:\"minecraft:dolphin\"}",
+    "count": 1
+  }
+}

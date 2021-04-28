@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "skyfarm:mushrooms"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "tag": "forge:rawpork"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:spores",
+    "nbt": "{entity:\"minecraft:hoglin\"}",
+    "count": 1
+  }
+}

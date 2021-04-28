@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "skyfarm:mushrooms"
+    },
+    {
+      "tag": "forge:gunpowder"
+    },
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "animalcrops:spores",
+    "nbt": "{entity:\"minecraft:ghast\"}",
+    "count": 1
+  }
+}

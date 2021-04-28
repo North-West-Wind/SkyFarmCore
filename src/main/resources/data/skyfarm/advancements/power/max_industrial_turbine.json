@@ -103,7 +103,7 @@
       "conditions": {
         "items": [
           {
-            "item": "mekanismgenerators:pressure_disperser",
+            "item": "mekanism:pressure_disperser",
             "count": 224
           }
         ]

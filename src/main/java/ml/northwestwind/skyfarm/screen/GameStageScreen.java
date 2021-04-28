@@ -5,31 +5,20 @@ import com.google.common.collect.Maps;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.misc.Utils;
-import ml.northwestwind.skyfarm.misc.widget.ItemButton;
 import ml.northwestwind.skyfarm.misc.widget.StageButton;
 import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
-import ml.northwestwind.skyfarm.packet.message.CAddStagePacket;
 import ml.northwestwind.skyfarm.packet.message.DSyncPointsPacket;
 import net.darkhax.gamestages.GameStageHelper;
-import net.darkhax.gamestages.data.GameStageSaveHandler;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
-import org.apache.commons.lang3.tuple.MutableTriple;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
 
 public class GameStageScreen extends Screen {
     public static final ResourceLocation WHITE_DOT = new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/white_dot.png");
@@ -40,25 +29,25 @@ public class GameStageScreen extends Screen {
     public GameStageScreen() {
         super(new TranslationTextComponent("screen.gamestage"));
         STAGES.clear();
-        STAGES.put("mob_grinding_utils", new ImmutableTriple<>(Utils.getByModAndName("mob_grinding_utils", "fan"), 1, EMPTY_STRING_LIST));
-        STAGES.put("botanypots", new ImmutableTriple<>(Utils.getByModAndName("botanypots", "botany_pot"), 1, EMPTY_STRING_LIST));
-        STAGES.put("darkutils", new ImmutableTriple<>(Utils.getByModAndName("darkutils", "vector_plate"), 1, EMPTY_STRING_LIST));
-        STAGES.put("prudentium", new ImmutableTriple<>(Utils.getByModAndName("mysticalagriculture", "prudentium_essence"), 2, EMPTY_STRING_LIST));
-        STAGES.put("tertium", new ImmutableTriple<>(Utils.getByModAndName("mysticalagriculture", "tertium_essence"), 3, Lists.newArrayList("prudentium")));
-        STAGES.put("imperium", new ImmutableTriple<>(Utils.getByModAndName("mysticalagriculture", "imperium_essence"), 4, Lists.newArrayList("tertium")));
-        STAGES.put("supremium", new ImmutableTriple<>(Utils.getByModAndName("mysticalagriculture", "supremium_essence"), 5, Lists.newArrayList("imperium")));
-        STAGES.put("insanium", new ImmutableTriple<>(Utils.getByModAndName("mysticalagradditions", "insanium_essence"), 6, Lists.newArrayList("supremium")));
-        STAGES.put("ironjetpacks", new ImmutableTriple<>(Utils.getByModAndName("ironjetpacks", "emerald_jetpack"), 2, EMPTY_STRING_LIST));
-        STAGES.put("cgm", new ImmutableTriple<>(Utils.getByModAndName("cgm", "mini_gun"), 1, EMPTY_STRING_LIST));
-        STAGES.put("vehicle", new ImmutableTriple<>(Utils.getByModAndName("vehicle", "standard_wheel"), 1, EMPTY_STRING_LIST));
-        STAGES.put("ender_slime_grass_seeds", new ImmutableTriple<>(Utils.getByModAndName("tconstruct", "ender_slime_grass_seeds"), 1, EMPTY_STRING_LIST));
-        STAGES.put("blood_slime_grass_seeds", new ImmutableTriple<>(Utils.getByModAndName("tconstruct", "blood_slime_grass_seeds"), 2, Lists.newArrayList("ender_slime_grass_seeds")));
-        STAGES.put("projecte", new ImmutableTriple<>(Utils.getByModAndName("projecte", "philosophers_stone"), 100, EMPTY_STRING_LIST));
-        STAGES.put("simpleplanes", new ImmutableTriple<>(Utils.getByModAndName("simpleplanes", "plane"), 3, Lists.newArrayList("vehicle")));
-        STAGES.put("mekasuit", new ImmutableTriple<>(Utils.getByModAndName("mekanism", "mekasuit_bodyarmor"), 5, EMPTY_STRING_LIST));
-        STAGES.put("mekatool", new ImmutableTriple<>(Utils.getByModAndName("mekanism", "meka_tool"), 5, EMPTY_STRING_LIST));
-        STAGES.put("illuminati_pet", new ImmutableTriple<>(Utils.getByModAndName("inventorypets", "pet_illuminati"), 4, EMPTY_STRING_LIST));
-        STAGES.put("void_miner", new ImmutableTriple<>(Utils.getByModAndName("envirotech", "xerothium_void_miner_ccu"), 10, EMPTY_STRING_LIST));
+        STAGES.put("mob_grinding_utils", new ImmutableTriple<>(Utils.getItemByModAndName("mob_grinding_utils", "fan"), 1, EMPTY_STRING_LIST));
+        STAGES.put("botanypots", new ImmutableTriple<>(Utils.getItemByModAndName("botanypots", "botany_pot"), 1, EMPTY_STRING_LIST));
+        STAGES.put("darkutils", new ImmutableTriple<>(Utils.getItemByModAndName("darkutils", "vector_plate"), 1, EMPTY_STRING_LIST));
+        STAGES.put("prudentium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "prudentium_essence"), 2, EMPTY_STRING_LIST));
+        STAGES.put("tertium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "tertium_essence"), 3, Lists.newArrayList("prudentium")));
+        STAGES.put("imperium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "imperium_essence"), 4, Lists.newArrayList("tertium")));
+        STAGES.put("supremium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "supremium_essence"), 5, Lists.newArrayList("imperium")));
+        STAGES.put("insanium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagradditions", "insanium_essence"), 6, Lists.newArrayList("supremium")));
+        STAGES.put("ironjetpacks", new ImmutableTriple<>(Utils.getItemByModAndName("ironjetpacks", "emerald_jetpack"), 2, EMPTY_STRING_LIST));
+        STAGES.put("cgm", new ImmutableTriple<>(Utils.getItemByModAndName("cgm", "mini_gun"), 1, EMPTY_STRING_LIST));
+        STAGES.put("vehicle", new ImmutableTriple<>(Utils.getItemByModAndName("vehicle", "standard_wheel"), 1, EMPTY_STRING_LIST));
+        STAGES.put("ender_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "ender_slime_grass_seeds"), 1, EMPTY_STRING_LIST));
+        STAGES.put("blood_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "blood_slime_grass_seeds"), 2, Lists.newArrayList("ender_slime_grass_seeds")));
+        STAGES.put("projecte", new ImmutableTriple<>(Utils.getItemByModAndName("projecte", "philosophers_stone"), 100, EMPTY_STRING_LIST));
+        STAGES.put("simpleplanes", new ImmutableTriple<>(Utils.getItemByModAndName("simpleplanes", "plane"), 3, Lists.newArrayList("vehicle")));
+        STAGES.put("mekasuit", new ImmutableTriple<>(Utils.getItemByModAndName("mekanism", "mekasuit_bodyarmor"), 5, EMPTY_STRING_LIST));
+        STAGES.put("mekatool", new ImmutableTriple<>(Utils.getItemByModAndName("mekanism", "meka_tool"), 5, EMPTY_STRING_LIST));
+        STAGES.put("illuminati_pet", new ImmutableTriple<>(Utils.getItemByModAndName("inventorypets", "pet_illuminati"), 4, EMPTY_STRING_LIST));
+        STAGES.put("void_miner", new ImmutableTriple<>(Utils.getItemByModAndName("envirotech", "xerothium_void_miner_ccu"), 10, EMPTY_STRING_LIST));
     }
 
     public static Triple<Item, Integer, List<String>> getTriple(String stage) {
@@ -91,7 +80,7 @@ public class GameStageScreen extends Screen {
         addStageButton(2, 1, "vehicle");
         addStageButton(3, 1, "simpleplanes");
 
-        addStageButton(7.5, 3.5, "botanypots", 40, 40);
+        addStageButton(7.5, 3.5, "botanypots");
 
         addStageButton(11, 0, "mob_grinding_utils");
         addStageButton(12, 0, "darkutils");

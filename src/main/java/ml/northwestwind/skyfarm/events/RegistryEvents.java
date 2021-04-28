@@ -6,10 +6,7 @@ import ml.northwestwind.skyfarm.block.ParaboxBlock;
 import ml.northwestwind.skyfarm.block.VoidGeneratorBlock;
 import ml.northwestwind.skyfarm.container.ParaboxContainer;
 import ml.northwestwind.skyfarm.entity.CompactBrickEntity;
-import ml.northwestwind.skyfarm.item.CompactBrickItem;
-import ml.northwestwind.skyfarm.item.StoneVariatorItem;
-import ml.northwestwind.skyfarm.item.TooltipBlockItem;
-import ml.northwestwind.skyfarm.item.WaterBowlItem;
+import ml.northwestwind.skyfarm.item.*;
 import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.recipes.serializer.EvaporatingRecipeSerializer;
 import ml.northwestwind.skyfarm.tile.NaturalEvaporatorTileEntity;
@@ -94,6 +91,7 @@ public class RegistryEvents {
         if (ModList.get().isLoaded("undergarden")) event.getRegistry().register(Items.OVERWORLD_VOID_SHIFTER_UG);
         if (ModList.get().isLoaded("twilightforest")) event.getRegistry().register(Items.OVERWORLD_SKY_SHIFTER_TF);
         if (ModList.get().isLoaded("lostcities")) event.getRegistry().register(Items.OVERWORLD_SKY_SHIFTER_LC);
+        if (ModList.get().isLoaded("iceandfire")) event.getRegistry().register(Items.DRAGON_SUMMONER);
     }
 
     @SubscribeEvent
@@ -184,6 +182,7 @@ public class RegistryEvents {
         public static final Item OVERWORLD_VOID_SHIFTER_UG = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_ug");
         public static final Item OVERWORLD_SKY_SHIFTER_TF = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_sky_shifter_tf");
         public static final Item OVERWORLD_SKY_SHIFTER_LC = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_sky_shifter_lc");
+        public static final Item DRAGON_SUMMONER = new DragonSummonerItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "dragon_summoner");
     }
 
     public static class ContainerTypes {
