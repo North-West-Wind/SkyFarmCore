@@ -96,5 +96,8 @@
     [
       "jungle"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:allow_nature_saplings"
+  }
 }

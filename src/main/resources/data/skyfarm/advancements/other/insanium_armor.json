@@ -16,7 +16,7 @@
     "icon": {
       "item": "mysticaladaptations:insanium_chestplate"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
@@ -76,5 +76,9 @@
     [
       "boots"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+
 }

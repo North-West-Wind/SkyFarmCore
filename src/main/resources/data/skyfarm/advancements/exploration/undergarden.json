@@ -14,7 +14,7 @@
       "translate": "advancement.exploration.undergarden.description"
     },
     "icon": {
-      "item": "skyfarm:overworld_void_shifter_ug"
+      "item": "skyfarm:overworld_axis_shifter_ug"
     },
     "frame": "task",
     "show_toast": true,

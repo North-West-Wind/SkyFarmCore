@@ -1,0 +1,31 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "integrateddynamics"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:dyes/purple"
+    },
+    {
+      "item": "integrateddynamics:menril_sapling"
+    }
+  ],
+  "results": [
+    {
+      "item": "ars_nouveau:purple_archwood_sapling",
+      "count": 1
+    }
+  ]
+}

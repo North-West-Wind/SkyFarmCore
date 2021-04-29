@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:dyes/light_blue"
+    },
+    {
+      "item": "minecraft:oak_sapling"
+    }
+  ],
+  "results": [
+    {
+      "item": "quark:blue_blossom_sapling",
+      "count": 1
+    }
+  ]
+}

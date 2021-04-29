@@ -31,7 +31,7 @@ public class PointsCommand {
     }
 
     private static int addPoint(CommandContext<CommandSource> context) {
-        if (!(context.getSource().getEntity() instanceof ServerPlayerEntity)) return 0;
+        if (!(context.getSource().getEntity() instanceof ServerPlayerEntity)) return 1;
         int point = IntegerArgumentType.getInteger(context, "point");
         ServerPlayerEntity player = (ServerPlayerEntity) context.getSource().getEntity();
         SkyblockData data = SkyblockData.get(player.getLevel());
@@ -40,7 +40,7 @@ public class PointsCommand {
         Objects.requireNonNull(player.getServer()).getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", point, data.getPoint())
                 .setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
                 ChatType.SYSTEM, Util.NIL_UUID);
-        return 1;
+        return point;
     }
 
     private static int setPoint(CommandContext<CommandSource> context) {

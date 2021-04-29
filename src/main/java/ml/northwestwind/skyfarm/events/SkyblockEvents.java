@@ -1,7 +1,6 @@
 package ml.northwestwind.skyfarm.events;
 
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.SkyFarm;
@@ -116,11 +115,11 @@ public class SkyblockEvents {
         else if (player.getY() <= -64) player.teleportTo(player.getX(), 316, player.getZ());
         else if (player.getY() >= 320) player.teleportTo(player.getX(), -60, player.getZ());
 
-        if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_UG))
+        if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_UG))
             speedyWorldWarp(World.OVERWORLD, UNDERGARDEN, player);
-        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_TF))
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_TF))
             speedyWorldWarp(TWILIGHT_FOREST, World.OVERWORLD, player);
-        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_LC))
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_LC))
             speedyWorldWarp(LOST_CITIES, World.OVERWORLD, player);
     }
 

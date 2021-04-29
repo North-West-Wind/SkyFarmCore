@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:dyes/orange"
+    },
+    {
+      "item": "minecraft:spruce_sapling"
+    }
+  ],
+  "results": [
+    {
+      "item": "quark:orange_blossom_sapling",
+      "count": 1
+    }
+  ]
+}

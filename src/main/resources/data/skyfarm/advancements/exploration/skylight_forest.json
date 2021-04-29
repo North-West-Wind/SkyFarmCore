@@ -14,7 +14,7 @@
       "translate": "advancement.exploration.skylight_forest.description"
     },
     "icon": {
-      "item": "skyfarm:overworld_void_shifter_tf"
+      "item": "skyfarm:overworld_axis_shifter_tf"
     },
     "frame": "task",
     "show_toast": true,

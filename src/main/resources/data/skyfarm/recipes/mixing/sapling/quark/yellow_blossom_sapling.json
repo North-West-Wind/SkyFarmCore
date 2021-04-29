@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:dyes/yellow"
+    },
+    {
+      "item": "minecraft:birch_sapling"
+    }
+  ],
+  "results": [
+    {
+      "item": "quark:yellow_blossom_sapling",
+      "count": 1
+    }
+  ]
+}

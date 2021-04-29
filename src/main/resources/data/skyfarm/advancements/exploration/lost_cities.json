@@ -14,7 +14,7 @@
       "translate": "advancement.exploration.lost_cities.description"
     },
     "icon": {
-      "item": "skyfarm:overworld_void_shifter_lc"
+      "item": "skyfarm:overworld_axis_shifter_lc"
     },
     "frame": "task",
     "show_toast": true,
