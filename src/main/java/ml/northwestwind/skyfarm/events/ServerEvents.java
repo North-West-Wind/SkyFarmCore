@@ -25,8 +25,5 @@ public class ServerEvents {
             Backups.INSTANCE.restore(event.getServer());
             SkyblockData.shouldRestore = false;
         }
-        try {
-            Utils.overrideServerConfig(event.getServer());
-        } catch (IOException ignored) { }
     }
 }

@@ -90,22 +90,6 @@ public class Utils {
         return entity;
     }
 
-    public static void overrideServerConfig(MinecraftServer server) throws IOException {
-        if (!new File("./skyfarm/serverconfig").exists()) {
-            LogManager.getLogger().info("Did not find default serverconfig. Cancelled replacing.");
-            return;
-        }
-        File world = server.getWorldPath(FolderName.ROOT).toFile();
-        if (!world.exists()) return;
-        File serverConfig = new File(world.getAbsolutePath() + File.separator + "serverconfig");
-        if (serverConfig.exists()) {
-            LogManager.getLogger().info("Deleting serverconfig of " + world.getName());
-            FileUtils.deleteDirectory(serverConfig);
-        }
-        LogManager.getLogger().info("Copying default serverconfig to world " + world.getName());
-        FileUtils.copyDirectory(new File("./skyfarm/serverconfig"), serverConfig);
-    }
-
     public enum DragonType {
         FIRE("fire_dragon"),
         ICE("ice_dragon"),
