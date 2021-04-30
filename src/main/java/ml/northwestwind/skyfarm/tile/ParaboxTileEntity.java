@@ -42,7 +42,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
     private double ticksLeft = 12000, efficiency;
     private int paraboxLevel, energy;
     private boolean isInLoop, isBackingUp;
-    private Item wantingItem;
+    private ItemStack wantingItem = ItemStack.EMPTY;
 
     public ParaboxTileEntity(TileEntityType<?> type) {
         super(type);
@@ -108,10 +108,10 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
             addParaboxLevel();
             dirty = true;
         } else if (isWorldInLoop()) {
-            if (wantingItem == null && level instanceof ServerWorld) {
+            if (wantingItem.isEmpty() && level instanceof ServerWorld) {
                 ServerWorld world = (ServerWorld) level;
-                wantingItem = SkyblockData.getWantingItem();
-                if (wantingItem.equals(Items.AIR)) wantingItem = SkyblockData.generateItem(world);
+                wantingItem = new ItemStack(SkyblockData.getWantingItem());
+                if (wantingItem.isEmpty()) wantingItem = new ItemStack(SkyblockData.generateItem(world));
             }
             energy = energyStorage.getEnergyStored();
             double percentage = energyStorage.drainAll();
@@ -123,7 +123,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
                 if (level instanceof ServerWorld) {
                     ServerWorld world = (ServerWorld) level;
                     world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.item").setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)), ChatType.SYSTEM, Util.NIL_UUID);
-                    wantingItem = SkyblockData.generateItem(world);
+                    wantingItem = new ItemStack(SkyblockData.generateItem(world));
                 }
             }
             dirty = true;
@@ -184,7 +184,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         nbt.putInt("level", paraboxLevel);
         nbt.putBoolean("looping", isWorldInLoop());
         nbt.putBoolean("backingUp", isBackingUp());
-        if (wantingItem != null) nbt.putString("wantingItem", wantingItem.getRegistryName().toString());
+        if (!wantingItem.isEmpty()) nbt.putString("wantingItem", wantingItem.getItem().getRegistryName().toString());
         return nbt;
     }
 
@@ -195,7 +195,10 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         isInLoop = nbt.getBoolean("looping");
         isBackingUp = nbt.getBoolean("backingUp");
         String id = nbt.getString("wantingItem");
-        if (!id.equals("")) wantingItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+        if (!id.equals("")) {
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+            if (item != null) wantingItem = new ItemStack(item);
+        }
     }
 
     @Nullable
@@ -244,8 +247,8 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
     }
 
     @Nonnull
-    public Item getWantingItem() {
-        return wantingItem != null ? wantingItem : Items.AIR;
+    public ItemStack getWantingItem() {
+        return wantingItem;
     }
 
     public int getEnergy() {

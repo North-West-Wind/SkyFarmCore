@@ -39,7 +39,9 @@ for (const file of files) {
         else json.growthModifier *= 0.3;
         json.growthModifier = Math.round((json.growthModifier + Number.EPSILON) * 100) / 100;
         var filename = file.replace(/^.*[\\\/]/, '');
-        lines.push(`soils.getSoil("${mod}:soils/${filename.replace(".json", "")}").setGrowthModifier(${json.growthModifier});`);
+        var name = filename.replace(".json", "");
+        lines.push(`val ${mod}_${name} = soils.getSoil("${mod}:soil/${name}");`);
+        lines.push(`${mod}_${name}.setGrowthModifier(${json.growthModifier});`);
         console.log(`${filename} growthModifier increased by ${json.growthModifier - old}`);
     }
 }

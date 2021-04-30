@@ -14,12 +14,10 @@ public class VoteCommand {
     public static void registerCommand(CommandDispatcher<CommandSource> dispatcher) {
         dispatcher.register(Commands.literal("vote").then(
                 Commands.literal("paraboxActivate")
-                .then(Commands.argument("yesNo", BoolArgumentType.bool()))
-                .executes(VoteCommand::voteParaboxActivate)
+                .then(Commands.argument("yesNo", BoolArgumentType.bool()).executes(VoteCommand::voteParaboxActivate))
         ).then(
                 Commands.literal("paraboxDeactivate")
-                .then(Commands.argument("yesNo", BoolArgumentType.bool()))
-                .executes(VoteCommand::voteParaboxDeactivate)
+                .then(Commands.argument("yesNo", BoolArgumentType.bool()).executes(VoteCommand::voteParaboxDeactivate))
         ));
     }
 

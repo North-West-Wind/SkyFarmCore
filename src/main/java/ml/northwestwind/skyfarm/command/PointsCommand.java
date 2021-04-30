@@ -21,12 +21,10 @@ public class PointsCommand {
                 commandSource -> commandSource.hasPermission(2)
         ).then(
                 Commands.literal("add")
-                .then(Commands.argument("point", IntegerArgumentType.integer()))
-                .executes(PointsCommand::addPoint)
+                .then(Commands.argument("point", IntegerArgumentType.integer()).executes(PointsCommand::addPoint))
         ).then(
                 Commands.literal("set")
-                .then(Commands.argument("point", IntegerArgumentType.integer()))
-                .executes(PointsCommand::setPoint)
+                .then(Commands.argument("point", IntegerArgumentType.integer()).executes(PointsCommand::setPoint))
         ));
     }
 
@@ -40,11 +38,11 @@ public class PointsCommand {
         Objects.requireNonNull(player.getServer()).getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", point, data.getPoint())
                 .setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
                 ChatType.SYSTEM, Util.NIL_UUID);
-        return point;
+        return 2;
     }
 
     private static int setPoint(CommandContext<CommandSource> context) {
-        if (!(context.getSource().getEntity() instanceof ServerPlayerEntity)) return 0;
+        if (!(context.getSource().getEntity() instanceof ServerPlayerEntity)) return 1;
         int point = IntegerArgumentType.getInteger(context, "point");
         ServerPlayerEntity player = (ServerPlayerEntity) context.getSource().getEntity();
         SkyblockData data = SkyblockData.get(player.getLevel());
@@ -53,6 +51,6 @@ public class PointsCommand {
         Objects.requireNonNull(player.getServer()).getPlayerList().broadcastMessage(new TranslationTextComponent("points.set", point)
                 .setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
                 ChatType.SYSTEM, Util.NIL_UUID);
-        return 1;
+        return 2;
     }
 }

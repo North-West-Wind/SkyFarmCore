@@ -39,11 +39,9 @@ public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSeria
 
     @Override
     public void toNetwork(PacketBuffer buffer, EvaporatingRecipe recipe) {
-        buffer.writeDouble(recipe.getChance());
+        buffer.writeItem(recipe.getResultItem());
+        recipe.getIngredients().get(0).toNetwork(buffer);
         buffer.writeInt(recipe.getTick());
-        Ingredient input = recipe.getIngredients().get(0);
-        input.toNetwork(buffer);
-
-        buffer.writeItemStack(recipe.getResultItem(), false);
+        buffer.writeDouble(recipe.getChance());
     }
 }

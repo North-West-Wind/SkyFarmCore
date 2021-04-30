@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.apache.logging.log4j.LogManager;
 
 // Thank you TurtyWurty
 @OnlyIn(Dist.CLIENT)
@@ -27,7 +28,7 @@ public class ParaboxRenderer extends TileEntityRenderer<ParaboxTileEntity> {
     @Override
     public void render(ParaboxTileEntity tile, float partialTicks, MatrixStack matrix, IRenderTypeBuffer buffer, int light, int overlay) {
         if (!tile.isWorldInLoop()) return;
-        ItemStack stack = new ItemStack(tile.getWantingItem());
+        ItemStack stack = tile.getWantingItem();
         if (!stack.isEmpty()) {
             matrix.pushPose();
             matrix.translate(0.5D, 1.6D, 0.5D);

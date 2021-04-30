@@ -86,7 +86,7 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
         y += 2 + this.font.lineHeight;
         this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.efficiency", ((int) (this.menu.tile.getEfficiency() * 100)) + "%"), x, y, 0xFFFFFF);
         y += 2 + this.font.lineHeight;
-        this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.item", this.menu.tile.getWantingItem().getDefaultInstance().getDisplayName()), x, y, 0xFFFFFF);
+        this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.item", this.menu.tile.getWantingItem().getDisplayName()), x, y, 0xFFFFFF);
     }
 
     @Override

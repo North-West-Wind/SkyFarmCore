@@ -23,7 +23,7 @@ public class ClientSetupEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.NATURAL_EVAPORATOR, NaturalEvaporatorRenderer::new);
-        ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.PARABOX, ParaboxRenderer::new);
+        //ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.PARABOX, ParaboxRenderer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(RegistryEvents.EntityTypes.COMPACT_BRICK, manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
         ScreenManager.register(RegistryEvents.ContainerTypes.PARABOX, ParaboxScreen::new);

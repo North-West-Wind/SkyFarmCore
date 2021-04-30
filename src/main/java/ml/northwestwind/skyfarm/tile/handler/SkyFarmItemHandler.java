@@ -36,25 +36,10 @@ public class SkyFarmItemHandler extends ItemStackHandler {
         return extractItem(index, count, false);
     }
 
-    public void removeStackFromSlot(int index) {
-        this.stacks.set(index, ItemStack.EMPTY);
-        this.onContentsChanged(index);
-    }
-
     public NonNullList<ItemStack> toNonNullList() {
         NonNullList<ItemStack> items = NonNullList.create();
         items.addAll(this.stacks);
         return items;
-    }
-
-    public void setNonNullList(NonNullList<ItemStack> items) {
-        if (items.size() == 0)
-            return;
-        if (items.size() != this.getSlots())
-            throw new IndexOutOfBoundsException("NonNullList must be same size as ItemStackHandler!");
-        for (int index = 0; index < items.size(); index++) {
-            this.stacks.set(index, items.get(index));
-        }
     }
 
     public int getSize() {
