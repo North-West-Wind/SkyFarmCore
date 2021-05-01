@@ -21,6 +21,7 @@
   "itemGroup.skyfarm": "Sky Farm",
 
   "key.skyfarm.stageMenu": "Open Stage Menu",
+  "key.skyfarm.voteMenu": "Open Voting Screen",
 
   "recipe.skyfarm.evaporating": "Evaporating",
 
@@ -62,6 +63,9 @@
 
   "parabox.broken": "The Parabox is broken at (%d, %d, %d)! Exited the time loop.",
 
+  "parabox.yes": "Yes",
+  "parabox.no": "No",
+
   "parabox.vote.activate": "%s has voted to activate the Parabox. Please vote in 1 minute.",
   "parabox.vote.activate.yes": "[Turn It On]",
   "parabox.vote.activate.no": "[Don't Start It]",
@@ -72,6 +76,9 @@
 
   "parabox.vote.timeout": "60 seconds have passed. Vote cancelled.",
   "parabox.vote.deny": "Someone did not vote for that. Vote cancelled.",
+  "parabox.vote.leave": "Someone left the server. Vote cancelled.",
+
+  "parabox.vote.openGui": "Open your voting screen to vote now!",
 
   "parabox.activate": "The Parabox has been activated at (%d, %d, %d)!",
   "parabox.deactivate": "The Parabox has been deactivate at (%d, %d, %d)!",
@@ -81,6 +88,14 @@
   "parabox.disconnect": "It's Rewind Time",
 
   "screen.gamestage": "Stages",
+
+  "screen.vote": "Voting",
+  "screen.vote.syncing": "Syncing with server...",
+  "screen.vote.voted": "You have already voted!",
+  "screen.vote.voting": "Voting Status: %s",
+  "screen.vote.activate": "Activation",
+  "screen.vote.deactivate": "Deactivation",
+  "screen.vote.none": "None",
 
   "advancement.skyfarm.root.title": "All in One SkyFarm Guide",
   "advancement.skyfarm.root.description": "This advancement tab should help you progress. Also spam crouch to grow stuff.",

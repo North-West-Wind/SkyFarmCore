@@ -2,39 +2,36 @@ package ml.northwestwind.skyfarm.world.data;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
-import net.minecraft.util.NonNullList;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.commons.lang3.tuple.MutableTriple;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class SkyblockData extends WorldSavedData {
+    public static VotingStatus votingStatus = VotingStatus.NONE;
+    public static List<UUID> voted = Lists.newArrayList();
     public static boolean isVoting, forced, shouldRestore;
-    public static int votedFor;
+    public static Thread thread;
     private boolean worldGenerated, isInLoop, usingParabox, noStage;
     private BlockPos paraboxPos = BlockPos.ZERO;
     private final List<UUID> joined = Lists.newArrayList();
@@ -72,6 +69,39 @@ public class SkyblockData extends WorldSavedData {
 
     public static Item getWantingItem() {
         return wantingItem;
+    }
+
+    public static void startVoting(MinecraftServer server, VotingStatus votingStatus) {
+        SkyblockData.votingStatus = votingStatus;
+        isVoting = true;
+        startTimeout(server);
+    }
+
+    public static void startTimeout(MinecraftServer server) {
+        thread = new Thread(() -> {
+            try {
+                Thread.sleep(60000);
+                if (isVoting) {
+                    isVoting = false;
+                    server.getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.vote.timeout").setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), ChatType.SYSTEM, Util.NIL_UUID);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+    }
+
+    public static void cancelVote(MinecraftServer server, String reason) {
+        endVoting();
+        server.getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.vote."+reason).setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), ChatType.SYSTEM, Util.NIL_UUID);
+    }
+
+    public static void endVoting() {
+        thread.stop();
+        voted.clear();
+        votingStatus = VotingStatus.NONE;
+        isVoting = false;
     }
 
     @Override
@@ -206,5 +236,25 @@ public class SkyblockData extends WorldSavedData {
 
     public Iterable<String> getStages() {
         return noStage ? GameStageHelper.getKnownStages() : ImmutableList.copyOf(stages);
+    }
+
+    public enum VotingStatus {
+        ACTIVATE(1),
+        DEACTIVATE(2),
+        NONE(0);
+
+        final int id;
+        VotingStatus(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public static VotingStatus getFromID(int id) {
+            for (VotingStatus status : VotingStatus.values()) if (status.id == id) return status;
+            return null;
+        }
     }
 }

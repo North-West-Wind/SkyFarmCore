@@ -5,6 +5,7 @@ import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.packet.message.CPlayerGrowPacket;
 import ml.northwestwind.skyfarm.screen.GameStageScreen;
+import ml.northwestwind.skyfarm.screen.VoteScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.client.event.InputEvent;
@@ -32,6 +33,9 @@ public class KeyEvents {
                 }
                 mc.setScreen(new GameStageScreen());
             }
+        } else if (KeyBindings.voteMenu.consumeClick() && event.getAction() == GLFW.GLFW_PRESS) {
+            if (mc.screen instanceof VoteScreen) mc.setScreen(null);
+            else mc.setScreen(new VoteScreen());
         }
     }
 }

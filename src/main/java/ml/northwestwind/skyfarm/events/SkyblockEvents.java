@@ -25,6 +25,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -80,6 +81,15 @@ public class SkyblockEvents {
             data.setDirty();
             world.getDataStorage().set(data);
         }
+    }
+
+    @SubscribeEvent
+    public static void playerLeave(final PlayerEvent.PlayerLoggedOutEvent event) {
+        if (event.getPlayer().level.isClientSide) return;
+        if (!SkyblockData.isVoting) return;
+        ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
+        if (player.getServer() == null) return;
+        SkyblockData.cancelVote(player.getServer(), "leave");
     }
 
     private static void generateIsland(World world) {
