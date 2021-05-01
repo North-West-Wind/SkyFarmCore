@@ -69,6 +69,7 @@ public class CVoteActivateParaboxPacket implements IPacket {
                 else s.connection.send(new SChatPacket(component, ChatType.SYSTEM, Util.NIL_UUID));
             }
             SkyblockData.startVoting(player.getServer(), SkyblockData.VotingStatus.ACTIVATE);
+            SkyblockData.voted.add(player.getUUID());
         }
     }
 
