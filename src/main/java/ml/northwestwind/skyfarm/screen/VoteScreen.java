@@ -27,10 +27,16 @@ public class VoteScreen extends Screen {
         this.yes = new Button(this.width / 2 - 110, this.height / 2 - 10, 100, 20, new TranslationTextComponent("parabox.yes"), button -> {
             if (status.equals(SkyblockData.VotingStatus.ACTIVATE)) SkyFarmPacketHandler.INSTANCE.sendToServer(new CVoteActivateParaboxPacket(true));
             else if (status.equals(SkyblockData.VotingStatus.DEACTIVATE)) SkyFarmPacketHandler.INSTANCE.sendToServer(new CVoteDeactivateParaboxPacket(true));
+            yes.active = false;
+            no.active = false;
+            onClose();
         });
         this.no = new Button(this.width / 2 + 10, this.height / 2 - 10, 100, 20, new TranslationTextComponent("parabox.no"), button -> {
             if (status.equals(SkyblockData.VotingStatus.ACTIVATE)) SkyFarmPacketHandler.INSTANCE.sendToServer(new CVoteActivateParaboxPacket(false));
             else if (status.equals(SkyblockData.VotingStatus.DEACTIVATE)) SkyFarmPacketHandler.INSTANCE.sendToServer(new CVoteDeactivateParaboxPacket(false));
+            yes.active = false;
+            no.active = false;
+            onClose();
         });
         yes.active = false;
         no.active = false;
