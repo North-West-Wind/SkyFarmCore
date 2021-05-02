@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/tinker_station",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.tinkers_anvil.title"
+    },
+    "description": {
+      "translate": "advancement.other.tinkers_anvil.description"
+    },
+    "icon": {
+      "item": "tconstruct:tinkers_anvil"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "tinkers_anvil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:tinkers_anvil"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tinkers_anvil"
+    ]
+  ]
+}

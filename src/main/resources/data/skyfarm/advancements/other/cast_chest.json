@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/crafting_station",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.cast_chest.title"
+    },
+    "description": {
+      "translate": "advancement.other.cast_chest.description"
+    },
+    "icon": {
+      "item": "tconstruct:cast_chest"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cast_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:cast_chest"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cast_chest"
+    ]
+  ]
+}

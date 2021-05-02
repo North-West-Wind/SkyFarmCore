@@ -1,0 +1,278 @@
+{
+  "parent": "skyfarm:other/cast_chest",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.cast_chest.title"
+    },
+    "description": {
+      "translate": "advancement.other.cast_chest.description"
+    },
+    "icon": {
+      "item": "tconstruct:blank_cast"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:ingot_cast"
+          }
+        ]
+      }
+    },
+    "nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:nugget_cast"
+          }
+        ]
+      }
+    },
+    "gem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:gem_cast"
+          }
+        ]
+      }
+    },
+    "rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:rod_cast"
+          }
+        ]
+      }
+    },
+    "repair_kit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:repair_kit_cast"
+          }
+        ]
+      }
+    },
+    "plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:plate_cast"
+          }
+        ]
+      }
+    },
+    "gear": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:gear_cast"
+          }
+        ]
+      }
+    },
+    "coin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:coin_cast"
+          }
+        ]
+      }
+    },
+    "pickaxe_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:pickaxe_head_cast"
+          }
+        ]
+      }
+    },
+    "small_axe_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:small_axe_head_cast"
+          }
+        ]
+      }
+    },
+    "kama_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:kama_head_cast"
+          }
+        ]
+      }
+    },
+    "sword_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:sword_blade_cast"
+          }
+        ]
+      }
+    },
+    "hammer_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:hammer_head_cast"
+          }
+        ]
+      }
+    },
+    "broad_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:broad_blade_cast"
+          }
+        ]
+      }
+    },
+    "broad_axe_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:broad_axe_head_cast"
+          }
+        ]
+      }
+    },
+    "tool_binding": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:tool_binding_cast"
+          }
+        ]
+      }
+    },
+    "large_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:large_plate_cast"
+          }
+        ]
+      }
+    },
+    "tool_handle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:tool_handle_cast"
+          }
+        ]
+      }
+    },
+    "tough_handle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:tough_handle_cast"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ingot"
+    ],
+    [
+      "nugget"
+    ],
+    [
+      "gem"
+    ],
+    [
+      "rod"
+    ],
+    [
+      "repair_kit"
+    ],
+    [
+      "plate"
+    ],
+    [
+      "gear"
+    ],
+    [
+      "coin"
+    ],
+    [
+      "pickaxe_head"
+    ],
+    [
+      "small_axe_head"
+    ],
+    [
+      "kama_head"
+    ],
+    [
+      "sword_blade"
+    ],
+    [
+      "hammer_head"
+    ],
+    [
+      "broad_blade"
+    ],
+    [
+      "broad_axe_head"
+    ],
+    [
+      "tool_binding"
+    ],
+    [
+      "large_plate"
+    ],
+    [
+      "tool_handle"
+    ],
+    [
+      "tough_handle"
+    ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

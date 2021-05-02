@@ -1,0 +1,493 @@
+{
+  "parent": "skyfarm:other/modifier_chest",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.modifiers.title"
+    },
+    "description": {
+      "translate": "advancement.other.modifiers.description"
+    },
+    "icon": {
+      "item": "tconstruct:creative_upgrade"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "antiaquatic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:antiaquatic\"}]}"
+          }
+        ]
+      }
+    },
+    "autosmelt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:autosmelt\"}]}"
+          }
+        ]
+      }
+    },
+    "bane_of_arthropods": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:bane_of_arthropods\"}]}"
+          }
+        ]
+      }
+    },
+    "beheading": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:beheading\"}]}"
+          }
+        ]
+      }
+    },
+    "blasting": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:blasting\"}]}"
+          }
+        ]
+      }
+    },
+    "cooling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:cooling\"}]}"
+          }
+        ]
+      }
+    },
+    "diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:diamond\"}]}"
+          }
+        ]
+      }
+    },
+    "draconic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:draconic\"}]}"
+          }
+        ]
+      }
+    },
+    "emerald": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:emerald\"}]}"
+          }
+        ]
+      }
+    },
+    "expanded": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:expanded\"}]}"
+          }
+        ]
+      }
+    },
+    "experienced": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:experienced\"}]}"
+          }
+        ]
+      }
+    },
+    "fiery": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:fiery\"}]}"
+          }
+        ]
+      }
+    },
+    "gilded": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:gilded\"}]}"
+          }
+        ]
+      }
+    },
+    "harmonious": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:harmonious\"}]}"
+          }
+        ]
+      }
+    },
+    "haste": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:haste\"}]}"
+          }
+        ]
+      }
+    },
+    "hydraulic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:hydraulic\"}]}"
+          }
+        ]
+      }
+    },
+    "knockback": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:knockback\"}]}"
+          }
+        ]
+      }
+    },
+    "lightspeed": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:lightspeed\"}]}"
+          }
+        ]
+      }
+    },
+    "luck": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:luck\"}]}"
+          }
+        ]
+      }
+    },
+    "magnetic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:magnetic\"}]}"
+          }
+        ]
+      }
+    },
+    "necrotic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:necrotic\"}]}"
+          }
+        ]
+      }
+    },
+    "netherite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:netherite\"}]}"
+          }
+        ]
+      }
+    },
+    "overslime": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:overslime\"}]}"
+          }
+        ]
+      }
+    },
+    "reach": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:reach\"}]}"
+          }
+        ]
+      }
+    },
+    "recapitated": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:recapitated\"}]}"
+          }
+        ]
+      }
+    },
+    "reinforced": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:reinforced\"}]}"
+          }
+        ]
+      }
+    },
+    "resurrected": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:resurrected\"}]}"
+          }
+        ]
+      }
+    },
+    "sharpness": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:sharpness\"}]}"
+          }
+        ]
+      }
+    },
+    "silky": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:silky\"}]}"
+          }
+        ]
+      }
+    },
+    "smite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:smite\"}]}"
+          }
+        ]
+      }
+    },
+    "soulbound": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:soulbound\"}]}"
+          }
+        ]
+      }
+    },
+    "worldbound": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:worldbound\"}]}"
+          }
+        ]
+      }
+    },
+    "writable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tconstruct:modifiable",
+            "nbt": "{tic_modifiers:[{name:\"tconstruct:writable\"}]}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "antiaquatic"
+    ],
+    [
+      "autosmelt"
+    ],
+    [
+      "bane_of_arthropods"
+    ],
+    [
+      "beheading"
+    ],
+    [
+      "blasting"
+    ],
+    [
+      "cooling"
+    ],
+    [
+      "diamond"
+    ],
+    [
+      "draconic"
+    ],
+    [
+      "emerald"
+    ],
+    [
+      "expanded"
+    ],
+    [
+      "experienced"
+    ],
+    [
+      "fiery"
+    ],
+    [
+      "gilded"
+    ],
+    [
+      "harmonious"
+    ],
+    [
+      "haste"
+    ],
+    [
+      "hydraulic"
+    ],
+    [
+      "knockback"
+    ],
+    [
+      "lightspeed"
+    ],
+    [
+      "luck"
+    ],
+    [
+      "magnetic"
+    ],
+    [
+      "necrotic"
+    ],
+    [
+      "netherite"
+    ],
+    [
+      "overslime"
+    ],
+    [
+      "reach"
+    ],
+    [
+      "recapitated"
+    ],
+    [
+      "reinforced"
+    ],
+    [
+      "resurrected"
+    ],
+    [
+      "sharpness"
+    ],
+    [
+      "silky"
+    ],
+    [
+      "smite"
+    ],
+    [
+      "soulbound"
+    ],
+    [
+      "worldbound"
+    ],
+    [
+      "writable"
+    ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

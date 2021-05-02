@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/crafting_station",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.part_builder.title"
+    },
+    "description": {
+      "translate": "advancement.other.part_builder.description"
+    },
+    "icon": {
+      "item": "tconstruct:part_builder"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "part_builder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:part_builder"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "part_builder"
+    ]
+  ]
+}

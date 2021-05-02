@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.crafting_station.title"
+    },
+    "description": {
+      "translate": "advancement.other.crafting_station.description"
+    },
+    "icon": {
+      "item": "tconstruct:crafting_station"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crafting_station": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:crafting_station"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crafting_station"
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/part_builder",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.part_chest.title"
+    },
+    "description": {
+      "translate": "advancement.other.part_chest.description"
+    },
+    "icon": {
+      "item": "tconstruct:part_chest"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "part_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:part_chest"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "part_chest"
+    ]
+  ]
+}
