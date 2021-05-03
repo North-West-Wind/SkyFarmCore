@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/zinc"
+    },
+    {
+      "tag": "minecraft:flowers"
+    }
+  ],
+  "result": {
+    "item": "skyfarm:mutation_pollen",
+    "nbt": "{Type:zinc}",
+    "count": 1
+  }
+}

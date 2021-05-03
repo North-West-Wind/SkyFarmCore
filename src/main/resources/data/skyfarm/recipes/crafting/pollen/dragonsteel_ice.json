@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/dragonsteel_ice"
+    },
+    {
+      "tag": "minecraft:flowers"
+    }
+  ],
+  "result": {
+    "item": "skyfarm:mutation_pollen",
+    "nbt": "{Type:dragonsteel_ice}",
+    "count": 1
+  }
+}

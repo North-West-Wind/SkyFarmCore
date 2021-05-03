@@ -8,10 +8,10 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.other.cast_chest.title"
+      "translate": "advancement.other.casts.title"
     },
     "description": {
-      "translate": "advancement.other.cast_chest.description"
+      "translate": "advancement.other.casts.description"
     },
     "icon": {
       "item": "tconstruct:blank_cast"

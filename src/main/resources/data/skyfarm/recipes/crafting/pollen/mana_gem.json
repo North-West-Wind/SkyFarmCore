@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ars_nouveau:mana_gem_block"
+    },
+    {
+      "tag": "minecraft:flowers"
+    }
+  ],
+  "result": {
+    "item": "skyfarm:mutation_pollen",
+    "nbt": "{Type:mana_gem}",
+    "count": 1
+  }
+}

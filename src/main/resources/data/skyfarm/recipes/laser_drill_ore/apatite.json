@@ -1,0 +1,49 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ores/apatite",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        },
+        {
+          "type": "forge:mod_loaded",
+          "modid": "industrialforegoing"
+        }
+      ],
+      "recipe": {
+        "output": {
+          "tag": "forge:ores/apatite"
+        },
+        "rarity": [
+          {
+            "whitelist": {},
+            "blacklist": {
+              "type": "minecraft:worldgen/biome",
+              "values": [
+                "minecraft:the_end",
+                "minecraft:the_void",
+                "minecraft:small_end_islands",
+                "minecraft:end_barrens",
+                "minecraft:end_highlands",
+                "minecraft:end_midlands"
+              ]
+            },
+            "depth_min": 30,
+            "depth_max": 64,
+            "weight": 8
+          }
+        ],
+        "pointer": 0,
+        "catalyst": {
+          "item": "industrialforegoing:laser_lens3"
+        },
+        "type": "industrialforegoing:laser_drill_ore"
+      }
+    }
+  ]
+}

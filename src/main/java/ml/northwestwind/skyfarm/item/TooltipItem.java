@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class TooltipItem extends Item {
-    private final String registryName;
+    protected final String registryName;
     public TooltipItem(Properties properties, String registryName) {
         super(properties);
         setRegistryName(SkyFarm.MOD_ID, registryName);

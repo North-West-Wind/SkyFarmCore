@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:slimeball/green"
+    },
+    {
+      "tag": "minecraft:flowers"
+    }
+  ],
+  "result": {
+    "item": "skyfarm:mutation_pollen",
+    "nbt": "{Type:slimy}",
+    "count": 1
+  }
+}

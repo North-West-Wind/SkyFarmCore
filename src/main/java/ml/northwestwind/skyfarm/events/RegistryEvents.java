@@ -86,6 +86,7 @@ public class RegistryEvents {
         if (ModList.get().isLoaded("twilightforest")) event.getRegistry().register(Items.OVERWORLD_AXIS_SHIFTER_TF);
         if (ModList.get().isLoaded("lostcities")) event.getRegistry().register(Items.OVERWORLD_AXIS_SHIFTER_LC);
         if (ModList.get().isLoaded("iceandfire")) event.getRegistry().register(Items.DRAGON_SUMMONER);
+        if (ModList.get().isLoaded("resourcefulbees")) event.getRegistry().register(Items.MUTATION_POLLEN);
     }
 
     @SubscribeEvent
@@ -177,6 +178,7 @@ public class RegistryEvents {
         public static final Item OVERWORLD_AXIS_SHIFTER_TF = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_tf");
         public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_lc");
         public static final Item DRAGON_SUMMONER = new DragonSummonerItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "dragon_summoner");
+        public static final Item MUTATION_POLLEN = new MutationPollenItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "mutation_pollen");
     }
 
     public static class ContainerTypes {

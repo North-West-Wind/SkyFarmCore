@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "skyfarm:item/mutation_pollen",
+    "layer1": "skyfarm:item/mutation_pollen_overlay"
+  }
+}

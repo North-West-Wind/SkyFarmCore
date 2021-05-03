@@ -1,0 +1,49 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ores/mana",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        },
+        {
+          "type": "forge:mod_loaded",
+          "modid": "industrialforegoing"
+        }
+      ],
+      "recipe": {
+        "output": {
+          "tag": "forge:ores/mana"
+        },
+        "rarity": [
+          {
+            "whitelist": {},
+            "blacklist": {
+              "type": "minecraft:worldgen/biome",
+              "values": [
+                "minecraft:the_end",
+                "minecraft:the_void",
+                "minecraft:small_end_islands",
+                "minecraft:end_barrens",
+                "minecraft:end_highlands",
+                "minecraft:end_midlands"
+              ]
+            },
+            "depth_min": 0,
+            "depth_max": 30,
+            "weight": 2
+          }
+        ],
+        "pointer": 0,
+        "catalyst": {
+          "item": "industrialforegoing:laser_lens10"
+        },
+        "type": "industrialforegoing:laser_drill_ore"
+      }
+    }
+  ]
+}

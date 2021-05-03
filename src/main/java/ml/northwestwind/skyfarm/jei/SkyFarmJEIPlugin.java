@@ -2,6 +2,7 @@ package ml.northwestwind.skyfarm.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.ingredients.subtypes.ISubtypeInterpreter;
 import mezz.jei.api.registration.*;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
@@ -30,5 +31,17 @@ public class SkyFarmJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
         registry.addRecipeCatalyst(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR), EvaporatingCategory.UID);
+    }
+
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistration registry) {
+        ISubtypeInterpreter interpreter = stack -> {
+            if (!stack.hasTag()) return ISubtypeInterpreter.NONE;
+            String type = stack.getTag().getString("Type");
+            if (!SkyFarm.BEE_TYPES.containsKey(type)) return ISubtypeInterpreter.NONE;
+            return stack.getItem().getName(stack).getString();
+        };
+
+        registry.registerSubtypeInterpreter(RegistryEvents.Items.MUTATION_POLLEN, interpreter);
     }
 }
