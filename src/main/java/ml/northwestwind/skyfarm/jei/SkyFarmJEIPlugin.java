@@ -36,8 +36,7 @@ public class SkyFarmJEIPlugin implements IModPlugin {
     @Override
     public void registerItemSubtypes(ISubtypeRegistration registry) {
         ISubtypeInterpreter interpreter = stack -> {
-            if (!stack.hasTag()) return ISubtypeInterpreter.NONE;
-            String type = stack.getTag().getString("Type");
+            String type = stack.getOrCreateTag().getString("Type");
             if (!SkyFarm.BEE_TYPES.containsKey(type)) return ISubtypeInterpreter.NONE;
             return stack.getItem().getName(stack).getString();
         };

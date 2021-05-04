@@ -10,10 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
@@ -27,7 +24,7 @@ public class MutationPollenItem extends TooltipItem {
 
     @Override
     public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity living, Hand hand) {
-        if (!ModList.get().isLoaded("resourcefulbees") || !(living instanceof BeeEntity)) return super.interactLivingEntity(stack, player, living, hand);
+        if (!ModList.get().isLoaded("resourcefulbees") || !living.getType().equals(EntityType.BEE)) return super.interactLivingEntity(stack, player, living, hand);
         CompoundNBT nbt = stack.getOrCreateTag();
         String type = nbt.getString("Type");
         if (!SkyFarm.BEE_TYPES.containsKey(type)) return super.interactLivingEntity(stack, player, living, hand);
@@ -36,6 +33,7 @@ public class MutationPollenItem extends TooltipItem {
         if (player.level.isClientSide) return ActionResultType.CONSUME;
         Entity entity = eType.spawn((ServerWorld) player.level, null, null, living.blockPosition(), SpawnReason.TRIGGERED, true, true);
         if (entity == null) return super.interactLivingEntity(stack, player, living, hand);
+        player.level.playSound(null, player.blockPosition(), SoundEvents.ZOMBIE_VILLAGER_CONVERTED, SoundCategory.NEUTRAL, 1, 1);
         living.remove();
         return ActionResultType.SUCCESS;
     }
@@ -44,9 +42,9 @@ public class MutationPollenItem extends TooltipItem {
     public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> stacks) {
         if (this.allowdedIn(group)) {
             for (String type : SkyFarm.BEE_TYPES.keySet()) {
-                CompoundNBT nbt = new CompoundNBT();
-                nbt.putString("Type", type);
-                stacks.add(new ItemStack(this, 1, nbt));
+                ItemStack stack = new ItemStack(this);
+                stack.getOrCreateTag().putString("Type", type);
+                stacks.add(stack);
             }
         }
     }
@@ -55,8 +53,6 @@ public class MutationPollenItem extends TooltipItem {
     public ITextComponent getName(ItemStack stack) {
         if (!stack.hasTag() || !SkyFarm.BEE_TYPES.containsKey(stack.getTag().getString("Type"))) return new TranslationTextComponent("item.skyfarm."+this.registryName+".default");
         return new TranslationTextComponent("item.skyfarm."+this.registryName,
-                new TranslationTextComponent("entity.resourcefulbees."+stack.getTag().getString("Type")+"_bee").getString().replace(
-                        " "+new TranslationTextComponent("entity.minecraft.bee").getString(), ""
-                ));
+                new TranslationTextComponent("entity.resourcefulbees."+stack.getTag().getString("Type")+"_bee"));
     }
 }

@@ -60,15 +60,16 @@ public class SkyFarm {
     private static void getResourcefulBeeConfig() {
         File beesFolder = new File("./config/resourcefulbees/bees");
         if (!beesFolder.exists()) return;
+        LogManager.getLogger().info("Found resourcefulbees/bees folder");
         BEE_TYPES.clear();
         try (Stream<Path> walk = Files.walk(Paths.get(beesFolder.getAbsolutePath()))) {
             JsonParser parser = new JsonParser();
             for (Path path : walk.collect(Collectors.toList())) {
-                if (!path.endsWith(".json")) continue;
+                if (!path.toFile().isFile() || !path.getFileName().toString().endsWith(".json")) continue;
                 JsonObject obj = (JsonObject) parser.parse(new FileReader(path.toFile()));
                 JsonObject colorData = obj.getAsJsonObject("ColorData");
                 String hexColor = colorData.get("honeycombColor").getAsString().replace("#", "");
-                BEE_TYPES.put(path.getFileName().toString().replace(".json", "").toLowerCase(), Integer.parseInt(hexColor));
+                BEE_TYPES.put(path.getFileName().toString().replace(".json", "").toLowerCase(), Integer.parseInt(hexColor, 16));
             }
         } catch (IOException e) {
             e.printStackTrace();
