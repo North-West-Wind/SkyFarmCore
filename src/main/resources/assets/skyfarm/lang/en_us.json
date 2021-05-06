@@ -20,6 +20,8 @@
   "item.skyfarm.mutation_pollen.default": "Mutation Pollen",
   "item.skyfarm.mutation_pollen": "%s Mutation Pollen",
 
+  "gas.skyfarm.fissile_fuel_mk2": "Fissile Fuel MK-II",
+
   "itemGroup.skyfarm": "Sky Farm",
 
   "key.skyfarm.stageMenu": "Open Stage Menu",

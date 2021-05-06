@@ -1,5 +1,7 @@
 package ml.northwestwind.skyfarm.events;
 
+import mekanism.api.chemical.gas.Gas;
+import mekanism.api.chemical.gas.GasBuilder;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.block.NaturalEvaporatorBlock;
 import ml.northwestwind.skyfarm.block.ParaboxBlock;
@@ -115,6 +117,11 @@ public class RegistryEvents {
         );
     }
 
+    @SubscribeEvent
+    public static void registerGas(final RegistryEvent.Register<Gas> event) {
+        event.getRegistry().register(Gases.FISSILE_FUEL_MK2);
+    }
+
     public static class Blocks {
         public static final Block NATURAL_EVAPORATOR = new NaturalEvaporatorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion()).setRegistryName("natural_evaporator");
         public static final Block PARABOX = new ParaboxBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE)).setRegistryName("parabox");
@@ -183,5 +190,9 @@ public class RegistryEvents {
 
     public static class ContainerTypes {
         public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>((IContainerFactory<Container>) ParaboxContainer::new).setRegistryName("parabox");
+    }
+
+    public static class Gases {
+        public static final Gas FISSILE_FUEL_MK2 = new Gas(GasBuilder.builder().color(3035951)).setRegistryName("fissile_fuel_mk2");
     }
 }

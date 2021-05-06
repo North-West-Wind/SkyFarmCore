@@ -134,7 +134,9 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     compile fg.deobf("net.darkhax.gamestages:GameStages-${mc_version}:${gamestage_version}")
     compile fg.deobf("net.darkhax.bookshelf:Bookshelf-${mc_version}:${bookshelf_version}")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
+
+    compile fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
+    compile fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")
 }
 
 mixin {

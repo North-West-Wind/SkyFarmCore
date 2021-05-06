@@ -1,5 +1,10 @@
 package ml.northwestwind.skyfarm.misc;
 
+import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.inventory.IgnoredIInventory;
+import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.inputs.chemical.GasStackIngredient;
+import ml.northwestwind.skyfarm.SkyFarm;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -8,8 +13,10 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
@@ -90,6 +97,10 @@ public class Utils {
         return entity;
     }
 
+    public static ResourceLocation prefix(String name) {
+        return new ResourceLocation(SkyFarm.MOD_ID, name);
+    }
+
     public enum DragonType {
         FIRE("fire_dragon"),
         ICE("ice_dragon"),
@@ -103,6 +114,27 @@ public class Utils {
 
         public String getName() {
             return name;
+        }
+    }
+
+    public static class GTGRecipe extends GasToGasRecipe {
+        public GTGRecipe(ResourceLocation id, GasStackIngredient input, GasStack output) {
+            super(id, input, output);
+        }
+
+        @Override
+        public ItemStack assemble(IgnoredIInventory p_77572_1_) {
+            return null;
+        }
+
+        @Override
+        public IRecipeSerializer<?> getSerializer() {
+            return null;
+        }
+
+        @Override
+        public IRecipeType<?> getType() {
+            return null;
         }
     }
 }
