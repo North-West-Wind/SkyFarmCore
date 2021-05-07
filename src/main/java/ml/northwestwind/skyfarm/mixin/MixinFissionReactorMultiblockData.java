@@ -17,35 +17,29 @@ import mekanism.generators.common.tile.fission.TileEntityFissionReactorCasing;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
-import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Arrays;
 
 @Mixin(value = FissionReactorMultiblockData.class, remap = false)
 public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockData {
-
     @Shadow(remap = false) public IGasTank fuelTank;
-
     @Shadow(remap = false) public int fuelAssemblies;
-
     @Shadow(remap = false) public double burnRemaining;
-
     @Shadow(remap = false) public double rateLimit;
-
     @Shadow(remap = false) public MultiblockHeatCapacitor<FissionReactorMultiblockData> heatCapacitor;
-
     @Shadow(remap = false) public double partialWaste;
-
     @Shadow(remap = false) public IGasTank wasteTank;
-
     @Shadow(remap = false) public double lastBurnRate;
+    @Shadow(remap = false) public IGasTank heatedCoolantTank;
+    @Shadow(remap = false) public IGasTank gasCoolantTank;
 
-    @Inject(remap = false, at = @At(value = "RETURN", remap = false, target = "Lmekanism/generators/common/content/fission;fuelTank:Lmekanism/api/chemical/gas/IGasTank;", opcode = Opcodes.PUTFIELD), method = "<init>", cancellable = true)
+    @Inject(remap = false, at = @At("RETURN"), method = "<init>")
     public void construct(TileEntityFissionReactorCasing tile, CallbackInfo ci) {
         this.fuelTank = MultiblockChemicalTankBuilder.GAS.create((FissionReactorMultiblockData) (Object) this, tile,
                 () -> (long)this.fuelAssemblies * 8000L,
@@ -53,6 +47,8 @@ public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockD
                 (stack, automationType) -> this.isFormed(),
                 (gas) -> gas == MekanismGases.FISSILE_FUEL.getChemical() || gas == RegistryEvents.Gases.FISSILE_FUEL_MK2,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, null);
+        this.gasTanks.clear();
+        this.gasTanks.addAll(Arrays.asList(this.fuelTank, this.heatedCoolantTank, this.wasteTank, this.gasCoolantTank));
         LogManager.getLogger().info("Injected fuelTank");
     }
 
@@ -67,8 +63,8 @@ public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockD
         fuelTank.setStackSize((long) storedFuel, Action.EXECUTE);
         burnRemaining = storedFuel % 1;
         if (fuelTank.getStack().getType().equals(RegistryEvents.Gases.FISSILE_FUEL_MK2)) {
-            this.heatCapacitor.handleHeat(toBurn * MekanismGeneratorsConfig.generators.energyPerFissionFuel.get().doubleValue() * 16);
-            this.partialWaste += toBurn * 4;
+            this.heatCapacitor.handleHeat(toBurn * MekanismGeneratorsConfig.generators.energyPerFissionFuel.get().doubleValue() * 8);
+            this.partialWaste += toBurn * 2;
         } else {
             this.heatCapacitor.handleHeat(toBurn * MekanismGeneratorsConfig.generators.energyPerFissionFuel.get().doubleValue());
             this.partialWaste += toBurn;

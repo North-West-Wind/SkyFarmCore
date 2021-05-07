@@ -3,26 +3,27 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "lostcities"
+      "modid": "undergarden"
     }
   ],
   "pattern": [
-    "BDB",
-    "RRR"
+    " # ",
+    "#D#",
+    " C "
   ],
   "key": {
-    "B": {
-      "item": "minecraft:bricks"
+    "#": {
+      "tag": "forge:obsidian"
     },
     "D": {
       "item": "minecraft:diamond_boots"
     },
-    "R": {
-      "tag": "forge:dyes/red"
+    "C": {
+      "item": "undergarden:catalyst"
     }
   },
   "result": {
-    "item": "skyfarm:overworld_sky_shifter_lc",
+    "item": "skyfarm:overworld_axis_shifter_ug",
     "count": 1
   }
 }
