@@ -1,0 +1,31 @@
+{
+  "type": "pneumaticcraft:pressure_chamber",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pneumaticcraft"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagradditions"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pneumaticcraft:stacked_item",
+      "item": "mysticalagradditions:insanium_essence",
+      "count": 16
+    },
+    {
+      "type": "pneumaticcraft:stacked_item",
+      "item": "minecraft:netherite_ingot",
+      "count": 1
+    }
+  ],
+  "pressure": 4.0,
+  "results": [
+    {
+      "item": "mysticalagradditions:creative_essence"
+    }
+  ]
+}

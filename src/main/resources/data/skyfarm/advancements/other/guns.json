@@ -1,0 +1,46 @@
+{
+  "parent": "skyfarm:other/gun_workbench",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cgm"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.guns.title"
+    },
+    "description": {
+      "translate": "advancement.other.guns.description"
+    },
+    "icon": {
+      "item": "cgm:rifle"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pistol": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:pistol" }] }},
+    "shotgun": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:shotgun" }] }},
+    "rifle": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:rifle" }] }},
+    "grenade_launcher": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:grenade_launcher" }] }},
+    "bazooka": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:bazooka" }] }},
+    "mini_gun": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:mini_gun" }] }},
+    "assault_rifle": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:assault_rifle" }] }},
+    "machine_pistol": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:machine_pistol" }] }},
+    "heavy_rifle": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:heavy_rifle" }] }}
+  },
+  "requirements": [
+    [ "pistol" ],
+    [ "shotgun" ],
+    [ "rifle" ],
+    [ "grenade_launcher" ],
+    [ "bazooka" ],
+    [ "mini_gun" ],
+    [ "assault_rifle" ],
+    [ "machine_pistol" ],
+    [ "heavy_rifle" ]
+  ]
+}

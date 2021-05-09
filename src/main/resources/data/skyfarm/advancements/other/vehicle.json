@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "vehicle"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.vehicle.title"
+    },
+    "description": {
+      "translate": "advancement.other.vehicle.description"
+    },
+    "icon": {
+      "item": "vehicle:workstation"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "workstation": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vehicle:workstation"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "workstation"
+    ]
+  ]
+}

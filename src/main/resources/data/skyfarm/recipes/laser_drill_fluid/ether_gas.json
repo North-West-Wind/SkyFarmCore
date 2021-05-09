@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    }
+  ],
+  "output": "{FluidName:\"industrialforegoing:ether_gas\",Amount:10}",
+  "rarity": [
+    {
+      "whitelist": {},
+      "blacklist": {},
+      "depth_min": 0,
+      "depth_max": 256,
+      "weight": 2
+    }
+  ],
+  "pointer": 0,
+  "catalyst": {
+    "item": "industrialforegoing:laser_lens10"
+  },
+  "entity": "minecraft:wither_skeleton",
+  "type": "industrialforegoing:laser_drill_fluid"
+}

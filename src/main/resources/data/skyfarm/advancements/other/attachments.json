@@ -1,0 +1,49 @@
+{
+  "parent": "skyfarm:other/gun_workbench",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cgm"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.attachments.title"
+    },
+    "description": {
+      "translate": "advancement.other.attachments.description"
+    },
+    "icon": {
+      "item": "cgm:long_scope"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "short_scope": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:short_scope" }] }},
+    "medium_scope": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:medium_scope" }] }},
+    "long_scope": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:long_scope" }] }},
+    "silencer": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:silencer" }] }},
+    "light_stock": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:light_stock" }] }},
+    "tactical_stock": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:tactical_stock" }] }},
+    "weighted_stock": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:weighted_stock" }] }},
+    "light_grip": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:light_grip" }] }},
+    "specialised_grip": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "cgm:specialised_grip" }] }}
+  },
+  "requirements": [
+    [ "short_scope" ],
+    [ "medium_scope" ],
+    [ "long_scope" ],
+    [ "silencer" ],
+    [ "light_stock" ],
+    [ "tactical_stock" ],
+    [ "weighted_stock" ],
+    [ "light_grip" ],
+    [ "specialised_grip" ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

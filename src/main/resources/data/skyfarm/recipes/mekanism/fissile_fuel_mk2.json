@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:centrifuging",
+  "input": {
+    "amount": 1,
+    "gas": "skyfarm:pluranium_fluoxide"
+  },
+  "output": {
+    "gas": "skyfarm:fissile_fuel_mk2",
+    "amount": 1
+  }
+}

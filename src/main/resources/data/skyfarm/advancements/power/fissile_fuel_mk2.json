@@ -1,0 +1,43 @@
+{
+  "parent": "skyfarm:power/plutonium",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.fissile_fuel_mk2.title"
+    },
+    "description": {
+      "translate": "advancement.power.fissile_fuel_mk2.description"
+    },
+    "icon": {
+      "item": "mekanism:ultimate_chemical_tank",
+      "nbt": "{BlockEntityTag:{GasTanks:[{stored:{gasName:\"skyfarm:fissile_fuel_mk2\",amount:512000}}]}}"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fissile_fuel_mk2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "skyfarm:chemical_tanks",
+            "nbt": "{BlockEntityTag:{GasTanks:[{stored:{gasName:\"skyfarm:fissile_fuel_mk2\"}}]}}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fissile_fuel_mk2"
+    ]
+  ]
+}

@@ -19,7 +19,7 @@ import java.util.Collections;
 public class MixinGeneratorsJEI {
     @Inject(at = @At("RETURN"), method = "registerRecipes", remap = false)
     public void registerRecipes(IRecipeRegistration registry, CallbackInfo ci) {
-        GasToGasRecipe recipe = new Utils.GTGRecipe(Utils.prefix("processing/fissile_fuel_mk2"), GasStackIngredient.from(RegistryEvents.Gases.FISSILE_FUEL_MK2, 1L), MekanismGases.NUCLEAR_WASTE.getStack(4L));
+        GasToGasRecipe recipe = new Utils.GTGRecipe(Utils.prefix("processing/fissile_fuel_mk2"), GasStackIngredient.from(RegistryEvents.Gases.FISSILE_FUEL_MK2, 1L), MekanismGases.NUCLEAR_WASTE.getStack(1L));
         registry.addRecipes(Collections.singletonList(recipe), GeneratorsBlocks.FISSION_REACTOR_CASING.getRegistryName());
     }
 }

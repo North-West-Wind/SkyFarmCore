@@ -1,0 +1,38 @@
+{
+  "parent": "skyfarm:power/anti_matter",
+  "display": {
+    "title": {
+      "translate": "advancement.power.void_generator.title"
+    },
+    "description": {
+      "translate": "advancement.power.void_generator.description"
+    },
+    "icon": {
+      "item": "skyfarm:void_generator"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "void_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "skyfarm:void_generator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "void_generator"
+    ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

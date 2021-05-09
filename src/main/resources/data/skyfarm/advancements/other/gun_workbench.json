@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cgm"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.gun_workbench.title"
+    },
+    "description": {
+      "translate": "advancement.other.gun_workbench.description"
+    },
+    "icon": {
+      "item": "cgm:workbench"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "workbench": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cgm:workbench"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "workbench"
+    ]
+  ]
+}

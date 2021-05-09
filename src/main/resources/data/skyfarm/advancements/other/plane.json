@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:other/vehicle",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simpleplanes"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.other.plane.title"
+    },
+    "description": {
+      "translate": "advancement.other.plane.description"
+    },
+    "icon": {
+      "item": "simpleplanes:plane"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "plane_workbench": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "simpleplanes:plane_workbench"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "plane_workbench"
+    ]
+  ]
+}

@@ -28,16 +28,19 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.Rarity;
+import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.LazyValue;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.event.RegistryEvent;
@@ -47,6 +50,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.network.IContainerFactory;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
+
+import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 @ObjectHolder(SkyFarm.MOD_ID)
@@ -119,7 +124,11 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void registerGas(final RegistryEvent.Register<Gas> event) {
-        event.getRegistry().register(Gases.FISSILE_FUEL_MK2);
+        event.getRegistry().registerAll(
+                Gases.FISSILE_FUEL_MK2,
+                Gases.PLURANIUM_FLUOXIDE,
+                Gases.PLUTONIUM_OXIDE
+        );
     }
 
     public static class Blocks {
@@ -179,13 +188,75 @@ public class RegistryEvents {
         public static final Item WATER_BOWL = new Item(new Item.Properties().stacksTo(1).tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("water_bowl");
         public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE), true).setRegistryName("minecraft", "bowl");
         public static final Item STONE_VARIATOR = new StoneVariatorItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).defaultDurability(128), "stone_variator");
-        public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_nether");
-        public static final Item OVERWORLD_SKY_SHIFTER_END = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_sky_shifter_end");
-        public static final Item OVERWORLD_AXIS_SHIFTER_UG = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_ug");
-        public static final Item OVERWORLD_AXIS_SHIFTER_TF = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_tf");
-        public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_lc");
+        public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ArmorItem(ModArmorMaterial.NETHER_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_nether");
+        public static final Item OVERWORLD_SKY_SHIFTER_END = new ArmorItem(ModArmorMaterial.END_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_sky_shifter_end");
+        public static final Item OVERWORLD_AXIS_SHIFTER_UG = new ArmorItem(ModArmorMaterial.UG_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_ug");
+        public static final Item OVERWORLD_AXIS_SHIFTER_TF = new ArmorItem(ModArmorMaterial.TF_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_tf");
+        public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ArmorItem(ModArmorMaterial.LC_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_axis_shifter_lc");
         public static final Item DRAGON_SUMMONER = new DragonSummonerItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "dragon_summoner");
         public static final Item MUTATION_POLLEN = new MutationPollenItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "mutation_pollen");
+
+        public enum ModArmorMaterial implements IArmorMaterial {
+            NETHER_SHIFTER("nether_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            END_SHIFTER("end_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            UG_SHIFTER("ug_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            TF_SHIFTER("tf_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            LC_SHIFTER("lc_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
+
+            private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
+            private final String name;
+            private final int durabilityMultiplier;
+            private final int[] slotProtections;
+            private final int enchantmentValue;
+            private final SoundEvent sound;
+            private final float toughness;
+            private final float knockbackResistance;
+            private final LazyValue<Ingredient> repairIngredient;
+
+            ModArmorMaterial(String name, int durabilityMul, int[] protections, int enchant, SoundEvent sound, float tough, float kb, Supplier<Ingredient> ingredient) {
+                this.name = name;
+                this.durabilityMultiplier = durabilityMul;
+                this.slotProtections = protections;
+                this.enchantmentValue = enchant;
+                this.sound = sound;
+                this.toughness = tough;
+                this.knockbackResistance = kb;
+                this.repairIngredient = new LazyValue<>(ingredient);
+            }
+
+            public int getDurabilityForSlot(EquipmentSlotType p_200896_1_) {
+                return HEALTH_PER_SLOT[p_200896_1_.getIndex()] * this.durabilityMultiplier;
+            }
+
+            public int getDefenseForSlot(EquipmentSlotType p_200902_1_) {
+                return this.slotProtections[p_200902_1_.getIndex()];
+            }
+
+            public int getEnchantmentValue() {
+                return this.enchantmentValue;
+            }
+
+            public SoundEvent getEquipSound() {
+                return this.sound;
+            }
+
+            public Ingredient getRepairIngredient() {
+                return this.repairIngredient.get();
+            }
+
+            @OnlyIn(Dist.CLIENT)
+            public String getName() {
+                return this.name;
+            }
+
+            public float getToughness() {
+                return this.toughness;
+            }
+
+            public float getKnockbackResistance() {
+                return this.knockbackResistance;
+            }
+        }
     }
 
     public static class ContainerTypes {
@@ -194,5 +265,7 @@ public class RegistryEvents {
 
     public static class Gases {
         public static final Gas FISSILE_FUEL_MK2 = new Gas(GasBuilder.builder().color(3035951)).setRegistryName("fissile_fuel_mk2");
+        public static final Gas PLURANIUM_FLUOXIDE = new Gas(GasBuilder.builder().color(7310944)).setRegistryName("pluranium_fluoxide");
+        public static final Gas PLUTONIUM_OXIDE = new Gas(GasBuilder.builder().color(2986445)).setRegistryName("plutonium_oxide");
     }
 }
