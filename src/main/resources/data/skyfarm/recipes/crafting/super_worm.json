@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "waterstrainer"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagradditions"
+    }
+  ],
+  "pattern": [
+    " # ",
+    "#W#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalagradditions:creative_essence"
+    },
+    "W": {
+      "item": "waterstrainer:worm"
+    }
+  },
+  "result": {
+    "item": "waterstrainer:super_worm",
+    "count": 1
+  }
+}
