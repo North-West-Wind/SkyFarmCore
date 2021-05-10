@@ -27,3 +27,10 @@ An essential mod for NorthWestWind's Sky Farm modpack.
     versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.skyfarm]]
+    modId="mekanism"
+    mandatory=true
+    versionRange="[10.0.21,)"
+    ordering="NONE"
+    side="BOTH"

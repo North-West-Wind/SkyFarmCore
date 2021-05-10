@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "skyfarm.refmap.json",
   "mixins": [
+    "MixinAbstractBlockState",
     "MixinFissionReactorMultiblockData",
     "MixinFogRenderer",
     "MixinGeneratorsJEI",

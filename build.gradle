@@ -86,8 +86,7 @@ jar {
             "Implementation-Vendor" :"skyfarm",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
 
-            "MixinConfigs": "skyfarm.mixins.json",
-            'FMLCorePluginContainsFMLMod': 'true'
+            "MixinConfigs": "skyfarm.mixins.json"
         ])
     }
 }

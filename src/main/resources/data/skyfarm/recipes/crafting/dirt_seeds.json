@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalagriculture:dirt_essence"
+    },
+    "S": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "result": {
+    "item": "mysticalagriculture:dirt_seeds",
+    "count": 1
+  }
+}

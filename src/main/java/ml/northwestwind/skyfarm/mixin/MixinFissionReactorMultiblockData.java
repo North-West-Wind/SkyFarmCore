@@ -28,18 +28,18 @@ import java.util.Arrays;
 
 @Mixin(value = FissionReactorMultiblockData.class, remap = false)
 public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockData {
-    @Shadow(remap = false) public IGasTank fuelTank;
-    @Shadow(remap = false) public int fuelAssemblies;
-    @Shadow(remap = false) public double burnRemaining;
-    @Shadow(remap = false) public double rateLimit;
-    @Shadow(remap = false) public MultiblockHeatCapacitor<FissionReactorMultiblockData> heatCapacitor;
-    @Shadow(remap = false) public double partialWaste;
-    @Shadow(remap = false) public IGasTank wasteTank;
-    @Shadow(remap = false) public double lastBurnRate;
-    @Shadow(remap = false) public IGasTank heatedCoolantTank;
-    @Shadow(remap = false) public IGasTank gasCoolantTank;
+    @Shadow public IGasTank fuelTank;
+    @Shadow public int fuelAssemblies;
+    @Shadow public double burnRemaining;
+    @Shadow public double rateLimit;
+    @Shadow public MultiblockHeatCapacitor<FissionReactorMultiblockData> heatCapacitor;
+    @Shadow public double partialWaste;
+    @Shadow public IGasTank wasteTank;
+    @Shadow public double lastBurnRate;
+    @Shadow public IGasTank heatedCoolantTank;
+    @Shadow public IGasTank gasCoolantTank;
 
-    @Inject(remap = false, at = @At("RETURN"), method = "<init>")
+    @Inject(at = @At("RETURN"), method = "<init>")
     public void construct(TileEntityFissionReactorCasing tile, CallbackInfo ci) {
         this.fuelTank = MultiblockChemicalTankBuilder.GAS.create((FissionReactorMultiblockData) (Object) this, tile,
                 () -> (long)this.fuelAssemblies * 8000L,
@@ -54,8 +54,9 @@ public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockD
 
     /**
      * @author Mekanism
+     * @reason To handle custom fissile fuel
      */
-    @Overwrite(remap = false)
+    @Overwrite
     public void burnFuel(World world) {
         double storedFuel = fuelTank.getStored() + this.burnRemaining;
         double toBurn = Math.min(Math.min(this.rateLimit, storedFuel), fuelAssemblies * MekanismGeneratorsConfig.generators.burnPerAssembly.get());

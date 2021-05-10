@@ -11,9 +11,9 @@ import java.util.List;
 
 @Mixin(value = MultiblockData.class, remap = false)
 public abstract class MixinMultiblockData {
-    @Shadow(remap = false) @Final protected List<IGasTank> gasTanks;
+    @Shadow @Final protected List<IGasTank> gasTanks;
 
-    @Shadow(remap = false) public abstract VoxelCuboid getBounds();
+    @Shadow public abstract VoxelCuboid getBounds();
 
-    @Shadow(remap = false) public abstract boolean isFormed();
+    @Shadow public abstract boolean isFormed();
 }
