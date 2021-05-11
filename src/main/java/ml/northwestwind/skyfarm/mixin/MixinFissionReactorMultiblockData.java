@@ -49,7 +49,6 @@ public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockD
                 ChemicalAttributeValidator.ALWAYS_ALLOW, null);
         this.gasTanks.clear();
         this.gasTanks.addAll(Arrays.asList(this.fuelTank, this.heatedCoolantTank, this.wasteTank, this.gasCoolantTank));
-        LogManager.getLogger().info("Injected fuelTank");
     }
 
     /**

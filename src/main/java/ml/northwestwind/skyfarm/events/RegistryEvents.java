@@ -132,7 +132,7 @@ public class RegistryEvents {
     }
 
     public static class Blocks {
-        public static final Block NATURAL_EVAPORATOR = new NaturalEvaporatorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion()).setRegistryName("natural_evaporator");
+        public static final Block NATURAL_EVAPORATOR = new NaturalEvaporatorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion().harvestTool(ToolType.AXE)).setRegistryName("natural_evaporator");
         public static final Block PARABOX = new ParaboxBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE)).setRegistryName("parabox");
         public static final Block VOID_GENERATOR = new VoidGeneratorBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().sound(SoundType.METAL).harvestTool(ToolType.PICKAXE).harvestLevel(4).strength(50F, 3600000.0F)).setRegistryName("void_generator");
     }
@@ -186,7 +186,7 @@ public class RegistryEvents {
     public static class Items {
         public static final Item COMPACT_BRICK = new CompactBrickItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "compact_brick");
         public static final Item WATER_BOWL = new Item(new Item.Properties().stacksTo(1).tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("water_bowl");
-        public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE), true).setRegistryName("minecraft", "bowl");
+        public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("minecraft", "bowl");
         public static final Item STONE_VARIATOR = new StoneVariatorItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).defaultDurability(128), "stone_variator");
         public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ArmorItem(ModArmorMaterial.NETHER_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_void_shifter_nether");
         public static final Item OVERWORLD_SKY_SHIFTER_END = new ArmorItem(ModArmorMaterial.END_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("overworld_sky_shifter_end");

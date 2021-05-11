@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mysticalagiculture"
+      "modid": "mysticalagriculture"
     }
   ],
   "pattern": [
@@ -13,7 +13,7 @@
   ],
   "key": {
     "#": {
-      "item": "mysticalagiculture:clay_essence"
+      "item": "mysticalagriculture:clay_essence"
     }
   },
   "result": {

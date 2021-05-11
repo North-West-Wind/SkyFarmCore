@@ -20,7 +20,7 @@
       "item": "minecraft:white_wool"
     },
     "S": {
-      "item": "forge:string"
+      "tag": "forge:string"
     },
     "W": {
       "item": "mysticalagriculture:wood_seeds"

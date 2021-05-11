@@ -4,6 +4,7 @@ import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CauldronBlock;
 import net.minecraft.block.IBucketPickupHandler;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,35 +13,22 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class WaterBowlItem extends Item {
-    private final boolean isEmpty;
-
-    public WaterBowlItem(Properties properties, boolean isEmpty) {
+    public WaterBowlItem(Properties properties) {
         super(properties);
-        this.isEmpty = isEmpty;
     }
 
     @Override
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         if (world.isClientSide) return super.use(world, player, hand);
-        if (isEmpty) return fillBowl(world, player, hand);
-        ItemStack stack = player.getItemInHand(hand);
-        BlockRayTraceResult result = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.ANY);
-        if (!result.getType().equals(RayTraceResult.Type.BLOCK)) return ActionResult.pass(stack);
-        BlockState state = world.getBlockState(result.getBlockPos());
-        if (state.getBlock() instanceof CauldronBlock) {
-            int amount = state.getValue(BlockStateProperties.LEVEL_CAULDRON);
-            if (amount >= 3) return ActionResult.pass(stack);
-            world.setBlockAndUpdate(result.getBlockPos(), state.setValue(BlockStateProperties.LEVEL_CAULDRON, Math.min(amount + 1, 3)));
-            player.setItemInHand(hand, new ItemStack(Items.BOWL));
-            return ActionResult.success(stack);
-        }
-        return super.use(world, player, hand);
+        return fillBowl(world, player, hand);
     }
 
     private ActionResult<ItemStack> fillBowl(World world, PlayerEntity player, Hand hand) {
@@ -50,11 +38,25 @@ public class WaterBowlItem extends Item {
         BlockState state = world.getBlockState(result.getBlockPos());
         if (state.getBlock() instanceof IBucketPickupHandler && !(state.getBlock() instanceof CauldronBlock)) {
             if (state.getFluidState().is(FluidTags.WATER)) {
+                ItemStack itemstack = new ItemStack(RegistryEvents.Items.WATER_BOWL);
+                boolean flag = player.inventory.add(itemstack);
+                if (flag && itemstack.isEmpty()) {
+                    itemstack.setCount(1);
+                    ItemEntity itementity1 = player.drop(itemstack, false);
+                    if (itementity1 != null) itementity1.makeFakeItem();
+                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundCategory.PLAYERS, 0.2F, ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                    player.inventoryMenu.broadcastChanges();
+                } else {
+                    ItemEntity itementity = player.drop(itemstack, false);
+                    if (itementity != null) {
+                        itementity.setNoPickUpDelay();
+                        itementity.setOwner(player.getUUID());
+                    }
+                }
                 stack.shrink(1);
-                player.addItem(new ItemStack(RegistryEvents.Items.WATER_BOWL));
-                return ActionResult.success(stack);
+                if (!stack.isEmpty()) return ActionResult.success(stack);
             }
         }
-        return ActionResult.fail(stack);
+        return ActionResult.pass(stack);
     }
 }

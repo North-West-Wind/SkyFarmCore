@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileReader;
@@ -31,6 +32,7 @@ import java.util.stream.Stream;
 public class SkyFarm {
     public static final String MOD_ID = "skyfarm";
     public static final Map<String, Integer> BEE_TYPES = Maps.newHashMap();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public SkyFarm() {
         createFolderIfAbsent("./skyfarm");
