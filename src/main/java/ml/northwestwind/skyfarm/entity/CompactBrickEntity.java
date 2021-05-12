@@ -62,7 +62,7 @@ public class CompactBrickEntity extends ProjectileItemEntity {
         if (state.getBlock().equals(Blocks.STONE) || state.getBlock().equals(Blocks.COBBLESTONE)) {
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             explode(pos);
-            if (random.nextInt(2) == 0) level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.IRON_NUGGET)));
+            if (!level.isClientSide && random.nextInt(4) == 0) level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.IRON_INGOT)));
         }
         super.onHitBlock(result);
     }

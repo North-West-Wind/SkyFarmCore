@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "quark:chests/wooden"
+    }
+  ],
+  "result": {
+    "item": "minecraft:chest",
+    "count": 1
+  }
+}
