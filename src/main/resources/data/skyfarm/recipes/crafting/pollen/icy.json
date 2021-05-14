@@ -12,5 +12,11 @@
     "item": "skyfarm:mutation_pollen",
     "nbt": "{Type:icy}",
     "count": 1
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "resourcefulbees"
+    }
+  ]
 }

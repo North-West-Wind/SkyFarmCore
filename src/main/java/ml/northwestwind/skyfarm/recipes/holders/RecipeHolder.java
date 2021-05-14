@@ -1,5 +1,6 @@
 package ml.northwestwind.skyfarm.recipes.holders;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.SkyFarm;
 import net.minecraft.item.crafting.IRecipe;
@@ -13,11 +14,14 @@ public class RecipeHolder {
     private static final Map<ResourceLocation, List<? extends IRecipe<?>>> RECIPE_HOLDER = Maps.newHashMap();
 
     public static <R extends IRecipe<?>> void addRecipes(ResourceLocation rl, R...recipe) {
-        if (!RECIPE_HOLDER.containsKey(rl)) return;
-        List<R> list = (List<R>) RECIPE_HOLDER.get(rl);
-        list.addAll(Arrays.asList(recipe));
+        List<R> list;
+        if (!RECIPE_HOLDER.containsKey(rl)) list = Lists.newArrayList();
+        else list = (List<R>) RECIPE_HOLDER.get(rl);
+        for (R r : recipe) {
+            list.stream().filter((re) -> re.getId().equals(r.getId())).findFirst().ifPresent(list::remove);
+            list.add(r);
+        }
         RECIPE_HOLDER.put(rl, list);
-        Arrays.stream(recipe).forEach((r) -> SkyFarm.LOGGER.info(String.format("Added recipe %s to recipe holder %s", r.getId(), rl.toString())));
     }
 
     public static <R extends IRecipe<?>> List<R> getRecipes(ResourceLocation rl) {

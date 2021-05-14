@@ -26,7 +26,7 @@ public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBric
 
     public CompactBrickCategory(IGuiHelper guiHelper) {
         localizedName = I18n.get("recipe.skyfarm.compact_brick");
-        background = guiHelper.createDrawable(new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/background/compact_brick_background.png"), 0, 0, 116, 64);
+        background = guiHelper.createDrawable(new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/background/compact_brick_background.png"), 0, 0, 128, 64);
         icon = guiHelper.createDrawableIngredient(new ItemStack(RegistryEvents.Items.COMPACT_BRICK));
     }
 
@@ -65,13 +65,13 @@ public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBric
     public void setRecipe(IRecipeLayout recipeLayout, AbstractCompactBrickRecipe recipe, IIngredients ingredients) {
         IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
-        group.init(0, true, 20, 15);
+        group.init(0, true, 55, 15);
         group.set(0, Arrays.asList(recipe.getInput().getItems()));
 
-        group.init(1, false, 40, 15);
+        group.init(1, false, 95, 15);
         group.set(1, recipe.getResultItem());
 
-        group.init(2, true, 10, 15);
+        group.init(2, true, 15, 15);
         group.set(2, RegistryEvents.Items.COMPACT_BRICK.getDefaultInstance());
     }
 }

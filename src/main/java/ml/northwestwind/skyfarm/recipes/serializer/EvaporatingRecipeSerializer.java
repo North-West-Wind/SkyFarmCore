@@ -18,7 +18,6 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<EvaporatingRecipe> {
     @Override
     public EvaporatingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
-        SkyFarm.LOGGER.info("Reading json evaporating recipe " + recipeId);
         ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
         Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
         int tick = JSONUtils.getAsInt(json, "evaporateTime");
@@ -31,7 +30,6 @@ public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSeria
 
     @Override
     public EvaporatingRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
-        SkyFarm.LOGGER.info("Reading network evaporating recipe " + recipeId);
         ItemStack output = buffer.readItem();
         Ingredient input = Ingredient.fromNetwork(buffer);
         int tick = buffer.readInt();

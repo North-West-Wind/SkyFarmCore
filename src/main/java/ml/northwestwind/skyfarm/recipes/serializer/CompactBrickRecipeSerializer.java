@@ -18,7 +18,6 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 public class CompactBrickRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<CompactBrickRecipe> {
     @Override
     public CompactBrickRecipe fromJson(ResourceLocation id, JsonObject json) {
-        SkyFarm.LOGGER.info("Reading json compact brick recipe " + id);
         ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
         Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
         double chance = JSONUtils.getAsFloat(json, "chance", 1);
@@ -30,7 +29,6 @@ public class CompactBrickRecipeSerializer extends ForgeRegistryEntry<IRecipeSeri
 
     @Override
     public CompactBrickRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
-        SkyFarm.LOGGER.info("Reading network compact brick recipe " + recipeId);
         ItemStack output = buffer.readItem();
         Ingredient input = Ingredient.fromNetwork(buffer);
         double chance = buffer.readDouble();
