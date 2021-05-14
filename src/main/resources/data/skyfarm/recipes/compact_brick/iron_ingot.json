@@ -1,0 +1,10 @@
+{
+  "type": "skyfarm:compact_brick",
+  "input": {
+    "tag": "forge:stone"
+  },
+  "output": {
+    "item": "minecraft:iron_ingot"
+  },
+  "chance": 0.4
+}

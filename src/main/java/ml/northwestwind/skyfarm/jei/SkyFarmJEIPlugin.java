@@ -6,10 +6,16 @@ import mezz.jei.api.ingredients.subtypes.ISubtypeInterpreter;
 import mezz.jei.api.registration.*;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
+import ml.northwestwind.skyfarm.jei.category.CompactBrickCategory;
 import ml.northwestwind.skyfarm.jei.category.EvaporatingCategory;
+import ml.northwestwind.skyfarm.recipes.AbstractCompactBrickRecipe;
+import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
+import ml.northwestwind.skyfarm.recipes.holders.CompactBrickRecipes;
 import ml.northwestwind.skyfarm.recipes.holders.EvaporatingRecipes;
+import ml.northwestwind.skyfarm.recipes.holders.RecipeHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @JeiPlugin
 public class SkyFarmJEIPlugin implements IModPlugin {
@@ -21,16 +27,19 @@ public class SkyFarmJEIPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         registry.addRecipeCategories(new EvaporatingCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new CompactBrickCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
-        registry.addRecipes(EvaporatingRecipes.getRecipes(), EvaporatingCategory.UID);
+        registry.addRecipes(RecipeHolder.getRecipes(AbstractEvaporatingRecipe.RECIPE_TYPE_ID), EvaporatingCategory.UID);
+        registry.addRecipes(RecipeHolder.getRecipes(AbstractCompactBrickRecipe.RECIPE_TYPE_ID), CompactBrickCategory.UID);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
         registry.addRecipeCatalyst(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR), EvaporatingCategory.UID);
+        registry.addRecipeCatalyst(RegistryEvents.Items.COMPACT_BRICK.getDefaultInstance(), CompactBrickCategory.UID);
     }
 
     @Override

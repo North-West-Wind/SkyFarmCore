@@ -27,22 +27,14 @@ const files = deepReaddir(".").filter(file => file.endsWith(".json"));
 const lines = [];
 for (const file of files) {
     const json = require(file);
-    if (json.type !== "botanypots:soil") continue;
+    if (json.type !== "botanypots:crop") continue;
     var mod = "botanypots";
     const foundMod = json.conditions?.find(x => x.type === "forge:mod_loaded");
     if (foundMod) mod = foundMod.modid;
-    if (json.growthModifier !== undefined) {
-        const old = json.growthModifier;
-        json.growthModifier += 0.5;
-        if (json.growthModifier == 0) json.growthModifier += 0.05;
-        if (json.growthModifier > 0) json.growthModifier *= 2.5;
-        else json.growthModifier *= 0.3;
-        json.growthModifier = Math.round((json.growthModifier / 3 + Number.EPSILON) * 100) / 100;
-        var filename = file.replace(/^.*[\\\/]/, '');
-        var name = filename.replace(".json", "");
-        lines.push(`val ${mod}_${name} = soils.getSoil("${mod}:soil/${name}");`);
-        lines.push(`${mod}_${name}.setGrowthModifier(${json.growthModifier});`);
-        console.log(`${filename} growthModifier increased by ${json.growthModifier - old}`);
-    }
+    var filename = file.replace(/^.*[\\\/]/, '');
+    var name = filename.replace(".json", "");
+    lines.push(`val ${mod}_${name} = crops.getCrop("${mod}:crops/${name}");`);
+    lines.push(`${mod}_${name}.addCategory("dirt");`);
+    console.log(`${filename} can now be grown with dirt`);
 }
-fs.writeFileSync("./botany_soils.zs", lines.join("\n"));
+fs.writeFileSync("./botany_crops.zs", lines.join("\n"));

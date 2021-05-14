@@ -2,9 +2,9 @@ package ml.northwestwind.skyfarm.recipes.serializer;
 
 import com.google.gson.JsonObject;
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
-import ml.northwestwind.skyfarm.recipes.EvaporatingRecipe;
-import ml.northwestwind.skyfarm.recipes.holders.EvaporatingRecipes;
+import ml.northwestwind.skyfarm.recipes.AbstractCompactBrickRecipe;
+import ml.northwestwind.skyfarm.recipes.CompactBrickRecipe;
+import ml.northwestwind.skyfarm.recipes.holders.CompactBrickRecipes;
 import ml.northwestwind.skyfarm.recipes.holders.RecipeHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -15,38 +15,35 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<EvaporatingRecipe> {
+public class CompactBrickRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<CompactBrickRecipe> {
     @Override
-    public EvaporatingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
-        SkyFarm.LOGGER.info("Reading json evaporating recipe " + recipeId);
+    public CompactBrickRecipe fromJson(ResourceLocation id, JsonObject json) {
+        SkyFarm.LOGGER.info("Reading json compact brick recipe " + id);
         ItemStack output = CraftingHelper.getItemStack(JSONUtils.getAsJsonObject(json, "output"), true);
         Ingredient input = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "input"));
-        int tick = JSONUtils.getAsInt(json, "evaporateTime");
         double chance = JSONUtils.getAsFloat(json, "chance", 1);
 
-        EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick, chance);
-        RecipeHolder.addRecipes(AbstractEvaporatingRecipe.RECIPE_TYPE_ID, recipe);
+        CompactBrickRecipe recipe = new CompactBrickRecipe(id, input, output, chance);
+        RecipeHolder.addRecipes(AbstractCompactBrickRecipe.RECIPE_TYPE_ID, recipe);
         return recipe;
     }
 
     @Override
-    public EvaporatingRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
-        SkyFarm.LOGGER.info("Reading network evaporating recipe " + recipeId);
+    public CompactBrickRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
+        SkyFarm.LOGGER.info("Reading network compact brick recipe " + recipeId);
         ItemStack output = buffer.readItem();
         Ingredient input = Ingredient.fromNetwork(buffer);
-        int tick = buffer.readInt();
         double chance = buffer.readDouble();
 
-        EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick, chance);
-        RecipeHolder.addRecipes(AbstractEvaporatingRecipe.RECIPE_TYPE_ID, recipe);
+        CompactBrickRecipe recipe = new CompactBrickRecipe(recipeId, input, output, chance);
+        RecipeHolder.addRecipes(AbstractCompactBrickRecipe.RECIPE_TYPE_ID, recipe);
         return recipe;
     }
 
     @Override
-    public void toNetwork(PacketBuffer buffer, EvaporatingRecipe recipe) {
+    public void toNetwork(PacketBuffer buffer, CompactBrickRecipe recipe) {
         buffer.writeItem(recipe.getResultItem());
         recipe.getIngredients().get(0).toNetwork(buffer);
-        buffer.writeInt(recipe.getTick());
         buffer.writeDouble(recipe.getChance());
     }
 }

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "pattern": [
+    "W#",
+    "#W"
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalagriculture:clay_essence"
+    },
+    "W": {
+      "item": "mysticalagriculture:water_essence"
+    }
+  },
+  "result": {
+    "item": "minecraft:clay",
+    "count": 12
+  }
+}

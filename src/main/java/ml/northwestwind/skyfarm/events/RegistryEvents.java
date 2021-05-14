@@ -9,7 +9,9 @@ import ml.northwestwind.skyfarm.block.VoidGeneratorBlock;
 import ml.northwestwind.skyfarm.container.ParaboxContainer;
 import ml.northwestwind.skyfarm.entity.CompactBrickEntity;
 import ml.northwestwind.skyfarm.item.*;
+import ml.northwestwind.skyfarm.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
+import ml.northwestwind.skyfarm.recipes.serializer.CompactBrickRecipeSerializer;
 import ml.northwestwind.skyfarm.recipes.serializer.EvaporatingRecipeSerializer;
 import ml.northwestwind.skyfarm.tile.NaturalEvaporatorTileEntity;
 import ml.northwestwind.skyfarm.tile.ParaboxTileEntity;
@@ -108,6 +110,7 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void registerRecipeSerializer(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
         Recipes.EVAPORATING.register(event.getRegistry());
+        Recipes.COMPACT_BRICK.register(event.getRegistry());
     }
 
     @SubscribeEvent
@@ -145,6 +148,7 @@ public class RegistryEvents {
 
     public static class Recipes<S extends IRecipeSerializer<? extends IRecipe<?>>> {
         public static final Recipes<EvaporatingRecipeSerializer> EVAPORATING = new Recipes<>(new EvaporatingRecipeSerializer(), AbstractEvaporatingRecipe.RECIPE_TYPE_ID);
+        public static final Recipes<CompactBrickRecipeSerializer> COMPACT_BRICK = new Recipes<>(new CompactBrickRecipeSerializer(), AbstractCompactBrickRecipe.RECIPE_TYPE_ID);
 
         private static <T extends IRecipe<?>> IRecipeType<T> customType(ResourceLocation rl) {
             return Registry.register(Registry.RECIPE_TYPE, rl, new IRecipeType<T>() {
