@@ -26,7 +26,7 @@ public class CPlayerGrowPacket implements IPacket {
         for (BlockPos blockPos1 : BlockPos.betweenClosed(blockPos.offset(-5, -5, -5), blockPos.offset(5, 5, 5))) {
             BlockState state = world.getBlockState(blockPos1);
             Block block = state.getBlock();
-            if ((block instanceof SaplingBlock || block instanceof CropsBlock) && state.isRandomlyTicking()) {
+            if (block.getRegistryName().getNamespace().equals("mysticalagriculture") && (block instanceof SaplingBlock || block instanceof CropsBlock) && state.isRandomlyTicking()) {
                 if (state.hasProperty(CropsBlock.AGE)) {
                     int growth = state.getValue(CropsBlock.AGE);
                     if (player.getRandom().nextInt(5) == 0) world.setBlockAndUpdate(blockPos1, state.setValue(CropsBlock.AGE, growth < 7 ? growth + 1 : 7));

@@ -1,0 +1,57 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalcustomization"
+    }
+  ],
+  "seed": {
+    "item": "mysticalagriculture:bone_meal_seeds"
+  },
+  "categories": [
+    "inferium",
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "mysticalagriculture:bone_meal_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "mysticalagriculture:bone_meal_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 5
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "mysticalagriculture:bone_meal_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fertilized_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
