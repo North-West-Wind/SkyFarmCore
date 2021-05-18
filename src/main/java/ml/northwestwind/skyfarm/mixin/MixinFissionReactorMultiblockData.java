@@ -63,8 +63,8 @@ public abstract class MixinFissionReactorMultiblockData extends MixinMultiblockD
         fuelTank.setStackSize((long) storedFuel, Action.EXECUTE);
         burnRemaining = storedFuel % 1;
         if (fuelTank.getStack().getType().equals(RegistryEvents.Gases.FISSILE_FUEL_MK2)) {
-            this.heatCapacitor.handleHeat(Math.pow(toBurn * MekanismGeneratorsConfig.generators.energyPerFissionFuel.get().doubleValue(), 3));
-            this.partialWaste += Math.pow(toBurn, 2);
+            this.heatCapacitor.handleHeat(toBurn * MekanismGeneratorsConfig.generators.energyPerFissionFuel.get().doubleValue() * 8);
+            this.partialWaste += toBurn * 4;
         } else {
             this.heatCapacitor.handleHeat(toBurn * MekanismGeneratorsConfig.generators.energyPerFissionFuel.get().doubleValue());
             this.partialWaste += toBurn;

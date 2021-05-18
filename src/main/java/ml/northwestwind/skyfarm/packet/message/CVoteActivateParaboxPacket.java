@@ -55,8 +55,6 @@ public class CVoteActivateParaboxPacket implements IPacket {
         data.setDirty();
         if (player.getServer().getPlayerList().getPlayerCount() < 2) {
             player.sendMessage(new TranslationTextComponent("parabox.vote.activate", player.getName().getString()).setStyle(Style.EMPTY.applyFormat(TextFormatting.AQUA)), ChatType.SYSTEM, Util.NIL_UUID);
-            player.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.activate", x, y, z).setStyle(Style.EMPTY.applyFormat(TextFormatting.GREEN)), ChatType.SYSTEM, Util.NIL_UUID);
-            SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SActivateParaboxPacket());
             putInLoop(player.getServer());
         } else {
             IFormattableTextComponent component = (IFormattableTextComponent) StringTextComponent.EMPTY;
@@ -77,6 +75,9 @@ public class CVoteActivateParaboxPacket implements IPacket {
         server.getPlayerList().broadcastMessage(new TranslationTextComponent("parabox.activate", x, y, z).setStyle(Style.EMPTY.applyFormat(TextFormatting.GREEN)), ChatType.SYSTEM, Util.NIL_UUID);
         SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SActivateParaboxPacket());
         SkyblockData.endVoting();
+        SkyblockData data = SkyblockData.get(server.overworld());
+        data.setInLoop(true);
+        data.setDirty();
         Backups.INSTANCE.run(server);
     }
 }

@@ -195,7 +195,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         isInLoop = nbt.getBoolean("looping");
         isBackingUp = nbt.getBoolean("backingUp");
         String id = nbt.getString("wantingItem");
-        if (!id.equals("")) {
+        if (!id.isEmpty()) {
             Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
             if (item != null) wantingItem = new ItemStack(item);
         }

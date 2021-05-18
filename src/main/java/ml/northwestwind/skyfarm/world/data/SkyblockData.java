@@ -98,7 +98,7 @@ public class SkyblockData extends WorldSavedData {
     }
 
     public static void endVoting() {
-        thread.stop();
+        if (thread != null) thread.stop();
         voted.clear();
         votingStatus = VotingStatus.NONE;
         isVoting = false;
