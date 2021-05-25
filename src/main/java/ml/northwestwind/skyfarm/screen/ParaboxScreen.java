@@ -16,8 +16,11 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
 
+@OnlyIn(Dist.CLIENT)
 public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
     private static final ResourceLocation DEMO_BG = new ResourceLocation("minecraft", "textures/gui/demo_background.png");
     private static final ResourceLocation BLACK_DOT = new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/black_dot.png");

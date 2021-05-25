@@ -8,15 +8,15 @@ import ml.northwestwind.skyfarm.screen.GameStageScreen;
 import ml.northwestwind.skyfarm.screen.VoteScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.LogManager;
 import org.lwjgl.glfw.GLFW;
 
-@Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
+@Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, value = Dist.CLIENT)
 public class KeyEvents {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void keyInput(final InputEvent.KeyInputEvent event) {

@@ -23,8 +23,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -74,8 +72,6 @@ public class RegistryEvents {
                 Blocks.PARABOX,
                 Blocks.VOID_GENERATOR
         );
-        RenderTypeLookup.setRenderLayer(Blocks.PARABOX, RenderType.cutoutMipped());
-        RenderTypeLookup.setRenderLayer(Blocks.VOID_GENERATOR, RenderType.cutoutMipped());
     }
 
     @SubscribeEvent

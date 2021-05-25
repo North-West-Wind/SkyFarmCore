@@ -9,9 +9,12 @@ import ml.northwestwind.skyfarm.tile.renderer.ParaboxRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -19,7 +22,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-@Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetupEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
@@ -30,6 +33,8 @@ public class ClientSetupEvents {
         ScreenManager.register(RegistryEvents.ContainerTypes.PARABOX, ParaboxScreen::new);
 
         KeyBindings.register();
+        RenderTypeLookup.setRenderLayer(RegistryEvents.Blocks.PARABOX, RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(RegistryEvents.Blocks.VOID_GENERATOR, RenderType.cutoutMipped());
     }
 
     @SubscribeEvent
