@@ -410,7 +410,7 @@
   "advancement.power.plutonium.title": "Found on Pluto!",
   "advancement.power.plutonium.description": "Plutonium is another way to reprocess Nuclear Waste",
   "advancement.power.fissile_fuel_mk2.title": "More Heat, More Waste",
-  "advancement.power.fissile_fuel_mk2.description": "Fissile Fuel Mk II squares the waste output and cubes the heat output.",
+  "advancement.power.fissile_fuel_mk2.description": "Fissile Fuel Mk II produces 4 times the waste output and 8 times the heat.",
   "advancement.power.reprocessed_fissile_fragment.title": "Recycling Nuclear Energy",
   "advancement.power.reprocessed_fissile_fragment.description": "Plutonium pellets can be crafted into Fissile Fuel again!",
   "advancement.power.fluid_extractor.title": "Rubber From Any Tree",
