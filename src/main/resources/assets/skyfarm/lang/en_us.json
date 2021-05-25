@@ -149,6 +149,10 @@
   "advancement.skyfarm.compact_brick.description": "Put 9 bricks together on a crafting table to make compact brick. Throw it to a rock and maybe you can get some iron.",
   "advancement.skyfarm.create.title": "It's Time to Create",
   "advancement.skyfarm.create.description": "With your stone variator and iron nuggets, andesite alloys should be really easy to obtain.",
+  "advancement.skyfarm.cogwheel.title": "The Other Way",
+  "advancement.skyfarm.cogwheel.description": "Cogwheels allow you to reverse rotation.",
+  "advancement.skyfarm.gearbox.title": "Bending Rotation by PI/2",
+  "advancement.skyfarm.gearbox.description": "By using a gearbox, you can make rotation face any direction.",
   "advancement.skyfarm.water_wheel.title": "You Spin Me Right Round",
   "advancement.skyfarm.water_wheel.description": "Create requires rotational energy to work. I'd suggest water wheel. Make like 6 of them.",
   "advancement.skyfarm.mixer.title": "Get Mixin'",
@@ -326,7 +330,7 @@
   "advancement.end.jump_back.description": "Not ready for fighting? Jump back into the void.",
 
   "advancement.parabox.root.title": "Space-Time Manipulator",
-  "advancement.parabox.root.description": "Parabox can generate points for unlocking recipes. It uses a huge amount of energy though.",
+  "advancement.parabox.root.description": "Find the key on your keyboard to open the stage menu (which should be ' by default). You can unlock some other mods!",
   "advancement.parabox.parabox.title": "Time Loop",
   "advancement.parabox.parabox.description": "Turn on the Parabox and start generating points.",
 
