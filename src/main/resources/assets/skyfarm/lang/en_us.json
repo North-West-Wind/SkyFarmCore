@@ -29,6 +29,8 @@
   "key.skyfarm.stageMenu": "Open Stage Menu",
   "key.skyfarm.voteMenu": "Open Voting Screen",
 
+  "tip.skyfarm.stageMenu": "Press [ %s ] to open Stage Menu to unlock mods.",
+
   "recipe.skyfarm.evaporating": "Evaporating",
   "recipe.skyfarm.compact_brick": "Compact Brick",
 
@@ -121,6 +123,8 @@
   "advancement.skyfarm.furnace.description": "Now that you have stones, make a furnace. The evaporator is not enough.",
   "advancement.skyfarm.stone_variator.title": "How can this be Useful?",
   "advancement.skyfarm.stone_variator.description": "Get yourself a stone variator. It can change stones into its variants when the block is above lava.",
+  "advancement.skyfarm.andesite.title": "Nice Gray Rock",
+  "advancement.skyfarm.andesite.description": "Andesite will help your game progress.",
   "advancement.skyfarm.water.title": "Stay Hydrated",
   "advancement.skyfarm.water.description": "Right-click water block with a bow. It will fill up and not consume the source block. Basically duping.",
   "advancement.skyfarm.wheat_seeds.title": "Food Shortage Reduced to ZERO",
@@ -133,6 +137,8 @@
   "advancement.skyfarm.bone_meal_seeds.description": "Tired of gathering dirt to make bone meal? Try growing them!",
   "advancement.skyfarm.clay_seeds.title": "Clay-O",
   "advancement.skyfarm.clay_seeds.description": "Dirt + Water = Clay",
+  "advancement.skyfarm.cauldrons.title": "Cauldron Alternatives",
+  "advancement.skyfarm.cauldrons.description": "You cannot get a normal cauldron yet. I would suggest the cobblestone one.",
   "advancement.skyfarm.leaves.title": "Canopy Collector",
   "advancement.skyfarm.leaves.description": "Evaporating leaves can sometimes yield strings. A pair of flint shears can be used to collect leaves.",
   "advancement.skyfarm.nature_seeds.title": "Unnaturally Natural",
