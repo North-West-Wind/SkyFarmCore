@@ -4,20 +4,11 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
-import ml.northwestwind.skyfarm.packet.message.CVoteActivateParaboxPacket;
 import ml.northwestwind.skyfarm.packet.message.CVoteDeactivateParaboxPacket;
-import ml.northwestwind.skyfarm.packet.message.SActivateParaboxPacket;
-import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.util.Util;
-import net.minecraft.util.text.ChatType;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.fml.network.PacketDistributor;
 
 public class VoteCommand {
     public static void registerCommand(CommandDispatcher<CommandSource> dispatcher) {

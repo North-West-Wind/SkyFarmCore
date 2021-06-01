@@ -8,7 +8,6 @@ import ml.northwestwind.skyfarm.screen.GameStageScreen;
 import ml.northwestwind.skyfarm.screen.VoteScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.network.play.server.SChatPacket;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.IFormattableTextComponent;

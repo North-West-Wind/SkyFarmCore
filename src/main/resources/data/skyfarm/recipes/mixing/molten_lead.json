@@ -36,7 +36,7 @@
       "tag": "forge:ingots/iron"
     },
     {
-      "item": "minecraft:lapis_lazuli"
+      "tag": "forge:gems/lapis"
     }
   ],
   "results": [

@@ -2,11 +2,9 @@ package ml.northwestwind.skyfarm.recipes.holders;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import ml.northwestwind.skyfarm.SkyFarm;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 

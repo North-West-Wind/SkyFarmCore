@@ -1,6 +1,7 @@
 package ml.northwestwind.skyfarm.misc.backup;
 
 import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
+import ml.northwestwind.skyfarm.packet.message.SBackupDonePacket;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.server.ServerWorld;
@@ -8,12 +9,12 @@ import net.minecraft.world.storage.FolderName;
 import net.minecraftforge.fml.network.PacketDistributor;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
-import ml.northwestwind.skyfarm.packet.message.SBackupDonePacket;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
-import java.util.function.Function;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class Backups {
     public static final Backups INSTANCE = new Backups();

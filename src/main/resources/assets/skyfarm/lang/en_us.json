@@ -28,6 +28,7 @@
 
   "key.skyfarm.stageMenu": "Open Stage Menu",
   "key.skyfarm.voteMenu": "Open Voting Screen",
+  "key.crouch": "Crouch/Sneak",
 
   "tip.skyfarm.stageMenu": "Press [ %s ] to open Stage Menu to unlock mods.",
 
@@ -41,6 +42,16 @@
   "tooltip.skyfarm.compact_brick": "Super high impact might expose iron from stones",
   "tooltip.skyfarm.dragon_summoner": "Summons Ice and Fire dragons",
   "tooltip.skyfarm.mutation_pollen": "Pollens that are able to convert bees",
+  "tooltip.skyfarm.shifter.overworld_void_shifter_nether": "Jump into the void to warp to the Nether",
+  "tooltip.skyfarm.shifter.overworld_sky_shifter_end": "Hold [%s] to jump to The End",
+  "tooltip.skyfarm.shifter.overworld_axis_shifter_ug": "Hold [%s] to run to Undergarden",
+  "tooltip.skyfarm.shifter.overworld_axis_shifter_tf": "Hold [%s] to run to Twilight Forest",
+  "tooltip.skyfarm.shifter.overworld_axis_shifter_lc": "Hold [%s] to run to Lost Cities",
+  "tooltip.skyfarm.shifter.usage.overworld_void_shifter_nether": "Hold [%s] to jump back to the Overworld",
+  "tooltip.skyfarm.shifter.usage.overworld_sky_shifter_end": "Jump into the void to warp back to the Overworld",
+  "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_ug": "Hold [%s] to run to the Overworld",
+  "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_tf": "Hold [%s] to run to the Overworld",
+  "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_lc": "Hold [%s] to run to the Overworld",
 
   "usage.skyfarm.stone_variator": "Lava is required under the block.",
   "usage.skyfarm.void_shifter": "Release crouch to launch yourself.",

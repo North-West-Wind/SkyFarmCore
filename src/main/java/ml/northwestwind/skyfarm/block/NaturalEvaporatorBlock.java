@@ -1,12 +1,10 @@
 package ml.northwestwind.skyfarm.block;
 
 import ml.northwestwind.skyfarm.tile.NaturalEvaporatorTileEntity;
-import ml.northwestwind.skyfarm.tile.renderer.NaturalEvaporatorRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.TileEntity;
@@ -31,7 +29,6 @@ import net.minecraftforge.items.IItemHandler;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
-import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 @ParametersAreNonnullByDefault

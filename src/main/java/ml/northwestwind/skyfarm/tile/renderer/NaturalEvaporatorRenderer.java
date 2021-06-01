@@ -14,7 +14,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.logging.log4j.LogManager;
 
 @OnlyIn(Dist.CLIENT)
 public class NaturalEvaporatorRenderer extends TileEntityRenderer<NaturalEvaporatorTileEntity> {

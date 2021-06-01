@@ -4,10 +4,11 @@
     "1.0.0": "Initial release",
     "1.0.1": "Fixed crashing on dedicated servers",
     "1.0.2": "Added event handling to enhance compatibility between mods",
-    "1.0.3": "Stage Menu key notification on join"
+    "1.0.3": "Stage Menu key notification on join",
+    "1.0.4": "Shifter tooltips + Compact Brick drop rate increase"
   },
   "promos": {
-    "1.16.5-latest": "1.0.3",
-    "1.16.5-recommended": "1.0.3"
+    "1.16.5-latest": "1.0.4",
+    "1.16.5-recommended": "1.0.4"
   }
 }

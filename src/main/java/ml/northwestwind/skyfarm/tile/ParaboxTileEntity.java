@@ -2,9 +2,9 @@ package ml.northwestwind.skyfarm.tile;
 
 import ml.northwestwind.skyfarm.container.ParaboxContainer;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
+import ml.northwestwind.skyfarm.misc.backup.Backups;
 import ml.northwestwind.skyfarm.tile.handler.ParaboxEnergyStorage;
 import ml.northwestwind.skyfarm.tile.handler.ParaboxItemHandler;
-import ml.northwestwind.skyfarm.misc.backup.Backups;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,7 +14,6 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;

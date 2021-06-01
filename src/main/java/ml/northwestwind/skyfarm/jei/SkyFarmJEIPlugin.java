@@ -3,19 +3,19 @@ package ml.northwestwind.skyfarm.jei;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.ingredients.subtypes.ISubtypeInterpreter;
-import mezz.jei.api.registration.*;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
+import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.jei.category.CompactBrickCategory;
 import ml.northwestwind.skyfarm.jei.category.EvaporatingCategory;
 import ml.northwestwind.skyfarm.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
-import ml.northwestwind.skyfarm.recipes.holders.CompactBrickRecipes;
-import ml.northwestwind.skyfarm.recipes.holders.EvaporatingRecipes;
 import ml.northwestwind.skyfarm.recipes.holders.RecipeHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.registries.ForgeRegistries;
 
 @JeiPlugin
 public class SkyFarmJEIPlugin implements IModPlugin {

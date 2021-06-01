@@ -1,7 +1,6 @@
 package ml.northwestwind.skyfarm.recipes.holders;
 
 import com.google.common.collect.Lists;
-import ml.northwestwind.skyfarm.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.recipes.EvaporatingRecipe;
 
 import java.util.Arrays;

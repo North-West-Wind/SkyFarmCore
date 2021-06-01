@@ -1,15 +1,11 @@
 package ml.northwestwind.skyfarm.block;
 
-import ml.northwestwind.skyfarm.misc.backup.Backups;
 import ml.northwestwind.skyfarm.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.world.data.SkyblockData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -20,15 +16,12 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
 
 public class ParaboxBlock extends Block {
     public ParaboxBlock(Properties properties) {

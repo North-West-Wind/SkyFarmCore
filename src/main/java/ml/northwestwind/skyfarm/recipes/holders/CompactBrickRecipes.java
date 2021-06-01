@@ -5,7 +5,6 @@ import ml.northwestwind.skyfarm.recipes.CompactBrickRecipe;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class CompactBrickRecipes {
     private static final List<CompactBrickRecipe> recipes = Lists.newArrayList();

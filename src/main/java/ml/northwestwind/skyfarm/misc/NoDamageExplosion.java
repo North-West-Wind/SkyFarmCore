@@ -1,13 +1,8 @@
 package ml.northwestwind.skyfarm.misc;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
-import net.minecraft.world.ExplosionContext;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class NoDamageExplosion extends Explosion {
     public NoDamageExplosion(World world, BlockPos pos, float radius, Mode mode) {

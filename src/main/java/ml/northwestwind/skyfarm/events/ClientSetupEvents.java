@@ -1,19 +1,14 @@
 package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.container.ParaboxContainer;
 import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.screen.ParaboxScreen;
 import ml.northwestwind.skyfarm.tile.renderer.NaturalEvaporatorRenderer;
-import ml.northwestwind.skyfarm.tile.renderer.ParaboxRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
