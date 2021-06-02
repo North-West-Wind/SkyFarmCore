@@ -14,7 +14,7 @@
       "translate": "advancement.skyfarm.obsidian_seeds.description"
     },
     "icon": {
-      "item": "mysticalagriculture:obsidian_seeds"
+      "item": "mysticalagriculture:obsidian_essence"
     },
     "frame": "task",
     "show_toast": true,

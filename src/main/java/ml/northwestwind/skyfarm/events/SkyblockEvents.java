@@ -67,6 +67,7 @@ public class SkyblockEvents {
                 for (String stage : stages) {
                     if (!GameStageHelper.isStageKnown(stage)) continue;
                     GameStageHelper.addStage(p, stage);
+                    GameStageHelper.syncPlayer(p);
                 }
             if (!data.isWorldGenerated()) {
                 generateIsland(world);
@@ -78,7 +79,6 @@ public class SkyblockEvents {
                 data.playerJoin(player);
             }
             data.setDirty();
-            world.getDataStorage().set(data);
         }
     }
 

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:storage/storagedrawers",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "storagedrawers"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.drawer_controller.title"
+    },
+    "description": {
+      "translate": "advancement.storage.drawer_controller.description"
+    },
+    "icon": {
+      "item": "storagedrawers:drawer_controller"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "drawer_controller": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "storagedrawers:drawer_controller"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "drawer_controller"
+    ]
+  ]
+}

@@ -5,10 +5,12 @@
     "1.0.1": "Fixed crashing on dedicated servers",
     "1.0.2": "Added event handling to enhance compatibility between mods",
     "1.0.3": "Stage Menu key notification on join",
-    "1.0.4": "Shifter tooltips + Compact Brick drop rate increase"
+    "1.0.4": "Shifter tooltips + Compact Brick drop rate increase",
+    "1.0.5": "Fixed crashes + Parabox multiplayer voting + Advancement rearrangement",
+    "1.0.6": "(Attempt to) Fix Sky Farm: No Stage still having stages"
   },
   "promos": {
-    "1.16.5-latest": "1.0.4",
-    "1.16.5-recommended": "1.0.4"
+    "1.16.5-latest": "1.0.6",
+    "1.16.5-recommended": "1.0.6"
   }
 }

@@ -61,7 +61,7 @@ public class SkyblockChunkGenerator extends ChunkGenerator {
 
     @Override
     public ChunkGenerator withSeed(long newSeed) {
-        return new SkyblockChunkGenerator(this.biomeSource.withSeed(newSeed), newSeed, settings);
+        return new SkyblockChunkGenerator(this.biomeSource.withSeed(newSeed), newSeed, settings, noStage);
     }
 
     @Override

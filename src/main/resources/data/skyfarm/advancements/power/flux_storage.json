@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:skyfarm/small_smeltery",
+  "parent": "skyfarm:power/flux_dust",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "mysticalagriculture"
+      "modid": "fluxnetworks"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.skyfarm.copper_seeds.title"
+      "translate": "advancement.power.flux_storage.title"
     },
     "description": {
-      "translate": "advancement.skyfarm.copper_seeds.description"
+      "translate": "advancement.power.flux_storage.description"
     },
     "icon": {
-      "item": "mysticalagriculture:copper_essence"
+      "item": "fluxnetworks:gargantuan_flux_storage"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "copperSeeds": {
+    "gargantuan_flux_storage": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mysticalagriculture:copper_seeds"
+            "item": "fluxnetworks:gargantuan_flux_storage"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "copperSeeds"
+      "gargantuan_flux_storage"
     ]
   ]
 }

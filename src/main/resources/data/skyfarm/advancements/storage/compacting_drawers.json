@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:storage/drawers",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "storagedrawers"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.storage.compacting_drawers.title"
+    },
+    "description": {
+      "translate": "advancement.storage.compacting_drawers.description"
+    },
+    "icon": {
+      "item": "storagedrawers:compacting_drawers"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "compacting_drawers": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "storagedrawers:compacting_drawers"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "compacting_drawers"
+    ]
+  ]
+}

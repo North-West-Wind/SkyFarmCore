@@ -8,7 +8,7 @@
       "translate": "advancement.power.root.description"
     },
     "icon": {
-      "item": "skyfarm:void_generator"
+      "item": "minecraft:redstone"
     },
     "frame": "task",
     "show_toast": false,

@@ -31,6 +31,7 @@ public class SkyFarmPacketHandler {
         registerMessage(CAddStagePacket.class, NetworkDirection.PLAY_TO_SERVER);
         registerMessage(DSyncPointsPacket.class);
         registerMessage(DSyncVotePacket.class);
+        registerMessage(SPleaseSendParaboxPacket.class, NetworkDirection.PLAY_TO_CLIENT);
     }
 
     private static <MSG extends IDoubleSidedPacket> void registerMessage(Class<MSG> clazz) {

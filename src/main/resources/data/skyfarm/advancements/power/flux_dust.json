@@ -1,14 +1,20 @@
 {
   "parent": "skyfarm:power/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fluxnetworks"
+    }
+  ],
   "display": {
     "title": {
-      "translate": "advancement.power.redstone.title"
+      "translate": "advancement.power.flux_dust.title"
     },
     "description": {
-      "translate": "advancement.power.redstone.description"
+      "translate": "advancement.power.flux_dust.description"
     },
     "icon": {
-      "item": "minecraft:redstone"
+      "item": "fluxnetworks:flux_dust"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "redstone": {
+    "flux_dust": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:dusts/redstone"
+            "item": "fluxnetworks:flux_dust"
           }
         ]
       }
@@ -29,7 +35,7 @@
   },
   "requirements": [
     [
-      "redstone"
+      "flux_dust"
     ]
   ]
 }

@@ -1,0 +1,54 @@
+{
+  "parent": "skyfarm:power/flux_dust",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fluxnetworks"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.flux_pp.title"
+    },
+    "description": {
+      "translate": "advancement.power.flux_pp.description"
+    },
+    "icon": {
+      "item": "fluxnetworks:flux_point"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "flux_point": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "fluxnetworks:flux_point"
+          }
+        ]
+      }
+    },
+    "flux_plug": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "fluxnetworks:flux_plug"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "flux_point"
+    ],
+    [
+      "flux_plug"
+    ]
+  ]
+}
