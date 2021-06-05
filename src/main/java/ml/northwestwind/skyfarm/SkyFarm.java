@@ -3,10 +3,12 @@ package ml.northwestwind.skyfarm;
 import com.google.common.collect.Maps;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

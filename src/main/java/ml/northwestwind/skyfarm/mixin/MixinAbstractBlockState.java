@@ -32,7 +32,7 @@ public abstract class MixinAbstractBlockState {
     @Inject(at = @At("RETURN"), method = "getDrops", cancellable = true)
     public void getDrops(LootContext.Builder builder, CallbackInfoReturnable<List<ItemStack>> cir) {
         if (!(this.getBlock() instanceof CropsBlock) || !this.getBlock().getRegistryName().getNamespace().equals("mysticalagriculture") || Arrays.asList(BLACKLIST).contains(this.getBlock().getRegistryName().getPath())) return;
-        if (((CropsBlock) this.getBlock()).isMaxAge((BlockState) (Object) this)) return;
+        if (!((CropsBlock) this.getBlock()).isMaxAge((BlockState) (Object) this)) return;
         if (rng.nextDouble() < 0.2) {
             List<ItemStack> drops = cir.getReturnValue();
             List<ItemStack> newDrops = Lists.newArrayList();

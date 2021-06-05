@@ -4,6 +4,8 @@ package ml.northwestwind.skyfarm.events;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.SkyFarm;
+import ml.northwestwind.skyfarm.config.SkyFarmConfig;
+import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.misc.teleporter.HorizontalTeleporter;
 import ml.northwestwind.skyfarm.misc.teleporter.VoidTeleporter;
 import ml.northwestwind.skyfarm.packet.SkyFarmPacketHandler;
@@ -13,6 +15,8 @@ import ml.northwestwind.skyfarm.world.data.SkyblockNetherData;
 import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,6 +29,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -43,7 +48,9 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
 public class SkyblockEvents {
@@ -57,18 +64,32 @@ public class SkyblockEvents {
     @SubscribeEvent
     public static void playerJoin(final PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
-        if (player.level.isClientSide) return;
+        if (player.level.isClientSide) {
+            player.sendMessage(new TranslationTextComponent(
+                    "tip.skyfarm.stageMenu",
+                    ((IFormattableTextComponent) KeyBindings.stageMenu.getTranslatedKeyMessage()).withStyle(TextFormatting.AQUA)), Util.NIL_UUID);
+            return;
+        }
         ServerWorld world = (ServerWorld) player.getCommandSenderWorld();
         if (!world.dimension().equals(World.OVERWORLD)) return;
         if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
             SkyblockData data = SkyblockData.get(world);
             Iterable<String> stages = data.getStages();
-            for (ServerPlayerEntity p : world.getServer().getPlayerList().getPlayers())
+            Set<Advancement> advancements = world.getServer().getAdvancements().getAllAdvancements().stream().filter(adv ->
+                    !adv.getId().getNamespace().equals("skyfarm") && (adv.getDisplay() == null || !adv.getDisplay().isHidden()) && adv.getParent() == null
+            ).collect(Collectors.toSet());
+            for (ServerPlayerEntity p : world.getServer().getPlayerList().getPlayers()) {
                 for (String stage : stages) {
                     if (!GameStageHelper.isStageKnown(stage)) continue;
                     GameStageHelper.addStage(p, stage);
                     GameStageHelper.syncPlayer(p);
                 }
+
+                if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) {
+                    p.getAdvancements().visible.removeAll(advancements);
+                    p.getAdvancements().visibilityChanged.addAll(advancements);
+                }
+            }
             if (!data.isWorldGenerated()) {
                 generateIsland(world);
                 world.setDefaultSpawnPos(BlockPos.ZERO.offset(0, 64, 0), 0);
@@ -164,7 +185,8 @@ public class SkyblockEvents {
                     if (top.equals(World.END) && bottom.equals(World.OVERWORLD)) {
                         MinecraftServer server = world.getServer();
                         Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation("minecraft", "end/jump_back"));
-                        if (advancement != null) ((ServerPlayerEntity) player).getAdvancements().award(advancement, "toOverworld");
+                        if (advancement != null)
+                            ((ServerPlayerEntity) player).getAdvancements().award(advancement, "toOverworld");
                     }
                 } else player.teleportTo(player.getX(), 316, player.getZ());
             }
@@ -261,6 +283,7 @@ public class SkyblockEvents {
         if (player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level)) return;
         if (event.getSource().equals(DamageSource.FALL) && event.getAmount() >= player.getMaxHealth() && player.getHealth() == player.getMaxHealth())
             event.setAmount(player.getMaxHealth() - 0.5f);
-        else if (event.getSource().equals(DamageSource.OUT_OF_WORLD) || event.getSource().equals(DamageSource.IN_WALL)) event.setCanceled(true);
+        else if (event.getSource().equals(DamageSource.OUT_OF_WORLD) || event.getSource().equals(DamageSource.IN_WALL))
+            event.setCanceled(true);
     }
 }
