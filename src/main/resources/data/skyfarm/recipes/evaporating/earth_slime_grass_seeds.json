@@ -7,10 +7,10 @@
     }
   ],
   "input": {
-    "item": "tconstruct:sky_slime_ball"
+    "item": "minecraft:slime_ball"
   },
   "output": {
-    "item": "tconstruct:sky_slime_grass_seeds"
+    "item": "tconstruct:earth_slime_grass_seeds"
   },
   "evaporateTime": 600
 }

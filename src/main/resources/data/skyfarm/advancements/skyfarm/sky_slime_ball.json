@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:skyfarm/sky_slime_ball",
+  "parent": "skyfarm:skyfarm/slime_ball",
   "conditions": [
     {
       "type": "forge:mod_loaded",
@@ -8,13 +8,13 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.skyfarm.ender_slime_ball.title"
+      "translate": "advancement.skyfarm.sky_slime_ball.title"
     },
     "description": {
-      "translate": "advancement.skyfarm.ender_slime_ball.description"
+      "translate": "advancement.skyfarm.sky_slime_ball.description"
     },
     "icon": {
-      "item": "tconstruct:ender_slime_ball"
+      "item": "tconstruct:sky_slime_ball"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "slimeBall": {
+    "sky_slime_ball": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "tconstruct:ender_slime_ball"
+            "item": "tconstruct:sky_slime_ball"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "slimeBall"
+      "sky_slime_ball"
     ]
   ]
 }

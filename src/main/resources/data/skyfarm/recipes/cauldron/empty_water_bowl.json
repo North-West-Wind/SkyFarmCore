@@ -16,7 +16,7 @@
   ],
   "input": {
     "item": {
-      "item": "skyfarm:water_bowl"
+      "item": "botania:water_bowl"
     },
     "contents": {
       "type": "inspirations:fluid",

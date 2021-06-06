@@ -8,10 +8,11 @@
     "1.0.4": "Shifter tooltips + Compact Brick drop rate increase",
     "1.0.5": "Fixed crashes + Parabox multiplayer voting + Advancement rearrangement",
     "1.0.6": "(Attempt to) Fix Sky Farm: No Stage still having stages",
-    "1.0.7": "Garden of Glass Sky Box + Advancement Hider"
+    "1.0.7": "Garden of Glass Sky Box + Advancement Hider",
+    "1.0.8": "Compatible with Tinker's Construct"
   },
   "promos": {
-    "1.16.5-latest": "1.0.7",
-    "1.16.5-recommended": "1.0.7"
+    "1.16.5-latest": "1.0.8",
+    "1.16.5-recommended": "1.0.8"
   }
 }

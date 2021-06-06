@@ -22,6 +22,16 @@
     "hidden": false
   },
   "criteria": {
+    "earth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tconstruct:earth_slime_sapling"
+          }
+        ]
+      }
+    },
     "sky": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -54,6 +64,9 @@
     }
   },
   "requirements": [
+    [
+      "earth"
+    ],
     [
       "sky"
     ],

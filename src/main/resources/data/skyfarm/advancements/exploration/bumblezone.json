@@ -3,18 +3,18 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "twilightforest"
+      "modid": "the_bumblezone"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.exploration.skylight_forest.title"
+      "translate": "advancement.exploration.bumblezone.title"
     },
     "description": {
-      "translate": "advancement.exploration.skylight_forest.description"
+      "translate": "advancement.exploration.bumblezone.description"
     },
     "icon": {
-      "item": "skyfarm:overworld_axis_shifter_tf"
+      "item": "minecraft:honeycomb_block"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,16 +22,16 @@
     "hidden": false
   },
   "criteria": {
-    "enterTF": {
+    "the_bumblezone": {
       "trigger": "minecraft:changed_dimension",
       "conditions": {
-        "to": "twilightforest:twilightforest"
+        "to": "the_bumblezone:the_bumblezone"
       }
     }
   },
   "requirements": [
     [
-      "enterTF"
+      "the_bumblezone"
     ]
   ]
 }

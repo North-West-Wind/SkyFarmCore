@@ -1,11 +1,5 @@
 {
   "parent": "skyfarm:skyfarm/mixer",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "display": {
     "title": {
       "translate": "advancement.skyfarm.slime_ball.title"
@@ -14,7 +8,7 @@
       "translate": "advancement.skyfarm.slime_ball.description"
     },
     "icon": {
-      "item": "tconstruct:sky_slime_ball"
+      "item": "minecraft:slime_ball"
     },
     "frame": "task",
     "show_toast": true,
@@ -27,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "item": "tconstruct:sky_slime_ball"
+            "item": "minecraft:slime_ball"
           }
         ]
       }

@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="skyfarm"
-version="1.0.7"
+version="1.0.8"
 displayName="Sky Farm"
 updateJSONURL="https://raw.githubusercontent.com/North-West-Wind/SkyFarmEssential/main/update.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/sky-farm-stuff"

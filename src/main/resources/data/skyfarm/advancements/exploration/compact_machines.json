@@ -3,18 +3,18 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "twilightforest"
+      "modid": "compactmachines"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.exploration.skylight_forest.title"
+      "translate": "advancement.exploration.compact_machines.title"
     },
     "description": {
-      "translate": "advancement.exploration.skylight_forest.description"
+      "translate": "advancement.exploration.compact_machines.description"
     },
     "icon": {
-      "item": "skyfarm:overworld_axis_shifter_tf"
+      "item": "compactmachines:personal_shrinking_device"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,16 +22,16 @@
     "hidden": false
   },
   "criteria": {
-    "enterTF": {
+    "compact_world": {
       "trigger": "minecraft:changed_dimension",
       "conditions": {
-        "to": "twilightforest:twilightforest"
+        "to": "compactmachines:compact_world"
       }
     }
   },
   "requirements": [
     [
-      "enterTF"
+      "compact_world"
     ]
   ]
 }

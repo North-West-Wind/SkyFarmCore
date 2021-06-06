@@ -20,7 +20,7 @@
   ],
   "input": {
     "item": {
-      "tag": "minecraft:saplings"
+      "item": "tconstruct:sky_slime_sapling"
     },
     "contents": {
       "type": "inspirations:fluid",

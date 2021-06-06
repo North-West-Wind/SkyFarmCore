@@ -1,6 +1,5 @@
 package ml.northwestwind.skyfarm.item;
 
-import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CauldronBlock;
 import net.minecraft.block.IBucketPickupHandler;
@@ -9,14 +8,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class WaterBowlItem extends Item {
     public WaterBowlItem(Properties properties) {
@@ -36,7 +33,8 @@ public class WaterBowlItem extends Item {
         BlockState state = world.getBlockState(result.getBlockPos());
         if (state.getBlock() instanceof IBucketPickupHandler && !(state.getBlock() instanceof CauldronBlock)) {
             if (state.getFluidState().is(FluidTags.WATER)) {
-                ItemStack itemstack = new ItemStack(RegistryEvents.Items.WATER_BOWL);
+                Item waterBowl = ForgeRegistries.ITEMS.getValue(new ResourceLocation("botania", "water_bowl"));
+                ItemStack itemstack = new ItemStack(waterBowl);
                 boolean flag = player.inventory.add(itemstack);
                 if (flag && itemstack.isEmpty()) {
                     itemstack.setCount(1);

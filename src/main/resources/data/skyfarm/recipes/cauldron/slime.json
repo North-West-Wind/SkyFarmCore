@@ -20,23 +20,24 @@
   ],
   "input": {
     "item": {
-      "item": "tconstruct:earth_slime_sapling"
+      "item": "minecraft:slime_ball"
     },
     "contents": {
       "type": "inspirations:fluid",
-      "tag": "tconstruct:sky_slime"
+      "tag": "forge:milk"
     },
     "level": {
       "min": 12
     }
   },
   "output": {
-    "item": {
-      "item": "tconstruct:sky_slime_sapling"
+    "contents": {
+      "type": "inspirations:fluid",
+      "name": "tconstruct:slime"
     },
     "level": {
-      "set": 0
+      "set": 12
     }
   },
-  "sound": "minecraft:item.bucket.fill"
+  "sound": "minecraft:item.bucket.empty"
 }

@@ -43,8 +43,9 @@ public class GameStageScreen extends Screen {
         STAGES.put("ironjetpacks", new ImmutableTriple<>(Utils.getItemByModAndName("ironjetpacks", "emerald_jetpack"), 2, EMPTY_STRING_LIST));
         STAGES.put("cgm", new ImmutableTriple<>(Utils.getItemByModAndName("cgm", "mini_gun"), 1, EMPTY_STRING_LIST));
         STAGES.put("vehicle", new ImmutableTriple<>(Utils.getItemByModAndName("vehicle", "standard_wheel"), 1, EMPTY_STRING_LIST));
-        STAGES.put("ender_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "ender_slime_grass_seeds"), 1, EMPTY_STRING_LIST));
-        STAGES.put("blood_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "blood_slime_grass_seeds"), 2, Lists.newArrayList("ender_slime_grass_seeds")));
+        STAGES.put("sky_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "sky_slime_grass_seeds"), 1, EMPTY_STRING_LIST));
+        STAGES.put("ender_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "ender_slime_grass_seeds"), 2, Lists.newArrayList("sky_slime_grass_seeds")));
+        STAGES.put("blood_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "blood_slime_grass_seeds"), 3, Lists.newArrayList("ender_slime_grass_seeds")));
         STAGES.put("projecte", new ImmutableTriple<>(Utils.getItemByModAndName("projecte", "philosophers_stone"), 100, EMPTY_STRING_LIST));
         STAGES.put("simpleplanes", new ImmutableTriple<>(Utils.getItemByModAndName("simpleplanes", "plane"), 3, Lists.newArrayList("vehicle")));
         STAGES.put("mekasuit", new ImmutableTriple<>(Utils.getItemByModAndName("mekanism", "mekasuit_bodyarmor"), 5, EMPTY_STRING_LIST));
@@ -77,11 +78,12 @@ public class GameStageScreen extends Screen {
         addStageButton(3, 0, "supremium");
         addStageButton(4, 0, "insanium");
 
-        addStageButton(0, 1, "ender_slime_grass_seeds");
-        addStageButton(1, 1, "blood_slime_grass_seeds");
+        addStageButton(0, 1, "sky_slime_grass_seeds");
+        addStageButton(1, 1, "ender_slime_grass_seeds");
+        addStageButton(2, 1, "blood_slime_grass_seeds");
 
-        addStageButton(2, 1, "vehicle");
-        addStageButton(3, 1, "simpleplanes");
+        addStageButton(3, 1, "vehicle");
+        addStageButton(4, 1, "simpleplanes");
 
         addStageButton(7.5, 3.5, "botanypots");
 
@@ -108,8 +110,8 @@ public class GameStageScreen extends Screen {
             double heightBy9 = ((double) this.height) / 9;
             this.minecraft.getTextureManager().bind(WHITE_DOT);
             blit(matrixStack, (int) (widthBy16 / 2), (int) (heightBy9 + heightBy9 / 2 - 1), 0, 0, (int) (widthBy16 * 4), 2, 1, 1);
-            blit(matrixStack, (int) (widthBy16 / 2), (int) (heightBy9 * 2 + heightBy9 / 2 - 1), 0, 0, (int) (widthBy16), 2, 1, 1);
-            blit(matrixStack, (int) (widthBy16 * 2 + widthBy16 / 2), (int) (heightBy9 * 2 + heightBy9 / 2 - 1), 0, 0, (int) (widthBy16), 2, 1, 1);
+            blit(matrixStack, (int) (widthBy16 / 2), (int) (heightBy9 * 2 + heightBy9 / 2 - 1), 0, 0, (int) (widthBy16 * 2), 2, 1, 1);
+            blit(matrixStack, (int) (widthBy16 * 3 + widthBy16 / 2), (int) (heightBy9 * 2 + heightBy9 / 2 - 1), 0, 0, (int) (widthBy16), 2, 1, 1);
         }
         super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
