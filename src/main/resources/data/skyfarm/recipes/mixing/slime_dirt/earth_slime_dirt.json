@@ -1,0 +1,31 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "tconstruct:earth_slime_sapling"
+    },
+    {
+      "tag": "forge:dirt"
+    },
+    {
+      "fluidTag": "tconstruct:slime",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "item": "tconstruct:earth_slime_dirt",
+      "count": 1
+    }
+  ]
+}

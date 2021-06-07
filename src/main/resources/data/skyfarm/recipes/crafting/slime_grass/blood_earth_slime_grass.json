@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "tconstruct:blood_slime_grass_seeds"
+    },
+    {
+      "item": "tconstruct:earth_slime_dirt"
+    }
+  ],
+  "result": {
+    "item": "tconstruct:blood_earth_slime_grass",
+    "count": 1
+  }
+}

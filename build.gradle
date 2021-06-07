@@ -19,7 +19,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.8'
+version = '1.0.9'
 group = 'ml.northwestwind.skyfarm' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'skyfarm'
 

@@ -1,0 +1,31 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "tconstruct:ichor_slime_crystal"
+    },
+    {
+      "item": "tconstruct:ender_slime_dirt"
+    },
+    {
+      "fluid": "tconstruct:blood",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "item": "tconstruct:ichor_slime_dirt",
+      "count": 1
+    }
+  ]
+}
