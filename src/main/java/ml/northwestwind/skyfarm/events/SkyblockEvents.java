@@ -15,18 +15,22 @@ import ml.northwestwind.skyfarm.world.data.SkyblockNetherData;
 import ml.northwestwind.skyfarm.world.generators.SkyblockChunkGenerator;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.play.server.SEntityVelocityPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.IFormattableTextComponent;
@@ -41,10 +45,12 @@ import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Map;
@@ -285,5 +291,32 @@ public class SkyblockEvents {
             event.setAmount(player.getMaxHealth() - 0.5f);
         else if (event.getSource().equals(DamageSource.OUT_OF_WORLD) || event.getSource().equals(DamageSource.IN_WALL))
             event.setCanceled(true);
+    }
+
+    @SubscribeEvent
+    public static void onPlayerInteract(final PlayerInteractEvent.RightClickBlock event) {
+        ItemStack equipped = event.getItemStack();
+        PlayerEntity player = event.getPlayer();
+        if (!equipped.isEmpty() && equipped.getItem() == Items.BOWL) {
+            BlockRayTraceResult rtr = raytraceFromEntity(player, 4.5F, true);
+            if (rtr.getType() == RayTraceResult.Type.BLOCK) {
+                BlockPos pos = rtr.getBlockPos();
+                if (event.getWorld().getBlockState(pos).getMaterial() == Material.WATER) {
+                    if (!event.getWorld().isClientSide) {
+                        equipped.shrink(1);
+                        Item waterBowl = ForgeRegistries.ITEMS.getValue(new ResourceLocation("botania", "water_bowl"));
+                        if (equipped.isEmpty()) player.setItemInHand(event.getHand(), new ItemStack(waterBowl));
+                        else player.inventory.placeItemBackInInventory(player.level, new ItemStack(waterBowl));
+                    }
+
+                    event.setCanceled(true);
+                    event.setCancellationResult(ActionResultType.SUCCESS);
+                }
+            }
+        }
+    }
+
+    public static BlockRayTraceResult raytraceFromEntity(Entity e, double distance, boolean fluids) {
+        return (BlockRayTraceResult) e.pick(distance, 1, fluids);
     }
 }

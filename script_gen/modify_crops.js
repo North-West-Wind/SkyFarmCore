@@ -34,9 +34,11 @@ for (const file of files) {
     var filename = file.replace(/^.*[\\\/]/, '');
     var name = filename.replace(".json", "");
     lines.push(`val ${mod}_${name} = crops.getCrop("${mod}:crops/${name}");`);
+    lines.push(`${mod}_${name}.clearDrops();`);
     lines.push(`${mod}_${name}.addCategory("dirt");`);
     lines.push(`${mod}_${name}.addDrop(<item:mysticalagriculture:${name}_essence>, 0.5, 4);`);
     lines.push(`${mod}_${name}.addDrop(<item:mysticalagriculture:${name}_seeds>, 0.2);`);
+    lines.push(`${mod}_${name}.addDrop(<item:mysticalagriculture:fertilized_essence>, 0.01, 1);`);
     console.log(`${filename} can now be grown with dirt`);
 }
 fs.writeFileSync("./botany_crops.zs", lines.join("\n"));

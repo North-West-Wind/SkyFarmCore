@@ -1,20 +1,20 @@
 {
-  "parent": "skyfarm:skyfarm/grout",
+  "parent": "skyfarm:skyfarm/stone_seeds",
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "tconstruct"
+      "modid": "mysticalagriculture"
     }
   ],
   "display": {
     "title": {
-      "translate": "advancement.skyfarm.small_smeltery.title"
+      "translate": "advancement.skyfarm.earth_seeds.title"
     },
     "description": {
-      "translate": "advancement.skyfarm.small_smeltery.description"
+      "translate": "advancement.skyfarm.earth_seeds.description"
     },
     "icon": {
-      "item": "tconstruct:seared_melter"
+      "item": "mysticalagriculture:earth_essence"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,12 +22,12 @@
     "hidden": false
   },
   "criteria": {
-    "melter": {
+    "earthSeeds": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "tconstruct:seared_melter"
+            "item": "mysticalagriculture:earth_seeds"
           }
         ]
       }
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "melter"
+      "earthSeeds"
     ]
   ]
 }

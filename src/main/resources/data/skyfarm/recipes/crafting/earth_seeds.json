@@ -7,17 +7,23 @@
     }
   ],
   "pattern": [
-    "###",
-    "# #",
-    "###"
+    "#D#",
+    "DWD",
+    "#D#"
   ],
   "key": {
     "#": {
-      "item": "mysticalagriculture:cotton_essence"
+      "tag": "forge:cobblestone"
+    },
+    "D": {
+      "tag": "forge:dirt"
+    },
+    "W": {
+      "item": "mysticalagriculture:dirt_seeds"
     }
   },
   "result": {
-    "item": "minecraft:white_wool",
+    "item": "mysticalagriculture:earth_seeds",
     "count": 1
   }
 }

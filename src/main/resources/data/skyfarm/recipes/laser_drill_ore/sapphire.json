@@ -4,13 +4,6 @@
     {
       "conditions": [
         {
-          "value": {
-            "item": "iceandfire:sapphire_ore",
-            "type": "forge:tag_empty"
-          },
-          "type": "forge:not"
-        },
-        {
           "type": "forge:mod_loaded",
           "modid": "industrialforegoing"
         },

@@ -28,7 +28,7 @@
   },
   "output": {
     "item": {
-      "item": "skyfarm:water_bowl"
+      "item": "botania:water_bowl"
     },
     "level": {
       "add": -4

@@ -14,7 +14,7 @@
       "translate": "advancement.storage.compacting_drawers.description"
     },
     "icon": {
-      "item": "storagedrawers:compacting_drawers"
+      "item": "storagedrawers:compacting_drawers_3"
     },
     "frame": "task",
     "show_toast": false,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "storagedrawers:compacting_drawers"
+            "item": "storagedrawers:compacting_drawers_3"
           }
         ]
       }

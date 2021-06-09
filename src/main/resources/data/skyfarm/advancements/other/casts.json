@@ -122,22 +122,12 @@
         ]
       }
     },
-    "kama_head": {
+    "small_blade": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "tconstruct:kama_head_cast"
-          }
-        ]
-      }
-    },
-    "sword_blade": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "tconstruct:sword_blade_cast"
+            "item": "tconstruct:small_blade_cast"
           }
         ]
       }
@@ -245,10 +235,7 @@
       "small_axe_head"
     ],
     [
-      "kama_head"
-    ],
-    [
-      "sword_blade"
+      "small_blade"
     ],
     [
       "hammer_head"

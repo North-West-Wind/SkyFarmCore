@@ -83,7 +83,6 @@ public class RegistryEvents {
                 new TooltipBlockItem(Blocks.PARABOX, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1), "parabox"),
                 new TooltipBlockItem(Blocks.VOID_GENERATOR, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).rarity(Rarity.EPIC), "void_generator"),
                 Items.COMPACT_BRICK,
-                Items.BOWL,
                 Items.STONE_VARIATOR,
                 Items.OVERWORLD_VOID_SHIFTER_NETHER,
                 Items.OVERWORLD_SKY_SHIFTER_END
@@ -186,7 +185,6 @@ public class RegistryEvents {
 
     public static class Items {
         public static final Item COMPACT_BRICK = new CompactBrickItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "compact_brick");
-        public static final Item BOWL = new WaterBowlItem(new Item.Properties().stacksTo(64).tab(SkyFarm.SkyFarmItemGroup.INSTANCE)).setRegistryName("minecraft", "bowl");
         public static final Item STONE_VARIATOR = new StoneVariatorItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).defaultDurability(128), "stone_variator");
         public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ShifterItem(ModArmorMaterial.NETHER_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_void_shifter_nether");
         public static final Item OVERWORLD_SKY_SHIFTER_END = new ShifterItem(ModArmorMaterial.END_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_sky_shifter_end");

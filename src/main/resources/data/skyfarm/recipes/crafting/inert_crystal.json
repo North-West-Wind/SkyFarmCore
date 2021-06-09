@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "elementalcraft"
+    }
+  ],
+  "pattern": [
+    " A ",
+    "FiW",
+    " E "
+  ],
+  "key": {
+    "A": {
+      "item": "mysticalagriculture:air_essence"
+    },
+    "F": {
+      "item": "mysticalagriculture:fire_essence"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "mysticalagriculture:water_essence"
+    },
+    "E": {
+      "item": "mysticalagriculture:earth_essence"
+    }
+  },
+  "result": {
+    "item": "elementalcraft:inertcrystal",
+    "count": 1
+  }
+}

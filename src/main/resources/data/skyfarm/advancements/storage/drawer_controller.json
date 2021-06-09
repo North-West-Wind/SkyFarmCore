@@ -14,7 +14,7 @@
       "translate": "advancement.storage.drawer_controller.description"
     },
     "icon": {
-      "item": "storagedrawers:drawer_controller"
+      "item": "storagedrawers:controller"
     },
     "frame": "task",
     "show_toast": false,
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "storagedrawers:drawer_controller"
+            "item": "storagedrawers:controller"
           }
         ]
       }

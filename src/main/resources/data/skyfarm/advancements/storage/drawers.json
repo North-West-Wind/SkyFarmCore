@@ -14,7 +14,7 @@
       "translate": "advancement.storage.drawers.description"
     },
     "icon": {
-      "item": "storagedrawers:drawers"
+      "item": "storagedrawers:oak_full_drawers_1"
     },
     "frame": "task",
     "show_toast": false,

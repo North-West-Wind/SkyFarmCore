@@ -5,7 +5,7 @@
       "conditions": [
         {
           "value": {
-            "tag": "forge:ores/mana",
+            "tag": "forge:ores/zinc",
             "type": "forge:tag_empty"
           },
           "type": "forge:not"
@@ -17,7 +17,7 @@
       ],
       "recipe": {
         "output": {
-          "tag": "forge:ores/mana"
+          "tag": "forge:ores/zinc"
         },
         "rarity": [
           {
