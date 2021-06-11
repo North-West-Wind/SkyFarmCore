@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -34,6 +35,7 @@ public class SkyFarm {
         createFolderIfAbsent("./skyfarm/backups");
 
         getResourcefulBeeConfig();
+        updateScripts();
     }
 
     public static class SkyFarmItemGroup extends ItemGroup {
@@ -76,16 +78,26 @@ public class SkyFarm {
     private static void updateScripts() {
         try {
             String scriptVer = null;
-            Scanner localScanner = new Scanner(new File("./script_version"));
-            if (localScanner.hasNext()) scriptVer = localScanner.next();
-            URL url = new URL("https://raw.githubusercontent.com/North-West-Wind/SkyFarmEssential/main/scripts/script_ver");
+            File f = new File("./script_version");
+            if (f.exists()) {
+                Scanner localScanner = new Scanner(f);
+                if (localScanner.hasNext()) scriptVer = localScanner.next();
+            }
+            URL url = new URL("https://raw.githubusercontent.com/North-West-Wind/SkyFarmEssential/main/scripts/script_version");
             Scanner s = new Scanner(url.openStream());
             if (!s.hasNext()) return;
-            if (scriptVer == null || Utils.isVersionGreater(s.next(), scriptVer)) {
-                
+            String ver = s.next();
+            if (scriptVer == null || Utils.isVersionGreater(ver, scriptVer)) {
+                FileWriter writer = new FileWriter("./script_version");
+                writer.write(ver);
+                writer.close();
+                String name = Utils.downloadFile("https://raw.githubusercontent.com/North-West-Wind/SkyFarmEssential/main/scripts/scripts.zip", ".");
+                Utils.unzip(name, ".");
+                File file = new File(name);
+                if (file.exists()) file.delete();
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 }
