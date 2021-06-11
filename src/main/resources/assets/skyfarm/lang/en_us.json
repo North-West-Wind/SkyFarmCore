@@ -482,10 +482,12 @@
   "advancement.power.fluid_laser_base.description": "You can also get some fluid from laser drilling with a Fluid Laser Base.",
   "advancement.power.supreme_black_holes.title": "2 Supreme Black Holes",
   "advancement.power.supreme_black_holes.description": "Get yourself both the Supreme Black Hole Unit and Supreme Black Hole Tank.",
-  "advancement.power.mycelial_generators.title": "Is This Simple Generators?",
+  "advancement.power.mycelial_generators.title": "Are These Simple Generators?",
   "advancement.power.mycelial_generators.description": "Industrial Foregoing added a lot of Mycelial Generators. They generate energy with different source.",
   "advancement.power.boot_recycler.title": "Recycling Boots",
   "advancement.power.boot_recycler.description": "Make a boot recycler from More Boots. You can convert boots into energy!",
+  "advancement.power.simple_generators.title": "Are These Mycelial Generators?",
+  "advancement.power.simple_generators.description": "Simple Generators offers a lot of generators. I like the Geothermal one.",
 
   "advancement.farming.root.title": "Irrigation Dedication",
   "advancement.farming.root.description": "This advancement tab talks about farming.",

@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
+import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -13,10 +14,12 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -67,6 +70,22 @@ public class SkyFarm {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void updateScripts() {
+        try {
+            String scriptVer = null;
+            Scanner localScanner = new Scanner(new File("./script_version"));
+            if (localScanner.hasNext()) scriptVer = localScanner.next();
+            URL url = new URL("https://raw.githubusercontent.com/North-West-Wind/SkyFarmEssential/main/scripts/script_ver");
+            Scanner s = new Scanner(url.openStream());
+            if (!s.hasNext()) return;
+            if (scriptVer == null || Utils.isVersionGreater(s.next(), scriptVer)) {
+                
+            }
+        } catch (Exception e) {
+
         }
     }
 }

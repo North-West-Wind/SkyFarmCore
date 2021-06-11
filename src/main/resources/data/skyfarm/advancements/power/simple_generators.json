@@ -1,0 +1,55 @@
+{
+  "parent": "skyfarm:power/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplegens"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.power.simple_generators.title"
+    },
+    "description": {
+      "translate": "advancement.power.simple_generators.description"
+    },
+    "icon": {
+      "item": "simplegens:simple_soul"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "simple_combustion": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_combustion" }]}},
+    "simple_nether": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_nether" }]}},
+    "simple_culinary": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_culinary" }]}},
+    "simple_potion": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_potion" }]}},
+    "simple_soul": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_soul" }]}},
+    "simple_ender": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_ender" }]}},
+    "simple_tnt": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_tnt" }]}},
+    "simple_geothermal": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_geothermal" }]}},
+    "simple_pink": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_pink" }]}},
+    "simple_fluid_combustion": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_fluid_combustion" }]}},
+    "simple_turbine": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_turbine" }]}},
+    "simple_xp": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_xp" }]}}
+  },
+  "requirements": [
+    [ "simple_furnace" ],
+    [ "simple_nether" ],
+    [ "simple_culinary" ],
+    [ "simple_potion" ],
+    [ "simple_soul" ],
+    [ "simple_ender" ],
+    [ "simple_tnt" ],
+    [ "simple_geothermal" ],
+    [ "simple_pink" ],
+    [ "simple_fluid_combustion" ],
+    [ "simple_turbine" ],
+    [ "simple_xp" ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
+}

@@ -94,6 +94,15 @@ public class Utils {
         return new ResourceLocation(SkyFarm.MOD_ID, name);
     }
 
+    public static boolean isVersionGreater(String first, String second) {
+        String[] firsts = first.split("\\.");
+        String[] seconds = second.split("\\.");
+        for (int i = 0; i < Math.min(firsts.length, seconds.length); i++) {
+            if (Integer.parseInt(firsts[i]) > Integer.parseInt(seconds[i])) return true;
+        }
+        return firsts.length > seconds.length;
+    }
+
     public enum DragonType {
         FIRE("fire_dragon"),
         ICE("ice_dragon"),
