@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:farming/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "integrateddynamics"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.farming.menril_sapling.title"
+    },
+    "description": {
+      "translate": "advancement.farming.menril_sapling.description"
+    },
+    "icon": {
+      "item": "integrateddynamics:menril_sapling"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "menril_sapling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "integrateddynamics:menril_sapling"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "menril_sapling"
+    ]
+  ]
+}

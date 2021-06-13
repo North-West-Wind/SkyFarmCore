@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:exploration/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "inventorypets"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.exploration.house_pet.title"
+    },
+    "description": {
+      "translate": "advancement.exploration.house_pet.description"
+    },
+    "icon": {
+      "item": "inventorypets:pet_house"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "house_pet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "inventorypets:pet_house"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "house_pet"
+    ]
+  ]
+}

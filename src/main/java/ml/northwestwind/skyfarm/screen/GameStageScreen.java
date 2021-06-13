@@ -35,11 +35,11 @@ public class GameStageScreen extends Screen {
         STAGES.put("mob_grinding_utils", new ImmutableTriple<>(Utils.getItemByModAndName("mob_grinding_utils", "fan"), 1, EMPTY_STRING_LIST));
         STAGES.put("botanypots", new ImmutableTriple<>(Utils.getItemByModAndName("botanypots", "botany_pot"), 1, EMPTY_STRING_LIST));
         STAGES.put("darkutils", new ImmutableTriple<>(Utils.getItemByModAndName("darkutils", "vector_plate"), 1, EMPTY_STRING_LIST));
-        STAGES.put("prudentium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "prudentium_essence"), 2, EMPTY_STRING_LIST));
-        STAGES.put("tertium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "tertium_essence"), 3, Lists.newArrayList("prudentium")));
-        STAGES.put("imperium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "imperium_essence"), 4, Lists.newArrayList("tertium")));
-        STAGES.put("supremium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "supremium_essence"), 5, Lists.newArrayList("imperium")));
-        STAGES.put("insanium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagradditions", "insanium_essence"), 6, Lists.newArrayList("supremium")));
+        STAGES.put("prudentium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "prudentium_essence"), 1, EMPTY_STRING_LIST));
+        STAGES.put("tertium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "tertium_essence"), 1, Lists.newArrayList("prudentium")));
+        STAGES.put("imperium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "imperium_essence"), 1, Lists.newArrayList("tertium")));
+        STAGES.put("supremium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "supremium_essence"), 1, Lists.newArrayList("imperium")));
+        STAGES.put("insanium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagradditions", "insanium_essence"), 1, Lists.newArrayList("supremium")));
         STAGES.put("ironjetpacks", new ImmutableTriple<>(Utils.getItemByModAndName("ironjetpacks", "emerald_jetpack"), 2, EMPTY_STRING_LIST));
         STAGES.put("cgm", new ImmutableTriple<>(Utils.getItemByModAndName("cgm", "mini_gun"), 1, EMPTY_STRING_LIST));
         STAGES.put("vehicle", new ImmutableTriple<>(Utils.getItemByModAndName("vehicle", "standard_wheel"), 1, EMPTY_STRING_LIST));

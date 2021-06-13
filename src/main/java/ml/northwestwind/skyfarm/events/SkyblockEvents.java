@@ -230,7 +230,7 @@ public class SkyblockEvents {
         } else if (running.containsKey(player.getUUID())) {
             player.setDeltaMovement(player.getDeltaMovement().add(player.getLookAngle()));
             ((ServerPlayerEntity) player).connection.send(new SEntityVelocityPacket(player));
-            if (player.position().distanceTo(running.get(player.getUUID())) >= 100) {
+            if (player.position().distanceTo(running.get(player.getUUID())) >= 50) {
                 if (player.level.dimension().equals(dim1)) {
                     ServerWorld world = ((ServerWorld) player.level).getServer().getLevel(dim2);
                     if (world != null) player.changeDimension(world, new HorizontalTeleporter());

@@ -375,6 +375,8 @@
 
   "advancement.exploration.root.title": "Go Somewhere Else",
   "advancement.exploration.root.description": "This is not yet the end! There are more dimensions to explore!",
+  "advancement.exploration.house_pet.title": "Home Sweet Home",
+  "advancement.exploration.house_pet.description": "Before you go to any dimension, I would suggest you to get a House Pet, so you can get out of trouble easier.",
   "advancement.exploration.undergarden.title": "Not the Betweenlands",
   "advancement.exploration.undergarden.description": "The Undergarden is somewhere between the Overworld and the Nether. Use an axis shifter.",
   "advancement.exploration.skylight_forest.title": "Skylight Forest Broke",
@@ -507,6 +509,8 @@
   "advancement.farming.harvesting_drone.description": "The Harvesting Drone from PneumaticCraft harvests crops cooler than you think.",
   "advancement.farming.menril_sapling.title": "Integrated Sapling",
   "advancement.farming.menril_sapling.description": "Fun Fact: A lot of latex can be extracted from menril logs.",
+  "advancement.farming.straw_golem.title": "Cute Farmer",
+  "advancement.farming.straw_golem.description": "Put a carved pumpkin on top of a hay bale block. It gives you surprise!",
 
   "advancement.other.root.title": "Other Stuff",
   "advancement.other.root.description": "Something miscellaneous.",
@@ -574,6 +578,8 @@
   "stages.skyfarm.cgm.description": "Do you like guns? MrCrayFish has made some. The gun mod is behind this stage.",
   "stages.skyfarm.vehicle.title": "Higher on the Street",
   "stages.skyfarm.vehicle.description": "The Vehicle mod has cars for you to drive!",
+  "stages.skyfarm.sky_slime_grass_seeds.title": "Sky Slime Grass",
+  "stages.skyfarm.sky_slime_grass_seeds.description": "Sky Slime Grass Blocks makes Tinker trees to grows pretty fast in Botany Pots.",
   "stages.skyfarm.ender_slime_grass_seeds.title": "Ender Slime Grass",
   "stages.skyfarm.ender_slime_grass_seeds.description": "Ender Slime Grass Blocks makes Tinker trees to grows faster in Botany Pots.",
   "stages.skyfarm.blood_slime_grass_seeds.title": "Blood Slime Grass",

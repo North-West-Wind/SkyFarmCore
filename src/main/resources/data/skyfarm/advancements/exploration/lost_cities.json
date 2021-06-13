@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:exploration/root",
+  "parent": "skyfarm:exploration/house_pet",
   "conditions": [
     {
       "type": "forge:mod_loaded",

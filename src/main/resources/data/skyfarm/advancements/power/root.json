@@ -11,8 +11,8 @@
       "item": "minecraft:redstone"
     },
     "frame": "task",
-    "show_toast": false,
-    "announce_to_chat": false,
+    "show_toast": true,
+    "announce_to_chat": true,
     "hidden": false,
     "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
   },

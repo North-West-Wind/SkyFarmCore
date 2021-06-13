@@ -1,0 +1,54 @@
+{
+  "parent": "skyfarm:farming/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "strawgolem"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.farming.straw_golem.title"
+    },
+    "description": {
+      "translate": "advancement.farming.straw_golem.description"
+    },
+    "icon": {
+      "item": "minecraft:hay_block"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "carved_pumpkin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:carved_pumpkin"
+          }
+        ]
+      }
+    },
+    "hay_bale": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:hay_block"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "carved_pumpkin"
+    ],
+    [
+      "hay_bale"
+    ]
+  ]
+}
