@@ -31,6 +31,8 @@ import java.util.Set;
 
 public class NaturalEvaporatorTileEntity extends TileEntity implements ITickableTileEntity, IClearable, IInventory {
     private final SkyFarmItemHandler inventory;
+    private ItemStack stackLastTick;
+    private EvaporatingRecipe recipe;
     private int tick = 0;
 
     public NaturalEvaporatorTileEntity(TileEntityType<?> type) {
@@ -49,7 +51,7 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
 
         if (this.level != null && !this.level.isClientSide) {
             ItemStack stack = inventory.getStackInSlot(0);
-            EvaporatingRecipe recipe = getRecipe(stack);
+            if (!stack.equals(stackLastTick)) recipe = getRecipe(stack);
             if (recipe == null) {
                 tick = 0;
                 return;

@@ -30,7 +30,7 @@
   "key.skyfarm.voteMenu": "Open Voting Screen",
   "key.crouch": "Crouch/Sneak",
 
-  "tip.skyfarm.stageMenu": "Press [ %s ] to open Stage Menu to unlock mods.",
+  "tip.skyfarm.stageMenu": "Press [%s] to open Stage Menu to unlock mods.",
 
   "recipe.skyfarm.evaporating": "Evaporating",
   "recipe.skyfarm.compact_brick": "Compact Brick",
@@ -149,7 +149,7 @@
   "advancement.skyfarm.andesite.title": "Nice Gray Rock",
   "advancement.skyfarm.andesite.description": "Andesite will help your game progress.",
   "advancement.skyfarm.water.title": "Stay Hydrated",
-  "advancement.skyfarm.water.description": "Right-click water block with a bow. It will fill up and not consume the source block. Basically duping.",
+  "advancement.skyfarm.water.description": "Right-click water block with a bowl. It will fill up and not consume the source block. Basically duping.",
   "advancement.skyfarm.wheat_seeds.title": "Food Shortage Reduced to ZERO",
   "advancement.skyfarm.wheat_seeds.description": "Use your bone meal on the grass block, and punch grass to get seeds.",
   "advancement.skyfarm.air_seeds.title": "Something to Nothing",
