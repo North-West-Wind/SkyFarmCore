@@ -19,7 +19,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.14'
+version = '1.0.15'
 group = 'ml.northwestwind.skyfarm' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'skyfarm'
 
@@ -136,6 +136,8 @@ dependencies {
 
     compile fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
     compile fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")
+
+    //implementation 'com.github.Virtuoel:Pehkui:2.2.1'
 }
 
 mixin {

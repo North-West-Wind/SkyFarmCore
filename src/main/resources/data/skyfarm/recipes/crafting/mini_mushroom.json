@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "compactmachines"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "item": "compactmachines:personal_shrinking_device"
+    }
+  ],
+  "result": {
+    "item": "skyfarm:mini_mushroom",
+    "count": 1
+  }
+}

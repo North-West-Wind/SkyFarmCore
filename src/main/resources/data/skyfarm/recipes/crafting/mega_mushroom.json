@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "item": "botania:black_hole_talisman"
+    }
+  ],
+  "result": {
+    "item": "skyfarm:mega_mushroom",
+    "count": 1
+  }
+}

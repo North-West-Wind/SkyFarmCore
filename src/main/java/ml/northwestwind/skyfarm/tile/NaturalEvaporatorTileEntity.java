@@ -51,7 +51,10 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
 
         if (this.level != null && !this.level.isClientSide) {
             ItemStack stack = inventory.getStackInSlot(0);
-            if (!stack.equals(stackLastTick)) recipe = getRecipe(stack);
+            if (!stack.equals(stackLastTick)) {
+                recipe = getRecipe(stack);
+                stackLastTick = stack;
+            }
             if (recipe == null) {
                 tick = 0;
                 return;

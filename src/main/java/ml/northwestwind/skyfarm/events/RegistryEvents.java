@@ -7,6 +7,8 @@ import ml.northwestwind.skyfarm.block.NaturalEvaporatorBlock;
 import ml.northwestwind.skyfarm.block.ParaboxBlock;
 import ml.northwestwind.skyfarm.block.VoidGeneratorBlock;
 import ml.northwestwind.skyfarm.container.ParaboxContainer;
+import ml.northwestwind.skyfarm.effect.MegaEffect;
+import ml.northwestwind.skyfarm.effect.MiniEffect;
 import ml.northwestwind.skyfarm.entity.CompactBrickEntity;
 import ml.northwestwind.skyfarm.item.*;
 import ml.northwestwind.skyfarm.recipes.AbstractCompactBrickRecipe;
@@ -28,6 +30,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.item.Food;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
@@ -35,6 +38,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.EffectType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.LazyValue;
 import net.minecraft.util.ResourceLocation;
@@ -92,6 +98,10 @@ public class RegistryEvents {
         if (ModList.get().isLoaded("lostcities")) event.getRegistry().register(Items.OVERWORLD_AXIS_SHIFTER_LC);
         if (ModList.get().isLoaded("iceandfire")) event.getRegistry().register(Items.DRAGON_SUMMONER);
         if (ModList.get().isLoaded("resourcefulbees")) event.getRegistry().register(Items.MUTATION_POLLEN);
+        if (ModList.get().isLoaded("pehkui")) event.getRegistry().registerAll(
+                Items.MEGA_MUSHROOM,
+                Items.MINI_MUSHROOM
+        );
     }
 
     @SubscribeEvent
@@ -127,6 +137,13 @@ public class RegistryEvents {
                 Gases.FISSILE_FUEL_MK2,
                 Gases.PLURANIUM_FLUOXIDE,
                 Gases.PLUTONIUM_OXIDE
+        );
+    }
+
+    @SubscribeEvent
+    public static void registerEffect(final RegistryEvent.Register<Effect> event) {
+        event.getRegistry().registerAll(
+                Effects.MEGA
         );
     }
 
@@ -193,6 +210,8 @@ public class RegistryEvents {
         public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ShifterItem(ModArmorMaterial.LC_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_lc");
         public static final Item DRAGON_SUMMONER = new DragonSummonerItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "dragon_summoner");
         public static final Item MUTATION_POLLEN = new MutationPollenItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "mutation_pollen");
+        public static final Item MEGA_MUSHROOM = new TooltipItem(new Item.Properties().stacksTo(4).tab(SkyFarm.SkyFarmItemGroup.INSTANCE).food(Foods.MEGA_MUSHROOM), "mega_mushroom");
+        public static final Item MINI_MUSHROOM = new TooltipItem(new Item.Properties().stacksTo(4).tab(SkyFarm.SkyFarmItemGroup.INSTANCE).food(Foods.MINI_MUSHROOM), "mini_mushroom");
 
         public enum ModArmorMaterial implements IArmorMaterial {
             NETHER_SHIFTER("nether_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
@@ -265,5 +284,15 @@ public class RegistryEvents {
         public static final Gas FISSILE_FUEL_MK2 = new Gas(GasBuilder.builder().color(3035951)).setRegistryName("fissile_fuel_mk2");
         public static final Gas PLURANIUM_FLUOXIDE = new Gas(GasBuilder.builder().color(7310944)).setRegistryName("pluranium_fluoxide");
         public static final Gas PLUTONIUM_OXIDE = new Gas(GasBuilder.builder().color(2986445)).setRegistryName("plutonium_oxide");
+    }
+
+    public static class Foods {
+        public static final Food MEGA_MUSHROOM = (new Food.Builder()).nutrition(4).saturationMod(0.2F).alwaysEat().effect(() -> new EffectInstance(Effects.MEGA, 6000), 1).build();
+        public static final Food MINI_MUSHROOM = (new Food.Builder()).nutrition(4).saturationMod(0.2F).alwaysEat().effect(() -> new EffectInstance(Effects.MINI, 6000), 1).build();
+    }
+
+    public static class Effects {
+        public static final Effect MEGA = new MegaEffect(EffectType.NEUTRAL, 0xF11629).setRegistryName("mega");
+        public static final Effect MINI = new MiniEffect(EffectType.NEUTRAL, 0x1984E6).setRegistryName("mini");
     }
 }

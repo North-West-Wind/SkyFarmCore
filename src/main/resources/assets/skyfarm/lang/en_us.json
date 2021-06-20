@@ -19,10 +19,15 @@
   "item.skyfarm.dragon_summoner": "Dragon Summoner Stick",
   "item.skyfarm.mutation_pollen.default": "Mutation Pollen",
   "item.skyfarm.mutation_pollen": "%s Mutation Pollen",
+  "item.skyfarm.mega_mushroom": "Mega Mushroom",
+  "item.skyfarm.mini_mushroom": "Mini Mushroom",
 
   "gas.skyfarm.fissile_fuel_mk2": "Fissile Fuel Mk II",
   "gas.skyfarm.plutonium_oxide": "Plutonium Oxide",
   "gas.skyfarm.pluranium_fluoxide": "Pluranium Fluoxide",
+
+  "effect.skyfarm.mega": "Mega",
+  "effect.skyfarm.mini": "Mini",
 
   "itemGroup.skyfarm": "Sky Farm",
 
@@ -52,6 +57,8 @@
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_ug": "Hold [%s] to run to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_tf": "Hold [%s] to run to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_lc": "Hold [%s] to run to the Overworld",
+  "tooltip.skyfarm.mega_mushroom": "Makes you HUGE",
+  "tooltip.skyfarm.mini_mushroom": "Shrinks you to atoms",
 
   "usage.skyfarm.stone_variator": "Lava is required under the block.",
   "usage.skyfarm.void_shifter": "Release crouch to launch yourself.",
