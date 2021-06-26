@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:skyfarm/wood_seeds",
+  "parent": "skyfarm:skyfarm/iron_cauldron",
   "conditions": [
     {
       "type": "forge:mod_loaded",

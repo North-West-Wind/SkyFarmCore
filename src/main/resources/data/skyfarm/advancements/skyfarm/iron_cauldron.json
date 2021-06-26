@@ -1,0 +1,35 @@
+{
+  "parent": "skyfarm:skyfarm/iron_seeds",
+  "display": {
+    "title": {
+      "translate": "advancement.skyfarm.iron_cauldron.title"
+    },
+    "description": {
+      "translate": "advancement.skyfarm.iron_cauldron.description"
+    },
+    "icon": {
+      "item": "minecraft:cauldron"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cauldron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:cauldron"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cauldron"
+    ]
+  ]
+}
