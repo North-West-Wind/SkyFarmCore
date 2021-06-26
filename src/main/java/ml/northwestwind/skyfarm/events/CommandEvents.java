@@ -1,10 +1,10 @@
 package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.command.HideAdvancementCommand;
-import ml.northwestwind.skyfarm.command.PointsCommand;
-import ml.northwestwind.skyfarm.command.SkyboxCommand;
-import ml.northwestwind.skyfarm.command.VoteCommand;
+import ml.northwestwind.skyfarm.common.command.HideAdvancementCommand;
+import ml.northwestwind.skyfarm.common.command.PointsCommand;
+import ml.northwestwind.skyfarm.common.command.SkyboxCommand;
+import ml.northwestwind.skyfarm.common.command.VoteCommand;
 import net.minecraft.command.Commands;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegisterCommandsEvent;

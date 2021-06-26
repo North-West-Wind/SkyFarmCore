@@ -118,9 +118,6 @@
   "warning.disableParabox": "Are you sure you want to disable the Parabox and Stage System?",
   "warning.disableParabox.yes": "[Yes]",
 
-  "config.skyfarm.skybox": " Garden of Glass skybox",
-  "config.skyfarm.skybox.true": "Enabled",
-  "config.skyfarm.skybox.false": "Disabled",
   "config.skyfarm.hide_advancement": " Non-Sky Farm advancements",
   "config.skyfarm.hide_advancement.true": "Hiding",
   "config.skyfarm.hide_advancement.false": "Unhiding",

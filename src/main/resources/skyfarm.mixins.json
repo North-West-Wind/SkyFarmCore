@@ -6,10 +6,10 @@
   "mixins": [
     "MixinAbstractBlockState",
     "MixinFissionReactorMultiblockData",
-    "MixinFogRenderer",
-    "MixinGeneratorsJEI",
-    "MixinMultiblockData",
-    "MixinWorldRenderer"
+    "MixinMultiblockData"
+  ],
+  "client": [
+    "MixinGeneratorsJEI"
   ],
   "minVersion": "0.8"
 }

@@ -16,10 +16,12 @@
     "1.0.12": "Use Botania's water bowl",
     "1.0.13": "Auto Script Updater",
     "1.0.14": "Optimized Natural Evaporator + Fixed a typo",
-    "1.0.15": "Mega/Mini Mushroom"
+    "1.0.15": "Mega/Mini Mushroom",
+    "1.0.16": "Brought client-side mixins to SkyFarmClient",
+    "1.0.17": "Fixed game crashing"
   },
   "promos": {
-    "1.16.5-latest": "1.0.15",
-    "1.16.5-recommended": "1.0.15"
+    "1.16.5-latest": "1.0.17",
+    "1.16.5-recommended": "1.0.17"
   }
 }
