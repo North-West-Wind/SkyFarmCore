@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "elementalcraft"
+    }
+  ],
+  "pattern": [
+    "S",
+    "#",
+    "P"
+  ],
+  "key": {
+    "S": {
+      "item": "elementalcraft:fine_fire_gem"
+    },
+    "#": {
+      "item": "minecraft:dead_bush"
+    },
+    "P": {
+      "item": "minecraft:prismarine_bricks"
+    }
+  },
+  "result": {
+    "item": "minecraft:dead_fire_coral_block",
+    "count": 1
+  }
+}

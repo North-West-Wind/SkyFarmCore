@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "#",
+    "P"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "#": {
+      "item": "minecraft:dead_bush"
+    },
+    "P": {
+      "item": "minecraft:prismarine_bricks"
+    }
+  },
+  "result": {
+    "item": "minecraft:dead_brain_coral_block",
+    "count": 1
+  }
+}
