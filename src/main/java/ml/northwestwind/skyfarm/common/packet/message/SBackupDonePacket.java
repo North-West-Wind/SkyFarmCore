@@ -2,13 +2,15 @@ package ml.northwestwind.skyfarm.common.packet.message;
 
 import ml.northwestwind.skyfarm.common.packet.IPacket;
 import ml.northwestwind.skyfarm.client.screen.ParaboxScreen;
-import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 public class SBackupDonePacket implements IPacket {
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void handle(NetworkEvent.Context ctx) {
-        Minecraft minecraft = Minecraft.getInstance();
+        net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getInstance();
         if (!(minecraft.screen instanceof ParaboxScreen)) return;
         ParaboxScreen screen = (ParaboxScreen) minecraft.screen;
         screen.setBackedUp(true);

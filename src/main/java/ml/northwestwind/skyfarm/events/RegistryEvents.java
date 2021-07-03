@@ -214,11 +214,11 @@ public class RegistryEvents {
         public static final Item MINI_MUSHROOM = new TooltipItem(new Item.Properties().stacksTo(4).tab(SkyFarm.SkyFarmItemGroup.INSTANCE).food(Foods.MINI_MUSHROOM), "mini_mushroom");
 
         public enum ModArmorMaterial implements IArmorMaterial {
-            NETHER_SHIFTER("nether_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
-            END_SHIFTER("end_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
-            UG_SHIFTER("ug_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
-            TF_SHIFTER("tf_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
-            LC_SHIFTER("lc_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
+            NETHER_SHIFTER(SkyFarm.MOD_ID + ":nether_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            END_SHIFTER(SkyFarm.MOD_ID + ":end_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            UG_SHIFTER(SkyFarm.MOD_ID + ":ug_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            TF_SHIFTER(SkyFarm.MOD_ID + ":tf_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            LC_SHIFTER(SkyFarm.MOD_ID + ":lc_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
             private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
             private final String name;

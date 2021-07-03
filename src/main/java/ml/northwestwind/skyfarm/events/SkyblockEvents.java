@@ -1,6 +1,5 @@
 package ml.northwestwind.skyfarm.events;
 
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.SkyFarm;
@@ -9,7 +8,6 @@ import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.misc.teleporter.HorizontalTeleporter;
 import ml.northwestwind.skyfarm.misc.teleporter.VoidTeleporter;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
-import ml.northwestwind.skyfarm.common.packet.message.SLaunchPlayerExplosionPacket;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockNetherData;
 import ml.northwestwind.skyfarm.common.world.generators.SkyblockChunkGenerator;
@@ -141,7 +139,7 @@ public class SkyblockEvents {
     @SubscribeEvent
     public static void playerTick(final TickEvent.PlayerTickEvent event) {
         PlayerEntity player = event.player;
-        if (player == null || player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level))
+        if (event.phase.equals(TickEvent.Phase.START) || player == null || player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level))
             return;
         ItemStack boots = player.getItemBySlot(EquipmentSlotType.FEET);
         if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_NETHER))
@@ -173,7 +171,7 @@ public class SkyblockEvents {
             } else if (buildingSpeed.containsKey(player.getUUID())) {
                 int tick = buildingSpeed.get(player.getUUID());
                 if (tick >= 120) {
-                    SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SLaunchPlayerExplosionPacket(player.blockPosition(), player.level.dimension()));
+                    player.level.playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundCategory.PLAYERS, 1f, 1f);
                     rising.add(player.getUUID());
                 }
                 buildingSpeed.remove(player.getUUID());
@@ -223,7 +221,7 @@ public class SkyblockEvents {
         } else if (buildingSpeed.containsKey(player.getUUID())) {
             int tick = buildingSpeed.get(player.getUUID());
             if (tick >= 120) {
-                SkyFarmPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new SLaunchPlayerExplosionPacket(player.blockPosition(), player.level.dimension()));
+                player.level.playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundCategory.PLAYERS, 1f, 1f);
                 running.put(player.getUUID(), player.position());
             }
             buildingSpeed.remove(player.getUUID());

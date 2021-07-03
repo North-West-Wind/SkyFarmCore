@@ -21,7 +21,6 @@ public class SkyFarmPacketHandler {
 
     public static void registerPackets() {
         registerMessage(CPlayerGrowPacket.class, NetworkDirection.PLAY_TO_SERVER);
-        registerMessage(SLaunchPlayerExplosionPacket.class, NetworkDirection.PLAY_TO_CLIENT);
         registerMessage(CVoteActivateParaboxPacket.class, NetworkDirection.PLAY_TO_SERVER);
         registerMessage(CVoteDeactivateParaboxPacket.class, NetworkDirection.PLAY_TO_SERVER);
         registerMessage(CCloseParaboxPacket.class, NetworkDirection.PLAY_TO_SERVER);

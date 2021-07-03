@@ -6,6 +6,8 @@ import ml.northwestwind.skyfarm.client.screen.GameStageScreen;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.PacketDistributor;
 
@@ -19,6 +21,7 @@ public class DSyncPointsPacket implements IDoubleSidedPacket {
         this(0);
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void handleClient(NetworkEvent.Context ctx) {
         GameStageScreen.points = points;

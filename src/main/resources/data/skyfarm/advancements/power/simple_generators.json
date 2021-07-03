@@ -36,7 +36,7 @@
     "simple_xp": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "item": "simplegens:simple_xp" }]}}
   },
   "requirements": [
-    [ "simple_furnace" ],
+    [ "simple_combustion" ],
     [ "simple_nether" ],
     [ "simple_culinary" ],
     [ "simple_potion" ],

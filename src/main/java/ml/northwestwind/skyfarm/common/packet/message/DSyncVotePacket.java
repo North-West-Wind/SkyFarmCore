@@ -4,8 +4,9 @@ import ml.northwestwind.skyfarm.common.packet.IDoubleSidedPacket;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.client.screen.VoteScreen;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.PacketDistributor;
 
@@ -18,9 +19,10 @@ public class DSyncVotePacket implements IDoubleSidedPacket {
         this.hasVoted = hasVoted;
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void handleClient(NetworkEvent.Context ctx) {
-        Minecraft minecraft = Minecraft.getInstance();
+        net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getInstance();
         if (!(minecraft.screen instanceof VoteScreen)) return;
         ((VoteScreen) minecraft.screen).syncFromPacket(SkyblockData.VotingStatus.getFromID(statusId), hasVoted);
     }
