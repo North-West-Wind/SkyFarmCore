@@ -4,10 +4,10 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.northwestwind.skyfarm.SkyFarm;
+import ml.northwestwind.skyfarm.common.packet.message.CSyncPointsPacket;
 import ml.northwestwind.skyfarm.misc.Utils;
 import ml.northwestwind.skyfarm.misc.widget.StageButton;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
-import ml.northwestwind.skyfarm.common.packet.message.DSyncPointsPacket;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.Widget;
@@ -27,7 +27,7 @@ public class GameStageScreen extends Screen {
     public static final ResourceLocation WHITE_DOT = new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/white_dot.png");
     public static final Map<String, Triple<Item, Integer, List<String>>> STAGES = Maps.newHashMap();
     public static final List<String> EMPTY_STRING_LIST = Lists.newArrayList();
-    public static long points;
+    public long points = 0;
 
     public GameStageScreen() {
         super(new TranslationTextComponent("screen.gamestage"));
@@ -71,7 +71,9 @@ public class GameStageScreen extends Screen {
 
     @Override
     protected void init() {
-        SkyFarmPacketHandler.INSTANCE.sendToServer(new DSyncPointsPacket());
+        if (this.points != 0) this.points = 0;
+        SkyFarm.LOGGER.info("Sending synchronizing points");
+        SkyFarmPacketHandler.INSTANCE.sendToServer(new CSyncPointsPacket());
         addStageButton(0, 0, "prudentium");
         addStageButton(1, 0, "tertium");
         addStageButton(2, 0, "imperium");

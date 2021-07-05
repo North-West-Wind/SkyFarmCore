@@ -3,8 +3,6 @@ package ml.northwestwind.skyfarm.common.packet.message;
 import ml.northwestwind.skyfarm.common.packet.IPacket;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 public class SPleaseSendParaboxPacket implements IPacket {
@@ -15,7 +13,6 @@ public class SPleaseSendParaboxPacket implements IPacket {
         this.votedFor = votedFor;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public void handle(NetworkEvent.Context ctx) {
         PlayerEntity player = net.minecraft.client.Minecraft.getInstance().player;

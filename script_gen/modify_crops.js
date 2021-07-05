@@ -1,4 +1,4 @@
-// BotanyPots faster growth
+// BotanyPots Mystical Agriculture on dirts
 // Copy BotanyPots data folder to this directory
 
 const fs = require("fs");

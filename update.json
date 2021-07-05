@@ -21,10 +21,11 @@
     "1.0.17": "Fixed game crashing",
     "1.0.18": "Rearranged some advancements",
     "1.0.19": "Recipes for coral",
-    "1.0.20": "Fully avoid server crash + Fixed Simple Generators advancement"
+    "1.0.20": "Fully avoid server crash + Fixed Simple Generators advancement",
+    "1.0.21": "Fixed Stage Menu syncing in multiplayer"
   },
   "promos": {
-    "1.16.5-latest": "1.0.20",
-    "1.16.5-recommended": "1.0.20"
+    "1.16.5-latest": "1.0.21",
+    "1.16.5-recommended": "1.0.21"
   }
 }

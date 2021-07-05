@@ -21,7 +21,7 @@ public class StageButton extends ItemButton {
 
     public StageButton(int x, int y, int width, int height, int parentWidth, int parentHeight, String stage, Triple<Item, Integer, List<String>> triple) {
         super(x, y, width, height, button -> {
-            if (GameStageScreen.points < triple.getMiddle()) return;
+            if (!(Minecraft.getInstance().screen instanceof GameStageScreen) || ((GameStageScreen) Minecraft.getInstance().screen).points < triple.getMiddle()) return;
             SkyFarmPacketHandler.INSTANCE.sendToServer(new CAddStagePacket(stage));
             button.active = false;
         }, (button, matrixStack, mouseX, mouseY) -> {
@@ -42,20 +42,23 @@ public class StageButton extends ItemButton {
     
     private static void addTooltip(List<ITextComponent> tooltip, String stage, List<String> required, int point) {
         Minecraft minecraft = Minecraft.getInstance();
+        if (!(minecraft.screen instanceof GameStageScreen)) return;
         if (GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), stage)) tooltip.add(new TranslationTextComponent("stages.skyfarm.known").setStyle(Style.EMPTY.applyFormat(TextFormatting.AQUA)));
         else {
             for (String s : required) {
                 boolean hasStage = GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), s);
                 tooltip.add(new TranslationTextComponent("stages.skyfarm.require", new TranslationTextComponent("stages.skyfarm."+s+".title").getString()).setStyle(Style.EMPTY.applyFormat(hasStage ? TextFormatting.GREEN : TextFormatting.RED)));
             }
-            boolean hasPoints = GameStageScreen.points >= point;
+            boolean hasPoints = ((GameStageScreen) minecraft.screen).points >= point;
             tooltip.add(new TranslationTextComponent("stages.skyfarm.points", point).setStyle(Style.EMPTY.applyFormat(hasPoints ? TextFormatting.GREEN : TextFormatting.RED)));
         }
     }
     
     private boolean isClickable() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (!(minecraft.screen instanceof GameStageScreen)) return false;
         boolean noStage = !GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), stage);
-        boolean hasPoints = GameStageScreen.points >= point;
+        boolean hasPoints = ((GameStageScreen) minecraft.screen).points >= point;
         boolean hasRequired = true;
         for (String s : required) if (!GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), s)) {
             hasRequired = false;

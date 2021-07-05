@@ -28,22 +28,17 @@ public class SkyFarmPacketHandler {
         registerMessage(SActivateParaboxPacket.class, NetworkDirection.PLAY_TO_CLIENT);
         registerMessage(SDeactivateParaboxPacket.class, NetworkDirection.PLAY_TO_CLIENT);
         registerMessage(CAddStagePacket.class, NetworkDirection.PLAY_TO_SERVER);
-        registerMessage(DSyncPointsPacket.class);
-        registerMessage(DSyncVotePacket.class);
+        registerMessage(CSyncPointsPacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(SSyncPointsPacket.class, NetworkDirection.PLAY_TO_CLIENT);
+        registerMessage(CSyncVotePacket.class, NetworkDirection.PLAY_TO_SERVER);
+        registerMessage(SSyncVotePacket.class, NetworkDirection.PLAY_TO_CLIENT);
         registerMessage(SPleaseSendParaboxPacket.class, NetworkDirection.PLAY_TO_CLIENT);
     }
 
-    private static <MSG extends IDoubleSidedPacket> void registerMessage(Class<MSG> clazz) {
-        INSTANCE.registerMessage(i++, clazz, (msg, buffer) -> buffer.writeByteArray(PacketCodec.encode(msg)), buffer -> (MSG) PacketCodec.decode(buffer.readByteArray()), (msg, ctx) -> {
-            ctx.get().enqueueWork(() -> msg.handle(ctx.get()));
-            ctx.get().setPacketHandled(true);
-        });
-    }
-
     private static <MSG extends IPacket> void registerMessage(Class<MSG> clazz, NetworkDirection direction) {
-        INSTANCE.registerMessage(i++, clazz, (msg, buffer) -> buffer.writeByteArray(PacketCodec.encode(msg)), buffer -> (MSG) PacketCodec.decode(buffer.readByteArray()), (msg, ctx) -> {
-            ctx.get().enqueueWork(() -> msg.handle(ctx.get()));
+        INSTANCE.registerMessage(i++, clazz, (msg, buffer) -> buffer.writeByteArray(PacketCodec.encode(msg)), buffer -> (MSG) PacketCodec.decode(buffer.readByteArray()), (msg, ctx) -> ctx.get().enqueueWork(() -> {
+            msg.handle(ctx.get());
             ctx.get().setPacketHandled(true);
-        }, Optional.of(direction));
+        }), Optional.of(direction));
     }
 }

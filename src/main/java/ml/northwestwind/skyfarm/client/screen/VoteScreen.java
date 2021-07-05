@@ -2,9 +2,9 @@ package ml.northwestwind.skyfarm.client.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
+import ml.northwestwind.skyfarm.common.packet.message.CSyncPointsPacket;
 import ml.northwestwind.skyfarm.common.packet.message.CVoteActivateParaboxPacket;
 import ml.northwestwind.skyfarm.common.packet.message.CVoteDeactivateParaboxPacket;
-import ml.northwestwind.skyfarm.common.packet.message.DSyncVotePacket;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
@@ -46,7 +46,7 @@ public class VoteScreen extends Screen {
 
         addButton(yes);
         addButton(no);
-        SkyFarmPacketHandler.INSTANCE.sendToServer(new DSyncVotePacket(SkyblockData.VotingStatus.NONE, false));
+        SkyFarmPacketHandler.INSTANCE.sendToServer(new CSyncPointsPacket());
     }
 
     @Override

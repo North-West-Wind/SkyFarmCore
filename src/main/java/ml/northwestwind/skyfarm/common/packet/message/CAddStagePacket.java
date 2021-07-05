@@ -22,6 +22,6 @@ public class CAddStagePacket implements IPacket {
         data.addStage(stage);
         data.setPoint(data.getPoint() - 1);
         data.setDirty();
-        DSyncPointsPacket.serverSyncAll(player.getServer());
+        SSyncPointsPacket.serverSyncAll(player.getServer());
     }
 }

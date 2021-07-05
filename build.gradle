@@ -19,7 +19,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.20'
+version = '1.0.21'
 group = 'ml.northwestwind.skyfarm' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'skyfarm'
 
@@ -124,7 +124,7 @@ repositories {
 
 dependencies {
     /* minecraft dependency is here */
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.10'
     annotationProcessor "org.spongepowered:mixin:0.8.2:processor"
 
     // compile against the JEI API but do not include it at runtime
