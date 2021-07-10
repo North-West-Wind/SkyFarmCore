@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "naturesaura"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "twilightforest"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "pattern": [
+    " # ",
+    "#S#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "twilightforest:fluffy_cloud"
+    },
+    "S": {
+      "item": "naturesaura:aura_bottle",
+      "nbt": "{stored_type:\"naturesaura:overworld\"}"
+    }
+  },
+  "result": {
+    "item": "quark:bottled_cloud",
+    "count": 1
+  }
+}

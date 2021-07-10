@@ -1,4 +1,4 @@
-package ml.northwestwind.skyfarm.misc.widget;
+package ml.northwestwind.skyfarm.client.widget;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;

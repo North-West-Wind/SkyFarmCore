@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:exploration/fluffy_cloud",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.exploration.bottled_cloud.title"
+    },
+    "description": {
+      "translate": "advancement.exploration.bottled_cloud.description"
+    },
+    "icon": {
+      "item": "quark:bottled_cloud"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bottled_cloud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "quark:bottled_cloud"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bottled_cloud"
+    ]
+  ]
+}

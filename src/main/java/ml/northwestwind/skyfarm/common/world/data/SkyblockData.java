@@ -1,11 +1,13 @@
 package ml.northwestwind.skyfarm.common.world.data;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import ml.northwestwind.skyfarm.common.world.generators.SkyblockChunkGenerator;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import ml.northwestwind.skyfarm.itemstages.ItemStages;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.RecipeManager;
@@ -23,21 +25,18 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SkyblockData extends WorldSavedData {
     public static VotingStatus votingStatus = VotingStatus.NONE;
-    public static List<UUID> voted = Lists.newArrayList();
+    public static Set<UUID> voted = Sets.newHashSet();
     public static boolean isVoting, forced, shouldRestore;
     public static Thread thread;
     private boolean worldGenerated, isInLoop, usingParabox, noStage;
     private BlockPos paraboxPos = BlockPos.ZERO;
-    private final List<UUID> joined = Lists.newArrayList();
-    private List<String> stages = Lists.newArrayList();
+    private final Set<UUID> joined = Sets.newHashSet();
+    private Set<String> stages = Sets.newHashSet();
     private static final Random rng = new Random();
     private long points;
     private int paraboxLevel;
@@ -50,7 +49,6 @@ public class SkyblockData extends WorldSavedData {
 
     public static SkyblockData get(ServerWorld world) {
         SkyblockData data = world.getServer().overworld().getDataStorage().computeIfAbsent(SkyblockData::new, NAME);
-        data.noStage = SkyblockChunkGenerator.hasNoStage(world);
         data.setDirty();
         return data;
     }
@@ -60,12 +58,12 @@ public class SkyblockData extends WorldSavedData {
         wantingItem = items.get(rng.nextInt(items.size()));
         RecipeManager manager = world.getRecipeManager();
         Collection<IRecipe<?>> recipes = manager.getRecipes();
+        SkyblockData data = SkyblockData.get(world);
         boolean craftable = false;
         for (IRecipe<?> recipe : recipes) if (recipe.getResultItem().getItem().equals(wantingItem)) {
-            craftable = true;
-            break;
+            final String stage = ItemStages.getStage(recipe.getResultItem());
+            if (craftable = stage == null || data.hasStage(stage)) break;
         }
-        SkyblockData.get(world).setDirty();
         return craftable ? wantingItem : generateItem(world);
     }
 
@@ -112,11 +110,11 @@ public class SkyblockData extends WorldSavedData {
         isInLoop = nbt.getBoolean("looping");
         points = nbt.getLong("points");
         paraboxLevel = nbt.getInt("parabox");
+        noStage = nbt.getBoolean("noStage");
         String id = nbt.getString("wantingItem");
         if (!id.equals("")) wantingItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
         CompoundNBT pos = nbt.getCompound("paraboxPos");
         paraboxPos = new BlockPos(pos.getInt("x"), pos.getInt("y"), pos.getInt("z"));
-        noStage = nbt.getBoolean("noStage");
         ListNBT listNBT = (ListNBT) nbt.get("joined");
         if (listNBT != null) {
             int i = 0;
@@ -135,13 +133,14 @@ public class SkyblockData extends WorldSavedData {
                 i++;
             }
         }
-        stages = stages.stream().filter(GameStageHelper::isStageKnown).collect(Collectors.toList());
+        stages = stages.stream().filter(GameStageHelper::isStageKnown).collect(Collectors.toSet());
     }
 
     @Override
     public CompoundNBT save(CompoundNBT nbt) {
         nbt.putBoolean("generated", worldGenerated);
         nbt.putBoolean("looping", isInLoop);
+        nbt.putBoolean("noStage", noStage);
         nbt.putInt("parabox", paraboxLevel);
         if (wantingItem != null) nbt.putString("wantingItem", wantingItem.getRegistryName().toString());
         CompoundNBT pos = new CompoundNBT();
@@ -149,20 +148,23 @@ public class SkyblockData extends WorldSavedData {
         pos.putInt("y", paraboxPos.getY());
         pos.putInt("z", paraboxPos.getZ());
         nbt.put("paraboxPos", pos);
-        nbt.putBoolean("noStage", noStage);
         ListNBT listNBT = new ListNBT();
-        for (int i = 0; i < joined.size(); i++) {
+        Iterator<UUID> it = joined.iterator();
+        int i = 0;
+        while (it.hasNext()) {
             CompoundNBT compound = new CompoundNBT();
-            compound.putUUID("uuid", joined.get(i));
-            listNBT.add(i, compound);
+            compound.putUUID("uuid", it.next());
+            listNBT.add(i++, compound);
         }
         nbt.put("joined", listNBT);
         nbt.putLong("points", points);
         ListNBT listNBT2 = new ListNBT();
-        for (int i = 0; i < stages.size(); i++) {
+        Iterator<String> it2 = stages.iterator();
+        i = 0;
+        while (it2.hasNext()) {
             CompoundNBT compound = new CompoundNBT();
-            compound.putString("name", stages.get(i));
-            listNBT2.add(i, compound);
+            compound.putString("name", it2.next());
+            listNBT2.add(i++, compound);
         }
         nbt.put("stages", listNBT2);
         return nbt;
@@ -232,12 +234,24 @@ public class SkyblockData extends WorldSavedData {
         return paraboxPos;
     }
 
-    public void addStage(String stage) {
-        if (GameStageHelper.isStageKnown(stage)) stages.add(stage);
+    public void addStage(String... stage) {
+        stages.addAll(Arrays.stream(stage).collect(Collectors.toSet()));
+    }
+
+    public void removeStage(String stage) {
+        stages.remove(stage);
     }
 
     public Iterable<String> getStages() {
-        return noStage ? GameStageHelper.getKnownStages() : ImmutableList.copyOf(stages);
+        return noStage ? GameStageHelper.getKnownStages() : ImmutableSet.copyOf(stages);
+    }
+
+    public boolean hasStage(String stage) {
+        return noStage || (GameStageHelper.isStageKnown(stage) && stages.contains(stage));
+    }
+
+    public void noStage() {
+        noStage = true;
     }
 
     public enum VotingStatus {

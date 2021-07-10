@@ -1,9 +1,9 @@
 package ml.northwestwind.skyfarm.common.registries.tile;
 
-import ml.northwestwind.skyfarm.events.RegistryEvents;
-import ml.northwestwind.skyfarm.misc.Utils;
 import ml.northwestwind.skyfarm.common.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.registries.tile.handler.SkyFarmItemHandler;
+import ml.northwestwind.skyfarm.events.RegistryEvents;
+import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IClearable;
@@ -27,6 +27,7 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Set;
 
 public class NaturalEvaporatorTileEntity extends TileEntity implements ITickableTileEntity, IClearable, IInventory {
@@ -201,11 +202,11 @@ public class NaturalEvaporatorTileEntity extends TileEntity implements ITickable
 
     @Nullable
     private EvaporatingRecipe getRecipe(ItemStack stack) {
-        if (stack == null) {
+        if (stack == null || this.level == null || this.level.getServer() == null) {
             return null;
         }
 
-        Set<IRecipe<?>> recipes = Utils.findRecipesByType(RegistryEvents.Recipes.EVAPORATING.getType(), this.level);
+        List<IRecipe<IInventory>> recipes = this.level.getServer().getRecipeManager().getAllRecipesFor(RegistryEvents.Recipes.EVAPORATING.getType());
         for (IRecipe<?> iRecipe : recipes) {
             EvaporatingRecipe recipe = (EvaporatingRecipe) iRecipe;
             SkyFarmItemHandler fakeInv = new SkyFarmItemHandler(1, stack);

@@ -1,0 +1,41 @@
+{
+  "parent": "skyfarm:exploration/skylight_forest",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "display": {
+    "title": {
+      "translate": "advancement.exploration.fluffy_cloud.title"
+    },
+    "description": {
+      "translate": "advancement.exploration.fluffy_cloud.description"
+    },
+    "icon": {
+      "item": "twilightforest:fluffy_cloud"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fluffy_cloud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "twilightforest:fluffy_cloud"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fluffy_cloud"
+    ]
+  ]
+}

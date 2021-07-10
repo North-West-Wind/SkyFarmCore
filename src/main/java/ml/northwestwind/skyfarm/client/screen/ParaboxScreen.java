@@ -3,12 +3,12 @@ package ml.northwestwind.skyfarm.client.screen;
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.common.registries.container.ParaboxContainer;
-import ml.northwestwind.skyfarm.misc.Utils;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.packet.message.CCloseParaboxPacket;
 import ml.northwestwind.skyfarm.common.packet.message.CVoteActivateParaboxPacket;
 import ml.northwestwind.skyfarm.common.packet.message.CVoteDeactivateParaboxPacket;
+import ml.northwestwind.skyfarm.common.registries.container.ParaboxContainer;
+import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.button.Button;
@@ -19,6 +19,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
+import org.apache.logging.log4j.LogManager;
 
 @OnlyIn(Dist.CLIENT)
 public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
@@ -89,7 +90,14 @@ public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {
         y += 2 + this.font.lineHeight;
         this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.efficiency", ((int) (this.menu.tile.getEfficiency() * 100)) + "%"), x, y, 0xFFFFFF);
         y += 2 + this.font.lineHeight;
-        this.font.draw(matrixStack, new TranslationTextComponent("screen.parabox.item", this.menu.tile.getWantingItem().getDisplayName()), x, y, 0xFFFFFF);
+        ITextComponent itemLine = new TranslationTextComponent("screen.parabox.item");
+        int w = this.font.width(itemLine);
+        int h = this.font.lineHeight;
+        this.font.draw(matrixStack, itemLine, x, y + h/2f, 0xFFFFFF);
+        x += w;
+        this.itemRenderer.renderGuiItem(this.menu.tile.getWantingItem(), x, y);
+        if (x <= mouseX && mouseX <= x + 16 && y <= mouseY && mouseY <= y + 16)
+            renderTooltip(matrixStack, this.menu.tile.getWantingItem(), mouseX, mouseY);
     }
 
     @Override

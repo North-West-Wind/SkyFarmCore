@@ -3,14 +3,13 @@ package ml.northwestwind.skyfarm.events;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.SkyFarm;
+import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import ml.northwestwind.skyfarm.common.world.data.SkyblockNetherData;
+import ml.northwestwind.skyfarm.common.world.generators.SkyblockChunkGenerator;
 import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.misc.teleporter.HorizontalTeleporter;
 import ml.northwestwind.skyfarm.misc.teleporter.VoidTeleporter;
-import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
-import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
-import ml.northwestwind.skyfarm.common.world.data.SkyblockNetherData;
-import ml.northwestwind.skyfarm.common.world.generators.SkyblockChunkGenerator;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Blocks;
@@ -47,7 +46,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -86,8 +84,8 @@ public class SkyblockEvents {
                 for (String stage : stages) {
                     if (!GameStageHelper.isStageKnown(stage)) continue;
                     GameStageHelper.addStage(p, stage);
-                    GameStageHelper.syncPlayer(p);
                 }
+                GameStageHelper.syncPlayer(p);
 
                 if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) {
                     p.getAdvancements().visible.removeAll(advancements);

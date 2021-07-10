@@ -1,9 +1,13 @@
 package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
+import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.misc.backup.Backups;
-import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import net.darkhax.gamestages.event.GameStageEvent;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.play.server.SUpdateRecipesPacket;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
@@ -25,5 +29,23 @@ public class ServerEvents {
             Backups.INSTANCE.restore(event.getServer());
             SkyblockData.shouldRestore = false;
         }
+    }
+
+    @SubscribeEvent
+    public static void gameStageAdded(final GameStageEvent.Added event) {
+        PlayerEntity player = event.getPlayer();
+        if (player.level.isClientSide) return;
+        MinecraftServer server = player.getServer();
+        if (server == null) return;
+        SkyblockData.get(server.overworld()).addStage(event.getStageName());
+    }
+
+    @SubscribeEvent
+    public static void gameStageRemoved(final GameStageEvent.Removed event) {
+        PlayerEntity player = event.getPlayer();
+        if (player.level.isClientSide) return;
+        MinecraftServer server = player.getServer();
+        if (server == null) return;
+        SkyblockData.get(server.overworld()).removeStage(event.getStageName());
     }
 }

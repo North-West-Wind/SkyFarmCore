@@ -9,11 +9,11 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.client.jei.category.CompactBrickCategory;
-import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.client.jei.category.EvaporatingCategory;
 import ml.northwestwind.skyfarm.common.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.recipes.holders.RecipeHolder;
+import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 

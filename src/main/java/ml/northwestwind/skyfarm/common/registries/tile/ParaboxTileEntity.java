@@ -1,11 +1,11 @@
 package ml.northwestwind.skyfarm.common.registries.tile;
 
 import ml.northwestwind.skyfarm.common.registries.container.ParaboxContainer;
-import ml.northwestwind.skyfarm.events.RegistryEvents;
-import ml.northwestwind.skyfarm.misc.backup.Backups;
 import ml.northwestwind.skyfarm.common.registries.tile.handler.ParaboxEnergyStorage;
 import ml.northwestwind.skyfarm.common.registries.tile.handler.ParaboxItemHandler;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import ml.northwestwind.skyfarm.events.RegistryEvents;
+import ml.northwestwind.skyfarm.misc.backup.Backups;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

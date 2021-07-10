@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="skyfarm"
-version="1.0.21"
+version="1.1.0"
 displayName="Sky Farm"
 updateJSONURL="https://raw.githubusercontent.com/North-West-Wind/SkyFarmEssential/main/update.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/sky-farm-stuff"
@@ -34,5 +34,12 @@ An essential mod for NorthWestWind's Sky Farm modpack.
     modId="mekanism"
     mandatory=true
     versionRange="[10.0.21,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.skyfarm]]
+    modId="crafttweaker"
+    mandatory=true
+    versionRange="[7.1.0,)"
     ordering="NONE"
     side="BOTH"

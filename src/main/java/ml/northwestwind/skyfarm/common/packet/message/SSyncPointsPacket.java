@@ -1,6 +1,5 @@
 package ml.northwestwind.skyfarm.common.packet.message;
 
-import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.common.packet.IPacket;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
@@ -16,7 +15,6 @@ public class SSyncPointsPacket implements IPacket {
 
     @Override
     public void handle(NetworkEvent.Context ctx) {
-        SkyFarm.LOGGER.info("Now syncing points...");
         net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getInstance();
         if (minecraft.screen instanceof ml.northwestwind.skyfarm.client.screen.GameStageScreen) ((ml.northwestwind.skyfarm.client.screen.GameStageScreen) minecraft.screen).points = points;
     }

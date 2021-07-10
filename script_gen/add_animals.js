@@ -1,3 +1,5 @@
+// Put in data/skyfarm/advancements/farming
+
 const fs = require("fs");
 const json = require("./animals.json");
 const TYPES = [

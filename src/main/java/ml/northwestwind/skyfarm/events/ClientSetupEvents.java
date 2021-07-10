@@ -1,10 +1,10 @@
 package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.config.SkyFarmConfig;
-import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.client.screen.ParaboxScreen;
 import ml.northwestwind.skyfarm.common.registries.tile.renderer.NaturalEvaporatorRenderer;
+import ml.northwestwind.skyfarm.config.SkyFarmConfig;
+import ml.northwestwind.skyfarm.misc.KeyBindings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;

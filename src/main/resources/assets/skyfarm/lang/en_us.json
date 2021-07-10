@@ -1,7 +1,7 @@
 {
   "generator.skyfarm": "Sky Farm",
   "generator.skyfarm.info": "Awesome Skyblock!",
-  "generator.skyfarm_nostage": "Sky Farm: No Stage",
+  "generator.skyfarm_nostage": "Stageless Farm",
   "generator.skyfarm_nostage.info": "Sky Farm with all stages unlocked.",
 
   "block.skyfarm.natural_evaporator": "Natural Evaporator",
@@ -387,6 +387,12 @@
   "advancement.exploration.undergarden.description": "The Undergarden is somewhere between the Overworld and the Nether. Use an axis shifter.",
   "advancement.exploration.skylight_forest.title": "Skylight Forest Broke",
   "advancement.exploration.skylight_forest.description": "Skylight Forest is originally planned for this pack. Unfortunately, it does not generate correctly.",
+  "advancement.exploration.fluffy_cloud.title": "The Hunt for Cloud",
+  "advancement.exploration.fluffy_cloud.description": "Find and get some Fluffy Clouds home!",
+  "advancement.exploration.bottled_cloud.title": "A Block Made of Thin Air",
+  "advancement.exploration.bottled_cloud.description": "Bottled Cloud can be placed on any air block. Remember to put your own blocks on it!",
+  "advancement.exploration.sky_stone.title": "We Love AE2",
+  "advancement.exploration.sky_stone.description": "Finally! You can use the cloud you got to craft some Sky Stone!",
   "advancement.exploration.compact_machines.title": "Inside the Block",
   "advancement.exploration.compact_machines.description": "Get into a compact machine by using the personal shrinking device from Compact Machines.",
   "advancement.exploration.bumblezone.title": "I'm a Bee!",
@@ -509,6 +515,8 @@
   "advancement.farming.animals.description": "Obtain all of the mobs' seeds.",
   "advancement.farming.insanium_farmland.title": "Still Need Fertilizer",
   "advancement.farming.insanium_farmland.description": "Craft some Insanium Farmland.",
+  "advancement.farming.ma_seeds.title": "Growing Everything",
+  "advancement.farming.ma_seeds.description": "Obtain every Mystical Agriculture seeds.",
   "advancement.farming.harvester.title": "Seeding Automation",
   "advancement.farming.harvester.description": "Cyclic's Harvester harvests crops relatively quickly.",
   "advancement.farming.harvesting_drone.title": "The Cooler Harvester",
@@ -604,5 +612,15 @@
   "stages.skyfarm.void_miner.description": "Void Miners are great way to gather resources.",
 
   "dragon.summoning": "Summoning %s...",
-  "dragon.summoned": "Summoned %s!"
+  "dragon.summoned": "Summoned %s!",
+
+  "tooltip.itemstages.name.default": "Unfamiliar Item",
+  "tooltip.itemstages.description": "You do not know how to use this yet.",
+  "tooltip.itemstages.info": "You need stage %s first.",
+  "message.itemstages.drop": "You dropped the %s.",
+
+  "disable_stages.warning": "Are you sure you want to disable stages? This process cannot be reversed.",
+  "disable_stages.warning.l2": "If you insist on doing that, use the command %s",
+
+  "disable_stages.done": "Disabled stages for this world."
 }

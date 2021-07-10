@@ -1,3 +1,5 @@
+// Put in data/skyfarm/advancements/other
+
 const fs = require("fs");
 const json = require("./modifiers.json");
 

@@ -6,10 +6,13 @@
   "mixins": [
     "MixinAbstractBlockState",
     "MixinFissionReactorMultiblockData",
-    "MixinMultiblockData"
+    "MixinMultiblockData",
+    "MixinPlayerList",
+    "MixinRecipeManager"
   ],
   "client": [
-    "MixinGeneratorsJEI"
+    "MixinGeneratorsJEI",
+    "MixinRecipeManagerClient"
   ],
   "minVersion": "0.8"
 }

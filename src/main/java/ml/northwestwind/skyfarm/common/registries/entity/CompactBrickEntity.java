@@ -1,10 +1,10 @@
 package ml.northwestwind.skyfarm.common.registries.entity;
 
+import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
+import ml.northwestwind.skyfarm.common.registries.tile.handler.SkyFarmItemHandler;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.misc.NoDamageExplosion;
 import ml.northwestwind.skyfarm.misc.Utils;
-import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
-import ml.northwestwind.skyfarm.common.registries.tile.handler.SkyFarmItemHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -27,6 +28,8 @@ import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class CompactBrickEntity extends ProjectileItemEntity {
@@ -95,19 +98,13 @@ public class CompactBrickEntity extends ProjectileItemEntity {
 
     @Nullable
     private CompactBrickRecipe getRecipe(ItemStack stack) {
-        if (stack == null) {
-            return null;
-        }
-
-        Set<IRecipe<?>> recipes = Utils.findRecipesByType(RegistryEvents.Recipes.COMPACT_BRICK.getType(), this.level);
+        if (stack == null || this.getServer() == null) return null;
+        SkyFarmItemHandler fakeInv = new SkyFarmItemHandler(1, stack);
+        List<IRecipe<IInventory>> recipes = this.getServer().getRecipeManager().getAllRecipesFor(RegistryEvents.Recipes.COMPACT_BRICK.getType());
         for (IRecipe<?> iRecipe : recipes) {
             CompactBrickRecipe recipe = (CompactBrickRecipe) iRecipe;
-            SkyFarmItemHandler fakeInv = new SkyFarmItemHandler(1, stack);
-            if (recipe.matches(new RecipeWrapper(fakeInv), this.level)) {
-                return recipe;
-            }
+            if (recipe.matches(new RecipeWrapper(fakeInv), this.level)) return recipe;
         }
-
         return null;
     }
 }

@@ -44,11 +44,6 @@ public class Utils {
     public static final int[] MULTIPLIER = {10, 8, 6};
     private static final int BUFFER_SIZE = 4096;
 
-    public static Set<IRecipe<?>> findRecipesByType(IRecipeType<?> typeIn, World world) {
-        return world != null ? world.getRecipeManager().getRecipes().stream()
-                .filter(recipe -> recipe.getType() == typeIn).collect(Collectors.toSet()) : Collections.emptySet();
-    }
-
     public static String formatDuration(long ticks) {
         long seconds = ticks / 20;
         if (seconds > 3600) {

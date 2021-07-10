@@ -3,22 +3,21 @@ package ml.northwestwind.skyfarm.events;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasBuilder;
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.common.registries.block.NaturalEvaporatorBlock;
-import ml.northwestwind.skyfarm.common.registries.block.ParaboxBlock;
-import ml.northwestwind.skyfarm.common.registries.block.VoidGeneratorBlock;
-import ml.northwestwind.skyfarm.common.registries.item.*;
-import ml.northwestwind.skyfarm.common.registries.container.ParaboxContainer;
-import ml.northwestwind.skyfarm.common.registries.effect.MegaEffect;
-import ml.northwestwind.skyfarm.common.registries.effect.MiniEffect;
-import ml.northwestwind.skyfarm.common.registries.entity.CompactBrickEntity;
 import ml.northwestwind.skyfarm.common.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.recipes.serializer.CompactBrickRecipeSerializer;
 import ml.northwestwind.skyfarm.common.recipes.serializer.EvaporatingRecipeSerializer;
+import ml.northwestwind.skyfarm.common.registries.block.NaturalEvaporatorBlock;
+import ml.northwestwind.skyfarm.common.registries.block.ParaboxBlock;
+import ml.northwestwind.skyfarm.common.registries.block.VoidGeneratorBlock;
+import ml.northwestwind.skyfarm.common.registries.container.ParaboxContainer;
+import ml.northwestwind.skyfarm.common.registries.effect.MegaEffect;
+import ml.northwestwind.skyfarm.common.registries.effect.MiniEffect;
+import ml.northwestwind.skyfarm.common.registries.entity.CompactBrickEntity;
+import ml.northwestwind.skyfarm.common.registries.item.*;
 import ml.northwestwind.skyfarm.common.registries.tile.NaturalEvaporatorTileEntity;
 import ml.northwestwind.skyfarm.common.registries.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.common.registries.tile.VoidGeneratorTileEntity;
-import ml.northwestwind.skyfarm.common.world.NoStageSkyblockWorldType;
 import ml.northwestwind.skyfarm.common.world.SkyblockWorldType;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -67,10 +66,7 @@ public class RegistryEvents {
 
     @SubscribeEvent
     public static void registerWorldType(final RegistryEvent.Register<ForgeWorldType> event) {
-        event.getRegistry().registerAll(
-                SkyblockWorldType.INSTANCE.setRegistryName("skyfarm"),
-                NoStageSkyblockWorldType.INSTANCE.setRegistryName("skyfarm_nostage")
-        );
+        event.getRegistry().registerAll(SkyblockWorldType.INSTANCE.setRegistryName("skyfarm"));
     }
 
     @SubscribeEvent

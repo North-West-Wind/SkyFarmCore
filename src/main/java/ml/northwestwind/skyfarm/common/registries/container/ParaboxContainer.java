@@ -1,10 +1,10 @@
 package ml.northwestwind.skyfarm.common.registries.container;
 
-import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.packet.message.CCloseParaboxPacket;
 import ml.northwestwind.skyfarm.common.registries.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;

@@ -1,9 +1,9 @@
-package ml.northwestwind.skyfarm.misc.widget;
+package ml.northwestwind.skyfarm.client.widget;
 
 import com.google.common.collect.Lists;
+import ml.northwestwind.skyfarm.client.screen.GameStageScreen;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.packet.message.CAddStagePacket;
-import ml.northwestwind.skyfarm.client.screen.GameStageScreen;
 import net.darkhax.gamestages.GameStageHelper;
 import net.darkhax.gamestages.data.GameStageSaveHandler;
 import net.minecraft.client.Minecraft;
