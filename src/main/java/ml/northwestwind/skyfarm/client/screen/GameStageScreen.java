@@ -6,6 +6,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.client.widget.StageButton;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
+import ml.northwestwind.skyfarm.common.packet.message.CAddStagePacket;
 import ml.northwestwind.skyfarm.common.packet.message.CSyncPointsPacket;
 import ml.northwestwind.skyfarm.misc.Utils;
 import net.darkhax.gamestages.GameStageHelper;
@@ -25,37 +26,14 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 public class GameStageScreen extends Screen {
     public static final ResourceLocation WHITE_DOT = new ResourceLocation(SkyFarm.MOD_ID, "textures/gui/white_dot.png");
-    public static final Map<String, Triple<Item, Integer, List<String>>> STAGES = Maps.newHashMap();
-    public static final List<String> EMPTY_STRING_LIST = Lists.newArrayList();
     public long points = 0;
 
     public GameStageScreen() {
         super(new TranslationTextComponent("screen.gamestage"));
-        STAGES.clear();
-        STAGES.put("mob_grinding_utils", new ImmutableTriple<>(Utils.getItemByModAndName("mob_grinding_utils", "fan"), 1, EMPTY_STRING_LIST));
-        STAGES.put("botanypots", new ImmutableTriple<>(Utils.getItemByModAndName("botanypots", "botany_pot"), 1, EMPTY_STRING_LIST));
-        STAGES.put("darkutils", new ImmutableTriple<>(Utils.getItemByModAndName("darkutils", "vector_plate"), 1, EMPTY_STRING_LIST));
-        STAGES.put("prudentium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "prudentium_essence"), 1, EMPTY_STRING_LIST));
-        STAGES.put("tertium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "tertium_essence"), 1, Lists.newArrayList("prudentium")));
-        STAGES.put("imperium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "imperium_essence"), 1, Lists.newArrayList("tertium")));
-        STAGES.put("supremium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagriculture", "supremium_essence"), 1, Lists.newArrayList("imperium")));
-        STAGES.put("insanium", new ImmutableTriple<>(Utils.getItemByModAndName("mysticalagradditions", "insanium_essence"), 1, Lists.newArrayList("supremium")));
-        STAGES.put("ironjetpacks", new ImmutableTriple<>(Utils.getItemByModAndName("ironjetpacks", "emerald_jetpack"), 2, EMPTY_STRING_LIST));
-        STAGES.put("cgm", new ImmutableTriple<>(Utils.getItemByModAndName("cgm", "mini_gun"), 1, EMPTY_STRING_LIST));
-        STAGES.put("vehicle", new ImmutableTriple<>(Utils.getItemByModAndName("vehicle", "standard_wheel"), 1, EMPTY_STRING_LIST));
-        STAGES.put("sky_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "sky_slime_grass_seeds"), 1, EMPTY_STRING_LIST));
-        STAGES.put("ender_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "ender_slime_grass_seeds"), 2, Lists.newArrayList("sky_slime_grass_seeds")));
-        STAGES.put("blood_slime_grass_seeds", new ImmutableTriple<>(Utils.getItemByModAndName("tconstruct", "blood_slime_grass_seeds"), 3, Lists.newArrayList("ender_slime_grass_seeds")));
-        STAGES.put("projecte", new ImmutableTriple<>(Utils.getItemByModAndName("projecte", "philosophers_stone"), 100, EMPTY_STRING_LIST));
-        STAGES.put("simpleplanes", new ImmutableTriple<>(Utils.getItemByModAndName("simpleplanes", "plane"), 3, Lists.newArrayList("vehicle")));
-        STAGES.put("mekasuit", new ImmutableTriple<>(Utils.getItemByModAndName("mekanism", "mekasuit_bodyarmor"), 5, EMPTY_STRING_LIST));
-        STAGES.put("mekatool", new ImmutableTriple<>(Utils.getItemByModAndName("mekanism", "meka_tool"), 5, EMPTY_STRING_LIST));
-        STAGES.put("illuminati_pet", new ImmutableTriple<>(Utils.getItemByModAndName("inventorypets", "pet_illuminati"), 4, EMPTY_STRING_LIST));
-        STAGES.put("void_miner", new ImmutableTriple<>(Utils.getItemByModAndName("envirotech", "xerothium_void_miner_ccu"), 10, EMPTY_STRING_LIST));
     }
 
     public static Triple<Item, Integer, List<String>> getTriple(String stage) {
-        return STAGES.get(stage);
+        return CAddStagePacket.STAGES.get(stage);
     }
 
     private void addStageButton(double x, double y, String stage, int w, int h) {

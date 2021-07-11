@@ -149,6 +149,7 @@ public class ItemStages {
         @SubscribeEvent
         public static void onClientSync(StagesSyncedEvent event) {
             if (ModList.get().isLoaded("jei")) {
+                LOG.info("GameStages synced! Now syncing with JEI...");
                 PluginItemStages.syncHiddenItems(event.getPlayer());
             }
         }
