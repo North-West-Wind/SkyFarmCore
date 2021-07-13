@@ -4,7 +4,9 @@ import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.world.generators.SkyblockChunkGenerator;
 import ml.northwestwind.skyfarm.common.world.generators.SkyblockNetherChunkGenerator;
+import ml.northwestwind.skyfarm.misc.CuriosStuff;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
@@ -15,5 +17,7 @@ public class CommonEvents {
         SkyblockChunkGenerator.init();
         SkyblockNetherChunkGenerator.init();
         SkyFarmPacketHandler.registerPackets();
+
+        if (ModList.get().isLoaded("curios")) CuriosStuff.sendIMC();
     }
 }

@@ -19,7 +19,6 @@ import net.minecraft.util.ResourceLocation;
 import java.util.Arrays;
 
 public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBrickRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(SkyFarm.MOD_ID, "compact_brick");
     private final IDrawable background;
     private final String localizedName;
     private final IDrawable icon;
@@ -32,7 +31,7 @@ public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBric
 
     @Override
     public ResourceLocation getUid() {
-        return UID;
+        return AbstractCompactBrickRecipe.RECIPE_TYPE_ID;
     }
 
     @Override

@@ -10,8 +10,10 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -44,5 +46,10 @@ public class ClientSetupEvents {
             if (!SkyFarm.BEE_TYPES.containsKey(type)) return -1;
             return SkyFarm.BEE_TYPES.get(type);
         }, RegistryEvents.Items.MUTATION_POLLEN);
+    }
+
+    @SubscribeEvent
+    public static void preTextureStitch(final TextureStitchEvent.Pre event) {
+        event.addSprite(new ResourceLocation(SkyFarm.MOD_ID, "gui/shifters"));
     }
 }

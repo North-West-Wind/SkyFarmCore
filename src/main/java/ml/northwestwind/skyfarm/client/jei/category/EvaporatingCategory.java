@@ -35,7 +35,7 @@ public class EvaporatingCategory implements IRecipeCategory<AbstractEvaporatingR
 
     @Override
     public ResourceLocation getUid() {
-        return UID;
+        return AbstractEvaporatingRecipe.RECIPE_TYPE_ID;
     }
 
     @Override

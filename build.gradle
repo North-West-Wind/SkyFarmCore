@@ -19,7 +19,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.1.1'
+version = '1.1.2'
 group = 'ml.northwestwind.skyfarm' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'skyfarm'
 
@@ -116,10 +116,9 @@ repositories {
         url = "https://modmaven.k-4u.nl"
     }
     maven { url 'https://jitpack.io' }
-    maven {
-        url 'https://maven.blamejared.com'
-    }
+    maven { url 'https://maven.blamejared.com' }
     maven { url = "https://repo.spongepowered.org/maven" }
+    maven { url = "https://maven.theillusivec4.top/" }
 }
 
 dependencies {
@@ -138,6 +137,9 @@ dependencies {
     compile fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")
 
     compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-${mc_version}:${crafttweaker_version}")
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curios_version}:api")
 }
 
 mixin {

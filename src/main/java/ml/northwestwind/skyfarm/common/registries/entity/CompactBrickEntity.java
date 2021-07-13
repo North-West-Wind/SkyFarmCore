@@ -4,7 +4,6 @@ import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.registries.tile.handler.SkyFarmItemHandler;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.misc.NoDamageExplosion;
-import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -29,8 +28,6 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 public class CompactBrickEntity extends ProjectileItemEntity {
 

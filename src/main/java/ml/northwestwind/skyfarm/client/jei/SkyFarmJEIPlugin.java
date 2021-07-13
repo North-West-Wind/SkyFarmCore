@@ -12,8 +12,8 @@ import ml.northwestwind.skyfarm.client.jei.category.CompactBrickCategory;
 import ml.northwestwind.skyfarm.client.jei.category.EvaporatingCategory;
 import ml.northwestwind.skyfarm.common.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.AbstractEvaporatingRecipe;
-import ml.northwestwind.skyfarm.common.recipes.holders.RecipeHolder;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -32,14 +32,14 @@ public class SkyFarmJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
-        registry.addRecipes(RecipeHolder.getRecipes(AbstractEvaporatingRecipe.RECIPE_TYPE_ID), EvaporatingCategory.UID);
-        registry.addRecipes(RecipeHolder.getRecipes(AbstractCompactBrickRecipe.RECIPE_TYPE_ID), CompactBrickCategory.UID);
+        registry.addRecipes(Minecraft.getInstance().getConnection().getRecipeManager().getAllRecipesFor(RegistryEvents.Recipes.EVAPORATING.getType()), AbstractEvaporatingRecipe.RECIPE_TYPE_ID);
+        registry.addRecipes(Minecraft.getInstance().getConnection().getRecipeManager().getAllRecipesFor(RegistryEvents.Recipes.COMPACT_BRICK.getType()), AbstractCompactBrickRecipe.RECIPE_TYPE_ID);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
-        registry.addRecipeCatalyst(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR), EvaporatingCategory.UID);
-        registry.addRecipeCatalyst(RegistryEvents.Items.COMPACT_BRICK.getDefaultInstance(), CompactBrickCategory.UID);
+        registry.addRecipeCatalyst(new ItemStack(RegistryEvents.Blocks.NATURAL_EVAPORATOR), AbstractEvaporatingRecipe.RECIPE_TYPE_ID);
+        registry.addRecipeCatalyst(RegistryEvents.Items.COMPACT_BRICK.getDefaultInstance(), AbstractCompactBrickRecipe.RECIPE_TYPE_ID);
     }
 
     @Override

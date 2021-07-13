@@ -6,7 +6,6 @@ import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.misc.backup.Backups;
 import net.darkhax.gamestages.event.GameStageEvent;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.play.server.SUpdateRecipesPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

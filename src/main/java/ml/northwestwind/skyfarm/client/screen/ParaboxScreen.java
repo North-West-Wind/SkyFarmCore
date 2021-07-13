@@ -19,7 +19,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
-import org.apache.logging.log4j.LogManager;
 
 @OnlyIn(Dist.CLIENT)
 public class ParaboxScreen extends ContainerScreen<ParaboxContainer> {

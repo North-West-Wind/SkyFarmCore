@@ -11,8 +11,7 @@
     "MixinRecipeManager"
   ],
   "client": [
-    "MixinGeneratorsJEI",
-    "MixinRecipeManagerClient"
+    "MixinGeneratorsJEI"
   ],
   "minVersion": "0.8"
 }

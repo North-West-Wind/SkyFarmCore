@@ -87,11 +87,11 @@ public class RegistryEvents {
                 Items.COMPACT_BRICK,
                 Items.STONE_VARIATOR,
                 Items.OVERWORLD_VOID_SHIFTER_NETHER,
-                Items.OVERWORLD_SKY_SHIFTER_END
+                Items.OVERWORLD_SKY_SHIFTER_END,
+                Items.OVERWORLD_AXIS_SHIFTER_UG,
+                Items.OVERWORLD_AXIS_SHIFTER_TF,
+                Items.OVERWORLD_AXIS_SHIFTER_LC
         );
-        if (ModList.get().isLoaded("undergarden")) event.getRegistry().register(Items.OVERWORLD_AXIS_SHIFTER_UG);
-        if (ModList.get().isLoaded("twilightforest")) event.getRegistry().register(Items.OVERWORLD_AXIS_SHIFTER_TF);
-        if (ModList.get().isLoaded("lostcities")) event.getRegistry().register(Items.OVERWORLD_AXIS_SHIFTER_LC);
         if (ModList.get().isLoaded("iceandfire")) event.getRegistry().register(Items.DRAGON_SUMMONER);
         if (ModList.get().isLoaded("resourcefulbees")) event.getRegistry().register(Items.MUTATION_POLLEN);
         if (ModList.get().isLoaded("pehkui")) event.getRegistry().registerAll(
@@ -201,9 +201,9 @@ public class RegistryEvents {
         public static final Item STONE_VARIATOR = new StoneVariatorItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).defaultDurability(128), "stone_variator");
         public static final Item OVERWORLD_VOID_SHIFTER_NETHER = new ShifterItem(ModArmorMaterial.NETHER_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_void_shifter_nether");
         public static final Item OVERWORLD_SKY_SHIFTER_END = new ShifterItem(ModArmorMaterial.END_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_sky_shifter_end");
-        public static final Item OVERWORLD_AXIS_SHIFTER_UG = new ShifterItem(ModArmorMaterial.UG_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_ug");
-        public static final Item OVERWORLD_AXIS_SHIFTER_TF = new ShifterItem(ModArmorMaterial.TF_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_tf");
-        public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ShifterItem(ModArmorMaterial.LC_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_lc");
+        public static final Item OVERWORLD_AXIS_SHIFTER_UG = new ShifterItem(ModArmorMaterial.UG_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_ug", "undergarden");
+        public static final Item OVERWORLD_AXIS_SHIFTER_TF = new ShifterItem(ModArmorMaterial.TF_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_tf", "twilightforest");
+        public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ShifterItem(ModArmorMaterial.LC_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_lc", "lostcities");
         public static final Item DRAGON_SUMMONER = new DragonSummonerItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "dragon_summoner");
         public static final Item MUTATION_POLLEN = new MutationPollenItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "mutation_pollen");
         public static final Item MEGA_MUSHROOM = new TooltipItem(new Item.Properties().stacksTo(4).tab(SkyFarm.SkyFarmItemGroup.INSTANCE).food(Foods.MEGA_MUSHROOM), "mega_mushroom");

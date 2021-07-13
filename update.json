@@ -24,10 +24,11 @@
     "1.0.20": "Fully avoid server crash + Fixed Simple Generators advancement",
     "1.0.21": "Fixed Stage Menu syncing in multiplayer",
     "1.1.0": "Implemented my own Item/Recipe Stages + Parabox enhancement",
-    "1.1.1": "Fixed unlocking stages doesn't deduct actual points"
+    "1.1.1": "Fixed unlocking stages doesn't deduct actual points",
+    "1.1.2": "Fixed Item/Recipe Stages"
   },
   "promos": {
-    "1.16.5-latest": "1.1.1",
-    "1.16.5-recommended": "1.1.1"
+    "1.16.5-latest": "1.1.2",
+    "1.16.5-recommended": "1.1.2"
   }
 }

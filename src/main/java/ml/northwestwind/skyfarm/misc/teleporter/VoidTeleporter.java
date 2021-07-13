@@ -19,9 +19,6 @@ import java.util.function.Function;
 public class VoidTeleporter implements ITeleporter {
     private final boolean toVoid;
     private final double factor;
-    public VoidTeleporter(boolean toVoid) {
-        this(toVoid, 1);
-    }
 
     public VoidTeleporter(boolean toVoid, double factor) {
         this.toVoid = toVoid;
@@ -34,7 +31,7 @@ public class VoidTeleporter implements ITeleporter {
         if (destWorld.dimension().equals(World.OVERWORLD) && entity instanceof LivingEntity) {
             LivingEntity living = (LivingEntity) entity;
             Optional<BlockPos> optional = living.getSleepingPos();
-            return optional.map(blockPos -> new PortalInfo(Utils.blockPosToVector3d(blockPos), Vector3d.ZERO, entity.yRot, entity.xRot)).orElseGet(() -> new PortalInfo(Vector3d.ZERO.add(0, 64, 0), Vector3d.ZERO, entity.yRot, entity.xRot));
+            return optional.map(blockPos -> new PortalInfo(Utils.wrapToEdge(Utils.blockPosToVector3d(blockPos), toVoid), Vector3d.ZERO, entity.yRot, entity.xRot)).orElseGet(() -> new PortalInfo(Vector3d.ZERO.add(0, toVoid ? 316 : -60, 0), Vector3d.ZERO, entity.yRot, entity.xRot));
         }
         WorldBorder border = destWorld.getWorldBorder();
         double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);

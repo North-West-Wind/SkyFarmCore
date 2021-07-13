@@ -15,14 +15,12 @@ import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -32,10 +30,7 @@ import javax.annotation.Nonnull;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Collections;
-import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -61,6 +56,10 @@ public class Utils {
 
     public static Vector3d blockPosToVector3d(BlockPos pos) {
         return new Vector3d(pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    public static Vector3d wrapToEdge(Vector3d pos, boolean top) {
+        return pos.multiply(1, 0, 1).add(0, top ? 316 : -60, 0);
     }
 
     @Nonnull

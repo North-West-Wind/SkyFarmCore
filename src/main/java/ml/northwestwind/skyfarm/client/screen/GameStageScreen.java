@@ -1,14 +1,11 @@
 package ml.northwestwind.skyfarm.client.screen;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.client.widget.StageButton;
 import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.packet.message.CAddStagePacket;
 import ml.northwestwind.skyfarm.common.packet.message.CSyncPointsPacket;
-import ml.northwestwind.skyfarm.misc.Utils;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.Widget;
@@ -17,11 +14,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.tuple.ImmutableTriple;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.List;
-import java.util.Map;
 
 @OnlyIn(Dist.CLIENT)
 public class GameStageScreen extends Screen {

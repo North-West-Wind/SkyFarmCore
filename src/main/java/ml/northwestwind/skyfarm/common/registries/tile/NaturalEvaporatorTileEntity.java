@@ -3,7 +3,6 @@ package ml.northwestwind.skyfarm.common.registries.tile;
 import ml.northwestwind.skyfarm.common.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.registries.tile.handler.SkyFarmItemHandler;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
-import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IClearable;
@@ -28,7 +27,6 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Set;
 
 public class NaturalEvaporatorTileEntity extends TileEntity implements ITickableTileEntity, IClearable, IInventory {
     private final SkyFarmItemHandler inventory;

@@ -57,6 +57,8 @@
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_ug": "Hold [%s] to run to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_tf": "Hold [%s] to run to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_lc": "Hold [%s] to run to the Overworld",
+  "tooltip.skyfarm.shifter.missing": "%s is required for this Shifter to work!",
+
   "tooltip.skyfarm.mega_mushroom": "Makes you HUGE",
   "tooltip.skyfarm.mini_mushroom": "Shrinks you to atoms",
 
@@ -622,5 +624,7 @@
   "disable_stages.warning": "Are you sure you want to disable stages? This process cannot be reversed.",
   "disable_stages.warning.l2": "If you insist on doing that, use the command %s",
 
-  "disable_stages.done": "Disabled stages for this world."
+  "disable_stages.done": "Disabled stages for this world.",
+
+  "curios.identifier.shifter": "Shifter"
 }

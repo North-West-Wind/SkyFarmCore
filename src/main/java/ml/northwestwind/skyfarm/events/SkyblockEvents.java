@@ -7,6 +7,7 @@ import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockNetherData;
 import ml.northwestwind.skyfarm.common.world.generators.SkyblockChunkGenerator;
 import ml.northwestwind.skyfarm.config.SkyFarmConfig;
+import ml.northwestwind.skyfarm.misc.CuriosStuff;
 import ml.northwestwind.skyfarm.misc.KeyBindings;
 import ml.northwestwind.skyfarm.misc.teleporter.HorizontalTeleporter;
 import ml.northwestwind.skyfarm.misc.teleporter.VoidTeleporter;
@@ -45,6 +46,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -139,6 +141,10 @@ public class SkyblockEvents {
         PlayerEntity player = event.player;
         if (event.phase.equals(TickEvent.Phase.START) || player == null || player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level))
             return;
+        if (ModList.get().isLoaded("curios")) {
+            CuriosStuff.playerTick(event);
+            return;
+        }
         ItemStack boots = player.getItemBySlot(EquipmentSlotType.FEET);
         if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_NETHER))
             handleWorldWarp(World.OVERWORLD, World.NETHER, 8, player);
@@ -147,15 +153,15 @@ public class SkyblockEvents {
         else if (player.getY() <= -64) player.teleportTo(player.getX(), 316, player.getZ());
         else if (player.getY() >= 320) player.teleportTo(player.getX(), -60, player.getZ());
 
-        if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_UG))
+        if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_UG) && ModList.get().isLoaded("undergarden"))
             speedyWorldWarp(World.OVERWORLD, UNDERGARDEN, player);
-        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_TF))
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_TF) && ModList.get().isLoaded("twilightforest"))
             speedyWorldWarp(TWILIGHT_FOREST, World.OVERWORLD, player);
-        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_LC))
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_LC) && ModList.get().isLoaded("lostcities"))
             speedyWorldWarp(LOST_CITIES, World.OVERWORLD, player);
     }
 
-    private static void handleWorldWarp(RegistryKey<World> top, RegistryKey<World> bottom, double factor, PlayerEntity player) {
+    public static void handleWorldWarp(RegistryKey<World> top, RegistryKey<World> bottom, double factor, PlayerEntity player) {
         if (player.level.dimension().equals(bottom)) {
             if (player.isCrouching() && player.isOnGround()) {
                 int tick = 0;
@@ -200,7 +206,7 @@ public class SkyblockEvents {
         }
     }
 
-    private static void speedyWorldWarp(RegistryKey<World> dim1, RegistryKey<World> dim2, PlayerEntity player) {
+    public static void speedyWorldWarp(RegistryKey<World> dim1, RegistryKey<World> dim2, PlayerEntity player) {
         if (!player.level.dimension().equals(dim1) && !player.level.dimension().equals(dim2)) return;
         if ((player.isCrouching() || !player.isOnGround()) && running.containsKey(player.getUUID())) {
             player.displayClientMessage(new TranslationTextComponent("cancelled.skyfarm.void_shifter").setStyle(Style.EMPTY.applyFormat(TextFormatting.RED)), true);

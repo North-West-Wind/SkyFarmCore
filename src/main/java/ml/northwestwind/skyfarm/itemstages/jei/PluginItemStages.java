@@ -45,8 +45,9 @@ public class PluginItemStages implements IModPlugin {
             return;
         }
         if (player != null && player.level.isClientSide) {
-            if (!Minecraft.getInstance().isSameThread()) {
-                Minecraft.getInstance().submitAsync(() -> syncHiddenItems(player));
+            Minecraft minecraft = Minecraft.getInstance();
+            if (!minecraft.isSameThread()) {
+                minecraft.submitAsync(() -> syncHiddenItems(player));
                 return;
             }
             ItemStages.LOG.info("Syncing {} items with JEI!.", ItemStages.ITEM_STAGES.size());
