@@ -141,11 +141,8 @@ public class SkyblockEvents {
         PlayerEntity player = event.player;
         if (event.phase.equals(TickEvent.Phase.START) || player == null || player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level))
             return;
-        if (ModList.get().isLoaded("curios")) {
-            CuriosStuff.playerTick(event);
-            return;
-        }
         ItemStack boots = player.getItemBySlot(EquipmentSlotType.FEET);
+        if (ModList.get().isLoaded("curios")) boots = CuriosStuff.playerTick(event, boots);
         if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_VOID_SHIFTER_NETHER))
             handleWorldWarp(World.OVERWORLD, World.NETHER, 8, player);
         else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_END))
