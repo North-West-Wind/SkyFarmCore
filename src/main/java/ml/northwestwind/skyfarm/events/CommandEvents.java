@@ -1,10 +1,7 @@
 package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.common.command.HideAdvancementCommand;
-import ml.northwestwind.skyfarm.common.command.PointsCommand;
-import ml.northwestwind.skyfarm.common.command.StageCommand;
-import ml.northwestwind.skyfarm.common.command.VoteCommand;
+import ml.northwestwind.skyfarm.common.command.*;
 import net.minecraft.command.Commands;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,5 +15,6 @@ public class CommandEvents {
         PointsCommand.registerCommand(event.getDispatcher());
         HideAdvancementCommand.registerCommand(event.getDispatcher(), event.getEnvironment().equals(Commands.EnvironmentType.INTEGRATED));
         StageCommand.registerCommand(event.getDispatcher(), event.getEnvironment().equals(Commands.EnvironmentType.INTEGRATED));
+        IslandCommand.registerCommand(event.getDispatcher());
     }
 }

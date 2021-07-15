@@ -30,7 +30,7 @@ import javax.annotation.Nonnull;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.UUID;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -155,6 +155,13 @@ public class Utils {
         int read = 0;
         while ((read = zipIn.read(bytesIn)) != -1) bos.write(bytesIn, 0, read);
         bos.close();
+    }
+
+    public static <E> E getRandomFromSet(Set<E> set) {
+        List<E> list = new ArrayList<>(set);
+        int size = list.size();
+        int randIdx = new Random().nextInt(size);
+        return list.get(randIdx);
     }
 
     public enum DragonType {

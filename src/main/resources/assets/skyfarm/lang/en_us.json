@@ -36,6 +36,14 @@
   "key.crouch": "Crouch/Sneak",
 
   "tip.skyfarm.stageMenu": "Press [%s] to open Stage Menu to unlock mods.",
+  "tip.skyfarm.firstTime": "Welcome to the server! It seems you still don't have your own island.",
+  "tip.skyfarm.seekIsland": "If you want to find a position for your island, use %s",
+  "tip.skyfarm.createIsland": "If you want to create an island at the position, use %s",
+  "tip.skyfarm.once": "This message will only be sent once!",
+
+  "warning.skyfarm.hasIsland": "You already have an island!",
+  "warning.skyfarm.disabledIsland": "Island creation is disabled!",
+  "warning.skyfarm.invalidIsland": "The position is invalid! It must be between 2 and 255!",
 
   "recipe.skyfarm.evaporating": "Evaporating",
   "recipe.skyfarm.compact_brick": "Compact Brick",

@@ -31,10 +31,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -78,30 +75,40 @@ public class SkyblockEvents {
         if (!world.dimension().equals(World.OVERWORLD)) return;
         if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
             SkyblockData data = SkyblockData.get(world);
+            if (!data.isWorldGenerated()) {
+                generateIsland(world, new BlockPos(0, 64, 0));
+                world.setDefaultSpawnPos(new BlockPos(0, 64, 0), 0);
+                data.setWorldGenerated(true);
+                data.addIsland(player.getUUID(), new BlockPos(0, 64, 0));
+            }
             Iterable<String> stages = data.getStages();
             Set<Advancement> advancements = world.getServer().getAdvancements().getAllAdvancements().stream().filter(adv ->
                     !adv.getId().getNamespace().equals("skyfarm") && (adv.getDisplay() == null || !adv.getDisplay().isHidden()) && adv.getParent() == null
             ).collect(Collectors.toSet());
-            for (ServerPlayerEntity p : world.getServer().getPlayerList().getPlayers()) {
-                for (String stage : stages) {
-                    if (!GameStageHelper.isStageKnown(stage)) continue;
-                    GameStageHelper.addStage(p, stage);
-                }
-                GameStageHelper.syncPlayer(p);
-
-                if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) {
-                    p.getAdvancements().visible.removeAll(advancements);
-                    p.getAdvancements().visibilityChanged.addAll(advancements);
-                }
+            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+            for (String stage : stages) {
+                if (!GameStageHelper.isStageKnown(stage)) continue;
+                GameStageHelper.addStage(serverPlayer, stage);
             }
-            if (!data.isWorldGenerated()) {
-                generateIsland(world);
-                world.setDefaultSpawnPos(BlockPos.ZERO.offset(0, 64, 0), 0);
-                data.setWorldGenerated(true);
+            GameStageHelper.syncPlayer(serverPlayer);
+            if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) {
+                serverPlayer.getAdvancements().visible.removeAll(advancements);
+                serverPlayer.getAdvancements().visibilityChanged.addAll(advancements);
             }
             if (data.isFirstSpawn(player.getUUID())) {
-                player.teleportTo(0.5, 64, 0.5);
                 data.playerJoin(player);
+                if (!data.hasIsland(player.getUUID())) {
+                    if (SkyFarmConfig.ALLOW_SEEK_ISLAND.get()) {
+                        serverPlayer.sendMessage(getCreateIslandTips(), ChatType.SYSTEM, Util.NIL_UUID);
+                        player.teleportTo(0.5, 64, 0.5);
+                    } else {
+                        int offset = SkyFarmConfig.ISLAND_OFFSET.get();
+                        BlockPos pos = data.findPosForNewIsland(offset);
+                        generateIsland(world, pos);
+                        data.addIsland(player.getUUID(), pos);
+                        player.teleportTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                    }
+                } else player.teleportTo(0.5, 64, 0.5);
             }
             data.setDirty();
         }
@@ -116,24 +123,24 @@ public class SkyblockEvents {
         SkyblockData.cancelVote(player.getServer(), "leave");
     }
 
-    private static void generateIsland(World world) {
+    public static void generateIsland(World world, BlockPos center) {
         for (int i = -2; i < 3; i++) {
             for (int j = -2; j < 3; j++) {
-                BlockPos pos = new BlockPos(i, 63, j);
+                BlockPos pos = center.offset(i, -1, j);
                 world.setBlockAndUpdate(pos, Blocks.GRASS_BLOCK.defaultBlockState());
             }
         }
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
-                BlockPos pos = new BlockPos(i, 62, j);
+                BlockPos pos = center.offset(i, -2, j);
                 world.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
             }
         }
-        world.setBlockAndUpdate(new BlockPos(0, 63, 0), Blocks.WATER.defaultBlockState());
-        world.setBlockAndUpdate(new BlockPos(1, 63, 0), Blocks.FARMLAND.defaultBlockState());
-        world.setBlockAndUpdate(new BlockPos(1, 63, 1), Blocks.FARMLAND.defaultBlockState());
-        world.setBlockAndUpdate(new BlockPos(0, 63, 1), Blocks.FARMLAND.defaultBlockState());
-        world.setBlockAndUpdate(new BlockPos(-1, 64, -1), Blocks.OAK_SAPLING.defaultBlockState());
+        world.setBlockAndUpdate(center.offset(0, -1, 0), Blocks.WATER.defaultBlockState());
+        world.setBlockAndUpdate(center.offset(1, -1, 0), Blocks.FARMLAND.defaultBlockState());
+        world.setBlockAndUpdate(center.offset(1, -1, 1), Blocks.FARMLAND.defaultBlockState());
+        world.setBlockAndUpdate(center.offset(0, -1, 1), Blocks.FARMLAND.defaultBlockState());
+        world.setBlockAndUpdate(center.offset(-1, 0, -1), Blocks.OAK_SAPLING.defaultBlockState());
     }
 
     @SubscribeEvent
@@ -317,5 +324,11 @@ public class SkyblockEvents {
 
     public static BlockRayTraceResult raytraceFromEntity(Entity e, double distance, boolean fluids) {
         return (BlockRayTraceResult) e.pick(distance, 1, fluids);
+    }
+
+    private static ITextComponent getCreateIslandTips() {
+        return new TranslationTextComponent("tip.skyfarm.firstTime")
+                .append(new TranslationTextComponent("tip.skyfarm.seekIsland", new StringTextComponent("/seekIsland").withStyle(TextFormatting.GOLD)))
+                .append(new TranslationTextComponent("tip.skyfarm.createIsland", new StringTextComponent("/createIsland").withStyle(TextFormatting.GOLD)));
     }
 }

@@ -3,7 +3,6 @@ package ml.northwestwind.skyfarm.events;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.client.screen.ParaboxScreen;
 import ml.northwestwind.skyfarm.common.registries.tile.renderer.NaturalEvaporatorRenderer;
-import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.misc.KeyBindings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -19,13 +18,11 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.loading.FMLPaths;
 
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetupEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
-        SkyFarmConfig.loadClientConfig(FMLPaths.CONFIGDIR.get().resolve("skyfarm-client.toml").toString());
         ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.NATURAL_EVAPORATOR, NaturalEvaporatorRenderer::new);
         //ClientRegistry.bindTileEntityRenderer(RegistryEvents.TileEntityTypes.PARABOX, ParaboxRenderer::new);
 

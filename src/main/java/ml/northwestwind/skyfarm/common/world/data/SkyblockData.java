@@ -2,10 +2,14 @@ package ml.northwestwind.skyfarm.common.world.data;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import ml.northwestwind.skyfarm.itemstages.ItemStages;
+import ml.northwestwind.skyfarm.misc.Utils;
+import ml.northwestwind.skyfarm.misc.teleporter.SimpleTeleporter;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
@@ -13,16 +17,23 @@ import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.GameType;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -35,7 +46,10 @@ public class SkyblockData extends WorldSavedData {
     private boolean worldGenerated, isInLoop, usingParabox, noStage;
     private BlockPos paraboxPos = BlockPos.ZERO;
     private final Set<UUID> joined = Sets.newHashSet();
+    private final Set<UUID> hasIsland = Sets.newHashSet();
+    private final Set<BlockPos> islands = Sets.newHashSet();
     private Set<String> stages = Sets.newHashSet();
+    private final Map<UUID, Triple<Vector3d, RegistryKey<World>, GameType>> spectators = Maps.newHashMap();
     private static final Random rng = new Random();
     private long points;
     private int paraboxLevel;
@@ -133,6 +147,35 @@ public class SkyblockData extends WorldSavedData {
             }
         }
         stages = stages.stream().filter(GameStageHelper::isStageKnown).collect(Collectors.toSet());
+        listNBT = (ListNBT) nbt.get("hasIsland");
+        if (listNBT != null) {
+            int i = 0;
+            while (!listNBT.getCompound(i).isEmpty()) {
+                CompoundNBT compound = listNBT.getCompound(i);
+                hasIsland.add(compound.getUUID("uuid"));
+                i++;
+            }
+        }
+        listNBT = (ListNBT) nbt.get("spectators");
+        if (listNBT != null) {
+            int i = 0;
+            while (!listNBT.getCompound(i).isEmpty()) {
+                CompoundNBT compound = listNBT.getCompound(i);
+                CompoundNBT posNBT = compound.getCompound("pos");
+                Vector3d vec = new Vector3d(posNBT.getDouble("x"), posNBT.getDouble("y"), posNBT.getDouble("z"));
+                spectators.put(compound.getUUID("uuid"), new ImmutableTriple<>(vec, RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(compound.getString("dimension"))), GameType.byId(compound.getInt("gamemode"))));
+                i++;
+            }
+        }
+        listNBT = (ListNBT) nbt.get("islands");
+        if (listNBT != null) {
+            int i = 0;
+            while (!listNBT.getCompound(i).isEmpty()) {
+                CompoundNBT compound = listNBT.getCompound(i);
+                islands.add(new BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z")));
+                i++;
+            }
+        }
     }
 
     @Override
@@ -166,6 +209,44 @@ public class SkyblockData extends WorldSavedData {
             listNBT2.add(i++, compound);
         }
         nbt.put("stages", listNBT2);
+        ListNBT listNBT3 = new ListNBT();
+        Iterator<UUID> it3 = hasIsland.iterator();
+        i = 0;
+        while (it3.hasNext()) {
+            CompoundNBT compound = new CompoundNBT();
+            compound.putUUID("uuid", it3.next());
+            listNBT3.add(i++, compound);
+        }
+        nbt.put("hasIsland", listNBT3);
+        ListNBT listNBT4 = new ListNBT();
+        Iterator<Map.Entry<UUID, Triple<Vector3d, RegistryKey<World>, GameType>>> it4 = spectators.entrySet().iterator();
+        i = 0;
+        while (it4.hasNext()) {
+            Map.Entry<UUID, Triple<Vector3d, RegistryKey<World>, GameType>> entry = it4.next();
+            CompoundNBT compound = new CompoundNBT();
+            compound.putUUID("uuid", entry.getKey());
+            CompoundNBT posNBT = new CompoundNBT();
+            posNBT.putDouble("x", entry.getValue().getLeft().x);
+            posNBT.putDouble("y", entry.getValue().getLeft().y);
+            posNBT.putDouble("z", entry.getValue().getLeft().z);
+            compound.put("pos", posNBT);
+            compound.putString("dimension", entry.getValue().getMiddle().location().toString());
+            compound.putInt("gamemode", entry.getValue().getRight().getId());
+            listNBT4.add(i++, compound);
+        }
+        nbt.put("spectators", listNBT4);
+        ListNBT listNBT5 = new ListNBT();
+        Iterator<BlockPos> it5 = islands.iterator();
+        i = 0;
+        while (it5.hasNext()) {
+            BlockPos blockPos = it5.next();
+            CompoundNBT compound = new CompoundNBT();
+            compound.putInt("x", blockPos.getX());
+            compound.putInt("y", blockPos.getY());
+            compound.putInt("z", blockPos.getZ());
+            listNBT5.add(i++, compound);
+        }
+        nbt.put("islands", listNBT5);
         return nbt;
     }
 
@@ -251,6 +332,62 @@ public class SkyblockData extends WorldSavedData {
 
     public void noStage() {
         noStage = true;
+    }
+
+    public boolean hasIsland(UUID uuid) {
+        return hasIsland.contains(uuid);
+    }
+
+    public void addIsland(UUID uuid, BlockPos pos) {
+        hasIsland.add(uuid);
+        islands.add(pos);
+    }
+
+    public BlockPos getRandomIsland() {
+        return Utils.getRandomFromSet(islands);
+    }
+
+    public boolean isPosIsland(BlockPos pos) {
+        return islands.contains(pos);
+    }
+
+    public BlockPos findPosForNewIsland(int offset) {
+        BlockPos pos = getRandomIsland();
+        BlockPos pos1 = pos.offset(offset, 0, 0);
+        if (!isPosIsland(pos1)) return pos1;
+        pos1 = pos.offset(0, 0, offset);
+        if (!isPosIsland(pos1)) return pos1;
+        pos1 = pos.offset(-offset, 0, 0);
+        if (!isPosIsland(pos1)) return pos1;
+        pos1 = pos.offset(0, 0, -offset);
+        if (!isPosIsland(pos1)) return pos1;
+        return findPosForNewIsland(offset);
+    }
+
+    public boolean isSpectator(UUID uuid) {
+        return spectators.containsKey(uuid);
+    }
+
+    public void switchGameMode(ServerPlayerEntity player) {
+        if (isSpectator(player.getUUID())) {
+            Triple<Vector3d, RegistryKey<World>, GameType> triple = spectators.get(player.getUUID());
+            player.setGameMode(triple.getRight());
+            if (!player.level.dimension().equals(triple.getMiddle())) {
+                ServerWorld dimension = player.getServer().getLevel(triple.getMiddle());
+                if (dimension != null) player.changeDimension(dimension, new SimpleTeleporter());
+            }
+            Vector3d pos = triple.getLeft();
+            player.teleportTo(pos.x, pos.y, pos.z);
+            spectators.remove(player.getUUID());
+        } else {
+            spectators.put(player.getUUID(), new ImmutableTriple<>(player.position(), player.level.dimension(), player.gameMode.getGameModeForPlayer()));
+            player.setGameMode(GameType.SPECTATOR);
+        }
+    }
+
+    public void removeSpectator(ServerPlayerEntity player) {
+        if (!isSpectator(player.getUUID())) return;
+        switchGameMode(player);
     }
 
     public enum VotingStatus {

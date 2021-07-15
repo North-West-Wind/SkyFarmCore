@@ -7,21 +7,15 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.io.File;
 
 public class SkyFarmConfig {
-    private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder(), SERVER_BUILDER = new ForgeConfigSpec.Builder();
-    public static final ForgeConfigSpec CLIENT, SERVER;
+    private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
+    public static final ForgeConfigSpec SERVER;
 
-    public static ForgeConfigSpec.BooleanValue GOG_SKYBOX, HIDE_ADVANCEMENT;
+    public static ForgeConfigSpec.BooleanValue HIDE_ADVANCEMENT, ALLOW_SEEK_ISLAND;
+    public static ForgeConfigSpec.IntValue ISLAND_OFFSET;
 
     static {
         init();
-        CLIENT = CLIENT_BUILDER.build();
         SERVER = SERVER_BUILDER.build();
-    }
-
-    public static void loadClientConfig(String path) {
-        final CommentedFileConfig file = CommentedFileConfig.builder(new File(path)).sync().autosave().writingMode(WritingMode.REPLACE).build();
-        file.load();
-        CLIENT.setConfig(file);
     }
 
     public static void loadServerConfig(String path) {
@@ -31,14 +25,9 @@ public class SkyFarmConfig {
     }
 
     private static void init() {
-        GOG_SKYBOX = CLIENT_BUILDER.comment("Whether or not to enable the Garden of Glass skybox").define("gog_skybox", true);
-
         HIDE_ADVANCEMENT = SERVER_BUILDER.comment("Whether or not to show non-Sky Farm advancements").define("hide_adv", true);
-    }
-
-    public static void setGogSkybox(boolean enabled) {
-        GOG_SKYBOX.set(enabled);
-        GOG_SKYBOX.save();
+        ALLOW_SEEK_ISLAND = SERVER_BUILDER.comment("Allow new player to seek position for their island? (Disables island offset)").define("allow_seek", false);
+        ISLAND_OFFSET = SERVER_BUILDER.comment("The distance between each island").defineInRange("island_offset", 8000, 10, 16000);
     }
 
     public static void setHideAdvancement(boolean enabled) {
