@@ -73,6 +73,7 @@ public class GameStageScreen extends Screen {
         addStageButton(15, 1, "cgm");
 
         addStageButton(15, 7, "projecte");
+        addStageButton(0, 7, "creative");
     }
 
     @Override

@@ -1,0 +1,22 @@
+{
+  "type": "powah:energizing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "refinedstorageaddons"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "powah"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "refinedstorageaddons:wireless_fluid_grid"
+    }
+  ],
+  "energy": 4800000,
+  "result": {
+    "item": "refinedstorageaddons:creative_wireless_fluid_grid"
+  }
+}

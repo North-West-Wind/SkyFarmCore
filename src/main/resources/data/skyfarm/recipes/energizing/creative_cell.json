@@ -1,0 +1,22 @@
+{
+  "type": "powah:energizing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "appliedenergistics2"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "powah"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "appliedenergistics2:dense_energy_cell"
+    }
+  ],
+  "energy": 288000000,
+  "result": {
+    "item": "appliedenergistics2:creative_energy_cell"
+  }
+}

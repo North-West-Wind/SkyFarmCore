@@ -1,0 +1,29 @@
+{
+  "type": "powah:energizing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "refinedstorage"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creativewirelesstransmitter"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "powah"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "refinedstorage:controller"
+    },
+    {
+      "tag": "creativewirelesstransmitter:creative_wireless_transmitter"
+    }
+  ],
+  "energy": 288000000,
+  "result": {
+    "item": "refinedstorage:creative_controller"
+  }
+}

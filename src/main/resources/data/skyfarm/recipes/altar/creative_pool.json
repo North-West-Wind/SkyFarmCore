@@ -1,0 +1,83 @@
+{
+  "type": "astralsorcery:altar",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "astralsorcery"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botania"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "naturesaura"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "elementalcraft"
+    }
+  ],
+  "altar_type": 3,
+  "duration": 600,
+  "starlight": 4000,
+  "pattern": [
+    "__F__",
+    "_SRS_",
+    "FEMTF",
+    "_SGS_",
+    "__F__"
+  ],
+  "key": {
+    "M": {
+      "item": "botania:fabulous_pool"
+    },
+    "E": {
+      "item": "naturesaura:token_euphoria"
+    },
+    "R": {
+      "item": "naturesaura:token_rage"
+    },
+    "T": {
+      "item": "naturesaura:token_terror"
+    },
+    "G": {
+      "item": "naturesaura:token_grief"
+    },
+    "F": {
+      "item": "elementalcraft:fireite_ingot"
+    },
+    "S": {
+      "item": "astralsorcery:starmetal_ingot"
+    }
+  },
+  "output": [
+    {
+      "item": "botania:creative_pool",
+      "count": 1
+    }
+  ],
+  "relay_inputs": [
+    {
+      "item": "botania:gaia_ingot"
+    },
+    {
+      "item": "botania:gaia_ingot"
+    },
+    {
+      "item": "botania:gaia_ingot"
+    },
+    {
+      "item": "botania:gaia_ingot"
+    }
+  ],
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

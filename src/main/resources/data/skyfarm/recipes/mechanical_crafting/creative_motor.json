@@ -1,0 +1,49 @@
+{
+  "type": "create:mechanical_crafting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "industrialforegoing"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagradditions"
+    }
+  ],
+  "pattern": [
+    "CSSSC",
+    "SABAS",
+    "SBEBS",
+    "SABAS",
+    "CSSSC"
+  ],
+  "key": {
+    "E": {
+      "item": "create:encased_fan"
+    },
+    "B": {
+      "item": "create:brass_casing"
+    },
+    "A": {
+      "tag": "forge:pellets/antimatter"
+    },
+    "S": {
+      "item": "industrialforegoing:machine_frame_supreme"
+    },
+    "C": {
+      "item": "mysticalagradditions:creative_essence"
+    }
+  },
+  "result": {
+    "item": "create:creative_motor",
+    "count": 1
+  }
+}
