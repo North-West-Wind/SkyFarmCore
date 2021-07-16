@@ -69,44 +69,6 @@ public class ItemStages {
 
     @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
     public static class CommonEvents {
-        @SubscribeEvent
-        public static void onPlayerDig(PlayerEvent.BreakSpeed event) {
-            if (!event.getPlayer().isCreative() && !event.getPlayer().level.isClientSide) {
-                ItemStack heldItem = event.getPlayer().getMainHandItem();
-                final String stage = getStage(heldItem);
-                if ((stage != null && !GameStageHelper.hasStage(event.getPlayer(), stage))) {
-                    event.setNewSpeed(-1f);
-                    event.setCanceled(true);
-                }
-            }
-        }
-
-        @SubscribeEvent
-        public static void onPlayerInteract(PlayerInteractEvent event) {
-            if (event.isCancelable() && !event.getPlayer().isCreative() && !event.getPlayer().level.isClientSide) {
-                final String stage = getStage(event.getItemStack());
-                if (stage != null && !GameStageHelper.hasStage(event.getPlayer(), stage))
-                    event.setCanceled(true);
-            }
-        }
-
-        @SubscribeEvent
-        public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-            if (event.getEntity() instanceof PlayerEntity && !event.getEntityLiving().level.isClientSide) {
-                final PlayerEntity player = (PlayerEntity) event.getEntityLiving();
-                if (player.isCreative()) return;
-                for (final EquipmentSlotType slot : EquipmentSlotType.values()) {
-                    final ItemStack stack = player.getItemBySlot(slot);
-                    final String stage = getStage(stack);
-                    if ((stage != null && !GameStageHelper.hasStage(player, stage))) {
-                        player.setItemSlot(slot, ItemStack.EMPTY);
-                        player.drop(stack, false);
-                        sendDropMessage(player);
-                    }
-                }
-            }
-        }
-
         @SubscribeEvent(priority = EventPriority.LOWEST)
         public static void addReloadListener(AddReloadListenerEvent event) {
             event.addListener(new ReloadListener<Void>() {

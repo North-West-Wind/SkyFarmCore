@@ -6,9 +6,8 @@
   "mixins": [
     "MixinAbstractBlockState",
     "MixinFissionReactorMultiblockData",
-    "MixinMultiblockData",
-    "MixinPlayerList",
-    "MixinRecipeManager"
+    "MixinItem",
+    "MixinMultiblockData"
   ],
   "client": [
     "MixinGeneratorsJEI"
