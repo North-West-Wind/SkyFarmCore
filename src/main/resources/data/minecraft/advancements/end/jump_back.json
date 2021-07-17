@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:end/root",
+  "parent": "skyfarm:end/root",
   "display": {
     "title": {
       "translate": "advancement.end.jump_back.title"

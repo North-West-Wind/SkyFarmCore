@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "refinedstorageaddons"
+      "modid": "refinedstorage"
     },
     {
       "type": "forge:mod_loaded",
@@ -12,11 +12,11 @@
   ],
   "ingredients": [
     {
-      "item": "refinedstorageaddons:wireless_fluid_grid"
+      "item": "refinedstorage:wireless_fluid_grid"
     }
   ],
   "energy": 4800000,
   "result": {
-    "item": "refinedstorageaddons:creative_wireless_fluid_grid"
+    "item": "refinedstorage:creative_wireless_fluid_grid"
   }
 }
