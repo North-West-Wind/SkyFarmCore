@@ -379,7 +379,7 @@
   "advancement.nether.end_boots.title": "The Key to The End",
   "advancement.nether.end_boots.description": "To get to The End, you must get one of those Overworld Sky Shifter - End.",
 
-  "advancement.end.root.title": "You Made It",
+  "advancement.end.root.title": "We've Got So Far",
   "advancement.end.root.description": "The End is the same as the vanilla one. Congratulations on reaching the end of the game.",
   "advancement.end.jump_back.title": "I Don't Feel Like Doing That",
   "advancement.end.jump_back.description": "Not ready for fighting? Jump back into the void.",
@@ -573,9 +573,6 @@
   "advancement.other.plane.title": "Wooden Planes",
   "advancement.other.plane.description": "Flying is cool, but even cooler with planes!",
 
-  "advancement.minecolonies.root.title": "Sky Colonies",
-  "advancement.minecolonies.root.description": "Craft a Supply Camp or Ship and place it by right-clicking it on the ground",
-
   "stages.skyfarm.points": "Points: %d",
   "stages.skyfarm.known": "This stage is already known.",
   "stages.skyfarm.require": "Requires: %s",
@@ -620,6 +617,8 @@
   "stages.skyfarm.illuminati_pet.description": "Can you believe that? Inventory Pets is in the pack! Unfortunately I considered Illuminati Pet to be too overpowered so I might just as well put it behind this stage.",
   "stages.skyfarm.void_miner.title": "Mining From Void",
   "stages.skyfarm.void_miner.description": "Void Miners are great way to gather resources.",
+  "stages.skyfarm.creative.title": "Very Creative",
+  "stages.skyfarm.creative.description": "Craft some creative items to make your life easier.",
 
   "dragon.summoning": "Summoning %s...",
   "dragon.summoned": "Summoned %s!",

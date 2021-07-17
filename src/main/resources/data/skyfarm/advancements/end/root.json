@@ -17,7 +17,7 @@
     "background": "skyfarm:textures/gui/advancements/backgrounds/skyfarm.png"
   },
   "criteria": {
-    "theEnd": {
+    "entered_end": {
       "trigger": "minecraft:changed_dimension",
       "conditions": {
         "to": "minecraft:the_end"
@@ -26,7 +26,7 @@
   },
   "requirements": [
     [
-      "theEnd"
+      "entered_end"
     ]
   ]
 }

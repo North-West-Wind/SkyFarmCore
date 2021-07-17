@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "refinedstorage"
+      "modid": "refinedstorageaddons"
     },
     {
       "type": "forge:mod_loaded",
@@ -12,11 +12,11 @@
   ],
   "ingredients": [
     {
-      "item": "refinedstorage:wireless_grid"
+      "item": "refinedstorageaddons:wireless_crafting_grid"
     }
   ],
   "energy": 4800000,
   "result": {
-    "item": "refinedstorage:creative_wireless_grid"
+    "item": "refinedstorageaddons:creative_wireless_crafting_grid"
   }
 }

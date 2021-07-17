@@ -3,7 +3,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "refinedstorageaddons"
+      "modid": "refinedstorage"
     },
     {
       "type": "forge:mod_loaded",
@@ -12,11 +12,11 @@
   ],
   "ingredients": [
     {
-      "item": "refinedstorageaddons:wireless_crafting_monitor"
+      "item": "refinedstorage:wireless_crafting_monitor"
     }
   ],
   "energy": 4800000,
   "result": {
-    "item": "refinedstorageaddons:creative_wireless_crafting_monitor"
+    "item": "refinedstorage:creative_wireless_crafting_monitor"
   }
 }
