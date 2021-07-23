@@ -11,7 +11,7 @@
       "translate": "advancement.power.max_industrial_turbine.title"
     },
     "description": {
-      "translate": "advancement.power.max_fission_reactor.description"
+      "translate": "advancement.power.max_industrial_turbine.description"
     },
     "icon": {
       "item": "mekanismgenerators:turbine_blade"

@@ -16,7 +16,7 @@
     "icon": {
       "item": "tconstruct:sky_slime_sapling"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
@@ -76,5 +76,8 @@
     [
       "blood"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

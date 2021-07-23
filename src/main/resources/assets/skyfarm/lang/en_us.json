@@ -6,6 +6,7 @@
 
   "block.skyfarm.natural_evaporator": "Natural Evaporator",
   "block.skyfarm.parabox": "Parabox",
+  "block.skyfarm.powerbox": "Powerbox",
   "block.skyfarm.void_generator": "Void Energy Generator",
 
   "item.skyfarm.water_bowl": "Water Bowl",
@@ -50,6 +51,7 @@
 
   "tooltip.skyfarm.natural_evaporator": "Evaporates stuff under pure sunlight",
   "tooltip.skyfarm.parabox": "The time loop machine",
+  "tooltip.skyfarm.powerbox": "The more powerful Parabox",
   "tooltip.skyfarm.void_generator": "Empty space has energy",
   "tooltip.skyfarm.stone_variator": "Magically creates stone variance",
   "tooltip.skyfarm.compact_brick": "Super high impact might expose iron from stones",
@@ -84,10 +86,10 @@
   "button.parabox.loop.on": "Loop: On",
   "button.parabox.loop.off": "Loop: Off",
 
-  "tooltip.parabox.activate": "Puts the world into a time loop and generate prestige points.",
-  "tooltip.parabox.deactivate": "Turns off the parabox and keep the current world. You will not keep your generated points.",
-  "tooltip.parabox.loop.on": "Exits the time loop. You will keep your generated points, but the world will go back in time.",
-  "tooltip.parabox.loop.off": "The parabox is not turned on.",
+  "tooltip.parabox.activate": "Puts the world into a time loop and generate stage points.",
+  "tooltip.parabox.deactivate": "Turns off the Parabox and keep the current world. You will not keep your generated points.",
+  "tooltip.parabox.loop.on": "Exits the time loop. You will keep your generated points, but the world will go back in time (to when you started the Parabox).",
+  "tooltip.parabox.loop.off": "The Parabox is not turned on.",
 
   "mods.skyfarm.missing": "%s is not installed!",
 
@@ -127,6 +129,8 @@
 
   "warning.disableParabox": "Are you sure you want to disable the Parabox and Stage System?",
   "warning.disableParabox.yes": "[Yes]",
+  "warning.shield.timeout": "Nether Shield: %s second(s)",
+  "warning.shield.disabled": "Nether Shield disabled!",
 
   "config.skyfarm.hide_advancement": " Non-Sky Farm advancements",
   "config.skyfarm.hide_advancement.true": "Hiding",
@@ -213,7 +217,7 @@
   "advancement.skyfarm.emerald_seeds.title": "Crashing Economy",
   "advancement.skyfarm.emerald_seeds.description": "You are literally growing emeralds. The market will crash very soon.",
   "advancement.skyfarm.nether.title": "Next Stop: Nether",
-  "advancement.skyfarm.nether.description": "Portals don't work here. Instead, you jump into the void! Get yourself a pair of Overworld Void Shifter - Nether and that should work.",
+  "advancement.skyfarm.nether.description": "Portals don't work here. Instead, you jump into the void! Get yourself a pair of Overworld Void Shifter - Nether and that should work. Jetpacks are recommended (from ToruPuchuu#5458)",
   "advancement.skyfarm.dye_seeds.title": "Rainbow",
   "advancement.skyfarm.dye_seeds.description": "Dye essence can be crafted into any dyes, and they are pretty easy to make and grow.",
   "advancement.skyfarm.saplings.title": "Vanilla Trees",
@@ -287,14 +291,14 @@
   "advancement.storage.storage_disk.description": "Put your items in your Refined Storage disks.",
   "advancement.storage.big_storage_disk.title": "Not Huge Enough",
   "advancement.storage.big_storage_disk.description": "Extra Disks has some really large storage disks.",
-  "advancement.storage.1048m_storage_disk.title": "Storage For Days",
-  "advancement.storage.1048m_storage_disk.description": "Craft the 1048m storage disk. It stores a lot of items.",
+  "advancement.storage.infinite_storage_disk.title": "Storage For Days",
+  "advancement.storage.infinite_storage_disk.description": "Craft the 1048m storage disk. It stores a lot of items.",
   "advancement.storage.fluid_storage_disk.title": "Disks be Flowing",
   "advancement.storage.fluid_storage_disk.description": "Refined Storage also offers fluid storage.",
   "advancement.storage.big_fluid_storage_disk.title": "Overflow",
   "advancement.storage.big_fluid_storage_disk.description": "Make some fluid storage disks from Extra Disks.",
-  "advancement.storage.1048m_fluid_storage_disk.title": "Ocean Man",
-  "advancement.storage.1048m_fluid_storage_disk.description": "Craft the 1048m fluid storage disk. Now you can pour water into it like crazy.",
+  "advancement.storage.infinite_fluid_storage_disk.title": "Ocean Man",
+  "advancement.storage.infinite_fluid_storage_disk.description": "Craft the 1048m fluid storage disk. Now you can pour water into it like crazy.",
   "advancement.storage.mekanism.title": "Mekanism",
   "advancement.storage.mekanism.description": "Mekanism is a tech mod, and also a storage mod.",
   "advancement.storage.personal_chest.title": "All Things Personal, Kid",
@@ -350,7 +354,7 @@
   "advancement.storage.drawer_controller.title": "Which One's My Socks Drawer?",
   "advancement.storage.drawer_controller.description": "Connect drawers together with a Drawer Controller.",
 
-  "advancement.nether.root.title": "Sky Farm Nether Guide",
+  "advancement.nether.root.title": "Getting Nethery",
   "advancement.nether.root.description": "The Nether isn't what you know. It is pretty flat, and has no glowstone.",
   "advancement.nether.netherrack.title": "Hot Rock",
   "advancement.nether.netherrack.description": "How can you not get netherrack while in the Nether?",
@@ -388,6 +392,8 @@
   "advancement.parabox.root.description": "Find the key on your keyboard to open the stage menu (which should be ' by default). You can unlock some other mods!",
   "advancement.parabox.parabox.title": "Time Loop",
   "advancement.parabox.parabox.description": "Turn on the Parabox and start generating points.",
+  "advancement.parabox.powerbox.title": "Powerful Parabox",
+  "advancement.parabox.powerbox.description": "Powerbox is an upgraded version of the Parabox. You can get even more points!",
 
   "advancement.exploration.root.title": "Go Somewhere Else",
   "advancement.exploration.root.description": "This is not yet the end! There are more dimensions to explore!",
@@ -619,6 +625,8 @@
   "stages.skyfarm.void_miner.description": "Void Miners are great way to gather resources.",
   "stages.skyfarm.creative.title": "Very Creative",
   "stages.skyfarm.creative.description": "Craft some creative items to make your life easier.",
+  "stages.skyfarm.powerbox.title": "Energy Filled Time Loops",
+  "stages.skyfarm.powerbox.description": "The Powerbox is an upgraded version of Parabox. You can get even more points with it!",
 
   "dragon.summoning": "Summoning %s...",
   "dragon.summoned": "Summoned %s!",

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#P#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:gems/quartz"
+    },
+    "P": {
+      "item": "minecraft:polished_diorite"
+    }
+  },
+  "result": {
+    "item": "astralsorcery:marble_raw",
+    "count": 1
+  }
+}

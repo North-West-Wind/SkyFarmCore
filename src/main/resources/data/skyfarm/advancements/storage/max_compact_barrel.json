@@ -16,7 +16,7 @@
     "icon": {
       "item": "compactstorage:compact_barrel_red"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
@@ -38,5 +38,8 @@
     [
       "compact_barrels"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

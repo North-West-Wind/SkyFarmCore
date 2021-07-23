@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.common.packet.IPacket;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.misc.Utils;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -58,5 +59,6 @@ public class CAddStagePacket implements IPacket {
         STAGES.put("illuminati_pet", new ImmutableTriple<>(Utils.getItemByModAndName("inventorypets", "pet_illuminati"), 4, EMPTY_STRING_LIST));
         STAGES.put("void_miner", new ImmutableTriple<>(Utils.getItemByModAndName("envirotech", "xerothium_void_miner_ccu"), 10, EMPTY_STRING_LIST));
         STAGES.put("creative", new ImmutableTriple<>(Utils.getItemByModAndName("create", "creative_motor"), 20, EMPTY_STRING_LIST));
+        STAGES.put("powerbox", new ImmutableTriple<>(RegistryEvents.Blocks.POWERBOX.asItem(), 10, EMPTY_STRING_LIST));
     }
 }

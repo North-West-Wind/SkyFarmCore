@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "pattern": [
+    "#  ",
+    " # ",
+    "  #"
+  ],
+  "key": {
+    "#": {
+      "item": "iceandfire:wither_shard"
+    }
+  },
+  "result": {
+    "item": "tconstruct:necrotic_bone",
+    "count": 1
+  }
+}

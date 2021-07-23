@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:nether/ardite_cobalt",
+  "parent": "skyfarm:nether/cobalt",
   "conditions": [
     {
       "type": "forge:mod_loaded",

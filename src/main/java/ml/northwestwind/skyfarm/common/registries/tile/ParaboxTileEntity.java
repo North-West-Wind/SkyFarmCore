@@ -38,17 +38,20 @@ import javax.annotation.Nullable;
 public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
     private final ParaboxEnergyStorage energyStorage = new ParaboxEnergyStorage();
     private final ParaboxItemHandler inventory = new ParaboxItemHandler(1);
-    private double ticksLeft = 12000, efficiency;
+    private final boolean empowered;
+    private double ticksLeft, efficiency;
     private int paraboxLevel, energy;
     private boolean isInLoop, isBackingUp;
     private ItemStack wantingItem = ItemStack.EMPTY;
 
-    public ParaboxTileEntity(TileEntityType<?> type) {
+    public ParaboxTileEntity(TileEntityType<?> type, boolean empowered) {
         super(type);
+        this.empowered = empowered;
+        this.ticksLeft = empowered ? 12000 : 18000;
     }
 
-    public ParaboxTileEntity() {
-        this(RegistryEvents.TileEntityTypes.PARABOX);
+    public ParaboxTileEntity(boolean empowered) {
+        this(empowered ? RegistryEvents.TileEntityTypes.POWERBOX : RegistryEvents.TileEntityTypes.PARABOX, empowered);
     }
 
     public boolean isWorldInLoop() {
@@ -102,9 +105,10 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         if (level == null) return;
         boolean dirty = false;
         if (ticksLeft <= 0 && isWorldInLoop()) {
-            ticksLeft = 12000;
             addPoint();
             addParaboxLevel();
+            if (empowered) ticksLeft = 12000 + paraboxLevel * 1200;
+            else ticksLeft = 18000;
             dirty = true;
         } else if (isWorldInLoop()) {
             if (wantingItem.isEmpty() && level instanceof ServerWorld) {
@@ -127,7 +131,8 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
             }
             dirty = true;
         } else if (ticksLeft != 12000 && !level.isClientSide) {
-            ticksLeft = 12000;
+            if (empowered) ticksLeft = 12000 + paraboxLevel * 1200;
+            else ticksLeft = 18000;
             energy = 0;
             dirty = true;
         }
@@ -137,17 +142,18 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         }
         if (dirty) {
             setChanged();
-            if (level != null) level.sendBlockUpdated(getBlockPos(), RegistryEvents.Blocks.PARABOX.defaultBlockState(), RegistryEvents.Blocks.PARABOX.defaultBlockState(), 3);
+            if (level != null) level.sendBlockUpdated(getBlockPos(), (empowered ? RegistryEvents.Blocks.POWERBOX : RegistryEvents.Blocks.PARABOX).defaultBlockState(), (empowered ? RegistryEvents.Blocks.POWERBOX : RegistryEvents.Blocks.PARABOX).defaultBlockState(), 3);
         }
     }
 
     private void addPoint() {
         if (level == null || level.isClientSide) return;
+        int points = empowered ? paraboxLevel + 3 : 1;
         ServerWorld world = (ServerWorld) level;
         SkyblockData data = SkyblockData.get(world);
-        data.addPoint(1);
+        data.addPoint(points);
         data.setDirty();
-        world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", 1, data.getPoint()).setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)), ChatType.SYSTEM, Util.NIL_UUID);
+        world.getServer().getPlayerList().broadcastMessage(new TranslationTextComponent("points.gain", points, data.getPoint()).setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)), ChatType.SYSTEM, Util.NIL_UUID);
     }
 
     private int getParaboxLevel() {
@@ -163,7 +169,7 @@ public class ParaboxTileEntity extends TileEntity implements ITickableTileEntity
         SkyblockData data = SkyblockData.get(world);
         data.setParaboxLevel(++paraboxLevel);
         data.setDirty();
-        energyStorage.setNewMax((int) Math.pow(2, paraboxLevel) * 2048);
+        energyStorage.setNewMax((paraboxLevel + 1) * 4096);
     }
 
     @Override

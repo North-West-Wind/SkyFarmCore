@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:crystallizing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "chemicalType": "gas",
+  "input": {
+    "amount": 10000,
+    "tag": "mekanism:water_vapor"
+  },
+  "output": {
+    "item": "twilightforest:wispy_cloud"
+  }
+}

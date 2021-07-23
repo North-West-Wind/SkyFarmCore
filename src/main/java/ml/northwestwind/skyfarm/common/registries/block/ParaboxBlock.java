@@ -24,8 +24,11 @@ import net.minecraftforge.fml.network.NetworkHooks;
 import javax.annotation.Nullable;
 
 public class ParaboxBlock extends Block {
-    public ParaboxBlock(Properties properties) {
+    private final boolean empowered;
+
+    public ParaboxBlock(Properties properties, boolean empowered) {
         super(properties);
+        this.empowered = empowered;
     }
 
     @Override
@@ -50,7 +53,7 @@ public class ParaboxBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new ParaboxTileEntity();
+        return new ParaboxTileEntity(empowered);
     }
 
     protected void openContainer(World world, BlockPos pos, PlayerEntity player) {

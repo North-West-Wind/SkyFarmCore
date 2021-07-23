@@ -62,8 +62,8 @@ public class CVoteActivateParaboxPacket implements IPacket {
             component.append("\n");
             component.append(new TranslationTextComponent("parabox.vote.openGui").setStyle(Style.EMPTY.applyFormats(TextFormatting.YELLOW, TextFormatting.BOLD)));
             for (ServerPlayerEntity s : player.getServer().getPlayerList().getPlayers()) {
-                if (s.getUUID().equals(player.getUUID())) s.connection.send(new SChatPacket(voteActivate, ChatType.SYSTEM, Util.NIL_UUID));
-                else s.connection.send(new SChatPacket(component, ChatType.SYSTEM, Util.NIL_UUID));
+                if (s.getUUID().equals(player.getUUID())) s.sendMessage(voteActivate, ChatType.SYSTEM, Util.NIL_UUID);
+                else s.sendMessage(component, ChatType.SYSTEM, Util.NIL_UUID);
             }
             SkyblockData.startVoting(player.getServer(), SkyblockData.VotingStatus.ACTIVATE);
             SkyblockData.voted.add(player.getUUID());

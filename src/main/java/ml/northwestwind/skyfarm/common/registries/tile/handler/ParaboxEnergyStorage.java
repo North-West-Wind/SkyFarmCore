@@ -5,7 +5,7 @@ import net.minecraftforge.energy.EnergyStorage;
 
 public class ParaboxEnergyStorage extends EnergyStorage {
     public ParaboxEnergyStorage() {
-        super(2048, 2048, 0);
+        super(4096, 4096, 0);
     }
 
     public void setNewMax(int capacity) {

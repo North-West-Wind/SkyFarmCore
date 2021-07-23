@@ -74,6 +74,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(
                 Blocks.NATURAL_EVAPORATOR,
                 Blocks.PARABOX,
+                Blocks.POWERBOX,
                 Blocks.VOID_GENERATOR
         );
     }
@@ -83,6 +84,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(
                 new TooltipBlockItem(Blocks.NATURAL_EVAPORATOR, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "natural_evaporator"),
                 new TooltipBlockItem(Blocks.PARABOX, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1), "parabox"),
+                new TooltipBlockItem(Blocks.POWERBOX, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1), "powerbox"),
                 new TooltipBlockItem(Blocks.VOID_GENERATOR, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(1).rarity(Rarity.EPIC), "void_generator"),
                 Items.COMPACT_BRICK,
                 Items.STONE_VARIATOR,
@@ -105,6 +107,7 @@ public class RegistryEvents {
         event.getRegistry().registerAll(
                 TileEntityTypes.NATURAL_EVAPORATOR,
                 TileEntityTypes.PARABOX,
+                TileEntityTypes.POWERBOX,
                 TileEntityTypes.VOID_GENERATOR
         );
     }
@@ -145,13 +148,15 @@ public class RegistryEvents {
 
     public static class Blocks {
         public static final Block NATURAL_EVAPORATOR = new NaturalEvaporatorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD).noOcclusion().harvestTool(ToolType.AXE)).setRegistryName("natural_evaporator");
-        public static final Block PARABOX = new ParaboxBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE)).setRegistryName("parabox");
+        public static final Block PARABOX = new ParaboxBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE), false).setRegistryName("parabox");
+        public static final Block POWERBOX = new ParaboxBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE), true).setRegistryName("powerbox");
         public static final Block VOID_GENERATOR = new VoidGeneratorBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().sound(SoundType.METAL).harvestTool(ToolType.PICKAXE).harvestLevel(4).strength(50F, 3600000.0F)).setRegistryName("void_generator");
     }
 
     public static class TileEntityTypes {
         public static final TileEntityType<NaturalEvaporatorTileEntity> NATURAL_EVAPORATOR = (TileEntityType<NaturalEvaporatorTileEntity>) TileEntityType.Builder.of(NaturalEvaporatorTileEntity::new, Blocks.NATURAL_EVAPORATOR).build(null).setRegistryName("natural_evaporator");
-        public static final TileEntityType<ParaboxTileEntity> PARABOX = (TileEntityType<ParaboxTileEntity>) TileEntityType.Builder.of(ParaboxTileEntity::new, Blocks.PARABOX).build(null).setRegistryName("parabox");
+        public static final TileEntityType<ParaboxTileEntity> PARABOX = (TileEntityType<ParaboxTileEntity>) TileEntityType.Builder.of(() -> new ParaboxTileEntity(TileEntityTypes.PARABOX, false), Blocks.PARABOX).build(null).setRegistryName("parabox");
+        public static final TileEntityType<ParaboxTileEntity> POWERBOX = (TileEntityType<ParaboxTileEntity>) TileEntityType.Builder.of(() -> new ParaboxTileEntity(TileEntityTypes.POWERBOX, true), Blocks.POWERBOX).build(null).setRegistryName("powerbox");
         public static final TileEntityType<VoidGeneratorTileEntity> VOID_GENERATOR = (TileEntityType<VoidGeneratorTileEntity>) TileEntityType.Builder.of(VoidGeneratorTileEntity::new, Blocks.VOID_GENERATOR).build(null).setRegistryName("void_generator");
     }
 

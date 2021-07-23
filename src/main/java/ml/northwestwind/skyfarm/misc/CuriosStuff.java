@@ -20,6 +20,7 @@ public class CuriosStuff {
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () ->
                 new SlotTypeMessage.Builder("shifter")
                         .icon(new ResourceLocation(SkyFarm.MOD_ID, "gui/shifters"))
+                        .priority(220)
                         .size(1)
                         .build());
     }

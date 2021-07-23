@@ -30,7 +30,9 @@ import javax.annotation.Nonnull;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
+import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -157,11 +159,9 @@ public class Utils {
         bos.close();
     }
 
-    public static <E> E getRandomFromSet(Set<E> set) {
-        List<E> list = new ArrayList<>(set);
-        int size = list.size();
-        int randIdx = new Random().nextInt(size);
-        return list.get(randIdx);
+    public static <K, V> V getRandomValueFromMap(Map<K, V> map) {
+        Object[] values = map.values().toArray();
+        return (V) values[new Random().nextInt(values.length)];
     }
 
     public enum DragonType {

@@ -1,20 +1,14 @@
 {
-  "parent": "skyfarm:storage/qio",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "mekanism"
-    }
-  ],
+  "parent": "skyfarm:parabox/parabox",
   "display": {
     "title": {
-      "translate": "advancement.storage.supermassive_qio.title"
+      "translate": "advancement.parabox.powerbox.title"
     },
     "description": {
-      "translate": "advancement.storage.supermassive_qio.description"
+      "translate": "advancement.parabox.powerbox.description"
     },
     "icon": {
-      "item": "mekanism:qio_drive_supermassive"
+      "item": "skyfarm:powerbox"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -22,12 +16,12 @@
     "hidden": false
   },
   "criteria": {
-    "qio_drive_supermassive": {
+    "powerbox": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "mekanism:qio_drive_supermassive"
+            "item": "skyfarm:powerbox"
           }
         ]
       }
@@ -35,7 +29,7 @@
   },
   "requirements": [
     [
-      "qio_drive_supermassive"
+      "powerbox"
     ]
   ],
   "rewards": {

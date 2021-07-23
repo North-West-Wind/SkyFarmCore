@@ -1,5 +1,6 @@
 package ml.northwestwind.skyfarm.misc.teleporter;
 
+import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.block.PortalInfo;
 import net.minecraft.entity.Entity;
@@ -31,7 +32,7 @@ public class VoidTeleporter implements ITeleporter {
         if (destWorld.dimension().equals(World.OVERWORLD) && entity instanceof LivingEntity) {
             LivingEntity living = (LivingEntity) entity;
             Optional<BlockPos> optional = living.getSleepingPos();
-            return optional.map(blockPos -> new PortalInfo(Utils.wrapToEdge(Utils.blockPosToVector3d(blockPos), toVoid), Vector3d.ZERO, entity.yRot, entity.xRot)).orElseGet(() -> new PortalInfo(Vector3d.ZERO.add(0, toVoid ? 316 : -60, 0), Vector3d.ZERO, entity.yRot, entity.xRot));
+            return optional.map(blockPos -> new PortalInfo(Utils.wrapToEdge(Utils.blockPosToVector3d(blockPos), toVoid), Vector3d.ZERO, entity.yRot, entity.xRot)).orElseGet(() -> new PortalInfo(Utils.wrapToEdge(Utils.blockPosToVector3d(SkyblockData.get(destWorld).getIsland(living.getUUID())), toVoid), Vector3d.ZERO, entity.yRot, entity.xRot));
         }
         WorldBorder border = destWorld.getWorldBorder();
         double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);

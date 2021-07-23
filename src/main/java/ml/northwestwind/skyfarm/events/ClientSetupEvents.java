@@ -31,6 +31,7 @@ public class ClientSetupEvents {
 
         KeyBindings.register();
         RenderTypeLookup.setRenderLayer(RegistryEvents.Blocks.PARABOX, RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(RegistryEvents.Blocks.POWERBOX, RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(RegistryEvents.Blocks.VOID_GENERATOR, RenderType.cutoutMipped());
     }
 

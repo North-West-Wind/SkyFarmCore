@@ -46,8 +46,7 @@ public class SkyblockData extends WorldSavedData {
     private boolean worldGenerated, isInLoop, usingParabox, noStage;
     private BlockPos paraboxPos = BlockPos.ZERO;
     private final Set<UUID> joined = Sets.newHashSet();
-    private final Set<UUID> hasIsland = Sets.newHashSet();
-    private final Set<BlockPos> islands = Sets.newHashSet();
+    private final Map<UUID, BlockPos> islands = Maps.newHashMap();
     private Set<String> stages = Sets.newHashSet();
     private final Map<UUID, Triple<Vector3d, RegistryKey<World>, GameType>> spectators = Maps.newHashMap();
     private static final Random rng = new Random();
@@ -149,10 +148,13 @@ public class SkyblockData extends WorldSavedData {
         stages = stages.stream().filter(GameStageHelper::isStageKnown).collect(Collectors.toSet());
         listNBT = (ListNBT) nbt.get("hasIsland");
         if (listNBT != null) {
+            ListNBT islandList = (ListNBT) nbt.get("hasIsland");
             int i = 0;
             while (!listNBT.getCompound(i).isEmpty()) {
                 CompoundNBT compound = listNBT.getCompound(i);
-                hasIsland.add(compound.getUUID("uuid"));
+                CompoundNBT islandNBT = islandList.getCompound(i);
+                islandNBT.putUUID("uuid", compound.getUUID("uuid"));
+                islandList.set(i, islandNBT);
                 i++;
             }
         }
@@ -172,7 +174,7 @@ public class SkyblockData extends WorldSavedData {
             int i = 0;
             while (!listNBT.getCompound(i).isEmpty()) {
                 CompoundNBT compound = listNBT.getCompound(i);
-                islands.add(new BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z")));
+                islands.put(compound.getUUID("uuid"), new BlockPos(compound.getInt("x"), compound.getInt("y"), compound.getInt("z")));
                 i++;
             }
         }
@@ -209,15 +211,6 @@ public class SkyblockData extends WorldSavedData {
             listNBT2.add(i++, compound);
         }
         nbt.put("stages", listNBT2);
-        ListNBT listNBT3 = new ListNBT();
-        Iterator<UUID> it3 = hasIsland.iterator();
-        i = 0;
-        while (it3.hasNext()) {
-            CompoundNBT compound = new CompoundNBT();
-            compound.putUUID("uuid", it3.next());
-            listNBT3.add(i++, compound);
-        }
-        nbt.put("hasIsland", listNBT3);
         ListNBT listNBT4 = new ListNBT();
         Iterator<Map.Entry<UUID, Triple<Vector3d, RegistryKey<World>, GameType>>> it4 = spectators.entrySet().iterator();
         i = 0;
@@ -236,14 +229,16 @@ public class SkyblockData extends WorldSavedData {
         }
         nbt.put("spectators", listNBT4);
         ListNBT listNBT5 = new ListNBT();
-        Iterator<BlockPos> it5 = islands.iterator();
+        Iterator<Map.Entry<UUID, BlockPos>> it5 = islands.entrySet().iterator();
         i = 0;
         while (it5.hasNext()) {
-            BlockPos blockPos = it5.next();
+            Map.Entry<UUID, BlockPos> entry = it5.next();
+            BlockPos blockPos = entry.getValue();
             CompoundNBT compound = new CompoundNBT();
             compound.putInt("x", blockPos.getX());
             compound.putInt("y", blockPos.getY());
             compound.putInt("z", blockPos.getZ());
+            compound.putUUID("uuid", entry.getKey());
             listNBT5.add(i++, compound);
         }
         nbt.put("islands", listNBT5);
@@ -335,20 +330,24 @@ public class SkyblockData extends WorldSavedData {
     }
 
     public boolean hasIsland(UUID uuid) {
-        return hasIsland.contains(uuid);
+        return islands.containsKey(uuid);
     }
 
     public void addIsland(UUID uuid, BlockPos pos) {
-        hasIsland.add(uuid);
-        islands.add(pos);
+        islands.put(uuid, pos);
+    }
+
+    public BlockPos getIsland(UUID uuid) {
+        return islands.getOrDefault(uuid, BlockPos.ZERO);
     }
 
     public BlockPos getRandomIsland() {
-        return Utils.getRandomFromSet(islands);
+        if (islands.isEmpty()) return new BlockPos(0, 64, 0);
+        return Utils.getRandomValueFromMap(islands);
     }
 
     public boolean isPosIsland(BlockPos pos) {
-        return islands.contains(pos);
+        return islands.containsValue(pos);
     }
 
     public BlockPos findPosForNewIsland(int offset) {

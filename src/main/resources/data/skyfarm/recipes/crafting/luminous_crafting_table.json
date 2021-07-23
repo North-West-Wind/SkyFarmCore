@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "astralsorcery"
+    }
+  ],
+  "pattern": [
+    "###",
+    " C "
+  ],
+  "key": {
+    "#": {
+      "item": "astralsorcery:marble_raw"
+    },
+    "C": {
+      "tag": "forge:workbenches"
+    }
+  },
+  "result": {
+    "item": "astralsorcery:altar_discovery",
+    "count": 1
+  }
+}

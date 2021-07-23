@@ -16,7 +16,9 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -26,6 +28,7 @@ import net.minecraft.item.Items;
 import net.minecraft.network.play.server.SEntityVelocityPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
@@ -38,6 +41,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -163,6 +167,16 @@ public class SkyblockEvents {
             speedyWorldWarp(TWILIGHT_FOREST, World.OVERWORLD, player);
         else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_AXIS_SHIFTER_LC) && ModList.get().isLoaded("lostcities"))
             speedyWorldWarp(LOST_CITIES, World.OVERWORLD, player);
+
+        if (player.level.dimension().equals(World.NETHER)) {
+            ServerWorld nether = player.getServer().getLevel(World.NETHER);
+            if (nether == null) return;
+            SkyblockNetherData data = SkyblockNetherData.get(nether);
+            if (!data.isPlayerShielded(player.getUUID())) return;
+            List<Entity> collided = player.level.getEntities(player, new AxisAlignedBB(player.blockPosition()).inflate(5), entity -> !(entity instanceof PlayerEntity) && !entity.isSpectator());
+            collided.forEach(entity -> entity.setDeltaMovement(entity.position().subtract(player.position()).normalize()));
+            data.minusTick((ServerPlayerEntity) player);
+        }
     }
 
     public static void handleWorldWarp(RegistryKey<World> top, RegistryKey<World> bottom, double factor, PlayerEntity player) {
@@ -196,7 +210,7 @@ public class SkyblockEvents {
                     player.changeDimension(world, new VoidTeleporter(true, 1d / factor));
                     if (top.equals(World.END) && bottom.equals(World.OVERWORLD)) {
                         MinecraftServer server = world.getServer();
-                        Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation("minecraft", "end/jump_back"));
+                        Advancement advancement = server.getAdvancements().getAdvancement(new ResourceLocation("skyfarm", "end/jump_back"));
                         if (advancement != null)
                             ((ServerPlayerEntity) player).getAdvancements().award(advancement, "toOverworld");
                     }
@@ -204,8 +218,9 @@ public class SkyblockEvents {
             }
         }
         if (rising.contains(player.getUUID())) {
+            player.fallDistance = 0;
             if (player.isCrouching()) rising.remove(player.getUUID());
-            player.setDeltaMovement(player.getDeltaMovement().multiply(1, 0, 1).add(0, 2, 0));
+            player.setDeltaMovement(player.getDeltaMovement().multiply(3, 0, 3).add(0, 1, 0));
             ((ServerPlayerEntity) player).connection.send(new SEntityVelocityPacket(player));
         }
     }
@@ -256,29 +271,26 @@ public class SkyblockEvents {
         PlayerEntity player = (PlayerEntity) entity;
         if (player.level.isClientSide || !SkyblockChunkGenerator.isWorldSkyblock((ServerWorld) player.level)) return;
         if (event.getDistance() <= 4) {
-            event.setDamageMultiplier(0);
+            event.setCanceled(true);
             return;
         }
         ServerWorld world = (ServerWorld) player.level;
         ServerWorld netherWorld = world.getServer().getLevel(World.NETHER);
         if (netherWorld == null) return;
         SkyblockNetherData data = SkyblockNetherData.get(netherWorld);
-        if (world.dimension().equals(World.NETHER) && !data.hasPlayerLanded(player.getUUID())) {
-            data.playerLanded(player.getUUID());
-            event.setDamageMultiplier(0);
-        }
+        if (world.dimension().equals(World.NETHER) && data.isPlayerShielded(player.getUUID())) event.setCanceled(true);
     }
 
     @SubscribeEvent
     public static void playerChangeDimension(final EntityTravelToDimensionEvent event) {
-        if (!(event.getEntity() instanceof PlayerEntity)) return;
+        if (!(event.getEntity() instanceof PlayerEntity) || !event.getDimension().equals(World.NETHER)) return;
         PlayerEntity player = (PlayerEntity) event.getEntity();
         if (player.level.isClientSide) return;
         ServerWorld world = (ServerWorld) player.level;
         ServerWorld netherWorld = world.getServer().getLevel(World.NETHER);
         if (netherWorld == null) return;
         SkyblockNetherData data = SkyblockNetherData.get(netherWorld);
-        if (!event.getDimension().equals(World.NETHER)) data.playerLeft(player.getUUID());
+        data.playerEntered(player.getUUID());
     }
 
     @SubscribeEvent
@@ -330,5 +342,16 @@ public class SkyblockEvents {
         return new TranslationTextComponent("tip.skyfarm.firstTime")
                 .append(new TranslationTextComponent("tip.skyfarm.seekIsland", new StringTextComponent("/seekIsland").withStyle(TextFormatting.GOLD)))
                 .append(new TranslationTextComponent("tip.skyfarm.createIsland", new StringTextComponent("/createIsland").withStyle(TextFormatting.GOLD)));
+    }
+
+    @SubscribeEvent
+    public static void livingDrop(final LivingDropsEvent event) {
+        LivingEntity entity = event.getEntityLiving();
+        if (entity.level.isClientSide) return;
+        if (entity.getType().equals(EntityType.WITHER_SKELETON) && entity.level.random.nextInt(3) == 0) {
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation("iceandfire", "witherbone"));
+            if (item == null) return;
+            event.getDrops().add(new ItemEntity(entity.level, entity.getX(), entity.getY(), entity.getZ(), new ItemStack(item)));
+        }
     }
 }

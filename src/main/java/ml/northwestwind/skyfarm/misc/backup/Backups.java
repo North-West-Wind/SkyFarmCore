@@ -102,6 +102,7 @@ public class Backups {
         server.getPlayerList().saveAll();
         File dst = server.getWorldPath(FolderName.ROOT).toFile();
         File src = backupsFolder;
+        if (!src.isDirectory() || src.list().length < 1) return false;
 
         try {
             src = src.getCanonicalFile();

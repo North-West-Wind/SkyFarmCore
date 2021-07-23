@@ -10,7 +10,7 @@
     "icon": {
       "item": "skyfarm:parabox"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
@@ -31,5 +31,8 @@
     [
       "parabox"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

@@ -8,15 +8,15 @@
   ],
   "display": {
     "title": {
-      "translate": "advancement.storage.1048m_storage_disk.title"
+      "translate": "advancement.storage.infinite_storage_disk.title"
     },
     "description": {
       "translate": "advancement.storage.1048m_storage_disk.description"
     },
     "icon": {
-      "item": "extradisks:1048576k_storage_part"
+      "item": "extradisks:infinite_storage_part"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "extradisks:1048576k_storage_part"
+            "item": "extradisks:infinite_storage_part"
           }
         ]
       }
@@ -37,5 +37,8 @@
     [
       "1048576k_storage_part"
     ]
-  ]
+  ],
+  "rewards": {
+    "function": "skyfarm:add_point"
+  }
 }

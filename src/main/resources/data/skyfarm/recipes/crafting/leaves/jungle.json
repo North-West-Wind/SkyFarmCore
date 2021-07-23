@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "mysticalagriculture:nature_essence"
+    },
+    "S": {
+      "item": "minecraft:jungle_sapling"
+    }
+  },
+  "result": {
+    "item": "minecraft:jungle_leaves",
+    "count": 28
+  }
+}
