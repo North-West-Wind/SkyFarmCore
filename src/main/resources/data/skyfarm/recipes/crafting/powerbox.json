@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "pattern": [
+    "#A#",
+    "ADA",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:storage_blocks/manyullyn"
+    },
+    "A": {
+      "tag": "forge:alloys/ultimate"
+    },
+    "D": {
+      "item": "skyfarm:parabox"
+    }
+  },
+  "result": {
+    "item": "skyfarm:powerbox",
+    "count": 1
+  }
+}
