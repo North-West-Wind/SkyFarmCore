@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:magma_cream"
+      "item": "ars_nouveau:lava_lily"
     },
     {
       "tag": "forge:string"

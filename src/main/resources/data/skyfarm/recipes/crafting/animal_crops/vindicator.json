@@ -5,7 +5,7 @@
       "tag": "forge:seeds"
     },
     {
-      "item": "minecraft:bow"
+      "item": "minecraft:iron_axe"
     },
     {
       "tag": "forge:gems/emerald"
@@ -13,7 +13,7 @@
   ],
   "result": {
     "item": "animalcrops:seeds",
-    "nbt": "{entity:\"minecraft:illusioner\"}",
+    "nbt": "{entity:\"minecraft:vindicator\"}",
     "count": 1
   }
 }

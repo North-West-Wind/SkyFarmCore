@@ -30,10 +30,11 @@
     "1.1.4": "Multiple island generation",
     "1.1.5": "Fixed staged recipes not craftable by machines + Added some creative items",
     "1.1.6": "Powerbox + Leaves recipes + Time loop fallback + Nether shield + Potentially fixed Parabox message on other mods",
-    "1.1.7": "Added recipes for Powerbox and Star Metal + Removed script updater"
+    "1.1.7": "Added recipes for Powerbox and Star Metal + Removed script updater",
+    "1.1.8": "Added/Fixed recipes for seeds"
   },
   "promos": {
-    "1.16.5-latest": "1.1.7",
-    "1.16.5-recommended": "1.1.7"
+    "1.16.5-latest": "1.1.8",
+    "1.16.5-recommended": "1.1.8"
   }
 }

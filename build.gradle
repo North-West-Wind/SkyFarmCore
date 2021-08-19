@@ -19,7 +19,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.1.7'
+version = '1.1.8'
 group = 'ml.northwestwind.skyfarm' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'skyfarm'
 
@@ -113,9 +113,8 @@ repositories {
     }
     maven {
         name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
+        url = "https://modmaven.dev"
     }
-    maven { url 'https://jitpack.io' }
     maven { url 'https://maven.blamejared.com' }
     maven { url = "https://repo.spongepowered.org/maven" }
     maven { url = "https://maven.theillusivec4.top/" }

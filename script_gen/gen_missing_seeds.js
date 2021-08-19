@@ -17,7 +17,15 @@ var missing_seeds = [
     "fiery_ingot",
     "manyullyn",
     "queens_slime",
-    "hepatizon"
+    "hepatizon",
+    "marble",
+    "limestone",
+    "basalt",
+    "livingwood",
+    "livingrock",
+    "ruby",
+    "sapphire",
+    "elementium"
 ];
 for (const seed of missing_seeds) {
     console.log(`val ${seed} = crops.create("mysticalagriculture:crops/${seed}", <item:mysticalagriculture:${seed}_seeds>, <blockstate:mysticalagriculture:${seed}_crop>, 1200, "dirt");`);
