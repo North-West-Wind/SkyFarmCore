@@ -31,9 +31,9 @@ import java.util.Random;
 import java.util.UUID;
 
 public class Utils {
-    public static final long[] AGE_TICKS = {1200000, 1800000, 2400000};
+    public static final long[] AGE_TICKS = {1800000, 2400000, 3000000};
     public static final int[] MULTIPLIER = {10, 8, 6};
-    private static final int BUFFER_SIZE = 4096;
+    private static final Random RNG = new Random();
 
     public static String formatDuration(long ticks) {
         long seconds = ticks / 20;
@@ -80,7 +80,7 @@ public class Utils {
         if (entity == null) return null;
         ModifiableAttributeInstance attribute = entity.getAttributes().getInstance(Attributes.MAX_HEALTH);
         if (attribute != null) {
-            AttributeModifier modifier = new AttributeModifier(UUID.randomUUID().toString(), MULTIPLIER[index], AttributeModifier.Operation.MULTIPLY_BASE);
+            AttributeModifier modifier = new AttributeModifier(UUID.randomUUID().toString(), ticks * 2 / 100000, AttributeModifier.Operation.MULTIPLY_BASE);
             attribute.removeModifier(modifier);
             attribute.addPermanentModifier(new AttributeModifier(modifier.getId(), "", modifier.getAmount(), modifier.getOperation()));
         }
@@ -93,7 +93,7 @@ public class Utils {
 
     public static <K, V> V getRandomValueFromMap(Map<K, V> map) {
         Object[] values = map.values().toArray();
-        return (V) values[new Random().nextInt(values.length)];
+        return (V) values[RNG.nextInt(values.length)];
     }
 
     public enum DragonType {
