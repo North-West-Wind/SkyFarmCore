@@ -1,0 +1,15 @@
+{
+  "type": "skyfarm:mining",
+  "generator": {
+    "type": "minecraft:mining",
+    "settings": "skyfarm:asteroids",
+    "biome_source": {
+      "type": "skyfarm:mining",
+      "biomes": [
+        "skyfarm:asteroids"
+      ],
+      "large_biomes": false,
+      "legacy_biome_init_layer": false
+    }
+  }
+}

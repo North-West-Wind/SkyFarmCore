@@ -3,8 +3,8 @@ package ml.northwestwind.skyfarm.events;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasBuilder;
 import ml.northwestwind.skyfarm.SkyFarm;
-import ml.northwestwind.skyfarm.common.recipes.AbstractCompactBrickRecipe;
-import ml.northwestwind.skyfarm.common.recipes.AbstractEvaporatingRecipe;
+import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
+import ml.northwestwind.skyfarm.common.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.recipes.serializer.CompactBrickRecipeSerializer;
 import ml.northwestwind.skyfarm.common.recipes.serializer.EvaporatingRecipeSerializer;
 import ml.northwestwind.skyfarm.common.registries.block.NaturalEvaporatorBlock;
@@ -19,6 +19,7 @@ import ml.northwestwind.skyfarm.common.registries.tile.NaturalEvaporatorTileEnti
 import ml.northwestwind.skyfarm.common.registries.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.common.registries.tile.VoidGeneratorTileEntity;
 import ml.northwestwind.skyfarm.common.world.SkyblockWorldType;
+import ml.northwestwind.skyfarm.common.world.features.AsteroidFeature;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -46,6 +47,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
@@ -142,8 +150,18 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void registerEffect(final RegistryEvent.Register<Effect> event) {
         event.getRegistry().registerAll(
-                Effects.MEGA
+                Effects.MEGA,
+                Effects.MINI
         );
+    }
+
+    @SubscribeEvent
+    public static void registerFeature(final RegistryEvent.Register<Feature<?>> event) {
+        event.getRegistry().registerAll(
+                Features.ASTEROID
+        );
+
+        Features.register("skyfarm:asteroid", Features.ASTEROID.configured(NoFeatureConfig.INSTANCE).chance(4).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(32, 0, 224))));
     }
 
     public static class Blocks {
@@ -161,8 +179,8 @@ public class RegistryEvents {
     }
 
     public static class Recipes<S extends IRecipeSerializer<? extends IRecipe<?>>> {
-        public static final Recipes<EvaporatingRecipeSerializer> EVAPORATING = new Recipes<>(new EvaporatingRecipeSerializer(), AbstractEvaporatingRecipe.RECIPE_TYPE_ID);
-        public static final Recipes<CompactBrickRecipeSerializer> COMPACT_BRICK = new Recipes<>(new CompactBrickRecipeSerializer(), AbstractCompactBrickRecipe.RECIPE_TYPE_ID);
+        public static final Recipes<EvaporatingRecipeSerializer> EVAPORATING = new Recipes<>(new EvaporatingRecipeSerializer(), EvaporatingRecipe.RECIPE_TYPE_ID);
+        public static final Recipes<CompactBrickRecipeSerializer> COMPACT_BRICK = new Recipes<>(new CompactBrickRecipeSerializer(), CompactBrickRecipe.RECIPE_TYPE_ID);
 
         private static <T extends IRecipe<?>> IRecipeType<T> customType(ResourceLocation rl) {
             return Registry.register(Registry.RECIPE_TYPE, rl, new IRecipeType<T>() {
@@ -295,5 +313,13 @@ public class RegistryEvents {
     public static class Effects {
         public static final Effect MEGA = new MegaEffect(EffectType.NEUTRAL, 0xF11629).setRegistryName("mega");
         public static final Effect MINI = new MiniEffect(EffectType.NEUTRAL, 0x1984E6).setRegistryName("mini");
+    }
+
+    public static class Features {
+        public static final Feature<NoFeatureConfig> ASTEROID = new AsteroidFeature(NoFeatureConfig.CODEC);
+
+        private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String p_243968_0_, ConfiguredFeature<FC, ?> p_243968_1_) {
+            return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, p_243968_0_, p_243968_1_);
+        }
     }
 }

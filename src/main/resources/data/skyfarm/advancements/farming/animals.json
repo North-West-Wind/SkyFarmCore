@@ -386,17 +386,6 @@
         ]
       }
     },
-    "illusioner": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "animalcrops:seeds",
-            "nbt": "{entity:\"minecraft:illusioner\"}"
-          }
-        ]
-      }
-    },
     "phantom": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -470,17 +459,6 @@
           {
             "item": "animalcrops:seeds",
             "nbt": "{entity:\"minecraft:stray\"}"
-          }
-        ]
-      }
-    },
-    "vindicator": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "animalcrops:seeds",
-            "nbt": "{entity:\"minecraft:vindicator\"}"
           }
         ]
       }

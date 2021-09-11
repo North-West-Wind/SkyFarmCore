@@ -9,7 +9,6 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.client.jei.builder.JEIIngredientStackListBuilder;
-import ml.northwestwind.skyfarm.common.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import net.minecraft.client.resources.I18n;
@@ -18,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.Arrays;
 
-public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBrickRecipe> {
+public class CompactBrickCategory implements IRecipeCategory<CompactBrickRecipe> {
     private final IDrawable background;
     private final String localizedName;
     private final IDrawable icon;
@@ -31,11 +30,11 @@ public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBric
 
     @Override
     public ResourceLocation getUid() {
-        return AbstractCompactBrickRecipe.RECIPE_TYPE_ID;
+        return CompactBrickRecipe.RECIPE_TYPE_ID;
     }
 
     @Override
-    public Class<? extends AbstractCompactBrickRecipe> getRecipeClass() {
+    public Class<? extends CompactBrickRecipe> getRecipeClass() {
         return CompactBrickRecipe.class;
     }
 
@@ -55,13 +54,13 @@ public class CompactBrickCategory implements IRecipeCategory<AbstractCompactBric
     }
 
     @Override
-    public void setIngredients(AbstractCompactBrickRecipe recipe, IIngredients iIngredients) {
+    public void setIngredients(CompactBrickRecipe recipe, IIngredients iIngredients) {
         iIngredients.setInputLists(VanillaTypes.ITEM, JEIIngredientStackListBuilder.make(recipe.getInput()).build());
         iIngredients.setOutput(VanillaTypes.ITEM, recipe.getResultItem());
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, AbstractCompactBrickRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, CompactBrickRecipe recipe, IIngredients ingredients) {
         IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
         group.init(0, true, 55, 15);

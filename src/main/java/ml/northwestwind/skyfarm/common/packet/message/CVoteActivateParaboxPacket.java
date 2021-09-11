@@ -5,7 +5,6 @@ import ml.northwestwind.skyfarm.common.packet.SkyFarmPacketHandler;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
 import ml.northwestwind.skyfarm.misc.backup.Backups;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.network.play.server.SChatPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;

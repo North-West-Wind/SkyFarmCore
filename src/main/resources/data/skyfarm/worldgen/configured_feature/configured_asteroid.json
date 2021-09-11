@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:decorated",
+      "config": {
+        "outer": {
+          "type": "minecraft:chance",
+          "config": {
+            "chance": 4
+          }
+        },
+        "inner": {
+          "type": "minecraft:range",
+          "config": {
+            "type": "uniform",
+            "min_inclusive": {
+              "absolute": 32,
+              "above_bottom": 32,
+              "below_top": 128
+            },
+            "max_inclusive": {
+              "absolute": 224,
+              "above_bottom": 128,
+              "below_tio": 32
+            },
+            "height": 192
+          }
+        }
+      }
+    },
+    "feature": "skyfarm:asteroid"
+  }
+}

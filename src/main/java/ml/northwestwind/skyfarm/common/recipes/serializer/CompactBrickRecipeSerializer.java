@@ -1,7 +1,6 @@
 package ml.northwestwind.skyfarm.common.recipes.serializer;
 
 import com.google.gson.JsonObject;
-import ml.northwestwind.skyfarm.common.recipes.AbstractCompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.holders.RecipeHolder;
 import net.minecraft.item.ItemStack;
@@ -21,7 +20,7 @@ public class CompactBrickRecipeSerializer extends ForgeRegistryEntry<IRecipeSeri
         double chance = JSONUtils.getAsFloat(json, "chance", 1);
 
         CompactBrickRecipe recipe = new CompactBrickRecipe(id, input, output, chance);
-        RecipeHolder.addRecipes(AbstractCompactBrickRecipe.RECIPE_TYPE_ID, recipe);
+        RecipeHolder.addRecipes(CompactBrickRecipe.RECIPE_TYPE_ID, recipe);
         return recipe;
     }
 
@@ -32,7 +31,7 @@ public class CompactBrickRecipeSerializer extends ForgeRegistryEntry<IRecipeSeri
         double chance = buffer.readDouble();
 
         CompactBrickRecipe recipe = new CompactBrickRecipe(recipeId, input, output, chance);
-        RecipeHolder.addRecipes(AbstractCompactBrickRecipe.RECIPE_TYPE_ID, recipe);
+        RecipeHolder.addRecipes(CompactBrickRecipe.RECIPE_TYPE_ID, recipe);
         return recipe;
     }
 

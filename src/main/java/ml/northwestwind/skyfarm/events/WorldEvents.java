@@ -1,6 +1,7 @@
 package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
+import ml.northwestwind.skyfarm.common.world.features.AsteroidFeature;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -15,6 +16,7 @@ public class WorldEvents {
     @SubscribeEvent
     public static void worldLoad(final WorldEvent.Load event) {
         isWorldLoaded = true;
+        AsteroidFeature.initWeights();
     }
 
     @SubscribeEvent

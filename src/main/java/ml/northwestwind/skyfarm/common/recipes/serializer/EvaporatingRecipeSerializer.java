@@ -1,7 +1,6 @@
 package ml.northwestwind.skyfarm.common.recipes.serializer;
 
 import com.google.gson.JsonObject;
-import ml.northwestwind.skyfarm.common.recipes.AbstractEvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.recipes.EvaporatingRecipe;
 import ml.northwestwind.skyfarm.common.recipes.holders.RecipeHolder;
 import net.minecraft.item.ItemStack;
@@ -22,7 +21,7 @@ public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSeria
         double chance = JSONUtils.getAsFloat(json, "chance", 1);
 
         EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick, chance);
-        RecipeHolder.addRecipes(AbstractEvaporatingRecipe.RECIPE_TYPE_ID, recipe);
+        RecipeHolder.addRecipes(EvaporatingRecipe.RECIPE_TYPE_ID, recipe);
         return recipe;
     }
 
@@ -34,7 +33,7 @@ public class EvaporatingRecipeSerializer extends ForgeRegistryEntry<IRecipeSeria
         double chance = buffer.readDouble();
 
         EvaporatingRecipe recipe = new EvaporatingRecipe(recipeId, input, output, tick, chance);
-        RecipeHolder.addRecipes(AbstractEvaporatingRecipe.RECIPE_TYPE_ID, recipe);
+        RecipeHolder.addRecipes(EvaporatingRecipe.RECIPE_TYPE_ID, recipe);
         return recipe;
     }
 

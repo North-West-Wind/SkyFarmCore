@@ -2,6 +2,7 @@ package ml.northwestwind.skyfarm.events;
 
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import ml.northwestwind.skyfarm.config.SkyFarmAsteroidsConfig;
 import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.misc.backup.Backups;
 import net.darkhax.gamestages.event.GameStageEvent;
@@ -20,6 +21,7 @@ public class ServerEvents {
         Backups.INSTANCE.init();
 
         SkyFarmConfig.loadServerConfig(FMLPaths.CONFIGDIR.get().resolve("skyfarm-server.toml").toString());
+        SkyFarmAsteroidsConfig.readConfig();
     }
 
     @SubscribeEvent

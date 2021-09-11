@@ -1,0 +1,25 @@
+{
+  "depth": 0.1,
+  "scale": 0.2,
+  "temperature": 0.5,
+  "downfall": 0.5,
+  "precipitation": "none",
+  "category": "none",
+  "effects": {
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "fog_color": 12638463,
+    "sky_color": 8368895
+  },
+  "surface_builder": "skyfarm:asteroids",
+  "carvers": {
+    "air": [],
+    "liquid": []
+  },
+  "features": [
+    ["skyfarm:asteroid"]
+  ],
+  "starts": [],
+  "spawners": {},
+  "spawn_costs": {}
+}

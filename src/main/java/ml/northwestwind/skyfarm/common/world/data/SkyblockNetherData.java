@@ -1,7 +1,6 @@
 package ml.northwestwind.skyfarm.common.world.data;
 
 import com.google.common.collect.Maps;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;

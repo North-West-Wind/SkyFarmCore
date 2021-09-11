@@ -5,6 +5,7 @@
   "refmap": "skyfarm.refmap.json",
   "mixins": [
     "MixinAbstractBlockState",
+    "MixinDimensionGeneratorSettings",
     "MixinFissionReactorMultiblockData",
     "MixinItem",
     "MixinMultiblockData"
