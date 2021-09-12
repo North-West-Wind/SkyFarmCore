@@ -1,8 +1,8 @@
 {
   "type": "skyfarm:mining",
   "generator": {
-    "type": "minecraft:mining",
-    "settings": "skyfarm:asteroids",
+    "type": "skyfarm:mining",
+    "settings": "minecraft:overworld",
     "biome_source": {
       "type": "skyfarm:mining",
       "biomes": [

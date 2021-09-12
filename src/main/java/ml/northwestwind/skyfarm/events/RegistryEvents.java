@@ -20,6 +20,7 @@ import ml.northwestwind.skyfarm.common.registries.tile.ParaboxTileEntity;
 import ml.northwestwind.skyfarm.common.registries.tile.VoidGeneratorTileEntity;
 import ml.northwestwind.skyfarm.common.world.SkyblockWorldType;
 import ml.northwestwind.skyfarm.common.world.features.AsteroidFeature;
+import ml.northwestwind.skyfarm.misc.Utils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -42,12 +43,10 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
@@ -71,7 +70,6 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 @ObjectHolder(SkyFarm.MOD_ID)
 public class RegistryEvents {
-
     @SubscribeEvent
     public static void registerWorldType(final RegistryEvent.Register<ForgeWorldType> event) {
         event.getRegistry().registerAll(SkyblockWorldType.INSTANCE.setRegistryName("skyfarm"));
@@ -100,7 +98,8 @@ public class RegistryEvents {
                 Items.OVERWORLD_SKY_SHIFTER_END,
                 Items.OVERWORLD_AXIS_SHIFTER_UG,
                 Items.OVERWORLD_AXIS_SHIFTER_TF,
-                Items.OVERWORLD_AXIS_SHIFTER_LC
+                Items.OVERWORLD_AXIS_SHIFTER_LC,
+                Items.OVERWORLD_SKY_SHIFTER_ASTEROIDS
         );
         if (ModList.get().isLoaded("iceandfire")) event.getRegistry().register(Items.DRAGON_SUMMONER);
         if (ModList.get().isLoaded("resourcefulbees")) event.getRegistry().register(Items.MUTATION_POLLEN);
@@ -227,6 +226,7 @@ public class RegistryEvents {
         public static final Item OVERWORLD_AXIS_SHIFTER_UG = new ShifterItem(ModArmorMaterial.UG_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_ug", "undergarden");
         public static final Item OVERWORLD_AXIS_SHIFTER_TF = new ShifterItem(ModArmorMaterial.TF_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_tf", "twilightforest");
         public static final Item OVERWORLD_AXIS_SHIFTER_LC = new ShifterItem(ModArmorMaterial.LC_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_axis_shifter_lc", "lostcities");
+        public static final Item OVERWORLD_SKY_SHIFTER_ASTEROIDS = new ShifterItem(ModArmorMaterial.ASTEROIDS_SHIFTER, EquipmentSlotType.FEET, new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE), "overworld_sky_shifter_asteroids");
         public static final Item DRAGON_SUMMONER = new DragonSummonerItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(16), "dragon_summoner");
         public static final Item MUTATION_POLLEN = new MutationPollenItem(new Item.Properties().tab(SkyFarm.SkyFarmItemGroup.INSTANCE).stacksTo(64), "mutation_pollen");
         public static final Item MEGA_MUSHROOM = new TooltipItem(new Item.Properties().stacksTo(4).tab(SkyFarm.SkyFarmItemGroup.INSTANCE).food(Foods.MEGA_MUSHROOM), "mega_mushroom");
@@ -237,7 +237,8 @@ public class RegistryEvents {
             END_SHIFTER(SkyFarm.MOD_ID + ":end_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
             UG_SHIFTER(SkyFarm.MOD_ID + ":ug_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
             TF_SHIFTER(SkyFarm.MOD_ID + ":tf_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
-            LC_SHIFTER(SkyFarm.MOD_ID + ":lc_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
+            LC_SHIFTER(SkyFarm.MOD_ID + ":lc_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+            ASTEROIDS_SHIFTER(SkyFarm.MOD_ID + ":asteroids_shifter", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
             private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
             private final String name;
@@ -321,5 +322,13 @@ public class RegistryEvents {
         private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String p_243968_0_, ConfiguredFeature<FC, ?> p_243968_1_) {
             return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, p_243968_0_, p_243968_1_);
         }
+    }
+
+    // Not registry. Only for reference.
+    public static class Dimensions {
+        public static final RegistryKey<World> ASTEROIDS = RegistryKey.create(Registry.DIMENSION_REGISTRY, Utils.prefix("asteroids"));
+        public static final RegistryKey<World> UNDERGARDEN = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("undergarden", "undergarden"));
+        public static final RegistryKey<World> LOST_CITIES = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("lostcities", "lostcity"));
+        public static final RegistryKey<World> TWILIGHT_FOREST = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("twilightforest", "twilightforest"));
     }
 }

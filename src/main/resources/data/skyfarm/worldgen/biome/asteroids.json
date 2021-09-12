@@ -11,13 +11,22 @@
     "fog_color": 12638463,
     "sky_color": 8368895
   },
-  "surface_builder": "skyfarm:asteroids",
+  "surface_builder": "minecraft:nope",
   "carvers": {
     "air": [],
     "liquid": []
   },
   "features": [
-    ["skyfarm:asteroid"]
+    ["skyfarm:asteroid"],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
   ],
   "starts": [],
   "spawners": {},

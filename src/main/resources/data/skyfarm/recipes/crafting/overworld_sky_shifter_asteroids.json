@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# G",
+    "RDE",
+    "CJI"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:lapis_ore"
+    },
+    "G": {
+      "item": "minecraft:gold_ore"
+    },
+    "R": {
+      "item": "minecraft:redstone_ore"
+    },
+    "D": {
+      "item": "minecraft:diamond_boots"
+    },
+    "E": {
+      "item": "minecraft:emerald_ore"
+    },
+    "C": {
+      "item": "minecraft:coal_ore"
+    },
+    "J": {
+      "item": "minecraft:diamond_ore"
+    },
+    "I": {
+      "item": "minecraft:iron_ore"
+    }
+  },
+  "result": {
+    "item": "skyfarm:overworld_sky_shifter_asteroids",
+    "count": 1
+  }
+}

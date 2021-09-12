@@ -11,7 +11,8 @@
     "MixinMultiblockData"
   ],
   "client": [
-    "MixinGeneratorsJEI"
+    "MixinGeneratorsJEI",
+    "MixinWorldRenderer"
   ],
   "minVersion": "0.8"
 }

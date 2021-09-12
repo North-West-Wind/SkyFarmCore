@@ -32,10 +32,11 @@
     "1.1.6": "Powerbox + Leaves recipes + Time loop fallback + Nether shield + Potentially fixed Parabox message on other mods",
     "1.1.7": "Added recipes for Powerbox and Star Metal + Removed script updater",
     "1.1.8": "Added/Fixed recipes for seeds",
-    "1.1.9": "Made summoned dragons way more difficult + Only allow Earth Slime for its sapling recipe"
+    "1.1.9": "Made summoned dragons way more difficult + Only allow Earth Slime for its sapling recipe",
+    "1.2.0": "Added Mining (Asteroids) dimension"
   },
   "promos": {
-    "1.16.5-latest": "1.1.9",
-    "1.16.5-recommended": "1.1.9"
+    "1.16.5-latest": "1.2.0",
+    "1.16.5-recommended": "1.2.0"
   }
 }

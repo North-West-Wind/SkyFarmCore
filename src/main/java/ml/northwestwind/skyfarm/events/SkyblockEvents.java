@@ -57,14 +57,13 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static ml.northwestwind.skyfarm.events.RegistryEvents.Dimensions.*;
+
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
 public class SkyblockEvents {
     public static final Map<UUID, Integer> buildingSpeed = Maps.newHashMap();
     public static final Map<UUID, Vector3d> running = Maps.newHashMap();
     public static final List<UUID> rising = Lists.newArrayList();
-    public static final RegistryKey<World> UNDERGARDEN = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("undergarden", "undergarden"));
-    public static final RegistryKey<World> LOST_CITIES = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("lostcities", "lostcity"));
-    public static final RegistryKey<World> TWILIGHT_FOREST = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("twilightforest", "twilightforest"));
 
     @SubscribeEvent
     public static void playerJoin(final PlayerEvent.PlayerLoggedInEvent event) {
@@ -158,6 +157,8 @@ public class SkyblockEvents {
             handleWorldWarp(World.OVERWORLD, World.NETHER, 8, player);
         else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_END))
             handleWorldWarp(World.END, World.OVERWORLD, 1, player);
+        else if (boots.getItem().equals(RegistryEvents.Items.OVERWORLD_SKY_SHIFTER_ASTEROIDS))
+            handleWorldWarp(RegistryEvents.Dimensions.ASTEROIDS, World.OVERWORLD, 1, player);
         else if (player.getY() <= -64) player.teleportTo(player.getX(), 316, player.getZ());
         else if (player.getY() >= 320) player.teleportTo(player.getX(), -60, player.getZ());
 

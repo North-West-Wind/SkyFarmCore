@@ -17,6 +17,7 @@
   "item.skyfarm.overworld_axis_shifter_ug": "Overworld Axis Shifter - Undergarden",
   "item.skyfarm.overworld_axis_shifter_lc": "Overworld Axis Shifter - Lost Cities",
   "item.skyfarm.overworld_axis_shifter_tf": "Overworld Axis Shifter - Twilight Forest",
+  "item.skyfarm.overworld_sky_shifter_asteroids": "Overworld Sky Shifter - Asteroids",
   "item.skyfarm.dragon_summoner": "Dragon Summoner Stick",
   "item.skyfarm.mutation_pollen.default": "Mutation Pollen",
   "item.skyfarm.mutation_pollen": "%s Mutation Pollen",
@@ -49,6 +50,8 @@
   "recipe.skyfarm.evaporating": "Evaporating",
   "recipe.skyfarm.compact_brick": "Compact Brick",
 
+  "biome.skyfarm.asteroids": "Asteroid Belt",
+
   "tooltip.skyfarm.natural_evaporator": "Evaporates stuff under pure sunlight",
   "tooltip.skyfarm.parabox": "The time loop machine",
   "tooltip.skyfarm.powerbox": "The more powerful Parabox",
@@ -62,11 +65,13 @@
   "tooltip.skyfarm.shifter.overworld_axis_shifter_ug": "Hold [%s] to run to Undergarden",
   "tooltip.skyfarm.shifter.overworld_axis_shifter_tf": "Hold [%s] to run to Twilight Forest",
   "tooltip.skyfarm.shifter.overworld_axis_shifter_lc": "Hold [%s] to run to Lost Cities",
+  "tooltip.skyfarm.shifter.overworld_sky_shifter_asteroids": "Hold [%s] to jump to The Asteroid Belt",
   "tooltip.skyfarm.shifter.usage.overworld_void_shifter_nether": "Hold [%s] to jump back to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_sky_shifter_end": "Jump into the void to warp back to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_ug": "Hold [%s] to run to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_tf": "Hold [%s] to run to the Overworld",
   "tooltip.skyfarm.shifter.usage.overworld_axis_shifter_lc": "Hold [%s] to run to the Overworld",
+  "tooltip.skyfarm.shifter.usage.overworld_sky_shifter_asteroids": "Jump into the void to warp back to the Overworld",
   "tooltip.skyfarm.shifter.missing": "%s is required for this Shifter to work!",
 
   "tooltip.skyfarm.mega_mushroom": "Makes you HUGE",
@@ -415,6 +420,8 @@
   "advancement.exploration.bumblezone.description": "Throw an ender pearl to a bee hive. You will get warped into the bee world!",
   "advancement.exploration.lost_cities.title": "A man has fallen into the Void in Lost Cities",
   "advancement.exploration.lost_cities.description": "You will find cities in Lost Cities, but no one is there.",
+  "advancement.exploration.asteroids.title": "Totally not in space",
+  "advancement.exploration.asteroids.description": "Sorry to disappoint you but you're not in space. It's just a mining dimension.",
 
   "advancement.power.root.title": "Very Powerful",
   "advancement.power.root.description": "This tab gives you a brief look in energy.",

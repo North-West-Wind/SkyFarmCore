@@ -9,10 +9,12 @@ import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +31,13 @@ public class AsteroidFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        int radius = rand.nextInt(5) + 3;
+        if (WEIGHTS.size() < 1) initWeights();
+        int radius = rand.nextInt(8) + 1;
+        float radiusSquared = MathHelper.square(radius);
         List<Map.Entry<Block, Integer>> entries = new ArrayList<>(WEIGHTS.entrySet());
         double totalWeight = WEIGHTS.values().stream().mapToDouble(v -> v).sum();
         for (BlockPos targetPos : BlockPos.betweenClosed(pos.offset(-radius, -radius, -radius), pos.offset(radius, radius, radius))) {
-            if (targetPos.distSqr(pos) > radius) continue;
+            if (targetPos.distSqr(pos) > radiusSquared) continue;
             Block block = Blocks.STONE;
             if (rand.nextInt(4) == 0) {
                 int idx = 0;
@@ -57,11 +61,10 @@ public class AsteroidFeature extends Feature<NoFeatureConfig> {
             if (BlockTags.getAllTags().getTag(rl) == null) blocks.put(rl, in);
             else tags.put(rl, in);
         });
-        BlockTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge", "block/ores")).getValues()
-            .forEach(block -> {
-                ResourceLocation rl = block.getRegistryName();
-                WEIGHTS.put(block, blocks.getOrDefault(rl, tags.getOrDefault(rl, defaultWeight)));
-            });
+        SkyFarmAsteroidsConfig.getBlocks().stream().map(ForgeRegistries.BLOCKS::getValue).forEach(block -> {
+            ResourceLocation rl = block.getRegistryName();
+            WEIGHTS.put(block, blocks.getOrDefault(rl, tags.getOrDefault(rl, defaultWeight)));
+        });
 
     }
 }

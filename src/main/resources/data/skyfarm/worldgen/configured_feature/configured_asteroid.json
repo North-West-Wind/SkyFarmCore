@@ -7,25 +7,12 @@
         "outer": {
           "type": "minecraft:chance",
           "config": {
-            "chance": 4
+            "chance": 10
           }
         },
         "inner": {
-          "type": "minecraft:range",
-          "config": {
-            "type": "uniform",
-            "min_inclusive": {
-              "absolute": 32,
-              "above_bottom": 32,
-              "below_top": 128
-            },
-            "max_inclusive": {
-              "absolute": 224,
-              "above_bottom": 128,
-              "below_tio": 32
-            },
-            "height": 192
-          }
+          "type": "minecraft:spread_32_above",
+          "config": {}
         }
       }
     },

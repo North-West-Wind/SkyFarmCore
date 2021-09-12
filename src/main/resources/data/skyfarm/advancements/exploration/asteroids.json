@@ -1,0 +1,31 @@
+{
+  "parent": "skyfarm:exploration/house_pet",
+  "display": {
+    "title": {
+      "translate": "advancement.exploration.asteroids.title"
+    },
+    "description": {
+      "translate": "advancement.exploration.asteroids.description"
+    },
+    "icon": {
+      "item": "minecraft:diamond_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "asteroids": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "skyfarm:asteroids"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "asteroids"
+    ]
+  ]
+}
