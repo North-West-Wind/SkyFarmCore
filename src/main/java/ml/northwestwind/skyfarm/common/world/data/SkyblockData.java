@@ -49,6 +49,9 @@ public class SkyblockData extends WorldSavedData {
     private final Map<UUID, BlockPos> islands = Maps.newHashMap();
     private Set<String> stages = Sets.newHashSet();
     private final Map<UUID, Triple<Vector3d, RegistryKey<World>, GameType>> spectators = Maps.newHashMap();
+    private final Map<UUID, String> teams = Maps.newHashMap();
+    private final Map<UUID, UUID> playerTeamMap = Maps.newHashMap();
+    private final Map<UUID, Set<String>> teamStages = Maps.newHashMap();
     private static final Random rng = new Random();
     private long points;
     private int paraboxLevel;
@@ -178,6 +181,24 @@ public class SkyblockData extends WorldSavedData {
                 i++;
             }
         }
+        CompoundNBT teamsNbt = nbt.getCompound("teams");
+        for (String key : teamsNbt.getAllKeys()) {
+            CompoundNBT teamNbt = teamsNbt.getCompound(key);
+            teams.put(UUID.fromString(key), teamNbt.getString("name"));
+            ListNBT stageList = (ListNBT) nbt.get("stages");
+            Set<String> stageSet = Sets.newHashSet();
+            if (stageList != null) {
+                int i = 0;
+                while (!stageList.getCompound(i).isEmpty()) {
+                    CompoundNBT compound = stageList.getCompound(i);
+                    stageSet.add(compound.getString("name"));
+                    i++;
+                }
+            }
+            teamStages.put(UUID.fromString(key), stageSet);
+        }
+        CompoundNBT playerTeams = nbt.getCompound("playerTeams");
+        playerTeams.getAllKeys().forEach(s -> playerTeamMap.put(UUID.fromString(s), playerTeams.getUUID(s)));
     }
 
     @Override
