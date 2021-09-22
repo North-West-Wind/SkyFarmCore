@@ -33,6 +33,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
@@ -47,6 +48,7 @@ public class SkyblockData extends WorldSavedData {
     private BlockPos paraboxPos = BlockPos.ZERO;
     private final Set<UUID> joined = Sets.newHashSet();
     private final Map<UUID, BlockPos> islands = Maps.newHashMap();
+    private final Map<UUID, Pair<Collection<UUID>, Integer>> invites = Maps.newHashMap();
     private Set<String> stages = Sets.newHashSet();
     private final Map<UUID, Triple<Vector3d, RegistryKey<World>, GameType>> spectators = Maps.newHashMap();
     private final Map<UUID, String> teams = Maps.newHashMap();
@@ -408,6 +410,26 @@ public class SkyblockData extends WorldSavedData {
     public void removeSpectator(ServerPlayerEntity player) {
         if (!isSpectator(player.getUUID())) return;
         switchGameMode(player);
+    }
+    
+    public void addInvites(UUID inviter, Collection<UUID> invited) {
+        invites.put(inviter, Pair.of(invited, 600));
+    }
+
+    public UUID findInvite(UUID uuid) {
+        Optional<Map.Entry<UUID, Pair<Collection<UUID>, Integer>>> e = invites.entrySet().stream().filter(entry -> entry.getValue().getLeft().contains(uuid)).findFirst();
+        return e.map(Map.Entry::getKey).orElse(null);
+    }
+
+    public void tick() {
+        if (!invites.isEmpty()) {
+            Iterator<Map.Entry<UUID, Pair<Collection<UUID>, Integer>>> it = invites.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<UUID, Pair<Collection<UUID>, Integer>> entry = it.next();
+                int ticks = entry.getValue().getRight() - 1;
+                if (ticks <= 0) invites.remove(entry.getKey());
+            }
+        }
     }
 
     public enum VotingStatus {

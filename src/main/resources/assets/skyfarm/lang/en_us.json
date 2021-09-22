@@ -648,5 +648,15 @@
 
   "disable_stages.done": "Disabled stages for this world.",
 
-  "curios.identifier.shifter": "Shifter"
+  "curios.identifier.shifter": "Shifter",
+
+  "invite.island": "%s has invited you to visit their island!",
+  "invite.island.sent": "Your invitation has been sent!",
+  "invite.island.accept": "[Accept]",
+  "invite.island.deny": "[Deny]",
+  "invite.island.error.dimension": "You must be in the Overworld to invite others!",
+  "invite.island.denied.sender": "You've denied the invitation!",
+  "invite.island.denied": "%s denied your invitation!",
+  "invite.island.notFound": "You don't have any invitation!",
+  "invite.island.notOverworld": "The inviter is not in the Overworld!"
 }

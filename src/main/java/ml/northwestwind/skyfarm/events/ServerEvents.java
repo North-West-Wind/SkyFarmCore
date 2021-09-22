@@ -8,11 +8,13 @@ import ml.northwestwind.skyfarm.misc.backup.Backups;
 import net.darkhax.gamestages.event.GameStageEvent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 @Mod.EventBusSubscriber(modid = SkyFarm.MOD_ID)
 public class ServerEvents {
@@ -48,5 +50,11 @@ public class ServerEvents {
         MinecraftServer server = player.getServer();
         if (server == null) return;
         SkyblockData.get(server.overworld()).removeStage(event.getStageName());
+    }
+
+    @SubscribeEvent
+    public static void serverTick(final TickEvent.ServerTickEvent event) {
+        SkyblockData data = SkyblockData.get(ServerLifecycleHooks.getCurrentServer().overworld());
+        data.tick();
     }
 }
