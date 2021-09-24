@@ -25,8 +25,8 @@ public class SFTeamCommand {
                 .then(Commands.literal("dismiss").executes(SFTeamCommand::dismissTeam).then(Commands.literal("true").executes(context -> dismissTeam(context, true))))
                 .then(Commands.literal("join").then(Commands.argument("name", StringArgumentType.string()).executes(SFTeamCommand::joinTeam)))
                 .then(Commands.literal("leave").executes(SFTeamCommand::leaveTeam))
-                .then(Commands.literal("accept").then(Commands.argument("player", EntityArgument.players()).executes(SFTeamCommand::acceptPlayer)))
-                .then(Commands.literal("deny").then(Commands.argument("player", EntityArgument.players()).executes(SFTeamCommand::denyPlayer)))
+                .then(Commands.literal("accept").then(Commands.argument("player", EntityArgument.player()).executes(SFTeamCommand::acceptPlayer)))
+                .then(Commands.literal("deny").then(Commands.argument("player", EntityArgument.player()).executes(SFTeamCommand::denyPlayer)))
         );
     }
 
