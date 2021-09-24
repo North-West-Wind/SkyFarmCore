@@ -77,6 +77,7 @@ public class SkyblockEvents {
         ServerWorld world = (ServerWorld) player.getCommandSenderWorld();
         if (!world.dimension().equals(World.OVERWORLD)) return;
         if (SkyblockChunkGenerator.isWorldSkyblock(world)) {
+            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
             SkyblockData data = SkyblockData.get(world);
             if (!data.isWorldGenerated()) {
                 generateIsland(world, new BlockPos(0, 64, 0));
@@ -84,37 +85,47 @@ public class SkyblockEvents {
                 data.setWorldGenerated(true);
                 data.addIsland(player.getUUID(), new BlockPos(0, 64, 0));
             }
-            Iterable<String> stages = data.getStages();
-            Set<Advancement> advancements = world.getServer().getAdvancements().getAllAdvancements().stream().filter(adv ->
-                    !adv.getId().getNamespace().equals("skyfarm") && (adv.getDisplay() == null || !adv.getDisplay().isHidden()) && adv.getParent() == null
-            ).collect(Collectors.toSet());
-            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
-            for (String stage : stages) {
-                if (!GameStageHelper.isStageKnown(stage)) continue;
-                GameStageHelper.addStage(serverPlayer, stage);
+            if (data.isFirstSpawn(player.getUUID())) firstSpawn(serverPlayer, data);
+            if (SkyFarmConfig.GLOBAL_STAGE.get()) syncStages(serverPlayer, data.getGlobalStages());
+            else {
+                String team = data.getTeam(player.getUUID());
+                if (team != null) syncStages(serverPlayer, data.getStages(team));
             }
-            GameStageHelper.syncPlayer(serverPlayer);
-            if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) {
-                serverPlayer.getAdvancements().visible.removeAll(advancements);
-                serverPlayer.getAdvancements().visibilityChanged.addAll(advancements);
-            }
-            if (data.isFirstSpawn(player.getUUID())) {
-                data.playerJoin(player);
-                if (!data.hasIsland(player.getUUID())) {
-                    if (SkyFarmConfig.ALLOW_SEEK_ISLAND.get()) {
-                        serverPlayer.sendMessage(getCreateIslandTips(), ChatType.SYSTEM, Util.NIL_UUID);
-                        player.teleportTo(0.5, 64, 0.5);
-                    } else {
-                        int offset = SkyFarmConfig.ISLAND_OFFSET.get();
-                        BlockPos pos = data.findPosForNewIsland(offset);
-                        generateIsland(world, pos);
-                        data.addIsland(player.getUUID(), pos);
-                        player.teleportTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-                    }
-                } else player.teleportTo(0.5, 64, 0.5);
-            }
+            if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) hideAdvancements(serverPlayer, world.getServer());
             data.setDirty();
         }
+    }
+
+    private static void firstSpawn(ServerPlayerEntity player, SkyblockData data) {
+        data.playerJoin(player);
+        if (!data.hasIsland(player.getUUID())) {
+            if (SkyFarmConfig.ALLOW_SEEK_ISLAND.get()) {
+                player.sendMessage(getCreateIslandTips(), ChatType.SYSTEM, Util.NIL_UUID);
+                player.teleportTo(0.5, 64, 0.5);
+            } else {
+                int offset = SkyFarmConfig.ISLAND_OFFSET.get();
+                BlockPos pos = data.findPosForNewIsland(offset);
+                generateIsland(player.getLevel(), pos);
+                data.addIsland(player.getUUID(), pos);
+                player.teleportTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+            }
+        } else player.teleportTo(0.5, 64, 0.5);
+    }
+
+    private static void syncStages(ServerPlayerEntity player, Iterable<String> stages) {
+        for (String stage : stages) {
+            if (!GameStageHelper.isStageKnown(stage)) continue;
+            GameStageHelper.addStage(player, stage);
+        }
+        GameStageHelper.syncPlayer(player);
+    }
+
+    private static void hideAdvancements(ServerPlayerEntity player, MinecraftServer server) {
+        Set<Advancement> advancements = server.getAdvancements().getAllAdvancements().stream().filter(adv ->
+                !adv.getId().getNamespace().equals("skyfarm") && (adv.getDisplay() == null || !adv.getDisplay().isHidden()) && adv.getParent() == null
+        ).collect(Collectors.toSet());
+        player.getAdvancements().visible.removeAll(advancements);
+        player.getAdvancements().visibilityChanged.addAll(advancements);
     }
 
     @SubscribeEvent
@@ -124,6 +135,8 @@ public class SkyblockEvents {
         ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
         if (player.getServer() == null) return;
         SkyblockData.cancelVote(player.getServer(), "leave");
+        SkyblockData data = SkyblockData.get(player.getLevel());
+        data.cancelRequest(player.getUUID());
     }
 
     public static void generateIsland(World world, BlockPos center) {

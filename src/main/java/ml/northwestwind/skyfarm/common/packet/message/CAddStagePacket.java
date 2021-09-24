@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import ml.northwestwind.skyfarm.common.packet.IPacket;
 import ml.northwestwind.skyfarm.common.world.data.SkyblockData;
+import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.events.RegistryEvents;
 import ml.northwestwind.skyfarm.misc.Utils;
 import net.darkhax.gamestages.GameStageHelper;
@@ -15,6 +16,7 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CAddStagePacket implements IPacket {
     public static final Map<String, Triple<Item, Integer, List<String>>> STAGES = Maps.newHashMap();
@@ -29,12 +31,19 @@ public class CAddStagePacket implements IPacket {
         ServerPlayerEntity player = ctx.getSender();
         if (player == null || player.getServer() == null) return;
         if (!GameStageHelper.isStageKnown(stage)) return;
-        for (ServerPlayerEntity p : player.getServer().getPlayerList().getPlayers()) GameStageHelper.addStage(p, stage);
         SkyblockData data = SkyblockData.get(player.getLevel());
-        data.addStage(stage);
-        data.setPoint(data.getPoint() - STAGES.getOrDefault(stage, new ImmutableTriple<>(null, 1, null)).getMiddle());
+        String team = null;
+        if (SkyFarmConfig.GLOBAL_STAGE.get()) {
+            player.getServer().getPlayerList().getPlayers().forEach(p -> GameStageHelper.addStage(p, stage));
+            data.setGlobalPoint(data.getGlobalPoint() - STAGES.getOrDefault(stage, new ImmutableTriple<>(null, 1, null)).getMiddle());
+        } else {
+            team = data.getTeam(player.getUUID());
+            String finalTeam = team;
+            player.getServer().getPlayerList().getPlayers().stream().filter(p -> finalTeam.equals(data.getTeam(p.getUUID()))).forEach(p -> GameStageHelper.addStage(p, stage));
+            data.setTeamPoint(team, data.getTeamPoint(team) - STAGES.getOrDefault(stage, new ImmutableTriple<>(null, 1, null)).getMiddle());
+        }
         data.setDirty();
-        SSyncPointsPacket.serverSyncAll(player.getServer());
+        SSyncPointsPacket.serverSyncAll(player.getServer(), team);
     }
 
     static {

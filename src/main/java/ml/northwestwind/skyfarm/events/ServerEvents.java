@@ -40,7 +40,14 @@ public class ServerEvents {
         if (player.level.isClientSide) return;
         MinecraftServer server = player.getServer();
         if (server == null) return;
-        SkyblockData.get(server.overworld()).addStage(event.getStageName());
+        SkyblockData data = SkyblockData.get(server.overworld());
+        if (SkyFarmConfig.GLOBAL_STAGE.get()) {
+            data.addStages(event.getStageName());
+        } else {
+            String team = data.getTeam(player.getUUID());
+            if (team != null) data.addTeamStages(team, event.getStageName());
+        }
+        data.setDirty();
     }
 
     @SubscribeEvent
@@ -49,7 +56,14 @@ public class ServerEvents {
         if (player.level.isClientSide) return;
         MinecraftServer server = player.getServer();
         if (server == null) return;
-        SkyblockData.get(server.overworld()).removeStage(event.getStageName());
+        SkyblockData data = SkyblockData.get(server.overworld());
+        if (SkyFarmConfig.GLOBAL_STAGE.get()) {
+            data.removeStages(event.getStageName());
+        } else {
+            String team = data.getTeam(player.getUUID());
+            if (team != null) data.removeTeamStages(team, event.getStageName());
+        }
+        data.setDirty();
     }
 
     @SubscribeEvent

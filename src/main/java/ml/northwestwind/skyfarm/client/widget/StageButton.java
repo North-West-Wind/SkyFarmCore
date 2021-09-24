@@ -57,7 +57,7 @@ public class StageButton extends ItemButton {
     private boolean isClickable() {
         Minecraft minecraft = Minecraft.getInstance();
         if (!(minecraft.screen instanceof GameStageScreen)) return false;
-        boolean noStage = !GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), stage);
+        boolean noStage = !GameStageHelper.hasStage(minecraft.player, GameStageSaveHandler.getClientData(), stage);
         boolean hasPoints = ((GameStageScreen) minecraft.screen).points >= point;
         boolean hasRequired = true;
         for (String s : required) if (!GameStageHelper.hasStage(Minecraft.getInstance().player, GameStageSaveHandler.getClientData(), s)) {

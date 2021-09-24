@@ -41,7 +41,7 @@ public class StageCommand {
             stages.forEach(stage -> GameStageHelper.addStage(p, stage));
             p.sendMessage(new TranslationTextComponent("disable_stages.done").withStyle(TextFormatting.GREEN), ChatType.SYSTEM, Util.NIL_UUID);
         });
-        data.addStage(ImmutableList.copyOf(stages).toArray(new String[0]));
+        data.addStages(ImmutableList.copyOf(stages).toArray(new String[0]));
         data.setDirty();
         return 2;
     }

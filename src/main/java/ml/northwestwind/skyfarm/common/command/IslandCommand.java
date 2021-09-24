@@ -34,9 +34,6 @@ public class IslandCommand {
                         .then(Commands.argument("players", EntityArgument.players()).executes(IslandCommand::inviteToIsland))
                         .then(Commands.literal("accept").then(Commands.argument("accepted", BoolArgumentType.bool()).executes(IslandCommand::acceptInvite)))
                 )
-                .then(Commands.literal("request")
-                        .then(Commands.argument("players", EntityArgument.players()).executes(IslandCommand::requestToIsland))
-                )
         );
     }
 
@@ -122,10 +119,8 @@ public class IslandCommand {
             inviter.sendMessage(new TranslationTextComponent("invite.island.denied").withStyle(TextFormatting.RED), ChatType.SYSTEM, Util.NIL_UUID);
             return 3;
         }
-        
-    }
-
-    private static int requestToIsland(CommandContext<CommandSource> context) {
-
+        BlockPos pos = data.getIsland(uuid);
+        player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+        return 0;
     }
 }

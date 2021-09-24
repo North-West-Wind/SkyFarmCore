@@ -1,7 +1,9 @@
 package ml.northwestwind.skyfarm.events;
 
+import com.mojang.brigadier.CommandDispatcher;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.common.command.*;
+import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,10 +13,13 @@ import net.minecraftforge.fml.common.Mod;
 public class CommandEvents {
     @SubscribeEvent
     public static void registerCommand(final RegisterCommandsEvent event) {
-        VoteCommand.registerCommand(event.getDispatcher());
-        PointsCommand.registerCommand(event.getDispatcher());
-        HideAdvancementCommand.registerCommand(event.getDispatcher(), event.getEnvironment().equals(Commands.EnvironmentType.INTEGRATED));
-        StageCommand.registerCommand(event.getDispatcher(), event.getEnvironment().equals(Commands.EnvironmentType.INTEGRATED));
-        IslandCommand.registerCommand(event.getDispatcher());
+        CommandDispatcher<CommandSource> dispatcher = event.getDispatcher();
+        boolean integrated = event.getEnvironment().equals(Commands.EnvironmentType.INTEGRATED);
+        VoteCommand.registerCommand(dispatcher);
+        PointsCommand.registerCommand(dispatcher);
+        HideAdvancementCommand.registerCommand(dispatcher, integrated);
+        StageCommand.registerCommand(dispatcher, integrated);
+        IslandCommand.registerCommand(dispatcher);
+        SFTeamCommand.registerCommand(dispatcher);
     }
 }

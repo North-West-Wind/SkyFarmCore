@@ -1,9 +1,7 @@
 package ml.northwestwind.skyfarm.common.world.data;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
+import ml.northwestwind.skyfarm.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.itemstages.ItemStages;
 import ml.northwestwind.skyfarm.misc.Utils;
 import ml.northwestwind.skyfarm.misc.teleporter.SimpleTeleporter;
@@ -33,6 +31,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
+import org.apache.commons.lang3.tuple.MutableTriple;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
@@ -51,9 +50,9 @@ public class SkyblockData extends WorldSavedData {
     private final Map<UUID, Pair<Collection<UUID>, Integer>> invites = Maps.newHashMap();
     private Set<String> stages = Sets.newHashSet();
     private final Map<UUID, Triple<Vector3d, RegistryKey<World>, GameType>> spectators = Maps.newHashMap();
-    private final Map<UUID, String> teams = Maps.newHashMap();
-    private final Map<UUID, UUID> playerTeamMap = Maps.newHashMap();
-    private final Map<UUID, Set<String>> teamStages = Maps.newHashMap();
+    private final Map<String, MutableTriple<UUID, Set<String>, Long>> teams = Maps.newHashMap();
+    private final Map<UUID, String> playerTeamMap = Maps.newHashMap();
+    private final Map<UUID, String> teamRequests = Maps.newHashMap();
     private static final Random rng = new Random();
     private long points;
     private int paraboxLevel;
@@ -79,7 +78,7 @@ public class SkyblockData extends WorldSavedData {
         boolean craftable = false;
         for (IRecipe<?> recipe : recipes) if (recipe.getResultItem().getItem().equals(wantingItem)) {
             final String stage = ItemStages.getStage(recipe.getResultItem());
-            if (craftable = stage == null || data.hasStage(stage)) break;
+            if (craftable = stage == null || (SkyFarmConfig.GLOBAL_STAGE.get() && data.hasStage(stage))) break;
         }
         return craftable ? wantingItem : generateItem(world);
     }
@@ -186,7 +185,6 @@ public class SkyblockData extends WorldSavedData {
         CompoundNBT teamsNbt = nbt.getCompound("teams");
         for (String key : teamsNbt.getAllKeys()) {
             CompoundNBT teamNbt = teamsNbt.getCompound(key);
-            teams.put(UUID.fromString(key), teamNbt.getString("name"));
             ListNBT stageList = (ListNBT) nbt.get("stages");
             Set<String> stageSet = Sets.newHashSet();
             if (stageList != null) {
@@ -197,10 +195,18 @@ public class SkyblockData extends WorldSavedData {
                     i++;
                 }
             }
-            teamStages.put(UUID.fromString(key), stageSet);
+            MutableTriple<UUID, Set<String>, Long> triple = new MutableTriple<>(teamNbt.getUUID("creator"), stageSet, teamNbt.getLong("points"));
+            teams.put(key, triple);
+            ListNBT playerList = (ListNBT) nbt.get("players");
+            if (playerList != null) {
+                int i = 0;
+                while (!playerList.getCompound(i).isEmpty()) {
+                    CompoundNBT compound = playerList.getCompound(i);
+                    playerTeamMap.put(compound.getUUID("uuid"), key);
+                    i++;
+                }
+            }
         }
-        CompoundNBT playerTeams = nbt.getCompound("playerTeams");
-        playerTeams.getAllKeys().forEach(s -> playerTeamMap.put(UUID.fromString(s), playerTeams.getUUID(s)));
     }
 
     @Override
@@ -265,6 +271,32 @@ public class SkyblockData extends WorldSavedData {
             listNBT5.add(i++, compound);
         }
         nbt.put("islands", listNBT5);
+        CompoundNBT teamsNbt = new CompoundNBT();
+        teams.forEach((key, value) -> {
+            CompoundNBT compoundNBT = new CompoundNBT();
+            Iterator<String> stages = value.getMiddle().iterator();
+            ListNBT stageList = new ListNBT();
+            ListNBT playerList = new ListNBT();
+            int ii = 0;
+            while (stages.hasNext()) {
+                CompoundNBT nbt1 = new CompoundNBT();
+                nbt1.putString("name", stages.next());
+                stageList.add(ii++, nbt1);
+            }
+            Iterator<UUID> players = playerTeamMap.entrySet().stream().filter(en -> en.getValue().equals(key)).map(Map.Entry::getKey).collect(Collectors.toSet()).iterator();
+            ii = 0;
+            while (players.hasNext()) {
+                CompoundNBT nbt1 = new CompoundNBT();
+                nbt1.putUUID("uuid", players.next());
+                playerList.add(ii++, nbt1);
+            }
+            compoundNBT.putUUID("creator", value.getLeft());
+            compoundNBT.putLong("points", value.getRight());
+            compoundNBT.put("stages", stageList);
+            compoundNBT.put("players", playerList);
+            teamsNbt.put(key, compoundNBT);
+        });
+        nbt.put("teams", teamsNbt);
         return nbt;
     }
 
@@ -292,15 +324,17 @@ public class SkyblockData extends WorldSavedData {
         joined.add(player.getUUID());
     }
 
-    public void addPoint(long point) {
+    public void addGlobalPoint(long point) {
         points += point;
+        teams.keySet().forEach(key -> addTeamPoint(key, point));
     }
 
-    public void setPoint(long point) {
+    public void setGlobalPoint(long point) {
         points = point;
+        teams.keySet().forEach(key -> setTeamPoint(key, point));
     }
 
-    public long getPoint() {
+    public long getGlobalPoint() {
         return points;
     }
 
@@ -332,16 +366,20 @@ public class SkyblockData extends WorldSavedData {
         return paraboxPos;
     }
 
-    public void addStage(String... stage) {
-        stages.addAll(Arrays.stream(stage).collect(Collectors.toSet()));
+    public void addStages(String... stages) {
+        this.stages.addAll(Arrays.asList(stages));
     }
 
-    public void removeStage(String stage) {
-        stages.remove(stage);
+    public void removeStages(String... stages) {
+        Arrays.asList(stages).forEach(this.stages::remove);
     }
 
-    public Iterable<String> getStages() {
+    public Iterable<String> getGlobalStages() {
         return noStage ? GameStageHelper.getKnownStages() : ImmutableSet.copyOf(stages);
+    }
+
+    public Iterable<String> getStages(String name) {
+        return noStage ? GameStageHelper.getKnownStages() : ImmutableSet.copyOf(teams.getOrDefault(name, new MutableTriple<>(null, Sets.newHashSet(), null)).getMiddle());
     }
 
     public boolean hasStage(String stage) {
@@ -423,13 +461,114 @@ public class SkyblockData extends WorldSavedData {
 
     public void tick() {
         if (!invites.isEmpty()) {
-            Iterator<Map.Entry<UUID, Pair<Collection<UUID>, Integer>>> it = invites.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry<UUID, Pair<Collection<UUID>, Integer>> entry = it.next();
+            for (Map.Entry<UUID, Pair<Collection<UUID>, Integer>> entry : invites.entrySet()) {
                 int ticks = entry.getValue().getRight() - 1;
                 if (ticks <= 0) invites.remove(entry.getKey());
             }
         }
+    }
+
+    public boolean hasTeam(String name) {
+        return teams.containsKey(name);
+    }
+
+    public boolean isInTeam(UUID uuid) {
+        return playerTeamMap.containsKey(uuid);
+    }
+
+    public String getTeam(UUID uuid) {
+        return playerTeamMap.get(uuid);
+    }
+
+    public void createTeam(UUID uuid, String name, Set<String> stages) {
+        teams.put(name, new MutableTriple<>(uuid, stages, 0L));
+        playerTeamMap.put(uuid, name);
+    }
+
+    public Collection<UUID> removeTeam(String name) {
+        teams.remove(name);
+        Collection<UUID> collection = playerTeamMap.entrySet().stream().filter(entry -> entry.getValue().equals(name)).map(Map.Entry::getKey).collect(Collectors.toSet());
+        collection.forEach(playerTeamMap::remove);
+        return collection;
+    }
+
+    public boolean hasRequest(UUID uuid) {
+        return teamRequests.containsKey(uuid);
+    }
+
+    public void requestTeam(UUID uuid, String name) {
+        teamRequests.put(uuid, name);
+    }
+
+    public String cancelRequest(UUID uuid) {
+        String name = teamRequests.get(uuid);
+        teamRequests.remove(uuid);
+        return name;
+    }
+
+    public String leaveTeam(UUID uuid) {
+        String name = playerTeamMap.get(uuid);
+        playerTeamMap.remove(uuid);
+        return name;
+    }
+
+    public String getTeamFromCreator(UUID uuid) {
+        return teams.entrySet().stream().filter(entry -> entry.getValue().getLeft().equals(uuid)).map(Map.Entry::getKey).findFirst().orElse(null);
+    }
+
+    public boolean acceptRequest(UUID uuid, String name) {
+        if (!teamRequests.containsKey(uuid) || !name.equals(teamRequests.get(uuid))) return false;
+        teamRequests.remove(uuid);
+        playerTeamMap.put(uuid, name);
+        return true;
+    }
+
+    public boolean denyRequest(UUID uuid, String name) {
+        if (!teamRequests.containsKey(uuid) || !name.equals(teamRequests.get(uuid))) return false;
+        teamRequests.remove(uuid);
+        return true;
+    }
+
+    public void addTeamStages(String name, String... stages) {
+        if (!teams.containsKey(name)) return;
+        MutableTriple<UUID, Set<String>, Long> triple = teams.get(name);
+        Set<String> known = triple.getMiddle();
+        known.addAll(Arrays.asList(stages));
+        triple.setMiddle(known);
+        teams.put(name, triple);
+    }
+
+    public void removeTeamStages(String name, String... stages) {
+        if (!teams.containsKey(name)) return;
+        MutableTriple<UUID, Set<String>, Long> triple = teams.get(name);
+        Set<String> known = triple.getMiddle();
+        Arrays.asList(stages).forEach(known::remove);
+        triple.setMiddle(known);
+        teams.put(name, triple);
+    }
+
+    public void addTeamPoint(String name, long point) {
+        if (!teams.containsKey(name)) return;
+        MutableTriple<UUID, Set<String>, Long> triple = teams.get(name);
+        triple.setRight(triple.getRight() + point);
+        teams.put(name, triple);
+    }
+
+    public void setTeamPoint(String name, long point) {
+        if (!teams.containsKey(name)) return;
+        MutableTriple<UUID, Set<String>, Long> triple = teams.get(name);
+        triple.setRight(point);
+        teams.put(name, triple);
+    }
+
+    public long getTeamPoint(String name) {
+        if (!teams.containsKey(name)) return 0;
+        return teams.get(name).getRight();
+    }
+
+    public Collection<UUID> getTeamPlayers(String name) {
+        if (!teams.containsKey(name)) return null;
+        return playerTeamMap.entrySet().stream().filter(entry -> name.equals(entry.getValue())).map(Map.Entry::getKey).collect(Collectors.toSet());
     }
 
     public enum VotingStatus {
