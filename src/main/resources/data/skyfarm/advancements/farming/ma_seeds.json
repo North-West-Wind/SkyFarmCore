@@ -152,16 +152,6 @@
         ]
       }
     },
-    "chrome": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:chrome_seeds"
-          }
-        ]
-      }
-    },
     "coal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -238,16 +228,6 @@
         "items": [
           {
             "item": "mysticalagriculture:creeper_seeds"
-          }
-        ]
-      }
-    },
-    "cyanite": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:cyanite_seeds"
           }
         ]
       }
@@ -492,16 +472,6 @@
         ]
       }
     },
-    "hop_graphite": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:hop_graphite_seeds"
-          }
-        ]
-      }
-    },
     "ice": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -622,16 +592,6 @@
         ]
       }
     },
-    "mithril": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:mithril_seeds"
-          }
-        ]
-      }
-    },
     "mystical_flower": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -742,16 +702,6 @@
         ]
       }
     },
-    "platinum": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:platinum_seeds"
-          }
-        ]
-      }
-    },
     "prismarine": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -838,26 +788,6 @@
         "items": [
           {
             "item": "mysticalagriculture:rose_gold_seeds"
-          }
-        ]
-      }
-    },
-    "rubber": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:rubber_seeds"
-          }
-        ]
-      }
-    },
-    "saltpeter": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:saltpeter_seeds"
           }
         ]
       }
@@ -1052,26 +982,6 @@
         ]
       }
     },
-    "titanium": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:titanium_seeds"
-          }
-        ]
-      }
-    },
-    "tungsten": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:tungsten_seeds"
-          }
-        ]
-      }
-    },
     "turtle": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -1132,16 +1042,6 @@
         ]
       }
     },
-    "yellorium": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:yellorium_seeds"
-          }
-        ]
-      }
-    },
     "zinc": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -1158,16 +1058,6 @@
         "items": [
           {
             "item": "mysticalagriculture:zombie_seeds"
-          }
-        ]
-      }
-    },
-    "element": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "mysticalagriculture:element_seeds"
           }
         ]
       }
@@ -1274,9 +1164,6 @@
       "chicken"
     ],
     [
-      "chrome"
-    ],
-    [
       "coal"
     ],
     [
@@ -1299,9 +1186,6 @@
     ],
     [
       "creeper"
-    ],
-    [
-      "cyanite"
     ],
     [
       "diamond"
@@ -1376,9 +1260,6 @@
       "honey"
     ],
     [
-      "hop_graphite"
-    ],
-    [
       "ice"
     ],
     [
@@ -1415,9 +1296,6 @@
       "manyullyn"
     ],
     [
-      "mithril"
-    ],
-    [
       "mystical_flower"
     ],
     [
@@ -1451,9 +1329,6 @@
       "pig_iron"
     ],
     [
-      "platinum"
-    ],
-    [
       "prismarine"
     ],
     [
@@ -1481,10 +1356,7 @@
       "rose_gold"
     ],
     [
-      "rubber"
-    ],
-    [
-      "saltpeter"
+      "salt"
     ],
     [
       "sheep"
@@ -1544,12 +1416,6 @@
       "tinkers_bronze"
     ],
     [
-      "titanium"
-    ],
-    [
-      "tungsten"
-    ],
-    [
       "turtle"
     ],
     [
@@ -1568,16 +1434,10 @@
       "wood"
     ],
     [
-      "yellorium"
-    ],
-    [
       "zinc"
     ],
     [
       "zombie"
-    ],
-    [
-      "element"
     ],
     [
       "gaia_spirit"
@@ -1614,21 +1474,6 @@
     ],
     [
       "refined_obsidian"
-    ],
-    [
-      "salt"
-    ],
-    [
-      "steel"
-    ],
-    [
-      "sulfur"
-    ],
-    [
-      "tin"
-    ],
-    [
-      "uraninite"
     ]
   ],
   "rewards": {
