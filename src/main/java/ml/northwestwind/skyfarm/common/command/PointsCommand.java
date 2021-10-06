@@ -45,7 +45,8 @@ public class PointsCommand {
         if (!globalStage && team == null) team = data.getTeam(player.getUUID());
         if (!globalStage && team != null && data.hasTeam(team)) {
             data.addTeamPoint(team, point);
-            player.getServer().getPlayerList().getPlayers().stream().filter(p -> team.equals(data.getTeam(p.getUUID())))
+            String finalTeam = team;
+            player.getServer().getPlayerList().getPlayers().stream().filter(p -> finalTeam.equals(data.getTeam(p.getUUID())))
                     .forEach(p -> p.sendMessage(new TranslationTextComponent("points.gain", point)
                                     .setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
                             ChatType.SYSTEM, Util.NIL_UUID));
@@ -72,7 +73,8 @@ public class PointsCommand {
         if (!globalStage && team == null) team = data.getTeam(player.getUUID());
         if (!globalStage && team != null && data.hasTeam(team)) {
             data.setTeamPoint(team, point);
-            player.getServer().getPlayerList().getPlayers().stream().filter(p -> team.equals(data.getTeam(p.getUUID())))
+            String finalTeam = team;
+            player.getServer().getPlayerList().getPlayers().stream().filter(p -> finalTeam.equals(data.getTeam(p.getUUID())))
                     .forEach(p -> p.sendMessage(new TranslationTextComponent("points.set", point)
                                     .setStyle(Style.EMPTY.applyFormat(TextFormatting.GOLD)),
                             ChatType.SYSTEM, Util.NIL_UUID));
