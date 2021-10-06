@@ -40,8 +40,10 @@ public class PointsCommand {
         if (!(context.getSource().getEntity() instanceof ServerPlayerEntity)) return 1;
         int point = IntegerArgumentType.getInteger(context, "point");
         ServerPlayerEntity player = (ServerPlayerEntity) context.getSource().getEntity();
+        boolean globalStage = SkyFarmConfig.GLOBAL_STAGE.get();
         SkyblockData data = SkyblockData.get(player.getLevel());
-        if (!SkyFarmConfig.GLOBAL_STAGE.get() && team != null && data.hasTeam(team)) {
+        if (!globalStage && team == null) team = data.getTeam(player.getUUID());
+        if (!globalStage && team != null && data.hasTeam(team)) {
             data.addTeamPoint(team, point);
             player.getServer().getPlayerList().getPlayers().stream().filter(p -> team.equals(data.getTeam(p.getUUID())))
                     .forEach(p -> p.sendMessage(new TranslationTextComponent("points.gain", point)
@@ -65,8 +67,10 @@ public class PointsCommand {
         if (!(context.getSource().getEntity() instanceof ServerPlayerEntity)) return 1;
         int point = IntegerArgumentType.getInteger(context, "point");
         ServerPlayerEntity player = (ServerPlayerEntity) context.getSource().getEntity();
+        boolean globalStage = SkyFarmConfig.GLOBAL_STAGE.get();
         SkyblockData data = SkyblockData.get(player.getLevel());
-        if (!SkyFarmConfig.GLOBAL_STAGE.get() && team != null && data.hasTeam(team)) {
+        if (!globalStage && team == null) team = data.getTeam(player.getUUID());
+        if (!globalStage && team != null && data.hasTeam(team)) {
             data.setTeamPoint(team, point);
             player.getServer().getPlayerList().getPlayers().stream().filter(p -> team.equals(data.getTeam(p.getUUID())))
                     .forEach(p -> p.sendMessage(new TranslationTextComponent("points.set", point)
