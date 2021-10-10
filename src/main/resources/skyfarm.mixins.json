@@ -6,12 +6,9 @@
   "mixins": [
     "MixinAbstractBlockState",
     "MixinDimensionGeneratorSettings",
-    "MixinFissionReactorMultiblockData",
-    "MixinItem",
-    "MixinMultiblockData"
+    "MixinItem"
   ],
   "client": [
-    "MixinGeneratorsJEI",
     "MixinWorldRenderer"
   ],
   "minVersion": "0.8"

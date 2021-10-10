@@ -1,7 +1,5 @@
 package ml.northwestwind.skyfarm.events;
 
-import mekanism.api.chemical.gas.Gas;
-import mekanism.api.chemical.gas.GasBuilder;
 import ml.northwestwind.skyfarm.SkyFarm;
 import ml.northwestwind.skyfarm.common.recipes.CompactBrickRecipe;
 import ml.northwestwind.skyfarm.common.recipes.EvaporatingRecipe;
@@ -134,15 +132,6 @@ public class RegistryEvents {
     public static void registerContainerType(final RegistryEvent.Register<ContainerType<?>> event) {
         event.getRegistry().registerAll(
                 ContainerTypes.PARABOX
-        );
-    }
-
-    @SubscribeEvent
-    public static void registerGas(final RegistryEvent.Register<Gas> event) {
-        event.getRegistry().registerAll(
-                Gases.FISSILE_FUEL_MK2,
-                Gases.PLURANIUM_FLUOXIDE,
-                Gases.PLUTONIUM_OXIDE
         );
     }
 
@@ -298,12 +287,6 @@ public class RegistryEvents {
 
     public static class ContainerTypes {
         public static final ContainerType<ParaboxContainer> PARABOX = (ContainerType<ParaboxContainer>) new ContainerType<>((IContainerFactory<Container>) ParaboxContainer::new).setRegistryName("parabox");
-    }
-
-    public static class Gases {
-        public static final Gas FISSILE_FUEL_MK2 = new Gas(GasBuilder.builder().color(3035951)).setRegistryName("fissile_fuel_mk2");
-        public static final Gas PLURANIUM_FLUOXIDE = new Gas(GasBuilder.builder().color(7310944)).setRegistryName("pluranium_fluoxide");
-        public static final Gas PLUTONIUM_OXIDE = new Gas(GasBuilder.builder().color(2986445)).setRegistryName("plutonium_oxide");
     }
 
     public static class Foods {
