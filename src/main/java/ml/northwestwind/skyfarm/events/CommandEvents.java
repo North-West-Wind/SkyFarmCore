@@ -17,9 +17,9 @@ public class CommandEvents {
         boolean integrated = event.getEnvironment().equals(Commands.EnvironmentType.INTEGRATED);
         VoteCommand.registerCommand(dispatcher);
         PointsCommand.registerCommand(dispatcher);
-        HideAdvancementCommand.registerCommand(dispatcher, integrated);
         StageCommand.registerCommand(dispatcher, integrated);
         IslandCommand.registerCommand(dispatcher);
         SFTeamCommand.registerCommand(dispatcher);
+        DebugCommand.registerCommand(dispatcher, integrated);
     }
 }

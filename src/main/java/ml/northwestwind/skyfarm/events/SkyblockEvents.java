@@ -91,7 +91,6 @@ public class SkyblockEvents {
                 String team = data.getTeam(player.getUUID());
                 if (team != null) syncStages(serverPlayer, data.getStages(team));
             }
-            if (SkyFarmConfig.HIDE_ADVANCEMENT.get()) hideAdvancements(serverPlayer, world.getServer());
             data.setDirty();
         }
     }
@@ -118,14 +117,6 @@ public class SkyblockEvents {
             GameStageHelper.addStage(player, stage);
         }
         GameStageHelper.syncPlayer(player);
-    }
-
-    private static void hideAdvancements(ServerPlayerEntity player, MinecraftServer server) {
-        Set<Advancement> advancements = server.getAdvancements().getAllAdvancements().stream().filter(adv ->
-                !adv.getId().getNamespace().equals("skyfarm") && (adv.getDisplay() == null || !adv.getDisplay().isHidden()) && adv.getParent() == null
-        ).collect(Collectors.toSet());
-        player.getAdvancements().visible.removeAll(advancements);
-        player.getAdvancements().visibilityChanged.addAll(advancements);
     }
 
     @SubscribeEvent

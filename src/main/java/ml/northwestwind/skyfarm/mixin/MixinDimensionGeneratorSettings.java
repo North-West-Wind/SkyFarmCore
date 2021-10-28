@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Optional;
 
 // Thank you Undergarden
-@Mixin(DimensionGeneratorSettings.class)
+@Mixin(value = DimensionGeneratorSettings.class)
 public class MixinDimensionGeneratorSettings {
     @Inject(at = @At("RETURN"), method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V")
     private void storeSeed(long seed, boolean generateFeatures, boolean bonusChest, SimpleRegistry<Dimension> options, Optional<String> legacyOptions, CallbackInfo ci) {

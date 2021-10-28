@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Mixin(AbstractBlock.AbstractBlockState.class)
+@Mixin(value = AbstractBlock.AbstractBlockState.class)
 public abstract class MixinAbstractBlockState {
     @Shadow public abstract Block getBlock();
 

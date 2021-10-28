@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import static ml.northwestwind.skyfarm.itemstages.ItemStages.getStage;
 import static ml.northwestwind.skyfarm.itemstages.ItemStages.sendDropMessage;
 
-@Mixin(Item.class)
+@Mixin(value = Item.class)
 public class MixinItem {
-    @Inject(at = @At("HEAD"), method = "inventoryTick", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "inventoryTick")
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
         if (!(entity instanceof ServerPlayerEntity)) return;
         ServerPlayerEntity player = (ServerPlayerEntity) entity;

@@ -1,5 +1,5 @@
 {
-  "parent": "skyfarm:skyfarm/water",
+  "parent": "skyfarm:skyfarm/compact_brick",
   "display": {
     "title": {
       "translate": "advancement.skyfarm.cauldrons.title"
