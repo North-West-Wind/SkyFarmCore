@@ -6,7 +6,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
@@ -15,18 +14,18 @@ import net.minecraftforge.fml.ModList;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ShifterItem extends Item {
+public class ShifterArmorItem extends ArmorItem {
     private final String registryName, modid;
 
-    public ShifterItem(Properties properties, String registryName, String modid) {
-        super(properties);
+    public ShifterArmorItem(IArmorMaterial material, EquipmentSlotType slot, Properties properties, String registryName, String modid) {
+        super(material, slot, properties);
         this.registryName = registryName;
         this.modid = modid;
         setRegistryName(SkyFarm.MOD_ID, registryName);
     }
 
-    public ShifterItem(Properties properties, String registryName) {
-        this(properties, registryName, "minecraft");
+    public ShifterArmorItem(IArmorMaterial material, EquipmentSlotType slot, Properties properties, String registryName) {
+        this(material, slot, properties, registryName, "minecraft");
     }
 
     @Override
