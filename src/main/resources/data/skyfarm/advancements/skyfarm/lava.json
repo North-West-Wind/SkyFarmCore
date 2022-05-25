@@ -1,0 +1,35 @@
+{
+	"parent": "skyfarm:skyfarm/iron_cauldron",
+	"display": {
+	  "title": {
+		"translate": "advancement.skyfarm.lava.title"
+	  },
+	  "description": {
+		"translate": "advancement.skyfarm.lava.description"
+	  },
+	  "icon": {
+		"item": "minecraft:lava_bucket"
+	  },
+	  "frame": "task",
+	  "show_toast": true,
+	  "announce_to_chat": true,
+	  "hidden": false
+	},
+	"criteria": {
+	  "lava_bucket": {
+		"trigger": "minecraft:inventory_changed",
+		"conditions": {
+		  "items": [
+			{
+			  "item": "minecraft:lava_bucket"
+			}
+		  ]
+		}
+	  }
+	},
+	"requirements": [
+	  [
+		"lava_bucket"
+	  ]
+	]
+  }

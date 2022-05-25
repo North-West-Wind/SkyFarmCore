@@ -98,7 +98,7 @@
   "tooltip.skyfarm.mega_mushroom": "Makes you HUGE",
   "tooltip.skyfarm.mini_mushroom": "Shrinks you to atoms",
 
-  "usage.skyfarm.stone_variator": "Lava is required under the block.",
+  "usage.skyfarm.stone_variator": "A lava source is required under this block.",
   "usage.skyfarm.void_shifter": "Release crouch to launch yourself.",
   "usage.skyfarm.parabox": "Someone else is using a parabox.",
 
@@ -252,6 +252,8 @@
   "advancement.skyfarm.iron_seeds.description": "Iron is essential to progress. By mixing iron ingot and stone seeds together, you can get yourself iron seeds.",
   "advancement.skyfarm.iron_cauldron.title": "The Normal Cauldron",
   "advancement.skyfarm.iron_cauldron.description": "Only the iron cauldron can hold lava. You should get one.",
+  "advancement.skyfarm.lava.title": "This is how you make lava",
+  "advancement.skyfarm.lava.description": "Put an iron cauldron on top of fire/torch, and right click the cauldron with cobblestone.",
   "advancement.skyfarm.fire_seeds.title": "Pretty Hot Stuff",
   "advancement.skyfarm.fire_seeds.description": "When wood seeds catch on fire, they become fire seeds. (Check JEI)",
   "advancement.skyfarm.tin_seeds.title": "Tin Land",
